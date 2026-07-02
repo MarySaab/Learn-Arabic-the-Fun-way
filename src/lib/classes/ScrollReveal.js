@@ -21,6 +21,11 @@ export default class ScrollReveal {
     this.io = null;         // IntersectionObserver (reveal on scroll)
     this.mutations = null;  // MutationObserver (catch elements added later)
     this.animated = false;
+    // Elements THIS instance already registered. Kept on the instance (not as
+    // a DOM attribute!) so that when React strict-mode mounts twice in dev,
+    // the second, surviving instance re-registers everything — otherwise the
+    // elements stay claimed by a disconnected observer and never reveal.
+    this.seen = new WeakSet();
   }
 
   start() {
@@ -49,11 +54,11 @@ export default class ScrollReveal {
     return this;
   }
 
-  // Registers every [data-reveal] element we haven't handled yet.
+  // Registers every [data-reveal] element this instance hasn't handled yet.
   scan() {
     document.querySelectorAll(this.selector).forEach((el) => {
-      if (el.dataset.revealSeen) return;
-      el.dataset.revealSeen = "1";
+      if (this.seen.has(el)) return;
+      this.seen.add(el);
       if (this.animated) this.io.observe(el);
       else el.classList.add("is-visible");
     });

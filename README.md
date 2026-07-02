@@ -1,47 +1,124 @@
 # تعلّم مع مريانا — Learn with Mariana
 
-Your name: **Mary Saab**
-Course: Full Stack Development — Final Project 2026
-Custom UI requirement: **Timeline-style section using Flexbox/Grid** (the "Learning
-Journey" on the home page; ties into the placement-test result).
+**Name:** Mary Saab
+**Course:** Full Stack Development — Final Project 2026
+**Live URL:** _add your Vercel URL here after deploying_
+**Repository:** https://github.com/MarySaab/Learn-Arabic-the-Fun-way
 
-A private Arabic-tutoring site: a visitor reads about the teacher, takes a
-placement test, gets a recommended level highlighted on the learning-journey
-timeline, and books a session.
+A private Arabic-tutoring site. A visitor reads about the teacher (Mariana), takes
+a short **placement test**, gets a **recommended level highlighted on a learning-
+journey timeline**, and **books a session**. Arabic-first (`dir="rtl" lang="ar"`)
+with a button that reveals English glosses in parentheses for foreign learners.
+
+## Custom UI requirement
+> **"Create a timeline-style section using Flexbox or Grid."**
+
+Implemented as the **Learning Journey** on the home page: eight stages (Letters →
+Mastery) laid out as a horizontal Flexbox track on desktop and a vertical "road"
+on mobile, correct in RTL. It is **not decorative** — when a visitor finishes the
+placement test, their recommended level is **highlighted on this same timeline**
+with a glowing gold "أنت هنا (You are here)" marker. Marked in the code with:
+`{/* Custom requirement: Timeline section using CSS Grid/Flexbox */}`
+(see [`src/components/Timeline.js`](src/components/Timeline.js)).
 
 ## Tech
-- **Next.js (App Router)** + React — deployed on Vercel
-- **Hand-written CSS** (CSS Modules + `globals.css` design tokens) — no CSS framework
-- Core logic in **ES6 classes**: `PlacementTest`, `LessonCatalog`, `ApiClient`, `FormValidator`
-- **Prisma + Neon (PostgreSQL)** for placement results, bookings, and student login
-- **API used:** API Ninjas (server-side, key kept in env)
+- **Next.js (App Router)** + React — deploys on Vercel
+- **Hand-written CSS3** (CSS Modules + design tokens in `globals.css`) — no CSS framework
+- Core logic in **ES6 classes**: `PlacementTest`, `LessonCatalog`, `ApiClient`,
+  `FormValidator`, plus `ScrollReveal`
+- **Prisma + Neon (PostgreSQL)** for placement results and bookings
+- **API used:** [API Ninjas](https://api-ninjas.com) Quotes endpoint, called
+  **server-side** so the key never reaches the browser
+
+## Pages
+| Route | What it does |
+|-------|--------------|
+| `/` | Hero, Meet Mariana, the **timeline**, **Quote of the Day** (API), testimonials |
+| `/test` | 10-question placement test → level + timeline highlight → book |
+| `/lessons` | 18 lessons, live search + level filter, 6 interactive practice games |
+| `/book` | Booking form with real-time validation + WhatsApp/email handoff |
+
+Rubric features: **API integration with loading/error/empty states** (Quote of the
+Day) · **client-side search + filter** (Lessons) · **15+ real items** (18 lessons)
+· consistent navbar · fully responsive · ES6-class logic.
 
 ## Run locally
 ```bash
 npm install
-cp .env.example .env      # then fill in YOUR values
-npx prisma db push        # create the tables in your Neon database
+cp .env.example .env      # fill in YOUR values (see below)
+npx prisma generate       # generate the Prisma client
+npx prisma db push        # (optional) create tables in your Neon database
 npm run dev               # http://localhost:3000
 ```
+The app runs **without** a database too — placement/booking saves are best-effort
+and skipped gracefully if `DATABASE_URL` isn't set, and the Quote card falls back
+to sample quotes if `API_NINJAS_KEY` isn't set.
 
 ## Environment variables (`.env`, never committed)
-- `DATABASE_URL` — Neon pooled connection string
-- `DIRECT_URL` — Neon direct connection string (for Prisma)
+- `DATABASE_URL` — Neon **pooled** connection string
+- `DIRECT_URL` — Neon **direct** connection string (for Prisma migrations)
 - `API_NINJAS_KEY` — from https://api-ninjas.com
 
-> Security note: rotate any database password that has ever been shared or pasted
-> anywhere, then put the new one only in `.env` (local) and Vercel env vars.
+> **Security:** rotate any database password that has ever been pasted or shared,
+> then put the new one only in `.env` (local) and Vercel's encrypted env vars.
 
-## AI-use appendix (REQUIRED — fill this in honestly as you go)
-Tools used:
-- Claude — <what you used it for>
+## Deploy to Vercel
+1. Push to GitHub (done).
+2. On Vercel: **New Project** → import this repo.
+3. Add the three env vars above in **Project → Settings → Environment Variables**.
+4. Deploy. Vercel runs `npm run build` (which runs `prisma generate`) automatically.
+5. Run `npx prisma db push` once against Neon so the tables exist.
+6. Confirm the live URL loads with **no console errors** and works on a phone.
 
-Sample prompts (2–3):
-1. <prompt>
-2. <prompt>
+## Project structure
+```
+src/
+  app/            # routes: /, /test, /lessons, /book, /api/*
+  components/     # Navbar, Footer, Timeline, QuoteOfDay, LessonsExplorer,
+                  # TestRunner, BookingForm, Avatar, Bilingual, ...
+  lib/
+    classes/      # PlacementTest, LessonCatalog, ApiClient, FormValidator, ScrollReveal
+    data/         # lessons, journey stages, test questions
+public/games/     # 6 interactive practice pages (from real lesson material)
+prisma/           # schema (Student, PlacementResult, Booking, LessonProgress)
+```
 
-Two+ things the AI got wrong and how you fixed them:
-1. <describe the actual issue you hit and your fix>
-2. <describe the actual issue you hit and your fix>
+---
 
-_Keep this matched to your real commit history._
+## AI-use appendix
+**Tool used:** Claude (Anthropic's Claude Code) — used to scaffold the Next.js
+project, build the four pages, write the ES6 classes, author the RTL hand-written
+CSS and the Flexbox timeline, wire the API Ninjas integration, and debug setup
+issues.
+
+**Sample prompts I used:**
+1. "Build a private Arabic-tutoring site 'Learn with Mariana' in Next.js: home
+   with a hero, Meet Mariana, a Flexbox/Grid **learning-journey timeline** (my
+   custom requirement), a Word/Quote-of-the-Day API card, and testimonials;
+   Arabic-first RTL with an English-in-parentheses toggle."
+2. "Add a placement test as an **ES6 class** (`PlacementTest`) that tracks
+   answers, computes a score and a level, and **highlights the matching stage on
+   the same timeline** from the home page."
+3. "Make the lessons page render from a `LessonCatalog` **ES6 class** with live
+   search by title and filter buttons by level, with loading/empty states."
+
+**Two things the AI got wrong / that didn't work, and how I fixed them:**
+1. **Wrong API capability assumption.** The first plan used an "Arabic Word of the
+   Day" pulled from API Ninjas, but API Ninjas does **not** serve Arabic
+   vocabulary or translations — only English quotes/facts. I found this when
+   verifying the endpoint against the live API Ninjas docs, which also showed the
+   quotes endpoint is now **`/v2/quotes`**, not the `/v1` the AI first assumed. Fix:
+   changed the card to an educational **"Quote of the Day"** using the verified
+   `/v2/quotes` endpoint, and added a **sample-quote fallback** so the card still
+   renders (and its loading/error/empty states stay demonstrable) when the key is
+   missing or the request fails.
+2. **First Git commit captured only one file.** Git was initialized in a parent
+   folder, so the "initial commit" contained a single stray file instead of the
+   project. I found this when the pushed repo was almost empty. Fix: initialized a
+   **fresh, clean repository inside the project folder** and re-committed the real
+   source, then built up the project in **separate, descriptive commits** (home,
+   lessons, test, booking, API) — visible in the commit history.
+
+_These reflect real issues from this project's build and match the commit history.
+Add any further issues you hit when running `npm run dev` locally — those make the
+strongest appendix entries._

@@ -121,10 +121,11 @@ export const testSections = [
     questions: [
       {
         id: "l1", skill: "listening", difficulty: "easy",
-        listen: "السلامُ عليكم، اسمي مريم، وأنا معلّمةُ لغةٍ عربية.",
+        audioKey: "listen-1",
+        listen: "السلامُ عليكم، اسمي مريانا، وأنا معلّمةُ لغةٍ عربية.",
         prompt: "استمع ثم أجب: ما اسم المتحدّثة؟",
         options: [
-          { id: "a", text: "مريم" },
+          { id: "a", text: "مريانا" },
           { id: "b", text: "سارة" },
           { id: "c", text: "ليلى" },
         ],
@@ -132,6 +133,7 @@ export const testSections = [
       },
       {
         id: "l2", skill: "listening", difficulty: "medium",
+        audioKey: "listen-2",
         listen: "ذهب سامي إلى السوقِ صباحاً، واشترى تفّاحاً وموزاً.",
         prompt: "استمع ثم أجب: ماذا اشترى سامي؟",
         options: [
@@ -143,6 +145,7 @@ export const testSections = [
       },
       {
         id: "l3", skill: "listening", difficulty: "medium",
+        audioKey: "listen-3",
         listen: "الجوُّ اليومَ ماطرٌ وباردٌ، فخذْ معك المظلّةَ والمعطف.",
         prompt: "استمع ثم أجب: كيف الجوّ اليوم؟",
         options: [
@@ -154,6 +157,7 @@ export const testSections = [
       },
       {
         id: "l4", skill: "listening", difficulty: "hard",
+        audioKey: "listen-4",
         listen: "قال المعلّمُ لتلاميذه: من يقرأْ كلَّ يومٍ صفحةً واحدةً، يقرأْ في السنةِ كتباً كثيرة.",
         prompt: "استمع ثم أجب: ما النصيحة التي قدّمها المعلّم؟",
         options: [

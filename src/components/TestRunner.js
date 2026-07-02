@@ -6,7 +6,7 @@ import Bilingual from "./Bilingual";
 import Timeline from "./Timeline";
 import PlacementTest from "@/lib/classes/PlacementTest";
 import Celebration from "@/lib/classes/Celebration";
-import Speaker from "@/lib/classes/Speaker";
+import AudioPlayer from "@/lib/classes/AudioPlayer";
 import { testQuestions, testSections, levelMessages } from "@/lib/data/testQuestions";
 import { levels } from "@/lib/data/lessons";
 import { stageIdForLevel } from "@/lib/data/journey";
@@ -32,7 +32,9 @@ const RATES = [
 export default function TestRunner() {
   const test = useMemo(() => new PlacementTest(testQuestions), []);
   const celebration = useMemo(() => new Celebration(), []);
-  const speaker = useMemo(() => new Speaker(), []);
+  // Plays Mariana's recorded MP3s from /public/audio when present,
+  // falling back to the free browser Arabic voice otherwise.
+  const player = useMemo(() => new AudioPlayer(), []);
 
   const [index, setIndex] = useState(0);
   const [, setTick] = useState(0); // re-render when an answer changes
@@ -52,7 +54,7 @@ export default function TestRunner() {
   };
 
   const goNext = () => {
-    speaker.stop();
+    player.stop();
     const nextIndex = Math.min(test.total - 1, index + 1);
     if (testQuestions[nextIndex].section !== current.section) {
       setIntroFor(testQuestions[nextIndex].section);
@@ -61,12 +63,12 @@ export default function TestRunner() {
   };
 
   const goPrev = () => {
-    speaker.stop();
+    player.stop();
     setIndex((i) => Math.max(0, i - 1));
   };
 
   const submit = () => {
-    speaker.stop();
+    player.stop();
     setSubmitted(true);
     const level = test.level();
     const b = test.skillBreakdown();
@@ -232,7 +234,7 @@ export default function TestRunner() {
             <button
               type="button"
               className="btn btn-primary"
-              onClick={() => speaker.speak(current.listen, { rate })}
+              onClick={() => player.play(current.audioKey, current.listen, { rate })}
             >
               🔊 استمع
             </button>

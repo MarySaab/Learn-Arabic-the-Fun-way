@@ -162,7 +162,7 @@ export default function TeacherPage() {
           <table className={styles.table}>
             <thead>
               <tr>
-                <th>الاسم</th><th>المستوى</th><th>الوقت المفضّل</th>
+                <th>الاسم</th><th>الدولة</th><th>المستوى</th><th>الوقت المفضّل</th>
                 <th>الهاتف</th><th>البريد</th><th>التاريخ</th>
               </tr>
             </thead>
@@ -170,6 +170,7 @@ export default function TeacherPage() {
               {bookings.map((b) => (
                 <tr key={b.id}>
                   <td>{b.name}</td>
+                  <td>{b.country || "—"}</td>
                   <td>{levelAr(b.level)}</td>
                   <td>{TIME_LABELS[b.preferredTime] || b.preferredTime || "—"}</td>
                   <td dir="ltr">{b.phone}</td>

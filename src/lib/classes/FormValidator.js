@@ -23,6 +23,11 @@ export default class FormValidator {
     return "";
   }
 
+  validateCountry(value = "") {
+    if (!value.trim()) return "الرجاء كتابة الدولة التي تقيم فيها";
+    return "";
+  }
+
   validatePreferredTime(value = "") {
     if (!value.trim()) return "الرجاء اختيار وقتٍ مناسب";
     return "";
@@ -34,6 +39,7 @@ export default class FormValidator {
       case "name":          return this.validateName(value);
       case "email":         return this.validateEmail(value);
       case "phone":         return this.validatePhone(value);
+      case "country":       return this.validateCountry(value);
       case "preferredTime": return this.validatePreferredTime(value);
       default:              return "";
     }
@@ -45,6 +51,7 @@ export default class FormValidator {
       name:          this.validateName(values.name),
       email:         this.validateEmail(values.email),
       phone:         this.validatePhone(values.phone),
+      country:       this.validateCountry(values.country),
       preferredTime: this.validatePreferredTime(values.preferredTime),
     };
   }

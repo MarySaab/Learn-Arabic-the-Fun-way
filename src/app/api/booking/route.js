@@ -14,7 +14,7 @@ export async function POST(request) {
     body = {};
   }
 
-  const { name, email, phone, level, preferredTime, message } = body || {};
+  const { name, email, phone, country, level, preferredTime, message } = body || {};
   if (!name || !email || !phone) {
     return NextResponse.json(
       { saved: false, error: "الاسم والبريد والهاتف مطلوبة" },
@@ -29,6 +29,7 @@ export async function POST(request) {
         name,
         email,
         phone,
+        country: country || null,
         level: level || null,
         preferredTime: preferredTime || null,
         message: message || null,

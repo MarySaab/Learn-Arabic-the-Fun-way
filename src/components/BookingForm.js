@@ -33,6 +33,7 @@ export default function BookingForm({ initialLevel = "" }) {
     name: "",
     email: "",
     phone: "",
+    country: "",
     level: initialLevel || "",
     preferredTime: "",
     message: "",
@@ -75,6 +76,7 @@ export default function BookingForm({ initialLevel = "" }) {
     return (
       `مرحباً، أنا ${values.name}.\n` +
       `أودّ حجز حصّة لتعلّم العربية.\n` +
+      `الدولة: ${values.country || "—"}\n` +
       `المستوى: ${levelLabel(values.level)}\n` +
       `الوقت المفضّل: ${time}\n` +
       (values.message ? `ملاحظة: ${values.message}` : "")
@@ -89,7 +91,7 @@ export default function BookingForm({ initialLevel = "" }) {
   const handleSubmit = async () => {
     const allErrors = validator.validateAll(values);
     setErrors(allErrors);
-    setTouched({ name: true, email: true, phone: true, preferredTime: true });
+    setTouched({ name: true, email: true, phone: true, country: true, preferredTime: true });
     if (!validator.isValid(values)) return;
 
     setSubmitState("sending");
@@ -189,6 +191,18 @@ export default function BookingForm({ initialLevel = "" }) {
 
       <div className={styles.row}>
         <div className={styles.field}>
+          <label htmlFor="country"><Bilingual ar="الدولة" en="Country" /></label>
+          <input
+            id="country" type="text" value={values.country}
+            onChange={(e) => update("country", e.target.value)}
+            onBlur={() => blur("country")}
+            className={fieldError("country") ? styles.invalid : ""}
+            placeholder="مثال: لبنان، فرنسا، كندا…"
+          />
+          {fieldError("country") && <span className={styles.error}>{errors.country}</span>}
+        </div>
+
+        <div className={styles.field}>
           <label htmlFor="level"><Bilingual ar="المستوى" en="Level" /></label>
           <select
             id="level" value={values.level}
@@ -200,9 +214,10 @@ export default function BookingForm({ initialLevel = "" }) {
             ))}
           </select>
         </div>
+      </div>
 
-        <div className={styles.field}>
-          <label htmlFor="preferredTime"><Bilingual ar="الوقت المفضّل" en="Preferred time" /></label>
+      <div className={styles.field}>
+        <label htmlFor="preferredTime"><Bilingual ar="الوقت المفضّل" en="Preferred time" /></label>
           <select
             id="preferredTime" value={values.preferredTime}
             onChange={(e) => update("preferredTime", e.target.value)}
@@ -215,7 +230,6 @@ export default function BookingForm({ initialLevel = "" }) {
             ))}
           </select>
           {fieldError("preferredTime") && <span className={styles.error}>{errors.preferredTime}</span>}
-        </div>
       </div>
 
       <div className={styles.field}>

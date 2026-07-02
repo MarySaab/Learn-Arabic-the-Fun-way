@@ -64,6 +64,49 @@ export default function HomePage({ searchParams }) {
         <HeroArt className={styles.heroArt} />
       </section>
 
+      {/* ---------- INTRODUCTION (bilingual) ---------- */}
+      <section className={`container ${styles.introSection}`} data-reveal>
+        <header className={styles.sectionHead}>
+          <h2><Bilingual ar="منصّة لكلّ من يريد تعلّم العربية" en="A platform for everyone" /></h2>
+        </header>
+        <div className={styles.introGrid}>
+          <div className={styles.introAr}>
+            <p>
+              «تعلّم مع مريانا» منصّةٌ صُمّمت للجميع: للطلاب الأجانب والسيّاح
+              والمهنيّين وطلّاب الجامعات، وللناطقين بالعربية الراغبين في صقل
+              لغتهم — وحتى لمن لا يعرف حرفاً واحداً. مهما كانت نقطة انطلاقك،
+              ستجد هنا طريقاً واضحاً يأخذك خطوةً بخطوة من الصفر إلى الإتقان.
+            </p>
+            <p>
+              التعلّم الحقيقي يحدث في <strong>الحصص المباشرة مع مريانا</strong> —
+              فرديّة أو ضمن مجموعة مستواك — مرّةً أو مرّتين أو ثلاثاً في
+              الأسبوع بحسب ما يناسبك، عبر Google Meet. أمّا هذا الموقع فهو
+              <strong> رفيقك بين الحصص</strong>: كلّ ما تتعلّمه في الحصّة تجده هنا
+              دروساً تفاعلية وألعاباً واختبارات، تراجع بها وتثبّت الأفكار على
+              مدار الأسبوع، ومريانا تتابع إنجازك لواجباتك.
+            </p>
+          </div>
+          <div className={styles.introEn} dir="ltr" lang="en">
+            <p>
+              <em>Learn with Mariana</em> is built for everyone: international
+              students, tourists, professionals, university students, Arabic
+              speakers polishing their language — and complete beginners who
+              don&apos;t know a single letter yet. Wherever you start, there is a
+              clear path that takes you step by step from zero to mastery.
+            </p>
+            <p>
+              The real learning happens in <strong>live lessons with Mariana</strong> —
+              one-on-one or in a group at your level, one to three times a week
+              (you choose), over Google Meet. This website is your
+              <strong> companion between lessons</strong>: everything taught in class
+              lives here as interactive lessons, games, and quizzes, so you can
+              review and consolidate all week — and Mariana can see that you did
+              your homework.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* ---------- MEET MARIANA ---------- */}
       <section className={`container ${styles.meet}`} data-reveal>
         <Avatar src="/images/mariana.jpg" alt="صورة المعلّمة مريانا" initials="م" />
@@ -96,6 +139,26 @@ export default function HomePage({ searchParams }) {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ---------- STATS BAND ---------- */}
+      <section className={`container ${styles.statsBand}`} data-reveal>
+        <div className={styles.stat}>
+          <span className={styles.statNum}>{toArabicDigits(18)}+</span>
+          <span className={styles.statLabel}><Bilingual ar="درساً تفاعلياً" en="Interactive lessons" /></span>
+        </div>
+        <div className={styles.stat}>
+          <span className={styles.statNum}>{toArabicDigits(4)}</span>
+          <span className={styles.statLabel}><Bilingual ar="مهارات لغوية" en="Language skills" /></span>
+        </div>
+        <div className={styles.stat}>
+          <span className={styles.statNum}>{toArabicDigits(8)}</span>
+          <span className={styles.statLabel}><Bilingual ar="محطات في الرحلة" en="Journey stages" /></span>
+        </div>
+        <div className={styles.stat}>
+          <span className={styles.statNum}>{toArabicDigits(10)}+</span>
+          <span className={styles.statLabel}><Bilingual ar="ألعاب وقصص تفاعلية" en="Games & stories" /></span>
         </div>
       </section>
 
@@ -155,6 +218,51 @@ export default function HomePage({ searchParams }) {
               </figcaption>
             </figure>
           ))}
+        </div>
+      </section>
+
+      {/* ---------- FAQ ---------- */}
+      <section className={styles.faqSection}>
+        <div className="container">
+          <header className={styles.sectionHead}>
+            <h2><Bilingual ar="أسئلة شائعة" en="FAQ" /></h2>
+          </header>
+          <div className={styles.faqList}>
+            <details className={styles.faq}>
+              <summary>لا أعرف أيّ شيء في العربية — هل أستطيع البدء؟</summary>
+              <p>نعم! المنصّة مصمّمة لمن يبدأ من الصفر تماماً: رحلة التعلّم تبدأ من الحروف، والحصص المباشرة تُبنى على مستواك أنت.</p>
+            </details>
+            <details className={styles.faq}>
+              <summary>كيف تُحدَّد مجموعتي؟</summary>
+              <p>خذ اختبار تحديد المستوى (أربعة أقسام: قراءة وكتابة واستماع وقواعد). تحصل على مستوى عامّ ومستوى لكلّ مهارة، وتضعك مريانا في المجموعة الأنسب.</p>
+            </details>
+            <details className={styles.faq}>
+              <summary>كم حصّة في الأسبوع؟ وأين تُعقد؟</summary>
+              <p>مرّة أو مرّتان أو ثلاث في الأسبوع بحسب تفضيلك، عبر Google Meet — فرديّاً أو ضمن مجموعة مستواك.</p>
+            </details>
+            <details className={styles.faq}>
+              <summary>هل الموقع بديل عن الحصص؟</summary>
+              <p>لا — الموقع رفيقُ الحصص: تراجع فيه ما تعلّمته، وتتدرّب بالألعاب والاختبارات، ومريانا تتابع تقدّمك بين حصّةٍ وأخرى.</p>
+            </details>
+            <details className={styles.faq}>
+              <summary>كيف أحجز حصّتي الأولى؟</summary>
+              <p>خذ الاختبار ثم اضغط «احجز حصّة» — يصلك تأكيد عبر واتساب أو البريد الإلكتروني.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      {/* ---------- FINAL CTA ---------- */}
+      <section className={styles.ctaBand}>
+        <div className="container" style={{ textAlign: "center" }}>
+          <h2 className={styles.ctaTitle}>جاهز لبدء رحلتك؟</h2>
+          <p className={styles.ctaSub}>
+            خمس عشرة دقيقة تكفي لتعرف مستواك وتحجز حصّتك الأولى.
+          </p>
+          <div className={styles.heroCtas}>
+            <Link href="/test" className="btn btn-gold">ابدأ الاختبار الآن</Link>
+            <Link href="/book" className={`btn ${styles.heroGhost}`}>احجز حصّة</Link>
+          </div>
         </div>
       </section>
     </>

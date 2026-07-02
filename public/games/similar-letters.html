@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الأحرفُ المتقاربةُ في النّطق — إملاء</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --a:#7c5cff;--a-d:#5f3fe0;       /* مجموعة ق/ك */
+    --b:#ff7a3d;--b-d:#e85f22;       /* مجموعة س/ص/ث */
+    --ink:#211f3a;--paper:#f3f1fb;--gold:#ffc94d;--ok:#16b08a;--ok-d:#0c9173;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Tajawal',sans-serif;color:var(--ink);min-height:100vh;padding:18px;overflow-x:hidden;
+    background:radial-gradient(circle at 12% 8%,#e3dcff 0,transparent 36%),radial-gradient(circle at 88% 8%,#ffe1cf 0,transparent 36%),var(--paper)}
+  h1,h2,h3{font-family:'Baloo Bhaijaan 2',cursive}
+  .wrap{max-width:940px;margin:0 auto}
+  header{text-align:center;padding:8px 0 4px}
+  .pill{display:inline-block;background:var(--ink);color:#fff;font-family:'Baloo Bhaijaan 2';font-size:.95rem;border-radius:40px;padding:4px 16px;margin-bottom:4px}
+  h1{font-size:clamp(1.5rem,5.4vw,2.8rem);line-height:1.14;background:linear-gradient(90deg,var(--a),var(--b));
+    -webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 3px 0 rgba(0,0,0,.06))}
+  .subtitle{font-size:1.05rem;color:#766f95;margin-top:2px;font-weight:500}
+  .det{font-size:1.9rem;margin-top:2px}
+  .score{display:flex;justify-content:center;align-items:center;gap:8px;background:#fff;border:3px solid var(--gold);border-radius:50px;width:max-content;margin:10px auto 4px;padding:7px 20px;font-weight:800;font-family:'Baloo Bhaijaan 2';box-shadow:0 6px 0 #f0d28a}
+  .star{font-size:1.3rem}
+  nav.tabs{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:16px 0}
+  .tab{font-family:'Baloo Bhaijaan 2';font-size:1rem;cursor:pointer;border:none;border-radius:16px;padding:11px 17px;background:#fff;color:var(--ink);box-shadow:0 5px 0 #ddd6f5;transition:.15s;font-weight:700}
+  .tab:hover{transform:translateY(-2px)}.tab.active{background:var(--ink);color:#fff;box-shadow:0 5px 0 #100f20}
+  .panel{display:none;animation:fade .35s ease}.panel.show{display:block}
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .gcard{border-radius:26px;padding:20px;color:#fff;box-shadow:0 12px 26px rgba(60,40,120,.16)}
+  .gcard.a{background:radial-gradient(circle at 30% 22%,#a48cff,#7c5cff 72%)}
+  .gcard.b{background:radial-gradient(circle at 70% 22%,#ffa06b,#ff7a3d 75%)}
+  .gcard .pair{font-family:'Baloo Bhaijaan 2';font-size:2.6rem;text-align:center;line-height:1.1}
+  .gcard h3{font-size:1.25rem;text-align:center;margin-top:2px}
+  .vs{background:#fff;color:var(--ink);border-radius:16px;padding:12px;text-align:center;margin-top:10px}
+  .vs .row{display:flex;justify-content:center;gap:10px;align-items:center;font-family:'Baloo Bhaijaan 2';font-size:1.2rem}
+  .vs .w{background:#f3f1fb;border-radius:12px;padding:6px 12px}
+  .vs .em{font-size:1.5rem}
+  .vs .arrow{color:#b0a8c8}
+  .vs small{display:block;color:#8a83a8;font-weight:600;margin-top:6px}
+  .gcard .speak{margin:10px auto 0;display:block;background:#fff;color:var(--ink);border:none;border-radius:13px;padding:8px 16px;font-family:'Baloo Bhaijaan 2';cursor:pointer;box-shadow:0 4px 0 rgba(0,0,0,.18)}
+  .gcard .speak:active{transform:translateY(2px)}
+  .note{background:#fff4dd;border:2px dashed var(--gold);border-radius:18px;padding:14px 18px;margin-top:16px;color:#8a6d2c;font-weight:600;text-align:center;line-height:1.9}
+  .center{text-align:center}
+  .btn{font-family:'Baloo Bhaijaan 2';border:none;border-radius:16px;padding:13px 26px;font-size:1.1rem;cursor:pointer;background:var(--a);color:#fff;box-shadow:0 6px 0 var(--a-d);margin-top:14px}
+  .btn:active{transform:translateY(3px);box-shadow:0 3px 0 var(--a-d)}.btn.alt{background:var(--b);box-shadow:0 6px 0 var(--b-d)}
+  .game-head{text-align:center;margin-bottom:12px}.game-head h2{font-size:1.45rem}.game-head p{color:#766f95;font-weight:500}
+  .progress-row{display:flex;justify-content:center;gap:6px;margin:6px 0}
+  .dot{width:13px;height:13px;border-radius:50%;background:#ddd6f5}.dot.done{background:var(--gold)}.dot.miss{background:#f2a3a3}
+  .word-stage{display:flex;justify-content:center;min-height:120px;align-items:center;flex-direction:column;gap:8px}
+  .meaning{font-size:2.4rem}
+  .meaning-label{font-family:'Baloo Bhaijaan 2';font-size:1.3rem;background:#fff;border-radius:18px;padding:8px 22px;box-shadow:0 8px 0 #e6dff3}
+  .blankword{font-family:'Baloo Bhaijaan 2';font-size:2.7rem;background:#fff;border-radius:22px;padding:12px 34px;box-shadow:0 10px 0 #e6dff3;animation:drop .4s ease}
+  .blankword .bl{display:inline-block;min-width:42px;color:var(--a-d);background:#ece6ff;border-radius:10px;margin:0 4px}
+  .ask{color:#766f95;font-weight:600}
+  .opts{display:grid;gap:12px;margin-top:16px}
+  .opts.two{grid-template-columns:1fr 1fr}.opts.three{grid-template-columns:1fr 1fr 1fr}
+  .opt{font-family:'Baloo Bhaijaan 2';font-size:1.8rem;background:#fff;border:3px solid #e6dff3;border-radius:20px;padding:16px 8px;cursor:pointer;box-shadow:0 7px 0 #e6dff3;transition:.12s}
+  .opt:hover{transform:translateY(-3px)}.opt.ok{background:var(--ok);color:#fff;border-color:var(--ok)}.opt.no{background:#ffdada;border-color:#f2a3a3}
+  .wordopt{font-size:1.5rem}
+  .feedback{text-align:center;font-family:'Baloo Bhaijaan 2';font-size:1.2rem;min-height:36px;margin-top:14px}
+  .reason{text-align:center;color:#6f688f;font-weight:600;min-height:24px}
+  .listen-btn{display:block;margin:0 auto 4px;background:var(--ink);color:#fff;border:none;border-radius:50px;padding:12px 26px;font-family:'Baloo Bhaijaan 2';font-size:1.05rem;cursor:pointer;box-shadow:0 5px 0 #100f20}
+  .listen-btn:active{transform:translateY(2px)}
+  .result{text-align:center;background:#fff;border-radius:26px;padding:30px;box-shadow:0 12px 30px rgba(60,40,120,.16);margin-top:10px}
+  .result .big{font-size:3rem}.result h2{font-size:2rem;margin:6px 0;color:var(--a-d)}
+  footer{text-align:center;color:#a99cc4;font-size:.85rem;margin:24px 0 6px;font-weight:500}
+  @keyframes drop{0%{transform:translateY(-30px) scale(.8);opacity:0}100%{transform:translateY(0) scale(1);opacity:1}}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes pop{0%{transform:scale(0)}70%{transform:scale(1.3)}100%{transform:scale(1)}}
+  .confetti{position:fixed;top:-14px;width:11px;height:16px;z-index:60;pointer-events:none;border-radius:2px}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+  @media(max-width:560px){.duo{grid-template-columns:1fr}.blankword{font-size:2.1rem;padding:12px 24px}.opts.three{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="pill">📝 إملاء</span>
+    <div class="det">🔎🕵️</div>
+    <h1>الأحرفُ المتقاربةُ في النّطق</h1>
+    <p class="subtitle">حرفٌ واحدٌ يُغيّرُ المعنى كلَّه! كنْ محقّقاً ذكيّاً 🕵️</p>
+  </header>
+
+  <div class="score"><span>نُجومي:</span><span id="starCount">0</span><span class="star">⭐</span></div>
+
+  <nav class="tabs">
+    <button class="tab active" data-p="learn">📚 أتعلّم</button>
+    <button class="tab" data-p="mean">🧠 الحرفُ يُغيّرُ المعنى</button>
+    <button class="tab" data-p="fill">✏️ أكملِ الحرف</button>
+    <button class="tab" data-p="fix">🔍 صحّحِ الخطأ</button>
+    <button class="tab" data-p="quiz">🏆 التّحدّي</button>
+  </nav>
+
+  <!-- أتعلّم -->
+  <section class="panel show" id="learn">
+    <div class="duo">
+      <div class="gcard a">
+        <div class="pair">ق ﹖ ك</div>
+        <h3>قافٌ وكاف</h3>
+        <div class="vs">
+          <div class="row"><span class="w">كَلْب <span class="em">🐕</span></span><span class="arrow">↔</span><span class="w">قَلْب <span class="em">❤️</span></span></div>
+          <small>حرفٌ واحدٌ… ومعنًى مختلفٌ تماماً!</small>
+        </div>
+        <button class="speak" data-say="كَلب. قَلب. كُل. قُل.">🔊 استمعِ الفرق</button>
+      </div>
+      <div class="gcard b">
+        <div class="pair">س ﹖ ص ﹖ ث</div>
+        <h3>سينٌ وصادٌ وثاء</h3>
+        <div class="vs">
+          <div class="row"><span class="w">سَيف <span class="em">⚔️</span></span><span class="arrow">·</span><span class="w">صَيف <span class="em">☀️</span></span></div>
+          <small>أصواتٌ متقاربةٌ، فانتبهْ عند الكتابة.</small>
+        </div>
+        <button class="speak" data-say="سين. صاد. ثاء. سَيف. صَيف.">🔊 استمعِ الفرق</button>
+      </div>
+    </div>
+    <div class="note">
+      🕵️ <b>مهمّةُ المحقّق:</b> هذه الحروفُ قريبةٌ في السمع، لكنّ كلَّ حرفٍ له شكلُه ومعناه.
+      استمعْ جيّداً، وفكّرْ في معنى الكلمة قبل أن تختارَ الحرف.<br>
+      ✦ تذكّرْ: <b style="color:var(--a-d)">كَلب</b> حيوانٌ، و<b style="color:var(--a-d)">قَلب</b> ينبضُ في صدرك.
+    </div>
+    <div class="center"><button class="btn" onclick="go('mean')">ابدأِ التحقيق! 🧠</button></div>
+  </section>
+
+  <!-- الحرف يغير المعنى -->
+  <section class="panel" id="mean">
+    <div class="game-head"><h2>الحرفُ يُغيّرُ المعنى 🧠</h2><p>انظرِ الصورةَ والمعنى، ثمّ اختَرِ الكلمةَ الصحيحة.</p></div>
+    <div class="progress-row" id="mDots"></div>
+    <div class="word-stage"><div class="meaning" id="mEmoji">❤️</div><div class="meaning-label" id="mLabel">…</div></div>
+    <div class="opts two" id="mOpts"></div>
+    <div class="feedback" id="mFb">&nbsp;</div>
+  </section>
+
+  <!-- أكمل الحرف -->
+  <section class="panel" id="fill">
+    <div class="game-head"><h2>أكملِ الحرف ✏️</h2><p>اختَرِ الحرفَ الناقصَ لِتُكتَبَ الكلمةُ صحيحة.</p></div>
+    <div class="progress-row" id="flDots"></div>
+    <button class="listen-btn" id="flPlay">🔊 استمعْ إلى الكلمة</button>
+    <div class="word-stage"><div class="blankword" id="flWord">…</div><div class="ask" id="flHint">…</div></div>
+    <div class="opts" id="flOpts"></div>
+    <div class="feedback" id="flFb">&nbsp;</div>
+  </section>
+
+  <!-- صحّح الخطأ -->
+  <section class="panel" id="fix">
+    <div class="game-head"><h2>صحّحِ الخطأ 🔍</h2><p>إحدى الكتابتَين خاطئة. اضغطْ على الصحيحة.</p></div>
+    <div class="progress-row" id="fDots"></div>
+    <div class="word-stage"><div class="ask" id="fAsk">…</div></div>
+    <div class="opts two" id="fOpts"></div>
+    <div class="feedback" id="fFb">&nbsp;</div>
+  </section>
+
+  <!-- التحدي -->
+  <section class="panel" id="quiz">
+    <div class="game-head"><h2>تحدّي المحقّق 🏆</h2><p>أكملِ الحرفَ الصحيحَ بسرعةٍ ودقّة!</p></div>
+    <div class="progress-row" id="qDots"></div>
+    <button class="listen-btn" id="qPlay">🔊 استمعْ</button>
+    <div class="word-stage"><div class="blankword" id="qWord">…</div><div class="ask" id="qHint">…</div></div>
+    <div class="opts" id="qOpts"></div>
+    <div class="feedback" id="qFb">&nbsp;</div>
+    <div id="qEnd"></div>
+  </section>
+
+  <footer>نسخةُ الإملاء ✦ اضغطْ 🔊 لتسمعَ الفرقَ بين الحروف المتقاربة</footer>
+</div>
+
+<script>
+let AC;function tone(f,d,t='sine',v=.2){try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();
+  const o=AC.createOscillator(),g=AC.createGain();o.type=t;o.frequency.value=f;o.connect(g);g.connect(AC.destination);
+  g.gain.setValueAtTime(v,AC.currentTime);g.gain.exponentialRampToValueAtTime(.001,AC.currentTime+d);o.start();o.stop(AC.currentTime+d);}catch(e){}}
+const okSound=()=>{tone(660,.12,'triangle');setTimeout(()=>tone(880,.18,'triangle'),110);};
+const noSound=()=>tone(200,.22,'sawtooth',.15);
+function say(t){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='ar';u.rate=.8;speechSynthesis.speak(u);}catch(e){}}
+let stars=0;function addStar(n=1){stars+=n;document.getElementById('starCount').textContent=stars;
+  const s=document.querySelector('.score .star');s.style.animation='none';void s.offsetWidth;s.style.animation='pop .4s ease';}
+const tabs=[...document.querySelectorAll('.tab')];
+function go(p){tabs.forEach(t=>t.classList.toggle('active',t.dataset.p===p));
+  document.querySelectorAll('.panel').forEach(s=>s.classList.toggle('show',s.id===p));
+  if(p==='mean')startMean();if(p==='fill')startFill();if(p==='fix')startFix();if(p==='quiz')startQuiz();
+  window.scrollTo({top:0,behavior:'smooth'});}
+tabs.forEach(t=>t.addEventListener('click',()=>go(t.dataset.p)));
+document.querySelectorAll('.speak').forEach(b=>b.addEventListener('click',()=>say(b.dataset.say)));
+const shuffle=a=>a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(p=>p[1]);
+
+/* أزواج المعنى: كلمتان تختلفان بحرفٍ واحدٍ متقارب */
+const PAIRS=[
+  {emoji:'❤️',label:'العُضوُ الذي ينبضُ في صدرك',right:'قَلْب',wrong:'كَلْب'},
+  {emoji:'🐕',label:'حيوانٌ أليفٌ ينبح',right:'كَلْب',wrong:'قَلْب'},
+  {emoji:'☀️',label:'فصلٌ حارٌّ من فصول السنة',right:'صَيف',wrong:'سَيف'},
+  {emoji:'⚔️',label:'سلاحٌ قديمٌ حادّ',right:'سَيف',wrong:'صَيف'},
+  {emoji:'🐮',label:'حيوانٌ يُعطينا الحليب',right:'بَقَرة',wrong:'بَكَرة'},
+  {emoji:'🪐',label:'جِرمٌ في السماء',right:'كَوكَب',wrong:'قَوقَب'},
+  {emoji:'✏️',label:'نكتبُ به',right:'قَلَم',wrong:'كَلَم'},
+  {emoji:'🥤',label:'إناءٌ نشربُ منه',right:'كوب',wrong:'قوب'}
+];
+/* أكمل الحرف: كلمة فيها فراغ، والحرف الصحيح، وبدائل متقاربة، وتلميح */
+const FILL=[
+  {pre:'',post:'َلْب',say:'قَلب',ans:'ق',opts:['ق','ك'],hint:'❤️ ينبضُ في الصدر'},
+  {pre:'',post:'َلْب',say:'كَلب',ans:'ك',opts:['ك','ق'],hint:'🐕 حيوانٌ ينبح'},
+  {pre:'بَ',post:'َرة',say:'بَقَرة',ans:'ق',opts:['ق','ك'],hint:'🐮 تُعطي الحليب'},
+  {pre:'',post:'َوكَب',say:'كَوكَب',ans:'ك',opts:['ك','ق'],hint:'🪐 في الفضاء'},
+  {pre:'',post:'وب',say:'كوب',ans:'ك',opts:['ك','ق'],hint:'🥤 نشربُ منه'},
+  {pre:'',post:'َيف',say:'صَيف',ans:'ص',opts:['ص','س','ث'],hint:'☀️ فصلٌ حار'},
+  {pre:'',post:'َيف',say:'سَيف',ans:'س',opts:['س','ص','ث'],hint:'⚔️ سلاحٌ حادّ'},
+  {pre:'',post:'َعلَب',say:'ثَعلَب',ans:'ث',opts:['ث','س','ص'],hint:'🦊 حيوانٌ ماكر'},
+  {pre:'مَ',post:'رَح',say:'مَسرَح',ans:'س',opts:['س','ص','ث'],hint:'🎭 مكانُ التمثيل'},
+  {pre:'',post:'َيّاد',say:'صَيّاد',ans:'ص',opts:['ص','س','ث'],hint:'🎣 يصطادُ السمك'}
+];
+/* صحّح الخطأ */
+const FIX=[
+  {right:'بَقَرة',wrong:'بَكَرة',mean:'🐮 حيوانُ الحليب'},
+  {right:'كوب',wrong:'قوب',mean:'🥤 إناءُ الشرب'},
+  {right:'كَوكَب',wrong:'قَوقَب',mean:'🪐 جِرمٌ سماويّ'},
+  {right:'قَلَم',wrong:'كَلَم',mean:'✏️ أداةُ الكتابة'},
+  {right:'مُثَلَّث',wrong:'مُسَلَّث',mean:'🔺 شكلٌ له ثلاثةُ أضلاع'},
+  {right:'صَيّاد',wrong:'سَيّاد',mean:'🎣 يصطادُ السمك'},
+  {right:'راقصة',wrong:'راكصة',mean:'💃 ترقصُ على المسرح'},
+  {right:'مُسَلسَل',wrong:'مُصَلصَل',mean:'📺 حلقاتٌ نشاهدُها'}
+];
+const LN={'ق':'القاف','ك':'الكاف','س':'السين','ص':'الصاد','ث':'الثاء'};
+
+/* الحرف يغيّر المعنى */
+let mList=[],mIdx=0,mLock=false;
+function startMean(){mList=shuffle(PAIRS).slice(0,8);mIdx=0;mLock=false;
+  const d=document.getElementById('mDots');d.innerHTML='';mList.forEach(()=>d.insertAdjacentHTML('beforeend','<span class="dot"></span>'));
+  document.getElementById('mFb').innerHTML='&nbsp;';showM();}
+function showM(){if(mIdx>=mList.length)return finM();mLock=false;const it=mList[mIdx];
+  document.getElementById('mEmoji').textContent=it.emoji;document.getElementById('mLabel').textContent=it.label;
+  const opts=shuffle([{t:it.right,ok:true},{t:it.wrong,ok:false}]);
+  const box=document.getElementById('mOpts');box.innerHTML='';
+  opts.forEach(o=>{const b=document.createElement('button');b.className='opt';b.textContent=o.t;
+    b.onclick=()=>{if(mLock)return;mLock=true;const dot=document.getElementById('mDots').children[mIdx];
+      if(o.ok){okSound();b.classList.add('ok');dot.classList.add('done');addStar(1);say(it.right);document.getElementById('mFb').innerHTML='<span style="color:var(--ok)">✓ أحسنت أيُّها المحقّق!</span>';}
+      else{noSound();b.classList.add('no');dot.classList.add('miss');say(it.right);document.getElementById('mFb').innerHTML='<span style="color:#e0517d">الصوابُ: '+it.right+'</span>';}
+      mIdx++;setTimeout(showM,1500);};
+    box.appendChild(b);});}
+function finM(){document.getElementById('mEmoji').textContent='🎉';document.getElementById('mLabel').textContent='أحسنتَ التحقيق!';
+  document.getElementById('mOpts').innerHTML='';document.getElementById('mFb').innerHTML='<span style="color:var(--ok)">إلى «أكملِ الحرف».</span>';burst();addStar(2);}
+
+/* أكمل الحرف */
+let flList=[],flIdx=0,flLock=false;
+function buildBlank(it,letter){return it.pre+'<span class="bl">'+(letter||'…')+'</span>'+it.post;}
+function startFill(){flList=shuffle(FILL).slice(0,8);flIdx=0;flLock=false;
+  const d=document.getElementById('flDots');d.innerHTML='';flList.forEach(()=>d.insertAdjacentHTML('beforeend','<span class="dot"></span>'));
+  document.getElementById('flFb').innerHTML='&nbsp;';showFl();}
+function showFl(){if(flIdx>=flList.length)return finFl();flLock=false;const it=flList[flIdx];
+  document.getElementById('flWord').innerHTML=buildBlank(it,null);
+  document.getElementById('flHint').textContent=it.hint;
+  setTimeout(()=>say(it.say),250);
+  const box=document.getElementById('flOpts');box.className='opts '+(it.opts.length===3?'three':'two');box.innerHTML='';
+  shuffle(it.opts.slice()).forEach(L=>{const b=document.createElement('button');b.className='opt';b.textContent=L;
+    b.onclick=()=>{if(flLock)return;flLock=true;const dot=document.getElementById('flDots').children[flIdx];
+      document.getElementById('flWord').innerHTML=buildBlank(it,L);
+      if(L===it.ans){okSound();b.classList.add('ok');dot.classList.add('done');addStar(1);say(it.say);document.getElementById('flFb').innerHTML='<span style="color:var(--ok)">✓ صحيح! إنّها '+LN[it.ans]+'.</span>';}
+      else{noSound();b.classList.add('no');dot.classList.add('miss');document.getElementById('flFb').innerHTML='<span style="color:#e0517d">الصوابُ '+LN[it.ans]+': '+it.pre+it.ans+it.post+'</span>';}
+      flIdx++;setTimeout(showFl,1600);};
+    box.appendChild(b);});}
+document.getElementById('flPlay').addEventListener('click',()=>{const it=flList[flIdx];if(it)say(it.say);});
+function finFl(){document.getElementById('flWord').textContent='🎉';document.getElementById('flHint').textContent='';
+  document.getElementById('flOpts').innerHTML='';document.getElementById('flFb').innerHTML='<span style="color:var(--ok)">قلمُك دقيق! جرّبْ «صحّحِ الخطأ».</span>';burst();addStar(2);}
+
+/* صحّح الخطأ */
+let fList=[],fIdx=0,fLock=false;
+function startFix(){fList=shuffle(FIX).slice(0,6);fIdx=0;fLock=false;
+  const d=document.getElementById('fDots');d.innerHTML='';fList.forEach(()=>d.insertAdjacentHTML('beforeend','<span class="dot"></span>'));
+  document.getElementById('fFb').innerHTML='&nbsp;';showF();}
+function showF(){if(fIdx>=fList.length)return finF();fLock=false;const it=fList[fIdx];
+  document.getElementById('fAsk').textContent='المعنى: '+it.mean+' — اختَرِ الكتابةَ الصحيحة';
+  document.getElementById('fFb').innerHTML='&nbsp;';
+  const opts=shuffle([{t:it.right,ok:true},{t:it.wrong,ok:false}]);
+  const box=document.getElementById('fOpts');box.innerHTML='';
+  opts.forEach(o=>{const b=document.createElement('button');b.className='opt wordopt';b.textContent=o.t;
+    b.onclick=()=>{if(fLock)return;fLock=true;const dot=document.getElementById('fDots').children[fIdx];
+      if(o.ok){okSound();b.classList.add('ok');dot.classList.add('done');addStar(1);say(it.right);document.getElementById('fFb').innerHTML='<span style="color:var(--ok)">✓ صحيح!</span>';}
+      else{noSound();b.classList.add('no');dot.classList.add('miss');say(it.right);document.getElementById('fFb').innerHTML='<span style="color:#e0517d">الصوابُ: '+it.right+'</span>';}
+      fIdx++;setTimeout(showF,1500);};
+    box.appendChild(b);});}
+function finF(){document.getElementById('fOpts').innerHTML='';document.getElementById('fAsk').textContent='🏁 أنهيتَ التصحيح!';
+  document.getElementById('fFb').innerHTML='<span style="color:var(--ok)">عينُ المحقّق! إلى التّحدّي.</span>';burst();addStar(2);}
+
+/* التحدّي */
+let quiz=[],qIdx=0,qScore=0,qLock=false;
+function startQuiz(){quiz=shuffle(FILL).slice(0,10);qIdx=0;qScore=0;qLock=false;
+  document.getElementById('qEnd').innerHTML='';document.getElementById('qFb').innerHTML='&nbsp;';showQ();
+  const d=document.getElementById('qDots');d.innerHTML='';quiz.forEach(()=>d.insertAdjacentHTML('beforeend','<span class="dot"></span>'));}
+function showQ(){if(qIdx>=quiz.length)return endQuiz();qLock=false;const it=quiz[qIdx];
+  document.getElementById('qWord').innerHTML=buildBlank(it,null);document.getElementById('qHint').textContent=it.hint;
+  setTimeout(()=>say(it.say),250);
+  const box=document.getElementById('qOpts');box.className='opts '+(it.opts.length===3?'three':'two');box.innerHTML='';
+  shuffle(it.opts.slice()).forEach(L=>{const b=document.createElement('button');b.className='opt';b.textContent=L;
+    b.onclick=()=>{if(qLock)return;qLock=true;const dot=document.getElementById('qDots').children[qIdx];
+      document.getElementById('qWord').innerHTML=buildBlank(it,L);
+      if(L===it.ans){okSound();qScore++;b.classList.add('ok');dot.classList.add('done');addStar(1);document.getElementById('qFb').innerHTML='<span style="color:var(--ok)">✓ صحيح!</span>';}
+      else{noSound();b.classList.add('no');dot.classList.add('miss');document.getElementById('qFb').innerHTML='<span style="color:#e0517d">الصوابُ '+LN[it.ans]+'</span>';}
+      qIdx++;setTimeout(showQ,1200);};
+    box.appendChild(b);});}
+document.getElementById('qPlay').addEventListener('click',()=>{const it=quiz[qIdx];if(it)say(it.say);});
+function endQuiz(){document.getElementById('qOpts').innerHTML='';document.getElementById('qWord').textContent='🏁';
+  document.getElementById('qHint').textContent='';document.getElementById('qFb').innerHTML='&nbsp;';
+  let msg=qScore>=9?'محقّقٌ بارع! 🥇':qScore>=6?'عملٌ رائع! 🌟':'أعِدِ المحاولةَ وستصبحُ خبيراً! 💪';if(qScore>=9)burst();
+  document.getElementById('qEnd').innerHTML='<div class="result"><div class="big">'+(qScore>=9?'🏆':qScore>=6?'🎉':'🙂')+'</div>'+
+    '<h2>نتيجتُك: '+qScore+' / '+quiz.length+'</h2><p style="color:#766f95;font-weight:600">'+msg+'</p>'+
+    '<button class="btn" onclick="startQuiz()">إعادة 🔁</button> <button class="btn alt" onclick="go(\'learn\')">أراجِعُ 📚</button></div>';}
+
+function burst(){const c=['#7c5cff','#ff7a3d','#ffc94d','#16b08a','#a48cff'];
+  for(let i=0;i<70;i++){const e=document.createElement('div');e.className='confetti';e.style.left=Math.random()*100+'vw';
+    e.style.background=c[i%c.length];e.style.transform='rotate('+Math.random()*360+'deg)';document.body.appendChild(e);
+    const dur=1600+Math.random()*1400;e.animate([{top:'-14px',opacity:1},{top:'100vh',opacity:.9}],{duration:dur,easing:'cubic-bezier(.3,.7,.5,1)'});
+    setTimeout(()=>e.remove(),dur);}}
+</script>
+</body>
+</html>

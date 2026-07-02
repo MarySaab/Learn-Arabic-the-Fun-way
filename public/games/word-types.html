@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مدينة الكلمات الثّلاث · اسم، فعل، حرف</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ism:#2f7fe6;      --ism-soft:#e3effc;  --ism-deep:#1d5bb0;
+  --fil:#f1722b;      --fil-soft:#fde7da;  --fil-deep:#c4521a;
+  --harf:#13a085;     --harf-soft:#d9f3ec; --harf-deep:#0c7a64;
+  --ink:#27313f;      --muted:#6b7787;
+  --paper:#fff8ec;    --card:#ffffff;      --line:#eadfcb;
+  --gold:#f4b323;     --good:#23a06a;      --bad:#e15564;
+  --shadow:0 14px 30px rgba(60,50,30,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:'Tajawal',sans-serif;color:var(--ink);
+  background:
+    radial-gradient(circle at 12% 10%, #fff2d6 0 22%, transparent 22%),
+    radial-gradient(circle at 88% 18%, #e7f5ef 0 18%, transparent 18%),
+    radial-gradient(circle at 80% 92%, #fbe2d4 0 20%, transparent 20%),
+    var(--paper);
+  min-height:100vh;-webkit-tap-highlight-color:transparent;
+}
+.wrap{max-width:880px;margin:0 auto;padding:18px 16px 60px}
+h1,h2,h3,.disp{font-family:'Baloo Bhaijaan 2',cursive}
+
+/* top bar */
+.bar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.brand{display:flex;align-items:center;gap:10px;font-family:'Baloo Bhaijaan 2';font-size:1.35rem;font-weight:800;color:var(--ink)}
+.brand .logo{width:46px;height:46px;border-radius:16px;display:grid;place-items:center;font-size:1.5rem;
+  background:linear-gradient(135deg,var(--ism),var(--harf));color:#fff;box-shadow:var(--shadow)}
+.stars{background:#fff;border:2px solid var(--line);border-radius:999px;padding:7px 16px;font-weight:800;color:var(--fil-deep);box-shadow:var(--shadow);font-size:1.05rem}
+.homebtn{background:#fff;border:2px solid var(--line);border-radius:14px;padding:9px 14px;font-family:'Tajawal';font-weight:700;cursor:pointer;color:var(--ink);box-shadow:var(--shadow)}
+.homebtn:hover{background:#fffdf6}
+
+/* hero */
+.hero{background:var(--card);border:3px solid var(--line);border-radius:30px;padding:26px 24px;box-shadow:var(--shadow);text-align:center;position:relative;overflow:hidden}
+.hero h1{font-size:2.05rem;line-height:1.5;color:var(--ink)}
+.hero h1 .b1{color:var(--ism-deep)} .hero h1 .b2{color:var(--fil-deep)} .hero h1 .b3{color:var(--harf-deep)}
+.hero p{margin-top:8px;color:var(--muted);font-size:1.08rem;font-weight:500}
+.houses{display:flex;gap:14px;justify-content:center;margin:20px 0 6px;flex-wrap:wrap}
+.house{flex:1;min-width:130px;max-width:200px;border-radius:22px;padding:16px 12px;color:#fff;box-shadow:var(--shadow);transition:transform .25s}
+.house:hover{transform:translateY(-5px)}
+.house .roof{font-size:2.2rem;margin-bottom:4px}
+.house h3{font-size:1.35rem;margin-bottom:3px}
+.house small{font-weight:500;opacity:.95;font-size:.92rem;line-height:1.5;display:block}
+.h-ism{background:linear-gradient(160deg,#4a95ee,#2f7fe6)}
+.h-fil{background:linear-gradient(160deg,#f78b4d,#f1722b)}
+.h-harf{background:linear-gradient(160deg,#27b89c,#13a085)}
+
+/* level map */
+.maptitle{text-align:center;margin:26px 0 14px;font-size:1.5rem;color:var(--ink)}
+.levels{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px}
+.lvl{background:var(--card);border:3px solid var(--line);border-radius:22px;padding:18px 16px;cursor:pointer;text-align:right;box-shadow:var(--shadow);transition:transform .2s,border-color .2s;position:relative}
+.lvl:hover{transform:translateY(-4px);border-color:var(--gold)}
+.lvl .num{position:absolute;top:-12px;left:14px;width:34px;height:34px;border-radius:50%;background:var(--gold);color:#fff;font-family:'Baloo Bhaijaan 2';font-weight:800;display:grid;place-items:center;box-shadow:var(--shadow)}
+.lvl .ic{font-size:1.9rem}
+.lvl h3{font-size:1.18rem;margin:6px 0 4px}
+.lvl p{color:var(--muted);font-size:.92rem;font-weight:500}
+.lvl .done{position:absolute;top:12px;right:12px;color:var(--good);font-size:1.3rem;display:none}
+.lvl.complete .done{display:block}
+.lvl.complete{border-color:var(--good)}
+
+/* screen / cards */
+.screen{display:none}
+.screen.active{display:block;animation:pop .35s ease}
+@keyframes pop{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.panel{background:var(--card);border:3px solid var(--line);border-radius:28px;padding:22px;box-shadow:var(--shadow)}
+.ph{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.ph .pic{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;font-size:1.7rem;color:#fff;box-shadow:var(--shadow)}
+.ph h2{font-size:1.5rem}
+.lead{color:var(--muted);font-weight:500;margin:2px 0 16px;font-size:1.05rem}
+
+/* progress */
+.prog{height:12px;background:#f0e6d3;border-radius:999px;overflow:hidden;margin:4px 0 18px}
+.prog i{display:block;height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,var(--gold),var(--fil));transition:width .4s}
+
+/* teach cards */
+.tcards{display:grid;gap:14px}
+.tcard{border-radius:22px;padding:18px;color:#fff;box-shadow:var(--shadow)}
+.tcard h3{font-size:1.45rem;display:flex;align-items:center;gap:10px}
+.tcard p{font-weight:500;margin:6px 0 12px;font-size:1.05rem;opacity:.97}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:rgba(255,255,255,.92);color:var(--ink);font-weight:700;border-radius:999px;padding:7px 15px;font-size:1.05rem}
+.t-ism{background:linear-gradient(160deg,#4a95ee,#2f7fe6)}
+.t-fil{background:linear-gradient(160deg,#f78b4d,#f1722b)}
+.t-harf{background:linear-gradient(160deg,#27b89c,#13a085)}
+
+/* MCQ */
+.qbox{text-align:center;margin:8px 0 4px}
+.bigword{font-family:'Baloo Bhaijaan 2';font-size:2.6rem;color:var(--ink);background:var(--paper);border:3px dashed var(--line);border-radius:22px;padding:18px 10px;display:inline-block;min-width:220px;line-height:1.4}
+.sent{font-size:1.7rem;line-height:2.2;font-weight:700;color:var(--ink)}
+.sent .blank{display:inline-block;min-width:70px;border-bottom:4px dotted var(--fil);margin:0 4px}
+.sent .focus{background:var(--gold);color:#fff;border-radius:10px;padding:2px 10px}
+.qtag{color:var(--muted);font-weight:600;margin-top:10px;font-size:1.05rem}
+.opts{display:grid;gap:12px;margin-top:18px}
+.opt{font-family:'Tajawal';font-weight:800;font-size:1.3rem;background:#fff;border:3px solid var(--line);border-radius:18px;padding:15px;cursor:pointer;color:var(--ink);transition:transform .12s,border-color .15s}
+.opt:hover{transform:translateY(-3px);border-color:var(--gold)}
+.opt.ok{background:#e7f8ef;border-color:var(--good);color:var(--good)}
+.opt.no{background:#fdeaec;border-color:var(--bad);color:var(--bad)}
+.opt:disabled{cursor:default}
+.fb{text-align:center;font-family:'Baloo Bhaijaan 2';font-size:1.4rem;min-height:34px;margin-top:14px}
+.fb.good{color:var(--good)} .fb.bad{color:var(--bad)}
+
+/* matching */
+.match{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+.mcol h4{text-align:center;color:var(--muted);font-weight:700;margin-bottom:10px;font-size:1.05rem}
+.mitem{background:#fff;border:3px solid var(--line);border-radius:16px;padding:14px;margin-bottom:10px;cursor:pointer;font-weight:700;font-size:1.15rem;text-align:center;transition:transform .12s,border-color .15s}
+.mitem:hover{transform:translateY(-2px)}
+.mitem.sel{border-color:var(--gold);background:#fff7e3}
+.mitem.locked{border-color:var(--good);background:#e7f8ef;color:var(--good);cursor:default;pointer-events:none}
+.mitem.shake{animation:shk .4s}
+@keyframes shk{0%,100%{transform:translateX(0)}25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}
+
+/* nav buttons */
+.nav{display:flex;gap:12px;margin-top:20px}
+.btn{flex:1;font-family:'Baloo Bhaijaan 2';font-weight:700;font-size:1.2rem;border:none;border-radius:18px;padding:15px;cursor:pointer;box-shadow:var(--shadow);transition:transform .15s}
+.btn:hover{transform:translateY(-3px)} .btn:disabled{opacity:.45;cursor:default;transform:none}
+.btn-primary{background:linear-gradient(135deg,var(--fil),var(--gold));color:#fff}
+.btn-ghost{background:#fff;border:3px solid var(--line);color:var(--ink)}
+
+/* end */
+.endcard{text-align:center}
+.endcard .big{font-size:4rem}
+.endcard h2{font-size:2rem;margin:6px 0}
+.endcard p{color:var(--muted);font-weight:500;font-size:1.1rem}
+.confetti{position:fixed;top:-20px;font-size:1.6rem;pointer-events:none;z-index:50;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(105vh) rotate(540deg);opacity:.2}}
+
+@media(max-width:520px){
+  .hero h1{font-size:1.6rem}.bigword{font-size:2rem;min-width:160px}.sent{font-size:1.35rem}
+  .brand{font-size:1.05rem}.brand .logo{width:40px;height:40px}
+}
+@media (prefers-reduced-motion: reduce){*{animation-duration:.001ms!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="bar">
+    <div class="brand"><span class="logo">🏙️</span><span>مدينةُ الكلماتِ الثّلاث</span></div>
+    <div style="display:flex;gap:10px;align-items:center">
+      <span class="stars" id="stars">⭐ 0</span>
+      <button class="homebtn" id="homeBtn" style="display:none" onclick="goHome()">🏠 الخريطة</button>
+    </div>
+  </div>
+
+  <!-- HOME -->
+  <section id="home" class="screen active">
+    <div class="hero">
+      <h1>أنواعُ الكلمة: <span class="b1">اسمٌ</span>، <span class="b2">فِعلٌ</span>، <span class="b3">حرفٌ</span></h1>
+      <p>في مدينتِنا ثلاثةُ بيوتٍ. ساعِدِ الكلماتِ كي تصلَ إلى بيتِها الصّحيح!</p>
+      <div class="houses">
+        <div class="house h-ism"><div class="roof">🏠</div><h3>الاسم</h3><small>يدلُّ على إنسانٍ أو شيءٍ أو مكان<br>كِتاب · مُعَلِّمَة · مَلْعَب</small></div>
+        <div class="house h-fil"><div class="roof">🏃</div><h3>الفعل</h3><small>يدلُّ على عملٍ يحدُث<br>رَكَضَ · وَقَعَ · نامَ</small></div>
+        <div class="house h-harf"><div class="roof">🔗</div><h3>الحرف</h3><small>يربِطُ بين الكلمات<br>مِنْ · إلى · في · عَنْ</small></div>
+      </div>
+    </div>
+    <h2 class="maptitle">🗺️ اختَرْ لُعبتَك</h2>
+    <div class="levels" id="levels"></div>
+  </section>
+
+  <!-- GAME SCREEN -->
+  <section id="game" class="screen"><div class="panel" id="gamePanel"></div></section>
+</div>
+
+<script>
+/* ---------- DATA (مأخوذة من نصّ الدّرس) ---------- */
+const TYPES = {
+  ism:{name:'اسم', emoji:'🏠', color:'var(--ism)'},
+  fil:{name:'فعل', emoji:'🏃', color:'var(--fil)'},
+  harf:{name:'حرف', emoji:'🔗', color:'var(--harf)'}
+};
+const opt3 = [{label:'اسم',v:'ism'},{label:'فعل',v:'fil'},{label:'حرف',v:'harf'}];
+
+/* Level 2 : صنّف الكلمات (من التّرسيمة وجُمَل الدّرس) */
+const SORT = [
+  {w:'الفَتاةُ',a:'ism'},{w:'تَقْفِزُ',a:'fil'},{w:'في',a:'harf'},{w:'المَلْعَب',a:'ism'},
+  {w:'كِتابٌ',a:'ism'},{w:'مُعَلِّمَة',a:'ism'},{w:'رَكَضَ',a:'fil'},{w:'وَقَعَ',a:'fil'},
+  {w:'نامَ',a:'fil'},{w:'مِنْ',a:'harf'},{w:'إلى',a:'harf'},{w:'عَنْ',a:'harf'}
+];
+
+/* Level 3 : حلّل الجملة (جُمَل التّمرين ٢) */
+const ANALYZE = [
+  [{t:'عادَ',a:'fil'},{t:'الرّجلُ',a:'ism'},{t:'مِنَ',a:'harf'},{t:'العَمَل',a:'ism'}],
+  [{t:'رَسَمَ',a:'fil'},{t:'جَدّي',a:'ism'},{t:'بـِ',a:'harf'},{t:'الرّيشَة',a:'ism'}],
+  [{t:'يُمَرِّرُ',a:'fil'},{t:'جَدّي',a:'ism'},{t:'يَدَهُ',a:'ism'},{t:'على',a:'harf'},{t:'شَعْري',a:'ism'}]
+];
+
+/* Level 4 : اختر الكلمة المناسبة بحسب نوعها (التّمرين ٣) */
+const PICKTYPE = [
+  {pre:'نَزورُ',blank:true,post:'وَجَدّتي في العُطْلَة.',need:'اسم',
+   opts:[{label:'جَدّي',ok:true},{label:'يَلْعَبُ',ok:false},{label:'إلى',ok:false}]},
+  {pre:'',blank:true,post:'لَنا جَدّتي قالَبَ حَلْوى.',need:'فعل',
+   opts:[{label:'تُعِدُّ',ok:true},{label:'الحَلْوى',ok:false},{label:'عَنْ',ok:false}]},
+  {pre:'نَجْلِسُ مَعًا',blank:true,post:'غُرْفَةِ الجُلوس.',need:'حرف',
+   opts:[{label:'في',ok:true},{label:'البَيْت',ok:false},{label:'جَلَسَ',ok:false}]},
+  {pre:'حَيْثُ',blank:true,post:'جَدّي أخبارَ طُفولَتِه.',need:'فعل',
+   opts:[{label:'يَرْوي',ok:true},{label:'القِصّة',ok:false},{label:'على',ok:false}]}
+];
+
+/* Level 5 : اختر الحرف المناسب (التّمرين ٤) */
+const PREP = [
+  {pre:'راحَتْ جَدّتي',blank:true,post:'المَطْبَخ.',opts:[{label:'عَنْ',ok:false},{label:'إلى',ok:true}]},
+  {pre:'تَظْهَرُ البَسْمَةُ',blank:true,post:'شَفَتَيْها.',opts:[{label:'مِنْ',ok:false},{label:'على',ok:true}]},
+  {pre:'تَناوَلْتُ الحَلْوى',blank:true,post:'المِلْعَقَة.',opts:[{label:'في',ok:false},{label:'بـِ',ok:true}]},
+  {pre:'تُعَبِّرُ جَدّتي',blank:true,post:'فَرْحَتِها.',opts:[{label:'إلى',ok:false},{label:'عَنْ',ok:true}]}
+];
+
+/* Level 6 : صِل الجمل (التّمرين ٥) */
+const MATCH = [
+  {l:'سَكَبَ الحَلْوى', r:'في الصّحْن'},
+  {l:'وَضَعَتِ الكُتُبَ', r:'على الرّفّ'},
+  {l:'رَسَمْتُ لَوْحَةً', r:'بالألوان'}
+];
+
+const LEVELS = [
+  {id:0,ic:'💡',title:'بيوتُ الكلمات',desc:'تعرّفْ على الأنواع الثّلاثة',type:'teach'},
+  {id:1,ic:'📦',title:'صنِّفِ الكلمات',desc:'أيُّ بيتٍ تسكُنُ فيه الكلمة؟',type:'mcq',data:'sort'},
+  {id:2,ic:'🔎',title:'حلِّلِ الجملة',desc:'ما نوعُ كلِّ كلمةٍ ملوّنة؟',type:'mcq',data:'analyze'},
+  {id:3,ic:'✏️',title:'الكلمةُ المناسبة',desc:'اختَرْ كلمةً من النّوع المطلوب',type:'mcq',data:'picktype'},
+  {id:4,ic:'🎨',title:'الحرفُ المناسب',desc:'لوِّنِ الحرفَ الّذي يُتمُّ المعنى',type:'mcq',data:'prep'},
+  {id:5,ic:'🧩',title:'صِلْ لتُكوِّنَ جملة',desc:'اربِطْ كي تحصُلَ على جُملٍ مفيدة',type:'match'}
+];
+
+/* ---------- STATE ---------- */
+let stars = 0;
+const done = {};
+
+/* ---------- HELPERS ---------- */
+const $ = id => document.getElementById(id);
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]];}return a;}
+function setStars(n){stars=n;$('stars').textContent='⭐ '+stars;}
+function addStar(n){setStars(stars+n);}
+function confetti(){const e=['🎉','⭐','🌟','✨','🎊','💛'];for(let i=0;i<26;i++){const c=document.createElement('div');c.className='confetti';c.textContent=e[i%e.length];c.style.left=Math.random()*100+'vw';c.style.animationDuration=(2+Math.random()*2)+'s';c.style.fontSize=(1.1+Math.random())+'rem';document.body.appendChild(c);setTimeout(()=>c.remove(),4200);}}
+const GOOD=['أحسنتَ! 🌟','رائعٌ جدًّا! 🎉','ممتاز! ✨','عملٌ بطوليّ! 💪','أنتَ نجمٌ! ⭐'];
+const TRY =['لا بأسَ، حاوِلْ مرّةً أخرى 🙂','قريبٌ جدًّا، فكِّرْ ثانيةً 🤔','كادتْ تصِحُّ! انظُرْ مرّةً أخرى'];
+
+/* ---------- RENDER HOME ---------- */
+function renderLevels(){
+  $('levels').innerHTML = LEVELS.map(l=>`
+    <div class="lvl ${done[l.id]?'complete':''}" onclick="openLevel(${l.id})">
+      <span class="num">${l.id+1}</span><span class="done">✔</span>
+      <div class="ic">${l.ic}</div><h3>${l.title}</h3><p>${l.desc}</p>
+    </div>`).join('');
+}
+function goHome(){
+  $('game').classList.remove('active');$('home').classList.add('active');
+  $('homeBtn').style.display='none';renderLevels();window.scrollTo({top:0,behavior:'smooth'});
+}
+function show(panelHTML){
+  $('home').classList.remove('active');$('game').classList.add('active');
+  $('homeBtn').style.display='block';$('gamePanel').innerHTML=panelHTML;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ---------- LEVEL ROUTER ---------- */
+function openLevel(id){
+  const l=LEVELS[id];
+  if(l.type==='teach') return teachScreen();
+  if(l.type==='match') return matchScreen(id);
+  let items;
+  if(l.data==='sort') items=sortItems();
+  if(l.data==='analyze') items=analyzeItems();
+  if(l.data==='picktype') items=PICKTYPE.map(buildBlankItem);
+  if(l.data==='prep') items=PREP.map(buildBlankItem);
+  mcqScreen(id,items);
+}
+
+/* ---------- TEACH ---------- */
+function teachScreen(){
+  show(`
+   <div class="ph"><div class="pic" style="background:linear-gradient(135deg,var(--ism),var(--harf))">💡</div>
+     <div><h2>بيوتُ الكلمات الثّلاثة</h2></div></div>
+   <p class="lead">كلُّ كلمةٍ تسكُنُ في بيتٍ واحد. تعرَّفْ عليها قبلَ أن تلعب.</p>
+   <div class="tcards">
+     <div class="tcard t-ism"><h3>🏠 الاسم</h3><p>يدلُّ على إنسانٍ، أو حيوانٍ، أو شيءٍ، أو مكان. نقدِرُ أن نُسمِّيه ونُشيرَ إليه.</p>
+       <div class="chips"><span class="chip">كِتاب</span><span class="chip">مُعَلِّمَة</span><span class="chip">مَلْعَب</span><span class="chip">الفَتاة</span><span class="chip">جَدّي</span></div></div>
+     <div class="tcard t-fil"><h3>🏃 الفعل</h3><p>يدلُّ على عملٍ أو حدثٍ يقعُ في زمنٍ ما: ماضٍ، أو حاضر.</p>
+       <div class="chips"><span class="chip">رَكَضَ</span><span class="chip">وَقَعَ</span><span class="chip">نامَ</span><span class="chip">تَقْفِزُ</span><span class="chip">رَسَمَ</span></div></div>
+     <div class="tcard t-harf"><h3>🔗 الحرف</h3><p>كلمةٌ صغيرةٌ تربِطُ بين الكلمات، ولا معنى لها وحدَها.</p>
+       <div class="chips"><span class="chip">في</span><span class="chip">مِنْ</span><span class="chip">إلى</span><span class="chip">عَنْ</span><span class="chip">على</span></div></div>
+   </div>
+   <div class="nav"><button class="btn btn-primary" onclick="finishLevel(0)">فهِمتُ، لِنلعَبْ! 🚀</button></div>`);
+}
+
+/* ---------- BUILD MCQ ITEMS ---------- */
+function sortItems(){
+  return shuffle(SORT).map(s=>({
+    kind:'word', word:s.word, prompt:`<div class="bigword">${s.word}</div>`,
+    tag:'في أيِّ بيتٍ تسكُنُ هذه الكلمة؟',
+    opts:opt3.map(o=>({label:o.label, ok:o.v===s.a}))
+  }));
+}
+function analyzeItems(){
+  const items=[];
+  ANALYZE.forEach(sent=>{
+    sent.forEach((word,wi)=>{
+      const html = sent.map((x,i)=> i===wi?`<span class="focus">${x.t}</span>`:x.t).join(' ');
+      items.push({kind:'analyze', prompt:`<div class="sent">${html}</div>`,
+        tag:'ما نوعُ الكلمة الملوّنة؟',
+        opts:opt3.map(o=>({label:o.label, ok:o.v===word.a}))});
+    });
+  });
+  return items;
+}
+function buildBlankItem(q){
+  const sent = `${q.pre?q.pre+' ':''}<span class="blank"></span>${q.post?' '+q.post:''}`;
+  return {kind:'blank',
+    prompt:`<div class="sent">${sent}</div>`,
+    tag: q.need? `اختَرْ كلمةً نوعُها (${q.need}) تُكمِلُ الجملة:` : 'اختَرِ الحرفَ الّذي يُتمُّ المعنى:',
+    opts:q.opts.map(o=>({label:o.label, ok:o.ok}))
+  };
+}
+
+/* ---------- MCQ ENGINE ---------- */
+function mcqScreen(levelId, items){
+  const l=LEVELS[levelId];
+  let i=0, score=0, locked=false;
+  function draw(){
+    locked=false;
+    const it=items[i];
+    show(`
+      <div class="ph"><div class="pic" style="background:linear-gradient(135deg,var(--fil),var(--gold))">${l.ic}</div>
+        <div><h2>${l.title}</h2></div></div>
+      <div class="prog"><i style="width:${(i/items.length)*100}%"></i></div>
+      <div class="qbox">${it.prompt}<div class="qtag">${it.tag}</div></div>
+      <div class="opts" id="opts"></div>
+      <div class="fb" id="fb"></div>
+      <div class="nav"><button class="btn btn-ghost" onclick="goHome()">🏠 خروج</button>
+        <button class="btn btn-primary" id="next" disabled>التّالي ←</button></div>`);
+    const box=$('opts');
+    it.opts.forEach((o,idx)=>{
+      const b=document.createElement('button');b.className='opt';b.textContent=o.label;
+      b.onclick=()=>choose(b,o,it);box.appendChild(b);
+    });
+    $('next').onclick=()=>{ i++; (i<items.length)?draw():end(); };
+  }
+  function choose(btn,o,it){
+    if(locked) return; locked=true;
+    const fb=$('fb');
+    [...$('opts').children].forEach(b=>b.disabled=true);
+    if(o.ok){btn.classList.add('ok');score++;addStar(1);fb.className='fb good';fb.textContent=GOOD[Math.random()*GOOD.length|0];}
+    else{btn.classList.add('no');fb.className='fb bad';fb.textContent=TRY[Math.random()*TRY.length|0];
+      [...$('opts').children].find(b=>it.opts[[...$('opts').children].indexOf(b)].ok)?.classList.add('ok');}
+    $('next').disabled=false;
+    $('next').textContent = (i===items.length-1)?'النّتيجة 🏁':'التّالي ←';
+  }
+  function end(){ finishLevel(levelId, score, items.length); }
+  draw();
+}
+
+/* ---------- MATCHING ENGINE ---------- */
+function matchScreen(levelId){
+  const l=LEVELS[levelId];
+  const left=MATCH.map((m,i)=>({txt:m.l,id:i}));
+  const right=shuffle(MATCH.map((m,i)=>({txt:m.r,id:i})));
+  let sel=null, pairs=0;
+  show(`
+    <div class="ph"><div class="pic" style="background:linear-gradient(135deg,var(--harf),var(--ism))">🧩</div>
+      <div><h2>صِلْ لتُكوِّنَ جملةً مفيدة</h2></div></div>
+    <p class="lead">اختَرْ بدايةً من اليمين ثمّ نهايتَها المناسبة من اليسار.</p>
+    <div class="match">
+      <div class="mcol"><h4>بدايةُ الجملة</h4><div id="L"></div></div>
+      <div class="mcol"><h4>تمامُها</h4><div id="R"></div></div>
+    </div>
+    <div class="fb" id="fb"></div>
+    <div class="nav"><button class="btn btn-ghost" onclick="goHome()">🏠 خروج</button>
+      <button class="btn btn-primary" id="next" disabled onclick="finishLevel(${levelId},3,3)">النّتيجة 🏁</button></div>`);
+  const L=$('L'),R=$('R');
+  left.forEach(x=>{const d=el(x);L.appendChild(d);});
+  right.forEach(x=>{const d=el(x);R.appendChild(d);});
+  function el(x){const d=document.createElement('div');d.className='mitem';d.textContent=x.txt;d.dataset.id=x.id;
+    d.onclick=()=>pick(d);return d;}
+  function pick(d){
+    if(d.classList.contains('locked'))return;
+    if(d.parentElement.id==='L'){ // selecting a left item
+      [...L.children].forEach(c=>c.classList.remove('sel'));
+      d.classList.add('sel'); sel=d; return;
+    }
+    if(!sel){ $('fb').className='fb bad'; $('fb').textContent='اختَرْ بدايةً أوّلًا 🙂'; return; }
+    if(d.dataset.id===sel.dataset.id){
+      d.classList.add('locked'); sel.classList.add('locked'); sel.classList.remove('sel'); sel=null;
+      pairs++; addStar(1); $('fb').className='fb good'; $('fb').textContent=GOOD[Math.random()*GOOD.length|0];
+      if(pairs===MATCH.length){$('next').disabled=false;$('fb').textContent='أكملتَ كلَّ الجُمَل! 🎉';}
+    } else {
+      d.classList.add('shake'); setTimeout(()=>d.classList.remove('shake'),420);
+      $('fb').className='fb bad'; $('fb').textContent='ليست مناسبة، جرِّبْ تمامًا آخر 🤔';
+    }
+  }
+}
+
+/* ---------- FINISH ---------- */
+function finishLevel(levelId, score, total){
+  done[levelId]=true;
+  if(score===undefined){ // teach
+    return goHome();
+  }
+  const perfect = score===total;
+  if(perfect) confetti();
+  const msg = perfect?'علامةٌ كاملة! أنتَ بطلُ الكلمات 🏆'
+            : score>=Math.ceil(total*0.6)?'عملٌ جميل! تستطيعُ الأفضل 🌟'
+            : 'بدايةٌ طيّبة، أعِدِ المحاولةَ لتتقَن 💪';
+  show(`
+    <div class="endcard">
+      <div class="big">${perfect?'🏆':'🌟'}</div>
+      <h2>${msg}</h2>
+      <p>نتيجتُك: <b>${score}</b> من <b>${total}</b></p>
+      <p style="margin-top:6px">جمعتَ حتّى الآن <b>${stars}</b> نجمة ⭐</p>
+      <div class="nav">
+        <button class="btn btn-ghost" onclick="openLevel(${levelId})">🔁 إعادة</button>
+        <button class="btn btn-primary" onclick="goHome()">🗺️ الخريطة</button>
+      </div>
+    </div>`);
+}
+
+/* ---------- INIT ---------- */
+renderLevels();
+</script>
+</body>
+</html>

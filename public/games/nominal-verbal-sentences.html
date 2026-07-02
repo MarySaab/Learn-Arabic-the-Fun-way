@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>محطّةُ الجُمَل · الجملة الفعليّة والاسميّة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ism:#6c5ce7;   --ism-soft:#ece9fc;  --ism-deep:#4e3fc0;
+  --fil:#ef6c4d;   --fil-soft:#fde3db;  --fil-deep:#c84a2c;
+  --ink:#2a2740;   --muted:#6e6a85;
+  --bg:#f4f1ff;    --card:#ffffff;      --line:#e6e1f5;
+  --gold:#f0a92c;  --teal:#15b1a6;      --good:#1f9c6e;  --bad:#e0556a;
+  --shadow:0 14px 30px rgba(60,45,110,.13);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Tajawal',sans-serif;color:var(--ink);
+  background:
+    radial-gradient(circle at 10% 8%, #eee9ff 0 24%, transparent 24%),
+    radial-gradient(circle at 92% 14%, #ffe5dc 0 18%, transparent 18%),
+    radial-gradient(circle at 85% 90%, #d8f6f2 0 20%, transparent 20%),
+    var(--bg);
+  min-height:100vh;-webkit-tap-highlight-color:transparent;
+}
+.wrap{max-width:880px;margin:0 auto;padding:18px 16px 60px}
+h1,h2,h3,.disp{font-family:'Baloo Bhaijaan 2',cursive}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.brand{display:flex;align-items:center;gap:10px;font-family:'Baloo Bhaijaan 2';font-size:1.3rem;font-weight:800}
+.brand .logo{width:46px;height:46px;border-radius:16px;display:grid;place-items:center;font-size:1.5rem;
+  background:linear-gradient(135deg,var(--ism),var(--fil));color:#fff;box-shadow:var(--shadow)}
+.stars{background:#fff;border:2px solid var(--line);border-radius:999px;padding:7px 16px;font-weight:800;color:var(--fil-deep);box-shadow:var(--shadow)}
+.homebtn{background:#fff;border:2px solid var(--line);border-radius:14px;padding:9px 14px;font-family:'Tajawal';font-weight:700;cursor:pointer;color:var(--ink);box-shadow:var(--shadow)}
+
+.hero{background:var(--card);border:3px solid var(--line);border-radius:30px;padding:26px 24px;box-shadow:var(--shadow);text-align:center}
+.hero h1{font-size:1.95rem;line-height:1.5}
+.hero h1 .f{color:var(--fil-deep)} .hero h1 .n{color:var(--ism-deep)}
+.hero p{margin-top:8px;color:var(--muted);font-size:1.08rem;font-weight:500}
+.rails{display:flex;gap:14px;justify-content:center;margin:20px 0 4px;flex-wrap:wrap}
+.rail{flex:1;min-width:200px;max-width:330px;border-radius:22px;padding:16px;color:#fff;box-shadow:var(--shadow);text-align:right}
+.rail h3{font-size:1.3rem;display:flex;align-items:center;gap:8px;justify-content:center;margin-bottom:6px}
+.rail .ex{background:rgba(255,255,255,.92);color:var(--ink);border-radius:14px;padding:9px 12px;font-weight:700;margin-top:8px;font-size:1.05rem}
+.rail .ex b{color:inherit;text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:4px}
+.r-fil{background:linear-gradient(160deg,#f5805f,#ef6c4d)}
+.r-ism{background:linear-gradient(160deg,#7d6ef0,#6c5ce7)}
+.r-fil .ex b{text-decoration-color:var(--fil-deep)} .r-ism .ex b{text-decoration-color:var(--ism-deep)}
+
+.maptitle{text-align:center;margin:26px 0 14px;font-size:1.45rem}
+.levels{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px}
+.lvl{background:var(--card);border:3px solid var(--line);border-radius:22px;padding:18px 16px;cursor:pointer;text-align:right;box-shadow:var(--shadow);transition:transform .2s,border-color .2s;position:relative}
+.lvl:hover{transform:translateY(-4px);border-color:var(--gold)}
+.lvl .num{position:absolute;top:-12px;left:14px;width:34px;height:34px;border-radius:50%;background:var(--teal);color:#fff;font-family:'Baloo Bhaijaan 2';font-weight:800;display:grid;place-items:center;box-shadow:var(--shadow)}
+.lvl .ic{font-size:1.9rem}.lvl h3{font-size:1.15rem;margin:6px 0 4px}.lvl p{color:var(--muted);font-size:.92rem;font-weight:500}
+.lvl .done{position:absolute;top:12px;right:12px;color:var(--good);font-size:1.3rem;display:none}
+.lvl.complete .done{display:block}.lvl.complete{border-color:var(--good)}
+
+.screen{display:none}.screen.active{display:block;animation:pop .35s ease}
+@keyframes pop{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.panel{background:var(--card);border:3px solid var(--line);border-radius:28px;padding:22px;box-shadow:var(--shadow)}
+.ph{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.ph .pic{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;font-size:1.7rem;color:#fff;box-shadow:var(--shadow)}
+.ph h2{font-size:1.45rem}.lead{color:var(--muted);font-weight:500;margin:2px 0 16px;font-size:1.05rem}
+.prog{height:12px;background:#eee7fb;border-radius:999px;overflow:hidden;margin:4px 0 18px}
+.prog i{display:block;height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,var(--teal),var(--gold));transition:width .4s}
+
+.tcards{display:grid;gap:14px}
+.tcard{border-radius:22px;padding:18px;color:#fff;box-shadow:var(--shadow)}
+.tcard h3{font-size:1.4rem;display:flex;align-items:center;gap:10px}
+.tcard p{font-weight:500;margin:6px 0 12px;font-size:1.05rem;opacity:.97}
+.exline{background:rgba(255,255,255,.92);color:var(--ink);border-radius:12px;padding:9px 12px;font-weight:700;margin-bottom:8px;font-size:1.08rem}
+.exline b{text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:4px}
+.t-fil{background:linear-gradient(160deg,#f5805f,#ef6c4d)}.t-fil b{text-decoration-color:#fff}
+.t-ism{background:linear-gradient(160deg,#7d6ef0,#6c5ce7)}.t-ism b{text-decoration-color:#fff}
+.tip{background:var(--gold);color:#fff;border-radius:16px;padding:14px 16px;font-weight:700;text-align:center;font-size:1.1rem;box-shadow:var(--shadow)}
+
+.qbox{text-align:center;margin:8px 0 4px}
+.sent{font-size:1.7rem;line-height:2.2;font-weight:700}
+.sent .first{background:var(--gold);color:#fff;border-radius:10px;padding:2px 10px}
+.sent .blank{display:inline-block;min-width:78px;border-bottom:4px dotted var(--teal);margin:0 4px}
+.qtag{color:var(--muted);font-weight:600;margin-top:10px;font-size:1.05rem}
+.opts{display:grid;gap:12px;margin-top:18px}
+.opts.two{grid-template-columns:1fr 1fr}
+.opt{font-family:'Tajawal';font-weight:800;font-size:1.25rem;background:#fff;border:3px solid var(--line);border-radius:18px;padding:15px;cursor:pointer;color:var(--ink);transition:transform .12s,border-color .15s}
+.opt:hover{transform:translateY(-3px);border-color:var(--gold)}
+.opt.ok{background:#e6f8f0;border-color:var(--good);color:var(--good)}
+.opt.no{background:#fde9ed;border-color:var(--bad);color:var(--bad)}
+.opt:disabled{cursor:default}
+.fb{text-align:center;font-family:'Baloo Bhaijaan 2';font-size:1.35rem;min-height:32px;margin-top:14px}
+.fb.good{color:var(--good)}.fb.bad{color:var(--bad)}
+
+/* reorder */
+.answer{min-height:64px;background:var(--bg);border:3px dashed var(--teal);border-radius:18px;padding:10px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;margin:6px 0 14px}
+.answer .ph-hint{color:var(--muted);font-weight:600}
+.bank{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:6px}
+.tile{font-family:'Baloo Bhaijaan 2';font-weight:700;font-size:1.4rem;background:#fff;border:3px solid var(--line);border-radius:16px;padding:10px 16px;cursor:pointer;box-shadow:var(--shadow);transition:transform .12s}
+.tile:hover{transform:translateY(-3px);border-color:var(--gold)}
+.tile.used{opacity:.3;pointer-events:none}
+.tile.inans{border-color:var(--teal);background:#e9faf8}
+
+.nav{display:flex;gap:12px;margin-top:20px}
+.btn{flex:1;font-family:'Baloo Bhaijaan 2';font-weight:700;font-size:1.18rem;border:none;border-radius:18px;padding:15px;cursor:pointer;box-shadow:var(--shadow);transition:transform .15s}
+.btn:hover{transform:translateY(-3px)}.btn:disabled{opacity:.45;cursor:default;transform:none}
+.btn-primary{background:linear-gradient(135deg,var(--fil),var(--gold));color:#fff}
+.btn-ghost{background:#fff;border:3px solid var(--line);color:var(--ink)}
+.btn-teal{background:linear-gradient(135deg,var(--teal),var(--ism));color:#fff}
+
+.write{display:grid;gap:14px}
+.wcard{border:3px solid var(--line);border-radius:20px;padding:16px;background:var(--bg)}
+.wcard h4{font-size:1.2rem;margin-bottom:6px;color:var(--ink)}
+.wcard .pill{display:inline-block;border-radius:999px;padding:4px 12px;font-weight:800;color:#fff;font-size:.95rem;margin-bottom:8px}
+.pill.f{background:var(--fil)}.pill.n{background:var(--ism)}
+.wcard textarea{width:100%;min-height:60px;border:2px solid var(--line);border-radius:12px;padding:10px;font-family:'Tajawal';font-size:1.1rem;resize:vertical;background:#fff}
+.wcard .pic-emoji{font-size:2.4rem;text-align:center}
+
+.endcard{text-align:center}.endcard .big{font-size:4rem}.endcard h2{font-size:1.9rem;margin:6px 0}
+.endcard p{color:var(--muted);font-weight:500;font-size:1.1rem}
+.confetti{position:fixed;top:-20px;font-size:1.6rem;pointer-events:none;z-index:50;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(105vh) rotate(540deg);opacity:.2}}
+@media(max-width:520px){.hero h1{font-size:1.5rem}.sent{font-size:1.35rem}.tile{font-size:1.15rem}.opts.two{grid-template-columns:1fr}.brand{font-size:1rem}}
+@media (prefers-reduced-motion: reduce){*{animation-duration:.001ms!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="bar">
+    <div class="brand"><span class="logo">🚂</span><span>محطّةُ الجُمَل</span></div>
+    <div style="display:flex;gap:10px;align-items:center">
+      <span class="stars" id="stars">⭐ 0</span>
+      <button class="homebtn" id="homeBtn" style="display:none" onclick="goHome()">🏠 الخريطة</button>
+    </div>
+  </div>
+
+  <section id="home" class="screen active">
+    <div class="hero">
+      <h1>الجملةُ <span class="f">الفِعليّة</span> والجملةُ <span class="n">الاسميّة</span></h1>
+      <p>كلُّ جملةٍ تركبُ قطارَها. والسِّرُّ في كلمةٍ واحدة… الكلمةِ الأولى!</p>
+      <div class="rails">
+        <div class="rail r-fil"><h3>🚂 الجملة الفعليّة</h3><div class="ex">تبدأُ بِـ<b>فِعل</b><br>نُشاهِدُ أفلامًا مُختلِفة.</div></div>
+        <div class="rail r-ism"><h3>🚃 الجملة الاسميّة</h3><div class="ex">تبدأُ بِـ<b>اسم</b><br>جَدّتي لَطيفَةٌ ومُحِبّة.</div></div>
+      </div>
+    </div>
+    <h2 class="maptitle">🗺️ اختَرْ لُعبتَك</h2>
+    <div class="levels" id="levels"></div>
+  </section>
+
+  <section id="game" class="screen"><div class="panel" id="gamePanel"></div></section>
+</div>
+
+<script>
+/* ===== DATA (من نصّ الدّرس) ===== */
+
+/* Level1 classify (التّمرين ٢ + جُمَل التّمهيد) */
+const CLASSIFY = [
+  {s:['جَدّتي','تُشاهِدُ','التّلفِزيون.'], a:'ism'},
+  {s:['نَلْعَبُ','بالكُرَة.'], a:'fil'},
+  {s:['أُحَضِّرُ','قالَبَ','حَلْوى.'], a:'fil'},
+  {s:['أُخْتي','تَغْمُرُ','جَدّتي.'], a:'ism'},
+  {s:['قالَبُ','الحَلْوى','لَذيذٌ','جِدًّا!'], a:'ism'},
+  {s:['نُشاهِدُ','أفلامًا','مُختلِفة.'], a:'fil'},
+  {s:['جَدّتي','لَطيفَةٌ','ومُحِبّة.'], a:'ism'},
+  {s:['نَسْتَخْدِمُ','اللّوحَةَ','الذّكيّةَ','في','اللّعِب.'], a:'fil'}
+];
+
+/* Level2 transform → فعليّة (التّمرين ٣) */
+const TRANSFORM = [
+  {from:'العائلَةُ تَجْتَمِعُ حَوْلَ المائدَةِ.', order:['تَجْتَمِعُ','العائلَةُ','حَوْلَ','المائدَةِ']},
+  {from:'جَدّي يُقَبِّلُ كُلًّا مِنّا.', order:['يُقَبِّلُ','جَدّي','كُلًّا','مِنّا']}
+];
+
+/* Level3 complete the start (التّمرين ٤) */
+const COMPLETE = [
+  {post:'تَسْكُنُ في مَنْزِلٍ مُسْتَقِلّ.', target:'ism',
+   opts:[{label:'جَدّتي',ok:true},{label:'تَجْلِسُ',ok:false},{label:'في',ok:false}]},
+  {post:'يُراقِبُنا ويَبْتَسِم.', target:'ism',
+   opts:[{label:'جَدّي',ok:true},{label:'يَنْظُرُ',ok:false},{label:'عَنْ',ok:false}]},
+  {post:'أُمّي في السّاحَةِ أمامَ البَيْت.', target:'fil',
+   opts:[{label:'تَقِفُ',ok:true},{label:'البَيْت',ok:false},{label:'على',ok:false}]},
+  {post:'المُعَلِّمَةُ الدّفاتِر.', target:'fil',
+   opts:[{label:'تُصَحِّحُ',ok:true},{label:'الكِتاب',ok:false},{label:'مِنْ',ok:false}]}
+];
+
+const LEVELS = [
+  {id:0,ic:'💡',title:'سِرُّ المحطّة',desc:'كيف نُميِّزُ نوعَ الجملة؟',type:'teach'},
+  {id:1,ic:'🚦',title:'اسميّةٌ أم فعليّة؟',desc:'وجِّهِ الجملةَ إلى رصيفِها',type:'classify'},
+  {id:2,ic:'🔄',title:'حوِّلْها إلى فعليّة',desc:'قَدِّمِ الفعلَ إلى أوّلِ الجملة',type:'transform'},
+  {id:3,ic:'🧱',title:'أكمِلِ البداية',desc:'ابنِ الجملةَ المطلوبة',type:'complete'},
+  {id:4,ic:'✍️',title:'تحدّي الكتابة',desc:'اكتُبْ جُملَك في دفترك',type:'write'}
+];
+
+let stars=0; const done={};
+const $=id=>document.getElementById(id);
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]];}return a;}
+function setStars(n){stars=n;$('stars').textContent='⭐ '+stars;} function addStar(n){setStars(stars+n);}
+function confetti(){const e=['🎉','⭐','🌟','✨','🎊','💜'];for(let i=0;i<26;i++){const c=document.createElement('div');c.className='confetti';c.textContent=e[i%e.length];c.style.left=Math.random()*100+'vw';c.style.animationDuration=(2+Math.random()*2)+'s';c.style.fontSize=(1.1+Math.random())+'rem';document.body.appendChild(c);setTimeout(()=>c.remove(),4200);}}
+const GOOD=['أحسنتَ! 🌟','رائعٌ جدًّا! 🎉','ممتاز! ✨','عملٌ بطوليّ! 💪','أنتَ قائدُ القطار! 🚂'];
+const TRY=['لا بأسَ، حاوِلْ ثانيةً 🙂','انظُرْ إلى الكلمةِ الأولى 👀','كادتْ تصِحُّ! جرِّبْ مرّةً أخرى'];
+const TYPENAME={ism:'اسميّة',fil:'فعليّة'};
+
+function renderLevels(){
+  $('levels').innerHTML=LEVELS.map(l=>`
+   <div class="lvl ${done[l.id]?'complete':''}" onclick="openLevel(${l.id})">
+     <span class="num">${l.id+1}</span><span class="done">✔</span>
+     <div class="ic">${l.ic}</div><h3>${l.title}</h3><p>${l.desc}</p></div>`).join('');
+}
+function goHome(){$('game').classList.remove('active');$('home').classList.add('active');$('homeBtn').style.display='none';renderLevels();window.scrollTo({top:0,behavior:'smooth'});}
+function show(html){$('home').classList.remove('active');$('game').classList.add('active');$('homeBtn').style.display='block';$('gamePanel').innerHTML=html;window.scrollTo({top:0,behavior:'smooth'});}
+
+function openLevel(id){
+  const t=LEVELS[id].type;
+  if(t==='teach')return teachScreen();
+  if(t==='classify')return classifyScreen(id);
+  if(t==='transform')return transformScreen(id);
+  if(t==='complete')return completeScreen(id);
+  if(t==='write')return writeScreen(id);
+}
+
+/* ---- TEACH ---- */
+function teachScreen(){
+  show(`
+   <div class="ph"><div class="pic" style="background:linear-gradient(135deg,var(--ism),var(--fil))">💡</div><div><h2>سِرُّ المحطّة</h2></div></div>
+   <p class="lead">لتعرِفَ نوعَ الجملة، انظُرْ إلى <b>الكلمةِ الأولى</b> فيها.</p>
+   <div class="tcards">
+     <div class="tcard t-fil"><h3>🚂 الجملة الفعليّة</h3><p>تبدأُ بِفعلٍ يدلُّ على عمل.</p>
+       <div class="exline"><b>نُشاهِدُ</b> أفلامًا مُختلِفة.</div>
+       <div class="exline"><b>نَسْتَخْدِمُ</b> اللّوحةَ الذّكيّةَ في اللّعِب.</div></div>
+     <div class="tcard t-ism"><h3>🚃 الجملة الاسميّة</h3><p>تبدأُ باسمٍ يدلُّ على شيءٍ أو شخص.</p>
+       <div class="exline"><b>جَدّتي</b> لَطيفَةٌ ومُحِبّة.</div>
+       <div class="exline"><b>قالَبُ</b> الحَلْوى لَذيذٌ جِدًّا!</div></div>
+   </div>
+   <div class="tip" style="margin-top:14px">👀 القاعدة السّحريّة: الكلمةُ الأولى فعلٌ ⇦ فعليّة، واسمٌ ⇦ اسميّة.</div>
+   <div class="nav"><button class="btn btn-primary" onclick="finishLevel(0)">إلى المحطّة! 🚀</button></div>`);
+}
+
+/* ---- CLASSIFY (MCQ 2 options) ---- */
+function classifyScreen(levelId){
+  const items=shuffle(CLASSIFY); let i=0,score=0,locked=false;
+  function draw(){
+    locked=false; const it=items[i];
+    const html=it.s.map((w,k)=>k===0?`<span class="first">${w}</span>`:w).join(' ');
+    show(`
+     <div class="ph"><div class="pic" style="background:linear-gradient(135deg,var(--fil),var(--gold))">🚦</div><div><h2>اسميّةٌ أم فعليّة؟</h2></div></div>
+     <div class="prog"><i style="width:${(i/items.length)*100}%"></i></div>
+     <div class="qbox"><div class="sent">${html}</div><div class="qtag">انظُرْ إلى الكلمةِ الأولى: ما نوعُ الجملة؟</div></div>
+     <div class="opts two" id="opts"></div><div class="fb" id="fb"></div>
+     <div class="nav"><button class="btn btn-ghost" onclick="goHome()">🏠 خروج</button>
+       <button class="btn btn-primary" id="next" disabled>التّالي ←</button></div>`);
+    [['ism','🚃 اسميّة'],['fil','🚂 فعليّة']].forEach(([v,lab])=>{
+      const b=document.createElement('button');b.className='opt';b.textContent=lab;
+      b.onclick=()=>pick(b,v,it);$('opts').appendChild(b);
+    });
+    $('next').onclick=()=>{i++;(i<items.length)?draw():finishLevel(levelId,score,items.length);};
+  }
+  function pick(b,v,it){
+    if(locked)return;locked=true;const fb=$('fb');
+    [...$('opts').children].forEach(x=>x.disabled=true);
+    if(v===it.a){b.classList.add('ok');score++;addStar(1);fb.className='fb good';fb.textContent=GOOD[Math.random()*GOOD.length|0];}
+    else{b.classList.add('no');fb.className='fb bad';fb.textContent=TRY[Math.random()*TRY.length|0];
+      [...$('opts').children][it.a==='ism'?0:1].classList.add('ok');}
+    $('next').disabled=false;$('next').textContent=(i===items.length-1)?'النّتيجة 🏁':'التّالي ←';
+  }
+  draw();
+}
+
+/* ---- TRANSFORM (reorder) ---- */
+function transformScreen(levelId){
+  let i=0,score=0;
+  function draw(){
+    const it=TRANSFORM[i];
+    const bank=shuffle(it.order);
+    show(`
+     <div class="ph"><div class="pic" style="background:linear-gradient(135deg,var(--teal),var(--ism))">🔄</div><div><h2>حوِّلْها إلى فعليّة</h2></div></div>
+     <div class="prog"><i style="width:${(i/TRANSFORM.length)*100}%"></i></div>
+     <p class="lead">الجملةُ الاسميّة: <b>${it.from}</b><br>أعِدْ ترتيبَ الكلماتِ لتبدأَ بِالفعل.</p>
+     <div class="answer" id="ans"><span class="ph-hint">انقُرِ الكلماتِ بالتّرتيب… 👇</span></div>
+     <div class="bank" id="bank"></div>
+     <div class="fb" id="fb"></div>
+     <div class="nav">
+       <button class="btn btn-ghost" id="undo" onclick="undoTile()">↩︎ تراجع</button>
+       <button class="btn btn-teal" id="check" disabled onclick="checkOrder()">تحقّقْ ✓</button>
+       <button class="btn btn-primary" id="next" style="display:none">التّالي ←</button>
+     </div>`);
+    const bankEl=$('bank');
+    bank.forEach((w,idx)=>{const t=document.createElement('div');t.className='tile';t.textContent=w;t.dataset.w=w;t.dataset.idx=idx;t.onclick=()=>placeTile(t);bankEl.appendChild(t);});
+    window._tf={it,picked:[]};
+    $('next').onclick=()=>{i++;(i<TRANSFORM.length)?draw():finishLevel(levelId,score,TRANSFORM.length);};
+  }
+  window.placeTile=function(t){
+    const ans=$('ans');if(window._tf.picked.length===0)ans.innerHTML='';
+    t.classList.add('used');
+    const chip=document.createElement('div');chip.className='tile inans';chip.textContent=t.dataset.w;
+    ans.appendChild(chip);window._tf.picked.push({w:t.dataset.w,src:t});
+    $('check').disabled = window._tf.picked.length!==window._tf.it.order.length;
+  };
+  window.undoTile=function(){
+    const p=window._tf.picked.pop();if(!p)return;
+    p.src.classList.remove('used');const ans=$('ans');ans.removeChild(ans.lastChild);
+    if(window._tf.picked.length===0)ans.innerHTML='<span class="ph-hint">انقُرِ الكلماتِ بالتّرتيب… 👇</span>';
+    $('check').disabled=true;
+  };
+  window.checkOrder=function(){
+    const ok=window._tf.picked.map(p=>p.w).join(' ')===window._tf.it.order.join(' ');
+    const fb=$('fb');
+    if(ok){score++;addStar(2);fb.className='fb good';fb.textContent='جملةٌ فعليّةٌ صحيحة! 🎉';
+      $('check').style.display='none';$('undo').style.display='none';$('next').style.display='block';
+      $('next').textContent=(i===TRANSFORM.length-1)?'النّتيجة 🏁':'التّالي ←';}
+    else{fb.className='fb bad';fb.textContent='ابدأْ بِالفعل ثمّ الفاعل… أعِدِ التّرتيب 🙂';}
+  };
+  draw();
+}
+
+/* ---- COMPLETE (MCQ build start) ---- */
+function completeScreen(levelId){
+  const items=shuffle(COMPLETE);let i=0,score=0,locked=false;
+  function draw(){
+    locked=false;const it=items[i];
+    show(`
+     <div class="ph"><div class="pic" style="background:linear-gradient(135deg,var(--ism),var(--gold))">🧱</div><div><h2>أكمِلِ البداية</h2></div></div>
+     <div class="prog"><i style="width:${(i/items.length)*100}%"></i></div>
+     <div class="qbox"><div class="sent"><span class="blank"></span> ${it.post}</div>
+       <div class="qtag">اختَرْ كلمةً في البدايةِ لتحصُلَ على جملةٍ <b>${TYPENAME[it.target]}</b>:</div></div>
+     <div class="opts" id="opts"></div><div class="fb" id="fb"></div>
+     <div class="nav"><button class="btn btn-ghost" onclick="goHome()">🏠 خروج</button>
+       <button class="btn btn-primary" id="next" disabled>التّالي ←</button></div>`);
+    it.opts.forEach(o=>{const b=document.createElement('button');b.className='opt';b.textContent=o.label;b.onclick=()=>pick(b,o,it);$('opts').appendChild(b);});
+    $('next').onclick=()=>{i++;(i<items.length)?draw():finishLevel(levelId,score,items.length);};
+  }
+  function pick(b,o,it){
+    if(locked)return;locked=true;const fb=$('fb');
+    [...$('opts').children].forEach(x=>x.disabled=true);
+    if(o.ok){b.classList.add('ok');score++;addStar(1);fb.className='fb good';
+      fb.textContent=GOOD[Math.random()*GOOD.length|0];}
+    else{b.classList.add('no');fb.className='fb bad';fb.textContent=TRY[Math.random()*TRY.length|0];
+      [...$('opts').children][it.opts.findIndex(x=>x.ok)].classList.add('ok');}
+    $('next').disabled=false;$('next').textContent=(i===items.length-1)?'النّتيجة 🏁':'التّالي ←';
+  }
+  draw();
+}
+
+/* ---- WRITE (ungraded creative, التّمرينان ٥ و ٦) ---- */
+function writeScreen(levelId){
+  show(`
+   <div class="ph"><div class="pic" style="background:linear-gradient(135deg,var(--fil),var(--teal))">✍️</div><div><h2>تحدّي الكتابة</h2></div></div>
+   <p class="lead">جرِّبْ أن تكتُبَ بنفسِك. هذا التّحدّي للإبداع، لا توجدُ إجابةٌ واحدة!</p>
+   <div class="write">
+     <div class="wcard"><h4>قالَ جَدّي…</h4>
+       <span class="pill f">جملة فعليّة</span>
+       <textarea placeholder="اكتُبْ جملةً تبدأُ بِفعل…"></textarea>
+       <div style="height:8px"></div><span class="pill n">جملة اسميّة</span>
+       <textarea placeholder="اكتُبْ جملةً تبدأُ باسم…"></textarea></div>
+     <div class="wcard"><h4>فنَصْرُخُ جَميعًا…</h4>
+       <span class="pill f">جملة فعليّة</span>
+       <textarea placeholder="اكتُبْ جملةً تبدأُ بِفعل…"></textarea>
+       <div style="height:8px"></div><span class="pill n">جملة اسميّة</span>
+       <textarea placeholder="اكتُبْ جملةً تبدأُ باسم…"></textarea></div>
+     <div class="wcard"><div class="pic-emoji">👴📖🧒🧒</div>
+       <h4>تأمّلِ الصّورة: جَدٌّ يقرأُ لأحفادِه</h4>
+       <span class="pill f">عبِّرْ عنها بجملةٍ فعليّة</span>
+       <textarea placeholder="ابدأْ بِفعل…"></textarea>
+       <div style="height:8px"></div><span class="pill n">ثمّ بجملةٍ اسميّة</span>
+       <textarea placeholder="ابدأْ باسم…"></textarea></div>
+   </div>
+   <div class="nav">
+     <button class="btn btn-ghost" onclick="goHome()">🏠 الخريطة</button>
+     <button class="btn btn-primary" onclick="confetti();finishLevel(4)">أنهيتُ كتابتي! 🌟</button>
+   </div>`);
+}
+
+/* ---- FINISH ---- */
+function finishLevel(levelId,score,total){
+  done[levelId]=true;
+  if(score===undefined)return goHome();
+  const perfect=score===total; if(perfect)confetti();
+  const msg=perfect?'علامةٌ كاملة! أنتَ قائدُ المحطّة 🏆'
+        :score>=Math.ceil(total*0.6)?'عملٌ جميل! إلى الأمام 🌟':'بدايةٌ طيّبة، أعِدِ المحاولة 💪';
+  show(`<div class="endcard"><div class="big">${perfect?'🏆':'🌟'}</div><h2>${msg}</h2>
+     <p>نتيجتُك: <b>${score}</b> من <b>${total}</b></p>
+     <p style="margin-top:6px">جمعتَ حتّى الآن <b>${stars}</b> نجمة ⭐</p>
+     <div class="nav"><button class="btn btn-ghost" onclick="openLevel(${levelId})">🔁 إعادة</button>
+       <button class="btn btn-primary" onclick="goHome()">🗺️ الخريطة</button></div></div>`);
+}
+
+renderLevels();
+</script>
+</body>
+</html>

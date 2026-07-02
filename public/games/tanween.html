@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>التَّنوينُ · لُعبة تعليميّة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --fath:#ef5da8;   /* تنوين الفتح */
+    --fath-d:#d63e8c;
+    --damm:#7c5cff;   /* تنوين الضمّ */
+    --damm-d:#5f3fe0;
+    --kasr:#1fb6a8;   /* تنوين الكسر */
+    --kasr-d:#0e9588;
+    --ink:#26223f;
+    --paper:#f7f4ff;
+    --gold:#ffc94d;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Tajawal',sans-serif;color:var(--ink);min-height:100vh;padding:18px;overflow-x:hidden;
+    background:
+      radial-gradient(circle at 15% 8%,#ffd9ec 0,transparent 36%),
+      radial-gradient(circle at 85% 10%,#e0d9ff 0,transparent 38%),
+      radial-gradient(circle at 50% 100%,#cdf3ef 0,transparent 42%),
+      var(--paper);
+  }
+  h1,h2,h3,.display{font-family:'Baloo Bhaijaan 2',cursive}
+  .wrap{max-width:920px;margin:0 auto}
+  header{text-align:center;padding:14px 0 6px}
+  header .crown{font-size:2rem}
+  h1{
+    font-size:clamp(2rem,7vw,3.4rem);line-height:1.1;
+    background:linear-gradient(90deg,var(--fath),var(--damm) 55%,var(--kasr));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    filter:drop-shadow(0 3px 0 rgba(0,0,0,.06));
+  }
+  .subtitle{font-size:1.05rem;color:#7a6f93;margin-top:2px;font-weight:500}
+  .score{display:flex;justify-content:center;align-items:center;gap:8px;background:#fff;border:3px solid var(--gold);
+    border-radius:50px;width:max-content;margin:14px auto 4px;padding:7px 20px;font-weight:800;font-family:'Baloo Bhaijaan 2';box-shadow:0 6px 0 #f0d28a}
+  .score .star{font-size:1.3rem}
+  nav.tabs{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:18px 0}
+  .tab{font-family:'Baloo Bhaijaan 2';font-size:1.05rem;cursor:pointer;border:none;border-radius:16px;padding:12px 20px;
+    background:#fff;color:var(--ink);box-shadow:0 5px 0 #ddd4f2;transition:.15s;font-weight:700}
+  .tab:hover{transform:translateY(-2px)}
+  .tab.active{background:var(--ink);color:#fff;box-shadow:0 5px 0 #14112a}
+  .panel{display:none;animation:fade .35s ease}.panel.show{display:block}
+
+  /* بطاقات الأنواع الثلاثة */
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:8px}
+  .tcard{background:#fff;border-radius:24px;padding:22px;text-align:center;box-shadow:0 10px 24px rgba(80,60,140,.13);
+    border-bottom:7px solid var(--c);position:relative}
+  .tcard.fath{--c:var(--fath)}.tcard.damm{--c:var(--damm)}.tcard.kasr{--c:var(--kasr)}
+  .tcard h3{font-size:1.5rem;color:var(--c)}
+  .mark-word{font-family:'Baloo Bhaijaan 2';font-size:3.2rem;margin:6px 0;color:var(--ink)}
+  .mark-word .m{color:var(--c)}
+  .reads{background:#f4f0ff;border-radius:30px;padding:5px 14px;display:inline-block;font-weight:700;margin-bottom:10px}
+  .tcard.fath .reads{background:#ffe1f0}.tcard.damm .reads{background:#eae3ff}.tcard.kasr .reads{background:#d8f5f1}
+  .ex{color:#6b6388;font-weight:600;font-size:1rem}
+  .speak{margin-top:12px;background:var(--c);color:#fff;border:none;border-radius:14px;padding:8px 16px;
+    font-family:'Baloo Bhaijaan 2';font-size:.95rem;cursor:pointer;box-shadow:0 4px 0 rgba(0,0,0,.12)}
+  .speak:active{transform:translateY(2px)}
+  .note{background:#fff4dd;border:2px dashed var(--gold);border-radius:18px;padding:16px 18px;margin-top:16px;color:#8a6d2c;font-weight:600;text-align:center;line-height:1.9}
+  .note b.aa{color:var(--fath)}
+  .btn{font-family:'Baloo Bhaijaan 2';border:none;border-radius:16px;padding:13px 26px;font-size:1.1rem;cursor:pointer;
+    background:var(--damm);color:#fff;box-shadow:0 6px 0 var(--damm-d);margin-top:14px}
+  .btn:active{transform:translateY(3px);box-shadow:0 3px 0 var(--damm-d)}
+  .btn.alt{background:var(--kasr);box-shadow:0 6px 0 var(--kasr-d)}
+  .center{text-align:center}
+
+  /* ساحة اللعب */
+  .game-head{text-align:center;margin-bottom:12px}
+  .game-head h2{font-size:1.6rem}.game-head p{color:#7a6f93;font-weight:500}
+  .progress-row{display:flex;justify-content:center;gap:6px;margin:6px 0}
+  .dot{width:13px;height:13px;border-radius:50%;background:#ddd4f2}
+  .dot.done{background:var(--gold)}.dot.miss{background:#f2a3a3}
+  .word-stage{display:flex;justify-content:center;min-height:120px;align-items:center}
+  .big-word{font-family:'Baloo Bhaijaan 2';font-size:3rem;background:#fff;border-radius:22px;padding:14px 40px;
+    box-shadow:0 10px 0 #e1d9f5;animation:drop .4s ease}
+  .listen-btn{display:block;margin:0 auto 4px;background:var(--ink);color:#fff;border:none;border-radius:50px;
+    padding:12px 26px;font-family:'Baloo Bhaijaan 2';font-size:1.1rem;cursor:pointer;box-shadow:0 5px 0 #14112a}
+  .listen-btn:active{transform:translateY(2px)}
+  .bins{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+  .bin{border:none;border-radius:20px;padding:18px 6px;cursor:pointer;color:#fff;font-family:'Baloo Bhaijaan 2';
+    font-size:1.15rem;box-shadow:0 7px 0 var(--d);transition:.12s}
+  .bin small{display:block;font-family:'Tajawal';font-weight:600;font-size:1.4rem;margin-top:2px}
+  .bin:hover{transform:translateY(-3px)}.bin:active{transform:translateY(3px);box-shadow:0 4px 0 var(--d)}
+  .bin.fath{background:var(--fath);--d:var(--fath-d)}
+  .bin.damm{background:var(--damm);--d:var(--damm-d)}
+  .bin.kasr{background:var(--kasr);--d:var(--kasr-d)}
+  .bin.flash-ok{animation:okShake .5s}.bin.flash-no{animation:noShake .5s}
+  .feedback{text-align:center;font-family:'Baloo Bhaijaan 2';font-size:1.25rem;min-height:38px;margin-top:14px}
+
+  /* لعبة الألف */
+  .alif-q{text-align:center}
+  .alif-word{font-family:'Baloo Bhaijaan 2';font-size:2.6rem;background:#fff;border-radius:20px;padding:12px 30px;
+    display:inline-block;box-shadow:0 8px 0 #e1d9f5;margin:6px}
+  .opts{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+  .opt{font-family:'Baloo Bhaijaan 2';font-size:1.6rem;background:#fff;border:3px solid #e1d9f5;border-radius:18px;
+    padding:14px 30px;cursor:pointer;box-shadow:0 6px 0 #e1d9f5;transition:.12s}
+  .opt:hover{transform:translateY(-2px);border-color:var(--damm)}
+  .opt.ok{background:var(--kasr);color:#fff;border-color:var(--kasr)}
+  .opt.no{background:#ffd9d9;border-color:#f2a3a3}
+
+  .result{text-align:center;background:#fff;border-radius:26px;padding:30px;box-shadow:0 12px 30px rgba(80,60,140,.16);margin-top:10px}
+  .result .big{font-size:3rem}.result h2{font-size:2rem;margin:6px 0;color:var(--fath)}
+  footer{text-align:center;color:#a99cc4;font-size:.85rem;margin:26px 0 6px;font-weight:500}
+
+  @keyframes drop{0%{transform:translateY(-30px) scale(.8);opacity:0}100%{transform:translateY(0) scale(1);opacity:1}}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes okShake{0%,100%{transform:none}25%{transform:scale(1.06)}}
+  @keyframes noShake{0%,100%{transform:none}20%{transform:translateX(-6px)}60%{transform:translateX(6px)}}
+  @keyframes pop{0%{transform:scale(0)}70%{transform:scale(1.3)}100%{transform:scale(1)}}
+  .confetti{position:fixed;top:-14px;width:11px;height:16px;z-index:60;pointer-events:none;border-radius:2px}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+  @media(max-width:520px){.bins{grid-template-columns:1fr}.big-word{font-size:2.3rem;padding:12px 26px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="crown">✨</div>
+    <h1>التَّنوينُ</h1>
+    <p class="subtitle">نونٌ ساكنةٌ نسمعُها… ولا نكتبُها!</p>
+  </header>
+
+  <div class="score"><span>نُجومي:</span><span id="starCount">0</span><span class="star">⭐</span></div>
+
+  <nav class="tabs">
+    <button class="tab active" data-p="learn">📚 أتعلّم</button>
+    <button class="tab" data-p="ear">👂 أُذُنُ الذّكاء</button>
+    <button class="tab" data-p="alif">✏️ سرُّ الألف</button>
+    <button class="tab" data-p="quiz">🏆 التّحدّي</button>
+  </nav>
+
+  <!-- أتعلّم -->
+  <section class="panel show" id="learn">
+    <div class="cards">
+      <div class="tcard fath">
+        <h3>تنوينُ الفَتْحِ</h3>
+        <div class="mark-word">كِتاب<span class="m">اً</span></div>
+        <span class="reads">يُنطَقُ: كِتابَنْ</span>
+        <p class="ex">قرأتُ كِتاباً مُفيداً.</p>
+        <button class="speak" data-say="كِتابَنْ. وَلَدَنْ. باباً. تنوينُ الفتح.">🔊 استمعْ</button>
+      </div>
+      <div class="tcard damm">
+        <h3>تنوينُ الضَّمِّ</h3>
+        <div class="mark-word">كِتاب<span class="m">ٌ</span></div>
+        <span class="reads">يُنطَقُ: كِتابُنْ</span>
+        <p class="ex">هذا كِتابٌ جميلٌ.</p>
+        <button class="speak" data-say="كِتابُنْ. وَلَدُنْ. بابٌ. تنوينُ الضمّ.">🔊 استمعْ</button>
+      </div>
+      <div class="tcard kasr">
+        <h3>تنوينُ الكَسْرِ</h3>
+        <div class="mark-word">كِتاب<span class="m">ٍ</span></div>
+        <span class="reads">يُنطَقُ: كِتابِنْ</span>
+        <p class="ex">جلستُ في بيتٍ كبيرٍ.</p>
+        <button class="speak" data-say="كِتابِنْ. وَلَدِنْ. بابٍ. تنوينُ الكسر.">🔊 استمعْ</button>
+      </div>
+    </div>
+    <div class="note">
+      🌟 <b>تذكّرْ:</b> التّنوينُ نونٌ ساكنةٌ نَسمَعُها في آخر الاسم، لكنَّنا نضعُ مكانَها حركتَين
+      ( <b class="aa">ـً</b> ـٌ ـٍ ) بدلاً من حرفِ النون.<br>
+      ✏️ في تنوينِ الفتحِ غالباً نزيدُ ألفاً: <b class="aa">كِتاباً</b> — إلّا في حالاتٍ ستكتشفُها في «سرُّ الألف».
+    </div>
+    <div class="center"><button class="btn" onclick="go('ear')">هيّا نلعبْ! 👂</button></div>
+  </section>
+
+  <!-- أذن الذكاء -->
+  <section class="panel" id="ear">
+    <div class="game-head">
+      <h2>أُذُنُ الذّكاء 👂</h2>
+      <p>استمعْ إلى الكلمة، ثمّ اختَرْ نوعَ التّنوين الذي سمعتَه.</p>
+    </div>
+    <div class="progress-row" id="earDots"></div>
+    <button class="listen-btn" id="earPlay">🔊 استمعْ إلى الكلمة</button>
+    <div class="word-stage"><div class="big-word" id="earWord">؟</div></div>
+    <div class="feedback" id="earFb">&nbsp;</div>
+    <div class="bins">
+      <button class="bin fath" data-k="fath">الفَتْح<small>ـــًا</small></button>
+      <button class="bin damm" data-k="damm">الضَّمّ<small>ـــٌ</small></button>
+      <button class="bin kasr" data-k="kasr">الكَسْر<small>ـــٍ</small></button>
+    </div>
+  </section>
+
+  <!-- سر الألف -->
+  <section class="panel" id="alif">
+    <div class="game-head">
+      <h2>سرُّ الألف ✏️</h2>
+      <p>عند تنوينِ الفتح، هل نزيدُ ألفاً أم لا؟ اختَرِ الكتابةَ الصحيحة.</p>
+    </div>
+    <div class="progress-row" id="alifDots"></div>
+    <div class="alif-q">
+      <div style="color:#7a6f93;font-weight:600;margin-bottom:4px">الكلمة:</div>
+      <div class="alif-word" id="alifBase">باب</div>
+      <div class="opts" id="alifOpts"></div>
+      <div class="feedback" id="alifFb">&nbsp;</div>
+      <div class="reason" id="alifReason" style="color:#6b6388;font-weight:600;min-height:24px"></div>
+    </div>
+    <div id="alifEnd" class="center"></div>
+  </section>
+
+  <!-- التحدي -->
+  <section class="panel" id="quiz">
+    <div class="game-head"><h2>تحدّي البطل 🏆</h2><p>اقرأ الكلمة واختَرْ نوعَ تنوينِها.</p></div>
+    <div class="progress-row" id="quizDots"></div>
+    <div class="word-stage"><div class="big-word" id="qWord">…</div></div>
+    <div class="feedback" id="quizFb">&nbsp;</div>
+    <div class="bins">
+      <button class="bin fath" data-k="fath">فَتْح ـً</button>
+      <button class="bin damm" data-k="damm">ضَمّ ـٌ</button>
+      <button class="bin kasr" data-k="kasr">كَسْر ـٍ</button>
+    </div>
+    <div id="quizEnd"></div>
+  </section>
+
+  <footer>التّنوينُ يُنطَقُ نوناً ساكنةً ✦ اضغطْ 🔊 لِتسمعَ الفرقَ بنفسك</footer>
+</div>
+
+<script>
+/* أصوات */
+let AC;
+function tone(f,d,t='sine',v=.2){try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();
+  const o=AC.createOscillator(),g=AC.createGain();o.type=t;o.frequency.value=f;o.connect(g);g.connect(AC.destination);
+  g.gain.setValueAtTime(v,AC.currentTime);g.gain.exponentialRampToValueAtTime(.001,AC.currentTime+d);o.start();o.stop(AC.currentTime+d);}catch(e){}}
+const okSound=()=>{tone(660,.12,'triangle');setTimeout(()=>tone(880,.18,'triangle'),110);};
+const noSound=()=>tone(200,.22,'sawtooth',.15);
+function say(t){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='ar';u.rate=.8;speechSynthesis.speak(u);}catch(e){}}
+
+let stars=0;
+function addStar(n=1){stars+=n;document.getElementById('starCount').textContent=stars;
+  const s=document.querySelector('.score .star');s.style.animation='none';void s.offsetWidth;s.style.animation='pop .4s ease';}
+
+const tabs=[...document.querySelectorAll('.tab')];
+function go(p){
+  tabs.forEach(t=>t.classList.toggle('active',t.dataset.p===p));
+  document.querySelectorAll('.panel').forEach(s=>s.classList.toggle('show',s.id===p));
+  if(p==='ear')startEar();if(p==='alif')startAlif();if(p==='quiz')startQuiz();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+tabs.forEach(t=>t.addEventListener('click',()=>go(t.dataset.p)));
+document.querySelectorAll('.speak').forEach(b=>b.addEventListener('click',()=>say(b.dataset.say)));
+
+const shuffle=a=>a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(p=>p[1]);
+const NAME={fath:'تنوينُ الفتح',damm:'تنوينُ الضمّ',kasr:'تنوينُ الكسر'};
+
+/* بنك الكلمات: نطقُها للقراءة الصوتيّة */
+const WORDS=[
+  {base:'كِتاب',say:'كِتابَنْ',fath:'كِتاباً',damm:'كِتابٌ',kasr:'كِتابٍ'},
+  {base:'وَلَد',say:'وَلَدَنْ',fath:'وَلَداً',damm:'وَلَدٌ',kasr:'وَلَدٍ'},
+  {base:'باب',say:'بابَنْ',fath:'باباً',damm:'بابٌ',kasr:'بابٍ'},
+  {base:'قَلَم',say:'قَلَمَنْ',fath:'قَلَماً',damm:'قَلَمٌ',kasr:'قَلَمٍ'},
+  {base:'بَيت',say:'بَيتَنْ',fath:'بَيتاً',damm:'بَيتٌ',kasr:'بَيتٍ'},
+  {base:'وَرد',say:'وَردَنْ',fath:'وَرداً',damm:'وَردٌ',kasr:'وَردٍ'},
+  {base:'نَجم',say:'نَجمَنْ',fath:'نَجماً',damm:'نَجمٌ',kasr:'نَجمٍ'},
+  {base:'طِفل',say:'طِفلَنْ',fath:'طِفلاً',damm:'طِفلٌ',kasr:'طِفلٍ'}
+];
+
+/* ===== أذن الذكاء ===== */
+let earList=[],earIdx=0,earKey='',earLock=false;
+function startEar(){
+  earList=shuffle(WORDS).slice(0,6);earIdx=0;earLock=false;
+  const d=document.getElementById('earDots');d.innerHTML='';earList.forEach(()=>d.insertAdjacentHTML('beforeend','<span class="dot"></span>'));
+  document.getElementById('earFb').innerHTML='&nbsp;';nextEar();
+}
+function nextEar(){
+  if(earIdx>=earList.length)return finishEar();
+  earKey=['fath','damm','kasr'][Math.floor(Math.random()*3)];
+  const w=earList[earIdx];
+  document.getElementById('earWord').textContent='؟';
+  const el=document.getElementById('earWord');
+  // ننطق الكلمة بالتنوين المختار
+  setTimeout(()=>say(w.say.replace(/َنْ$/,'')+(earKey==='fath'?'َنْ':earKey==='damm'?'ُنْ':'ِنْ')),250);
+}
+document.getElementById('earPlay').addEventListener('click',()=>{
+  const w=earList[earIdx];if(!w)return;
+  say(w.say.replace(/َنْ$/,'')+(earKey==='fath'?'َنْ':earKey==='damm'?'ُنْ':'ِنْ'));
+});
+document.querySelectorAll('#ear .bin').forEach(b=>b.addEventListener('click',()=>{
+  if(earLock||earIdx>=earList.length)return;earLock=true;
+  const fb=document.getElementById('earFb'),dot=document.getElementById('earDots').children[earIdx];
+  const w=earList[earIdx];
+  document.getElementById('earWord').textContent=w[earKey];
+  if(b.dataset.k===earKey){okSound();b.classList.add('flash-ok');dot.classList.add('done');addStar(1);
+    fb.innerHTML='<span style="color:var(--kasr)">✓ أحسنتَ! '+NAME[earKey]+'.</span>';
+  }else{noSound();b.classList.add('flash-no');dot.classList.add('miss');
+    fb.innerHTML='<span style="color:#e0517d">الصحيحُ: '+NAME[earKey]+'.</span>';}
+  earIdx++;
+  setTimeout(()=>{b.classList.remove('flash-ok','flash-no');earLock=false;nextEar();},1300);
+}));
+function finishEar(){document.getElementById('earWord').textContent='🎉';
+  document.getElementById('earFb').innerHTML='<span style="color:var(--kasr)">أذنُك ذكيّة! انتقلْ إلى «سرُّ الألف».</span>';
+  burst();addStar(2);}
+
+/* ===== سر الألف ===== */
+/* قاعدة: تنوين الفتح يزاد معه ألف، إلا: تاء مربوطة، همزة على ألف، ألف مقصورة، أو همزة بعد ألف */
+const ALIF=[
+  {base:'باب',need:true,right:'باباً',wrong:'بابً'},
+  {base:'قَلَم',need:true,right:'قَلَماً',wrong:'قَلَمً'},
+  {base:'شَجَرة',need:false,right:'شَجَرةً',wrong:'شَجَرةاً',why:'تنتهي بتاءٍ مربوطة، فلا نزيدُ ألفاً.'},
+  {base:'كُرة',need:false,right:'كُرةً',wrong:'كُرةاً',why:'تنتهي بتاءٍ مربوطة، فلا نزيدُ ألفاً.'},
+  {base:'بَيت',need:true,right:'بَيتاً',wrong:'بَيتً'},
+  {base:'فَتى',need:false,right:'فَتىً',wrong:'فَتىاً',why:'تنتهي بألفٍ مقصورة، فلا نزيدُ ألفاً.'},
+  {base:'سَماء',need:false,right:'سَماءً',wrong:'سَماءاً',why:'تنتهي بهمزةٍ بعد ألف، فلا نزيدُ ألفاً.'},
+  {base:'وَرد',need:true,right:'وَرداً',wrong:'وَردً'}
+];
+let alifList=[],alifIdx=0,alifLock=false;
+function startAlif(){
+  alifList=shuffle(ALIF).slice(0,6);alifIdx=0;alifLock=false;
+  document.getElementById('alifEnd').innerHTML='';
+  const d=document.getElementById('alifDots');d.innerHTML='';alifList.forEach(()=>d.insertAdjacentHTML('beforeend','<span class="dot"></span>'));
+  showAlif();
+}
+function showAlif(){
+  if(alifIdx>=alifList.length)return endAlif();
+  const q=alifList[alifIdx];alifLock=false;
+  document.getElementById('alifBase').textContent=q.base;
+  document.getElementById('alifFb').innerHTML='&nbsp;';
+  document.getElementById('alifReason').textContent='';
+  const opts=shuffle([{t:q.right,ok:true},{t:q.wrong,ok:false}]);
+  const box=document.getElementById('alifOpts');box.innerHTML='';
+  opts.forEach(o=>{
+    const b=document.createElement('button');b.className='opt';b.textContent=o.t;
+    b.onclick=()=>{
+      if(alifLock)return;alifLock=true;
+      const dot=document.getElementById('alifDots').children[alifIdx];
+      if(o.ok){okSound();b.classList.add('ok');dot.classList.add('done');addStar(1);
+        document.getElementById('alifFb').innerHTML='<span style="color:var(--kasr)">✓ كتابةٌ صحيحة!</span>';
+        document.getElementById('alifReason').textContent=q.need?'اسمٌ عاديّ، فنزيدُ الألفَ مع تنوين الفتح.':q.why;
+      }else{noSound();b.classList.add('no');dot.classList.add('miss');
+        document.getElementById('alifFb').innerHTML='<span style="color:#e0517d">ليست الكتابة الصحيحة.</span>';
+        document.getElementById('alifReason').textContent='الصوابُ: '+q.right+(q.why?' — '+q.why:'');}
+      alifIdx++;setTimeout(showAlif,1700);
+    };
+    box.appendChild(b);
+  });
+}
+function endAlif(){
+  document.getElementById('alifOpts').innerHTML='';
+  document.getElementById('alifBase').textContent='🏁';
+  document.getElementById('alifFb').innerHTML='&nbsp;';document.getElementById('alifReason').textContent='';
+  burst();addStar(2);
+  document.getElementById('alifEnd').innerHTML='<div class="result"><div class="big">⭐</div><h2>عرفتَ سرَّ الألف!</h2>'+
+    '<p style="color:#7a6f93;font-weight:600">نزيدُ الألفَ غالباً، ونتركُها مع: التاء المربوطة، والألف المقصورة، والهمزة بعد ألف.</p>'+
+    '<button class="btn" onclick="startAlif()">إعادة 🔁</button> <button class="btn alt" onclick="go(\'quiz\')">إلى التّحدّي 🏆</button></div>';
+}
+
+/* ===== التحدّي ===== */
+let quiz=[],qIdx=0,qScore=0,qLock=false;
+function startQuiz(){
+  quiz=[];const pool=shuffle(WORDS);
+  for(let i=0;i<10;i++){const w=pool[i%pool.length];const k=['fath','damm','kasr'][Math.floor(Math.random()*3)];quiz.push({w:w[k],k});}
+  qIdx=0;qScore=0;qLock=false;document.getElementById('quizEnd').innerHTML='';document.getElementById('quizFb').innerHTML='&nbsp;';
+  document.querySelectorAll('#quiz .bin').forEach(b=>b.style.display='');
+  const d=document.getElementById('quizDots');d.innerHTML='';quiz.forEach(()=>d.insertAdjacentHTML('beforeend','<span class="dot"></span>'));
+  showQ();
+}
+function showQ(){if(qIdx>=quiz.length)return endQuiz();
+  const el=document.getElementById('qWord');el.style.animation='none';void el.offsetWidth;el.style.animation='drop .4s ease';el.textContent=quiz[qIdx].w;}
+document.querySelectorAll('#quiz .bin').forEach(b=>b.addEventListener('click',()=>{
+  if(qLock||qIdx>=quiz.length)return;qLock=true;
+  const correct=quiz[qIdx].k,dot=document.getElementById('quizDots').children[qIdx],fb=document.getElementById('quizFb');
+  if(b.dataset.k===correct){okSound();qScore++;dot.classList.add('done');addStar(1);fb.innerHTML='<span style="color:var(--kasr)">✓ صحيح!</span>';}
+  else{noSound();dot.classList.add('miss');fb.innerHTML='<span style="color:#e0517d">الصحيح: '+NAME[correct]+'</span>';}
+  qIdx++;setTimeout(()=>{qLock=false;showQ();},950);
+}));
+function endQuiz(){
+  document.querySelectorAll('#quiz .bin').forEach(b=>b.style.display='none');
+  document.getElementById('qWord').textContent='🏁';document.getElementById('quizFb').innerHTML='&nbsp;';
+  let msg=qScore>=9?'بطلُ التّنوين! 🥇':qScore>=6?'عملٌ رائع! 🌟':'أعِدِ المحاولةَ وستتحسّن! 💪';
+  if(qScore>=9)burst();
+  document.getElementById('quizEnd').innerHTML='<div class="result"><div class="big">'+(qScore>=9?'🏆':qScore>=6?'🎉':'🙂')+'</div>'+
+    '<h2>نتيجتُك: '+qScore+' / '+quiz.length+'</h2><p style="color:#7a6f93;font-weight:600">'+msg+'</p>'+
+    '<button class="btn" onclick="startQuiz()">إعادة 🔁</button> <button class="btn alt" onclick="go(\'learn\')">أراجِعُ 📚</button></div>';
+}
+
+function burst(){const colors=['#ef5da8','#7c5cff','#1fb6a8','#ffc94d','#ff9fb2'];
+  for(let i=0;i<70;i++){const c=document.createElement('div');c.className='confetti';c.style.left=Math.random()*100+'vw';
+    c.style.background=colors[i%colors.length];c.style.transform='rotate('+Math.random()*360+'deg)';document.body.appendChild(c);
+    const dur=1600+Math.random()*1400;c.animate([{top:'-14px',opacity:1},{top:'100vh',opacity:.9}],{duration:dur,easing:'cubic-bezier(.3,.7,.5,1)'});
+    setTimeout(()=>c.remove(),dur);}}
+</script>
+</body>
+</html>

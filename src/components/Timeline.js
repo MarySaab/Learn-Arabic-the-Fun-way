@@ -5,6 +5,7 @@ import Link from "next/link";
 import Bilingual from "./Bilingual";
 import { journeyStages, stageLessons } from "@/lib/data/journey";
 import { lessons } from "@/lib/data/lessons";
+import { toArabicDigits } from "@/lib/format";
 import styles from "./Timeline.module.css";
 
 /*
@@ -54,7 +55,7 @@ export default function Timeline({ highlightStageId = null }) {
               >
                 <span className={styles.node}>
                   <span className={styles.icon} aria-hidden="true">{stage.icon}</span>
-                  <span className={styles.num}>{index + 1}</span>
+                  <span className={styles.num}>{toArabicDigits(index + 1)}</span>
                 </span>
 
                 <span className={styles.card}>

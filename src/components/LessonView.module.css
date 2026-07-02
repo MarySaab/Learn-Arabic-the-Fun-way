@@ -30,12 +30,21 @@
   gap: 8px;
 }
 .example {
+  font-family: var(--font-arabic);
   background: var(--parchment-deep);
   border: 1px solid var(--parchment-line);
   border-radius: 999px;
   padding: 6px 14px;
   font-weight: 700;
   font-size: 0.95rem;
+  color: var(--ink);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, transform 0.12s ease;
+}
+.example:hover {
+  border-color: var(--teal);
+  background: var(--gold-soft);
+  transform: translateY(-2px);
 }
 
 /* ---- Quiz ---- */

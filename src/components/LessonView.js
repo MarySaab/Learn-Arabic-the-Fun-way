@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import Celebration from "@/lib/classes/Celebration";
 import ProgressTracker from "@/lib/classes/ProgressTracker";
+import Speaker from "@/lib/classes/Speaker";
 import { toArabicDigits } from "@/lib/format";
 import styles from "./LessonView.module.css";
 
@@ -17,6 +18,7 @@ export default function LessonView({ content, slug }) {
   const quiz = useMemo(() => content.quiz || [], [content]);
   const celebration = useMemo(() => new Celebration(), []);
   const tracker = useMemo(() => new ProgressTracker(), []);
+  const speaker = useMemo(() => new Speaker(), []);
 
   const [index, setIndex] = useState(0);
   const [picked, setPicked] = useState(null); // chosen option index (locks the question)
@@ -70,7 +72,16 @@ export default function LessonView({ content, slug }) {
             {card.examples?.length > 0 && (
               <ul className={styles.examples}>
                 {card.examples.map((ex, k) => (
-                  <li key={k} className={styles.example}>{ex}</li>
+                  <li key={k}>
+                    <button
+                      type="button"
+                      className={styles.example}
+                      onClick={() => speaker.speak(ex)}
+                      title="اضغط لتسمع النطق"
+                    >
+                      🔊 {ex}
+                    </button>
+                  </li>
                 ))}
               </ul>
             )}

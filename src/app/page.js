@@ -2,7 +2,7 @@ import Link from "next/link";
 import Bilingual from "@/components/Bilingual";
 import Avatar from "@/components/Avatar";
 import Timeline from "@/components/Timeline";
-import WordOfDay from "@/components/WordOfDay";
+import QuoteOfDay from "@/components/QuoteOfDay";
 import ScrollRevealClient from "@/components/ScrollRevealClient";
 import { stageIdForLevel } from "@/lib/data/journey";
 import styles from "./page.module.css";
@@ -71,9 +71,9 @@ export default function HomePage({ searchParams }) {
         </div>
       </section>
 
-      {/* ---------- WORD OF THE DAY ---------- */}
+      {/* ---------- QUOTE OF THE DAY (API Ninjas) ---------- */}
       <section className="container" data-reveal>
-        <WordOfDay />
+        <QuoteOfDay />
       </section>
 
       {/* ---------- TESTIMONIALS ---------- */}

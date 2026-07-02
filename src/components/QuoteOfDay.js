@@ -1,41 +1,40 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import WordClient from "@/lib/classes/WordClient";
+import ApiClient from "@/lib/classes/ApiClient";
 import Bilingual from "./Bilingual";
-import styles from "./WordOfDay.module.css";
+import styles from "./QuoteOfDay.module.css";
 
 /*
-  WordOfDay — the "كلمة اليوم" card. It uses the WordClient class to fetch a
-  word from our own server route and demonstrates the rubric's required
-  loading / error / empty states:
+  QuoteOfDay — the "اقتباس اليوم / Quote of the Day" card. It uses the ApiClient
+  class to fetch a quote from our own server route (which calls API Ninjas), and
+  demonstrates the rubric's required states:
     - loading → spinner
-    - error   → message + "retry" button
+    - error   → message + retry button
     - empty   → "لا توجد نتائج"
-    - ready   → the word, its translation, and an example sentence
+    - ready   → the quote + author
 */
-const client = new WordClient();
+const client = new ApiClient();
 
-export default function WordOfDay() {
-  // status: "loading" | "error" | "empty" | "ready"
-  const [status, setStatus] = useState("loading");
-  const [word, setWord] = useState(null);
+export default function QuoteOfDay() {
+  const [status, setStatus] = useState("loading"); // loading | error | empty | ready
+  const [quote, setQuote] = useState(null);
 
   const load = useCallback((signal) => {
     setStatus("loading");
     client
-      .fetchWord({ signal })
+      .fetchQuote({ signal })
       .then((data) => {
-        if (!data || !data.word) {
+        if (!data || !data.quote) {
+          setQuote(null);
           setStatus("empty");
-          setWord(null);
         } else {
-          setWord(data);
+          setQuote(data);
           setStatus("ready");
         }
       })
       .catch((err) => {
-        if (err.name === "AbortError") return; // component unmounted; ignore
+        if (err.name === "AbortError") return;
         setStatus("error");
       });
   }, []);
@@ -49,7 +48,7 @@ export default function WordOfDay() {
   return (
     <div className={styles.card} aria-live="polite">
       <p className={styles.label}>
-        <Bilingual ar="كلمة اليوم" en="Word of the Day" />
+        <Bilingual ar="اقتباس اليوم" en="Quote of the Day" />
       </p>
 
       {status === "loading" && (
@@ -73,14 +72,11 @@ export default function WordOfDay() {
         </div>
       )}
 
-      {status === "ready" && word && (
-        <div>
-          <p className={styles.word}>{word.word}</p>
-          {word.translation && (
-            <p className={styles.translation}>{word.translation}</p>
-          )}
-          {word.example && <p className={styles.example}>{word.example}</p>}
-        </div>
+      {status === "ready" && quote && (
+        <figure className={styles.quoteFig}>
+          <blockquote className={styles.quote}>“{quote.quote}”</blockquote>
+          <figcaption className={styles.author}>— {quote.author}</figcaption>
+        </figure>
       )}
     </div>
   );

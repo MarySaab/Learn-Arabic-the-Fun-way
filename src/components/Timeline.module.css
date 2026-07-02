@@ -2,6 +2,7 @@
    Timeline — the Learning Journey (custom UI requirement).
    Desktop: horizontal Flexbox row of stages, connected by one track line,
    flowing right → left in RTL. Mobile: vertical "road" down the start side.
+   Stages are clickable and open a lessons panel below the track.
    ========================================================================= */
 
 .track {
@@ -13,8 +14,7 @@
   position: relative;
 }
 
-/* The line linking the stages, sitting behind the round nodes. It passes
-   through the vertical centre of the node row (top == node radius). */
+/* The line linking the stages, sitting behind the round nodes. */
 .track::before {
   content: "";
   position: absolute;
@@ -36,10 +36,22 @@
   z-index: 1;
   flex: 1 1 0;
   display: flex;
+}
+
+/* The whole stage (node + card) is one button. */
+.stageBtn {
+  flex: 1;
+  display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   gap: 12px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: var(--font-arabic);
+  color: var(--ink);
 }
 
 /* --- Node (the round marker) --- */
@@ -54,6 +66,10 @@
   border: 3px solid var(--parchment-line);
   box-shadow: var(--shadow-soft);
   transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.stageBtn:hover .node {
+  transform: translateY(-3px);
+  border-color: var(--teal);
 }
 .icon { font-size: 1.6rem; line-height: 1; }
 .num {
@@ -73,20 +89,42 @@
 
 /* --- Card (label + description under the node) --- */
 .card {
+  display: block;
   position: relative;
   width: 100%;
   background: var(--parchment);
   border: 1px solid var(--parchment-line);
   border-radius: var(--radius-sm);
   padding: 14px 12px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
-.stageTitle { font-size: 1.02rem; margin: 0 0 4px; }
+.stageBtn:hover .card { border-color: var(--teal); }
+.stageTitle {
+  display: block;
+  font-size: 1.02rem;
+  font-weight: 800;
+  margin: 0 0 4px;
+}
 .stageDesc {
+  display: block;
   margin: 0;
   font-size: 0.82rem;
   line-height: 1.5;
   color: var(--teal-deep);
   opacity: 0.85;
+}
+.hint {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--teal);
+}
+
+/* --- Open (clicked) stage --- */
+.open .card {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 2px rgba(20, 106, 99, 0.18);
 }
 
 /* --- "You are here" active stage: glowing gold --- */
@@ -110,6 +148,48 @@
   margin-bottom: 6px;
 }
 
+/* --- Lessons panel for the open stage --- */
+.panel {
+  margin-top: 22px;
+  background: var(--parchment);
+  border: 1px solid var(--parchment-line);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  box-shadow: var(--shadow-soft);
+  animation: lwm-panel-in 0.25s ease;
+}
+@keyframes lwm-panel-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: none; }
+}
+.panelTitle { margin: 0 0 12px; font-size: 1.1rem; }
+.panelList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.panelLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--parchment-deep);
+  border: 1px solid var(--parchment-line);
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-weight: 700;
+  color: var(--ink);
+  transition: border-color 0.15s ease, transform 0.12s ease;
+}
+.panelLink:hover {
+  border-color: var(--gold);
+  transform: translateY(-2px);
+  color: var(--teal);
+}
+.panelEmpty { margin: 0; color: var(--teal-deep); font-weight: 600; }
+
 /* ========================= Mobile: vertical road ========================= */
 @media (max-width: 760px) {
   .track {
@@ -130,11 +210,10 @@
       var(--parchment-line)
     );
   }
-  .stage {
+  .stageBtn {
     flex-direction: row;
     align-items: flex-start;
     text-align: start;
-    gap: 16px;
   }
   .node { flex: 0 0 auto; }
   .card { flex: 1 1 auto; }

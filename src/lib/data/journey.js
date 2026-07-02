@@ -17,6 +17,19 @@ export const journeyStages = [
   { id: "mastery",          icon: "🌟",  ar: "الإتقان",            en: "Mastery",          desc: "التعبير بثقة في مواضيع متنوّعة." },
 ];
 
+// Which lessons belong to each journey stage — powers the interactive
+// timeline: clicking a stage shows its lessons. Slugs match lessons.js.
+export const stageLessons = {
+  letters:            ["arabic-alphabet", "sun-moon-letters", "similar-letters"],
+  words:              ["greetings", "numbers-1-10", "family-members"],
+  sentences:          ["nominal-verbal", "verb-tenses", "prepositions"],
+  "basic-grammar":    ["parts-of-speech", "word-types", "masculine-feminine", "singular-dual-plural"],
+  writing:            ["tanween", "taa-marbuta"],
+  reading:            ["reading-comprehension"],
+  "advanced-grammar": ["irab-cases", "subject-object"],
+  mastery:            [], // the crown: combines everything — conversation & free reading
+};
+
 // A placement level (from the test) → the stage where that learner "is".
 // Kept here so Step 4 can reuse it when it highlights the timeline.
 export const levelToStageId = {

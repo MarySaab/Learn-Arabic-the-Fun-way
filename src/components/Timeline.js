@@ -1,5 +1,10 @@
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
 import Bilingual from "./Bilingual";
-import { journeyStages } from "@/lib/data/journey";
+import { journeyStages, stageLessons } from "@/lib/data/journey";
+import { lessons } from "@/lib/data/lessons";
 import styles from "./Timeline.module.css";
 
 /*
@@ -10,36 +15,88 @@ import styles from "./Timeline.module.css";
     - Mobile: a vertical "road" with the line running down the start side.
 
   Pass `highlightStageId` to mark one stage as "أنت هنا (you are here)" with a
-  glowing gold border. Step 4 (the placement test) passes the learner's result
-  here so the timeline shows exactly where they land.
+  glowing gold border — the placement test passes the learner's result here.
+
+  INTERACTIVE: clicking a stage opens a panel underneath showing the lessons
+  that belong to that stage, each linking to its lesson page — so the timeline
+  is a real navigation hub, not decoration.
 */
 export default function Timeline({ highlightStageId = null }) {
-  return (
-    <ol className={styles.track}>
-      {journeyStages.map((stage, index) => {
-        const isActive = stage.id === highlightStageId;
-        return (
-          <li
-            key={stage.id}
-            className={`${styles.stage} ${isActive ? styles.active : ""}`}
-            data-reveal
-            aria-current={isActive ? "step" : undefined}
-          >
-            <div className={styles.node}>
-              <span className={styles.icon} aria-hidden="true">{stage.icon}</span>
-              <span className={styles.num}>{index + 1}</span>
-            </div>
+  const [openStageId, setOpenStageId] = useState(null);
 
-            <div className={styles.card}>
-              {isActive && <span className={styles.youAreHere}>أنت هنا</span>}
-              <h3 className={styles.stageTitle}>
-                <Bilingual ar={stage.ar} en={stage.en} />
-              </h3>
-              <p className={styles.stageDesc}>{stage.desc}</p>
-            </div>
-          </li>
-        );
-      })}
-    </ol>
+  const openStage = journeyStages.find((s) => s.id === openStageId);
+  const openLessons = openStageId
+    ? (stageLessons[openStageId] || [])
+        .map((slug) => lessons.find((l) => l.slug === slug))
+        .filter(Boolean)
+    : [];
+
+  const toggle = (id) => setOpenStageId((cur) => (cur === id ? null : id));
+
+  return (
+    <div>
+      <ol className={styles.track}>
+        {journeyStages.map((stage, index) => {
+          const isActive = stage.id === highlightStageId;
+          const isOpen = stage.id === openStageId;
+          return (
+            <li
+              key={stage.id}
+              className={`${styles.stage} ${isActive ? styles.active : ""} ${isOpen ? styles.open : ""}`}
+              data-reveal
+              aria-current={isActive ? "step" : undefined}
+            >
+              <button
+                type="button"
+                className={styles.stageBtn}
+                onClick={() => toggle(stage.id)}
+                aria-expanded={isOpen}
+              >
+                <span className={styles.node}>
+                  <span className={styles.icon} aria-hidden="true">{stage.icon}</span>
+                  <span className={styles.num}>{index + 1}</span>
+                </span>
+
+                <span className={styles.card}>
+                  {isActive && <span className={styles.youAreHere}>أنت هنا</span>}
+                  <span className={styles.stageTitle}>
+                    <Bilingual ar={stage.ar} en={stage.en} />
+                  </span>
+                  <span className={styles.stageDesc}>{stage.desc}</span>
+                  <span className={styles.hint} aria-hidden="true">
+                    {isOpen ? "أغلق ▲" : "اعرض الدروس ▼"}
+                  </span>
+                </span>
+              </button>
+            </li>
+          );
+        })}
+      </ol>
+
+      {/* the open stage's lessons */}
+      {openStage && (
+        <div className={styles.panel}>
+          <h3 className={styles.panelTitle}>
+            {openStage.icon} دروس مرحلة «{openStage.ar}»
+          </h3>
+          {openLessons.length > 0 ? (
+            <ul className={styles.panelList}>
+              {openLessons.map((lesson) => (
+                <li key={lesson.slug}>
+                  <Link href={`/lessons/${lesson.slug}`} className={styles.panelLink}>
+                    <span aria-hidden="true">{lesson.icon}</span>
+                    <Bilingual ar={lesson.title_ar} en={lesson.title_en} />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className={styles.panelEmpty}>
+              👑 مرحلة الإتقان تجمع كلّ ما سبق: محادثة، وقراءة حرّة، وتعبير — مع مريانا مباشرةً.
+            </p>
+          )}
+        </div>
+      )}
+    </div>
   );
 }

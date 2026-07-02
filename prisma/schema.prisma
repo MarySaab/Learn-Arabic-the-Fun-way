@@ -1,0 +1,67 @@
+// Prisma schema for "Learn with Mariana"
+// Data models kept intentionally small and understandable:
+//   Student          - a registered learner (login added in a later step)
+//   PlacementResult  - the outcome of a placement test
+//   Booking          - a session request from the booking page
+//   LessonProgress   - which lessons a student has completed (future use)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Student {
+  id           String            @id @default(cuid())
+  name         String
+  email        String            @unique
+  passwordHash String?
+  createdAt    DateTime          @default(now())
+
+  results      PlacementResult[]
+  bookings     Booking[]
+  progress     LessonProgress[]
+}
+
+model PlacementResult {
+  id             String   @id @default(cuid())
+  level          String // "beginner" | "elementary" | "intermediate" | "advanced"
+  score          Int
+  readingGrade   String? // "A" | "B" | "C" ...
+  writingGrade   String?
+  listeningGrade String?
+  createdAt      DateTime @default(now())
+
+  student   Student? @relation(fields: [studentId], references: [id])
+  studentId String?
+}
+
+model Booking {
+  id            String   @id @default(cuid())
+  name          String
+  email         String
+  phone         String
+  level         String?
+  preferredTime String?
+  message       String?
+  createdAt     DateTime @default(now())
+
+  student   Student? @relation(fields: [studentId], references: [id])
+  studentId String?
+}
+
+model LessonProgress {
+  id         String   @id @default(cuid())
+  lessonSlug String
+  completed  Boolean  @default(false)
+  createdAt  DateTime @default(now())
+
+  student   Student @relation(fields: [studentId], references: [id])
+  studentId String
+
+  @@unique([studentId, lessonSlug])
+}

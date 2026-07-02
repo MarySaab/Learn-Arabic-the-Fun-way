@@ -1,0 +1,57 @@
+.footer {
+  background: var(--teal-deep);
+  color: var(--parchment);
+  margin-top: 40px;
+}
+
+.inner {
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding: 56px 20px 32px;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 40px;
+}
+
+.brand {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--gold-bright);
+  margin-bottom: 10px;
+}
+.tagline { color: rgba(245, 238, 221, 0.82); max-width: 34ch; }
+
+.heading {
+  color: var(--gold-soft);
+  font-size: 1.05rem;
+  margin-bottom: 14px;
+}
+
+.list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.list a { color: rgba(245, 238, 221, 0.9); }
+.list a:hover { color: var(--gold-bright); }
+
+.social { display: flex; gap: 14px; margin-top: 16px; }
+.social a {
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(239, 220, 160, 0.4);
+  color: var(--gold-soft);
+  font-size: 1.1rem;
+}
+.social a:hover { background: rgba(239, 220, 160, 0.12); color: var(--gold-bright); }
+
+.bottom {
+  border-top: 1px solid rgba(239, 220, 160, 0.18);
+  text-align: center;
+  padding: 18px 20px;
+  color: rgba(245, 238, 221, 0.7);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 780px) {
+  .inner { grid-template-columns: 1fr; gap: 28px; padding-top: 40px; }
+}

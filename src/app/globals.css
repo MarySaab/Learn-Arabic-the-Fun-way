@@ -1,0 +1,152 @@
+/* =========================================================================
+   Learn with Mariana — global design system
+   Aesthetic: "illuminated manuscript" — aged parchment surface, teal ink,
+   burnished gold accents. Arabic-first, RTL.
+   Only two text colours are used for body copy: --ink (primary) and
+   --teal (secondary / links), as required.
+   ========================================================================= */
+
+:root {
+  /* ---- Colour ---- */
+  --parchment: #f5eedd;        /* page surface: warm aged paper            */
+  --parchment-deep: #ece0c6;   /* raised panels / alternating sections     */
+  --parchment-line: #ddcca6;   /* hairline rules on parchment              */
+
+  --ink: #143029;              /* primary text: deep teal-black ink        */
+  --teal: #146a63;             /* secondary text, links, primary brand     */
+  --teal-bright: #1c8c82;      /* hover / active teal                      */
+  --teal-deep: #0c3d38;        /* dark teal for footer / contrast blocks   */
+
+  --gold: #b8901f;             /* burnished manuscript gold                */
+  --gold-bright: #d8ad3a;      /* highlight gold                           */
+  --gold-soft: #efdca0;        /* soft gold wash for backgrounds           */
+
+  --success: #2f7d4f;
+  --error: #b23a3a;
+
+  /* ---- Type ---- */
+  --font-arabic: var(--font-tajawal), "Segoe UI", Tahoma, sans-serif;
+  --font-display: var(--font-fraunces), Georgia, serif; /* Latin accents   */
+
+  /* ---- Spacing / shape ---- */
+  --radius: 14px;
+  --radius-sm: 8px;
+  --shadow: 0 10px 30px -12px rgba(12, 61, 56, 0.35);
+  --shadow-soft: 0 6px 18px -10px rgba(12, 61, 56, 0.3);
+  --maxw: 1120px;
+}
+
+* { box-sizing: border-box; }
+
+html, body { padding: 0; margin: 0; }
+
+body {
+  background-color: var(--parchment);
+  /* faint parchment texture built from layered radial gradients (no image) */
+  background-image:
+    radial-gradient(circle at 20% 15%, rgba(184, 144, 31, 0.05), transparent 55%),
+    radial-gradient(circle at 85% 80%, rgba(20, 106, 99, 0.05), transparent 55%);
+  color: var(--ink);
+  font-family: var(--font-arabic);
+  font-size: 1.05rem;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Headings lean on Tajawal's heavier weights for an Arabic display feel. */
+h1, h2, h3, h4 {
+  font-family: var(--font-arabic);
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--ink);
+  margin: 0 0 0.5em;
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3.25rem); }
+h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); }
+h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
+
+p { margin: 0 0 1em; }
+
+a {
+  color: var(--teal);
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+a:hover { color: var(--teal-bright); }
+
+/* The English gloss shown in parentheses (Fraunces italic, quieter). */
+.en-gloss {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--teal);
+  font-size: 0.86em;
+  white-space: nowrap;
+}
+
+/* Layout helper */
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+section { padding-block: clamp(48px, 8vw, 96px); }
+
+/* Buttons ---------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-arabic);
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 12px 26px;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.btn:active { transform: translateY(1px); }
+
+.btn-primary {
+  background: var(--teal);
+  color: var(--parchment);
+  box-shadow: var(--shadow-soft);
+}
+.btn-primary:hover { background: var(--teal-bright); color: var(--parchment); }
+
+.btn-gold {
+  background: var(--gold);
+  color: var(--teal-deep);
+  box-shadow: var(--shadow-soft);
+}
+.btn-gold:hover { background: var(--gold-bright); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--teal);
+  border-color: var(--teal);
+}
+.btn-ghost:hover { background: rgba(20, 106, 99, 0.08); }
+
+/* Visible keyboard focus everywhere (accessibility floor). */
+:focus-visible {
+  outline: 3px solid var(--gold-bright);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Respect users who prefer less motion. */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html { scroll-behavior: smooth; }

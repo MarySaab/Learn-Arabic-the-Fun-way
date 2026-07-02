@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>التّحدّث · إسأل غوغِل</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@400;500;700;800&family=Lalezar&display=swap" rel="stylesheet">
+<style>
+:root{
+  --screen:#1f2750; --screen-2:#2c3768; --paper:#fbeae2; --paper-2:#fff6f1;
+  --ink:#2e2620; --muted:#8a6e5f; --line:#f0d6c8; --glow:#ffd874;
+  --accent:#d65a36; --accent-2:#ee8a5e; --accent-soft:#fbe0d4;
+  --good:#2f7d62; --warn:#c4502e;
+  --shadow:0 14px 30px -18px rgba(120,50,20,.45);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Tajawal",system-ui,sans-serif;
+  background:radial-gradient(1200px 500px at 80% -8%, #fff3ec 0%, transparent 60%),var(--paper);
+  color:var(--ink);line-height:1.9;-webkit-font-smoothing:antialiased}
+.wrap{max-width:920px;margin:0 auto;padding:0 18px 70px}
+.topbar{position:sticky;top:0;z-index:30;background:rgba(31,39,80,.97);backdrop-filter:blur(6px);color:#eef1ff;box-shadow:0 6px 20px -10px rgba(0,0,0,.6)}
+.topbar .row{max-width:920px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 18px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-family:"Lalezar",cursive;font-size:1.3rem}
+.brand .dot{width:14px;height:14px;border-radius:50%;background:var(--glow);box-shadow:0 0 10px var(--glow)}
+.nav{display:flex;gap:6px;flex-wrap:wrap}
+.nav a{color:#cdd3f2;text-decoration:none;font-weight:700;font-size:.92rem;padding:7px 13px;border-radius:999px;display:flex;align-items:center;gap:6px;border:1px solid transparent;transition:.18s}
+.nav a:hover{background:rgba(255,255,255,.08)}
+.nav a.active{background:var(--accent);color:#fff;border-color:var(--accent-2)}
+
+.hero{margin:26px 0 8px;border-radius:22px;overflow:hidden;position:relative;
+  background:radial-gradient(120% 140% at 85% 10%, #2e3a72 0%, var(--screen) 60%);color:#eef1ff;box-shadow:var(--shadow);border:1px solid #353f78}
+.hero .inner{position:relative;padding:34px 30px}
+.eyebrow{font-weight:700;letter-spacing:3px;font-size:.8rem;color:var(--glow);display:flex;align-items:center;gap:8px}
+.hero h1{font-family:"Lalezar",cursive;font-weight:400;margin:.25em 0 .1em;font-size:clamp(2.1rem,7vw,3.3rem);line-height:1.1;text-shadow:0 2px 8px rgba(0,0,0,.4)}
+.hero p.sub{margin:.2em 0 0;color:#c3c9ec;max-width:50ch}
+.skill-chip{display:inline-flex;align-items:center;gap:8px;margin-bottom:6px;background:rgba(238,138,94,.18);border:1px solid rgba(238,138,94,.5);color:#f6c3ab;padding:5px 14px;border-radius:999px;font-weight:700;font-size:.9rem}
+
+section{margin-top:34px}
+.sec-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.sec-head .num{font-family:"Lalezar",cursive;color:var(--accent);background:var(--accent-soft);width:42px;height:42px;border-radius:14px;display:grid;place-items:center;font-size:1.3rem;flex:none;border:1.5px solid var(--accent-2)}
+.sec-head h2{margin:0;font-size:1.5rem;font-weight:800}
+.sec-head .hint{margin:0;color:var(--muted);font-size:.92rem}
+
+.dialogue{background:var(--paper-2);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:var(--shadow)}
+.bubble{display:flex;gap:12px;margin-bottom:14px;align-items:flex-start}
+.bubble .who{flex:none;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font-size:1.4rem;color:#fff}
+.bubble.g .who{background:#7c5cbf}.bubble.f .who{background:var(--accent)}
+.bubble .say{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 16px;flex:1}
+.bubble .say .role{font-size:.82rem;font-weight:800;margin-bottom:3px}
+.bubble.g .say .role{color:#7c5cbf}.bubble.f .say .role{color:var(--accent)}
+.bubble .say .line{font-family:"Amiri",serif;font-size:1.32rem;line-height:1.9}
+.bubble .say .mini{margin-top:8px;display:flex;gap:8px;flex-wrap:wrap}
+.mini button{cursor:pointer;border:0;font-family:inherit;font-weight:700;border-radius:10px;padding:7px 13px;font-size:.9rem;display:inline-flex;gap:6px;align-items:center}
+.mini .m{background:var(--screen);color:#fff}.mini .r{background:#fff;color:var(--accent);border:2px solid var(--accent-2)}
+.mini .r.on{background:var(--accent);color:#fff;animation:pulse 1.2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(214,90,54,.5)}50%{box-shadow:0 0 0 8px rgba(214,90,54,0)}}
+.mini button:disabled{opacity:.45;cursor:not-allowed}
+.bubble audio{display:block;margin-top:10px;width:100%}
+.note{margin-top:6px;background:#fff8e8;border:1px solid #f1dca0;border-radius:12px;padding:10px 14px;color:#7a5a16;font-size:.92rem}
+
+.read{display:flex;flex-direction:column;gap:14px}
+.rc{background:var(--paper-2);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:var(--shadow)}
+.rc .line{font-family:"Amiri",serif;font-size:1.4rem;line-height:2;margin-bottom:12px}
+.rc .tools{display:flex;gap:10px;flex-wrap:wrap}
+.btn{cursor:pointer;border:0;font-family:inherit;font-weight:700;border-radius:12px;padding:9px 16px;display:inline-flex;align-items:center;gap:7px;transition:.15s;box-shadow:var(--shadow)}
+.btn.model{background:var(--screen);color:#fff}.btn.model:hover{background:var(--screen-2)}
+.btn.rec{background:#fff;color:var(--accent);border:2px solid var(--accent-2)}
+.btn.rec.on{background:var(--accent);color:#fff;animation:pulse 1.2s infinite}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.rc audio{margin-top:12px;width:100%}
+
+.prompts{display:flex;flex-direction:column;gap:12px}
+.pr{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 18px;box-shadow:var(--shadow);display:flex;gap:14px;align-items:flex-start}
+.pr .ic{flex:none;width:40px;height:40px;border-radius:12px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-size:1.3rem}
+.pr .body b{display:block;font-size:1.1rem;margin-bottom:3px}.pr .body span{color:var(--muted)}
+
+footer{margin-top:46px;text-align:center;color:var(--muted);font-size:.9rem;border-top:1px dashed var(--line);padding-top:20px}
+.next{display:inline-flex;align-items:center;gap:8px;margin-top:14px;text-decoration:none;background:var(--screen);color:#eef1ff;padding:11px 22px;border-radius:999px;font-weight:700;box-shadow:var(--shadow)}
+.next:hover{background:var(--screen-2)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="row">
+  <div class="brand"><span class="dot"></span> إسأل غوغِل</div>
+  <nav class="nav">
+    <a href="listening.html">🎧 استماع</a>
+    <a href="speaking.html" class="active">🗣️ تحدّث</a>
+    <a href="reading.html">📖 قراءة</a>
+    <a href="writing.html">✍️ كتابة</a>
+  </nav>
+</div></div>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="inner">
+      <span class="skill-chip">🗣️ مهارة التّحدّث</span>
+      <div class="eyebrow">✦ أُمثِّلُ الحوارَ وأُعبِّرُ عن رأيي</div>
+      <h1>إسأل غوغِل</h1>
+      <p class="sub">مثِّلِ الحوارَ مع رفيقٍ لك: أحدُكما الجَدّةُ والآخرُ الفتاة! استمِع إلى النّموذج، اقرأ بوضوح، ثمّ سجِّل صوتَك وعبِّر عن رأيك.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="sec-head"><div class="num">١</div><div><h2>أُمثِّلُ الحوار (بدورَين)</h2><p class="hint">اقرأ مع رفيقٍ لك: 👵 الجَدّة و👧 الفتاة. استمِع للنموذج ثمّ سجِّل دورَك.</p></div></div>
+    <div class="dialogue" id="dialogue"></div>
+    <div class="note">🎙️ سيطلبُ المتصفّحُ إذنَ استخدامِ الميكروفون عند أوّلِ تسجيل. إن لم يعمل التّسجيل، يكفي أن تقرأ بصوتٍ جَهْريّ بالتّناوب مع رفيقك.</div>
+  </section>
+
+  <section>
+    <div class="sec-head"><div class="num">٢</div><div><h2>أقرأُ بالنّبرةِ المُناسبة</h2><p class="hint">اقرأ هذه الجملَ مُراعيًا الشّعورَ الذي تحملُه كلٌّ منها.</p></div></div>
+    <div class="read" id="read"></div>
+  </section>
+
+  <section>
+    <div class="sec-head"><div class="num">٣</div><div><h2>أتحدّثُ شَفويًّا</h2><p class="hint">اختَرْ موضوعًا وتحدّثْ عنه بجُملٍ مرتّبة.</p></div></div>
+    <div class="prompts">
+      <div class="pr"><span class="ic">💻</span><div class="body"><b>التّكنولوجيا في حياتي</b><span>كيف بإمكاني استخدامُ التّكنولوجيا في حياتي اليوميّة بطريقةٍ فعّالة؟</span></div></div>
+      <div class="pr"><span class="ic">📚</span><div class="body"><b>الكتابُ أم الإنترنت؟</b><span>متى أُفضِّلُ الكتبَ والمجلّدات، ومتى أُفضِّلُ الإنترنت؟ ولماذا؟</span></div></div>
+      <div class="pr"><span class="ic">🌙</span><div class="body"><b>بحثٌ قمتُ به</b><span>أبحثُ عن «دورةِ القمرِ حولَ الأرض» ثمّ أُشاركُ رفاقي ما وجدتُ في تجربتي.</span></div></div>
+      <div class="pr"><span class="ic">✅</span><div class="body"><b>كيف أعرفُ المعلومةَ الموثوقة؟</b><span>برأيي، كيف أُميِّزُ الموقعَ الموثوقَ من غيرِه حين أبحثُ على الإنترنت؟</span></div></div>
+    </div>
+  </section>
+
+  <footer>
+    <div>صوتُك واثقٌ وواضح! 🗣️ تابِع إلى القراءة المتأنّية.</div>
+    <a class="next" href="reading.html">التّالي: مهارة القراءة 📖 ←</a>
+  </footer>
+
+</div>
+
+<script>
+const dia=[
+ {who:'g',role:'الجَدّة',ic:'👵',t:"تَعالَيْ مَعي إلى الْمَكْتَبَةِ حَيْثُ أَحْتَفِظُ بِمَجْموعَةٍ مِنَ الْمُجَلَّدات."},
+ {who:'f',role:'الفتاة',ic:'👧',t:"مُجَلَّدات؟! وَمَنْ يَسْتَخْدِمُها في أَيّامِنا هذِه؟ سَأَسْأَلُ غوغِل، وَحَتْمًا سَأَجِدُ ما أَبْحَثُ عَنْه."},
+ {who:'f',role:'الفتاة',ic:'👧',t:"يا لَلْمُفاجَأَةِ، مَواقِعُ عَديدَةٌ، مَعْلوماتٌ كَثيرَة! كَيْفَ أَبْدَأُ؟ أَيَّ مَوْقِعٍ أَخْتار؟"},
+ {who:'f',role:'الفتاة',ic:'👧',t:"لا ضَرَرَ مِنَ اللُّجوءِ إلى تِلْكَ الْمُجَلَّداتِ، إذْ بِالإمْكانِ الاسْتِفادَةُ مِنْها في بَعْضِ الأَحْيان."}
+];
+const lines=[
+ {t:"يا لَلْمُفاجَأَةِ، مَواقِعُ عَديدَةٌ، مَعْلوماتٌ كَثيرَة!",tag:"بنبرةِ التّفاجؤ"},
+ {t:"كَيْفَ أَبْدَأُ؟ أَيَّ مَوْقِعٍ أَخْتار؟",tag:"بنبرةِ الحَيْرة"},
+ {t:"حَتْمًا سَأَجِدُ ما أَبْحَثُ عَنْه.",tag:"بنبرةِ الثّقة"}
+];
+let arVoice=null;
+function pick(){const v=speechSynthesis.getVoices().find(x=>x.lang&&x.lang.startsWith('ar'));if(v)arVoice=v;}
+pick();speechSynthesis.onvoiceschanged=pick;
+function model(t){speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='ar-SA';u.rate=.8;if(arVoice)u.voice=arVoice;speechSynthesis.speak(u);}
+
+const dlg=document.getElementById('dialogue');
+dia.forEach(o=>{
+  const b=document.createElement('div');b.className='bubble '+o.who;
+  b.innerHTML=`<div class="who">${o.ic}</div><div class="say"><div class="role">${o.role}</div>
+    <div class="line">${o.t}</div><div class="mini"><button class="m">🔊 نموذج</button><button class="r">🎙️ سجِّل</button></div></div>`;
+  b.querySelector('.m').addEventListener('click',()=>model(o.t));
+  setupRec(b.querySelector('.r'),b.querySelector('.say'));
+  dlg.appendChild(b);
+});
+
+const read=document.getElementById('read');
+lines.forEach(o=>{
+  const card=document.createElement('div');card.className='rc';
+  card.innerHTML=`<div style="font-size:.85rem;font-weight:700;color:var(--accent);margin-bottom:6px">🎵 ${o.tag}</div>
+    <div class="line">${o.t}</div><div class="tools"><button class="btn model">🔊 استمِع للنموذج</button><button class="btn rec">🎙️ سجِّل صوتي</button></div>`;
+  card.querySelector('.model').addEventListener('click',()=>model(o.t));
+  setupRec(card.querySelector('.rec'),card);
+  read.appendChild(card);
+});
+
+function setupRec(btn,container){
+  let rec=null,chunks=[],stream=null;
+  btn.addEventListener('click',async ()=>{
+    if(btn.classList.contains('on')){rec&&rec.stop();return;}
+    try{
+      stream=await navigator.mediaDevices.getUserMedia({audio:true});
+      rec=new MediaRecorder(stream);chunks=[];
+      rec.ondataavailable=e=>chunks.push(e.data);
+      rec.onstop=()=>{const blob=new Blob(chunks,{type:'audio/webm'});const url=URL.createObjectURL(blob);
+        let a=container.querySelector('audio');if(!a){a=document.createElement('audio');a.controls=true;container.appendChild(a);}
+        a.src=url;btn.classList.remove('on');btn.textContent='🎙️ أعِد';stream.getTracks().forEach(t=>t.stop());};
+      rec.start();btn.classList.add('on');btn.textContent='⏹️ أوقِف';
+    }catch(e){btn.disabled=true;btn.textContent='⚠️ لا ميكروفون';}
+  });
+}
+window.addEventListener('beforeunload',()=>speechSynthesis.cancel());
+</script>
+</body>
+</html>

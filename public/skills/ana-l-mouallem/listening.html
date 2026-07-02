@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الاستماع · أنا المُعلِّم</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@400;500;700;800&family=Lalezar&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#e9f1f0; --paper-2:#f6fbfa; --board:#1f3a34; --board-2:#274b43;
+  --ink:#22302d; --muted:#5f7470; --line:#cfe2de; --chalk:#f3ead6;
+  --accent:#2c7a7b; --accent-2:#4aa8a6; --accent-soft:#d8efed;
+  --good:#2f7d62; --warn:#c4502e;
+  --shadow:0 14px 30px -18px rgba(20,60,55,.5);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Tajawal",system-ui,sans-serif;
+  background:radial-gradient(1200px 500px at 80% -8%, #f0fafa 0%, transparent 60%),var(--paper);
+  color:var(--ink);line-height:1.9;-webkit-font-smoothing:antialiased}
+.wrap{max-width:920px;margin:0 auto;padding:0 18px 70px}
+.topbar{position:sticky;top:0;z-index:30;background:rgba(31,58,52,.97);
+  backdrop-filter:blur(6px);color:var(--chalk);box-shadow:0 6px 20px -10px rgba(0,0,0,.5)}
+.topbar .row{max-width:920px;margin:0 auto;display:flex;align-items:center;
+  justify-content:space-between;gap:12px;padding:10px 18px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-family:"Lalezar",cursive;font-size:1.35rem}
+.brand .dot{width:14px;height:14px;border-radius:50%;background:var(--accent-2);
+  box-shadow:0 0 0 4px rgba(74,168,166,.3)}
+.nav{display:flex;gap:6px;flex-wrap:wrap}
+.nav a{color:#d8e6df;text-decoration:none;font-weight:700;font-size:.92rem;
+  padding:7px 13px;border-radius:999px;display:flex;align-items:center;gap:6px;
+  border:1px solid transparent;transition:.18s}
+.nav a:hover{background:rgba(255,255,255,.08)}
+.nav a.active{background:var(--accent);color:#eafdfc;border-color:var(--accent-2)}
+
+.hero{margin:26px 0 8px;border-radius:22px;overflow:hidden;
+  background:linear-gradient(160deg,var(--board) 0%,var(--board-2) 100%);
+  color:var(--chalk);box-shadow:var(--shadow);position:relative;border:6px solid #2c7a7b}
+.hero::before{content:"";position:absolute;inset:0;opacity:.07;
+  background-image:radial-gradient(#fff 1px,transparent 1px);background-size:22px 22px}
+.hero .inner{position:relative;padding:34px 30px}
+.eyebrow{font-weight:700;letter-spacing:3px;font-size:.8rem;color:var(--accent-2);
+  display:flex;align-items:center;gap:8px}
+.hero h1{font-family:"Lalezar",cursive;font-weight:400;margin:.25em 0 .1em;
+  font-size:clamp(2.2rem,7vw,3.4rem);line-height:1.1;text-shadow:0 2px 0 rgba(0,0,0,.25)}
+.hero p.sub{margin:.2em 0 0;color:#cfe0d8;max-width:50ch}
+.skill-chip{display:inline-flex;align-items:center;gap:8px;margin-bottom:6px;
+  background:rgba(74,168,166,.18);border:1px solid rgba(74,168,166,.5);
+  color:#aee6e4;padding:5px 14px;border-radius:999px;font-weight:700;font-size:.9rem}
+
+section{margin-top:34px}
+.sec-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.sec-head .num{font-family:"Lalezar",cursive;color:var(--accent);background:var(--accent-soft);
+  width:42px;height:42px;border-radius:14px;display:grid;place-items:center;font-size:1.3rem;
+  flex:none;border:1.5px solid var(--accent-2)}
+.sec-head h2{margin:0;font-size:1.5rem;font-weight:800}
+.sec-head .hint{margin:0;color:var(--muted);font-size:.92rem}
+
+/* player */
+.player{background:var(--paper-2);border:1px solid var(--line);border-radius:20px;
+  padding:22px;box-shadow:var(--shadow)}
+.player .big{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.playbtn{appearance:none;border:0;cursor:pointer;background:linear-gradient(var(--accent),var(--accent-2));
+  color:#fff;width:74px;height:74px;border-radius:50%;font-size:1.8rem;flex:none;
+  box-shadow:0 10px 22px -8px var(--accent);display:grid;place-items:center;transition:.15s}
+.playbtn:hover{transform:scale(1.05)}
+.playbtn:focus-visible{outline:3px solid var(--board);outline-offset:3px}
+.player .meta b{font-size:1.15rem}
+.player .meta div{color:var(--muted)}
+.waves{display:flex;gap:4px;align-items:flex-end;height:34px;margin-top:4px}
+.waves span{width:5px;background:var(--accent-2);border-radius:3px;height:8px}
+.waves.on span{animation:bounce 1s infinite ease-in-out}
+.waves span:nth-child(2){animation-delay:.1s}.waves span:nth-child(3){animation-delay:.2s}
+.waves span:nth-child(4){animation-delay:.3s}.waves span:nth-child(5){animation-delay:.4s}
+.waves span:nth-child(6){animation-delay:.15s}.waves span:nth-child(7){animation-delay:.35s}
+@keyframes bounce{0%,100%{height:8px}50%{height:30px}}
+.seg-row{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
+.seg-row button{cursor:pointer;border:2px solid var(--accent-2);background:#fff;color:var(--board);
+  font-family:inherit;font-weight:700;border-radius:12px;padding:8px 14px;transition:.15s}
+.seg-row button:hover{background:var(--accent);color:#fff}
+.seg-row button.playing{background:var(--accent);color:#fff;box-shadow:0 6px 14px -6px var(--accent)}
+.note{margin-top:14px;background:#fff8e8;border:1px solid #f1dca0;border-radius:12px;
+  padding:10px 14px;color:#7a5a16;font-size:.92rem}
+
+/* MCQ */
+.mcq{display:flex;flex-direction:column;gap:16px}
+.qcard{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow)}
+.qcard .qt{font-weight:800;font-size:1.12rem;margin-bottom:12px;display:flex;gap:10px}
+.qcard .qt .n{flex:none;background:var(--accent-soft);color:var(--accent);width:30px;height:30px;
+  border-radius:9px;display:grid;place-items:center;font-family:"Lalezar",cursive}
+.choice{display:block;width:100%;text-align:right;cursor:pointer;border:2px solid var(--line);
+  background:#fbfdfd;border-radius:12px;padding:12px 14px;margin-bottom:9px;font-family:inherit;
+  font-size:1.02rem;font-weight:600;color:var(--ink);transition:.15s}
+.choice:hover{border-color:var(--accent-2)}
+.choice.right{border-color:var(--good);background:#eafaf2;color:var(--good)}
+.choice.wrong{border-color:var(--warn);background:#fdeee9;color:var(--warn)}
+.choice:disabled{cursor:default}
+
+/* ordering */
+.order{display:flex;flex-direction:column;gap:10px}
+.ev{background:#fff;border:2px solid var(--line);border-radius:14px;padding:12px 14px;
+  display:flex;align-items:center;gap:12px;box-shadow:var(--shadow);cursor:grab;user-select:none}
+.ev.drag{opacity:.4}
+.ev .grip{color:var(--accent);font-size:1.2rem}
+.ev .pos{flex:none;width:32px;height:32px;border-radius:9px;background:var(--accent-soft);
+  color:var(--accent);font-family:"Lalezar",cursive;display:grid;place-items:center}
+.ev .arrows{margin-inline-start:auto;display:flex;gap:6px}
+.ev .arrows button{border:1px solid var(--line);background:#fff;border-radius:8px;width:32px;height:32px;
+  cursor:pointer;font-size:1rem;color:var(--accent)}
+.ev .arrows button:hover{background:var(--accent-soft)}
+.check{margin-top:14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.check button{cursor:pointer;border:0;background:var(--board);color:#fff;font-weight:700;
+  border-radius:999px;padding:11px 24px;font-family:inherit;box-shadow:var(--shadow)}
+.check .res{font-weight:800}
+.ev.ok{border-color:var(--good);background:#eafaf2}
+.ev.no{border-color:var(--warn);background:#fdeee9}
+
+footer{margin-top:46px;text-align:center;color:var(--muted);font-size:.9rem;
+  border-top:1px dashed var(--line);padding-top:20px}
+.next{display:inline-flex;align-items:center;gap:8px;margin-top:14px;text-decoration:none;
+  background:var(--board);color:var(--chalk);padding:11px 22px;border-radius:999px;font-weight:700;box-shadow:var(--shadow)}
+.next:hover{background:var(--board-2)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="row">
+    <div class="brand"><span class="dot"></span> أنا المُعلِّم</div>
+    <nav class="nav">
+      <a href="listening.html" class="active">🎧 استماع</a>
+      <a href="speaking.html">🗣️ تحدّث</a>
+      <a href="reading.html">📖 قراءة</a>
+      <a href="writing.html">✍️ كتابة</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="inner">
+      <span class="skill-chip">🎧 مهارة الاستماع</span>
+      <div class="eyebrow">✦ أُصغي ثمّ أُجيب</div>
+      <h1>أنا المُعلِّم</h1>
+      <p class="sub">أغمِض عينَيك واستمِع جيّدًا إلى القصّة. ركِّز على ما فعله الصّبيّ، وكيف تغيّرت مشاعرُه من البداية إلى النّهاية.</p>
+    </div>
+  </div>
+
+  <!-- PLAYER -->
+  <section>
+    <div class="sec-head">
+      <div class="num">١</div>
+      <div><h2>أستمِعُ إلى النّصّ</h2><p class="hint">اضغط زرّ التّشغيل لسماع القصّة كاملة، أو استمِع إلى مقطعٍ مقطع.</p></div>
+    </div>
+    <div class="player">
+      <div class="big">
+        <button class="playbtn" id="playAll" aria-label="تشغيل القصّة">▶</button>
+        <div class="meta">
+          <b id="status">القصّة كاملة</b>
+          <div>المعلِّم يقرأ لك… أصغِ بتأنٍّ</div>
+          <div class="waves" id="waves"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        </div>
+      </div>
+      <div class="seg-row" id="segs">
+        <button data-i="0">المقطع ١</button>
+        <button data-i="1">المقطع ٢</button>
+        <button data-i="2">المقطع ٣</button>
+        <button data-i="3">المقطع ٤</button>
+        <button data-i="4">المقطع ٥</button>
+      </div>
+      <div class="note" id="voiceNote">💡 إن لم تسمع صوتًا عربيًّا واضحًا، فقد لا يتوفّر صوت عربيّ على جهازك. جرِّب جهازًا آخر أو استعِن بمعلِّمك للقراءة.</div>
+    </div>
+  </section>
+
+  <!-- MCQ -->
+  <section>
+    <div class="sec-head">
+      <div class="num">٢</div>
+      <div><h2>أستمِعُ وأُجيب</h2><p class="hint">بعد الاستماع، اختَرِ الإجابةَ الصّحيحة لكلّ سؤال.</p></div>
+    </div>
+    <div class="mcq" id="mcq"></div>
+  </section>
+
+  <!-- ORDERING -->
+  <section>
+    <div class="sec-head">
+      <div class="num">٣</div>
+      <div><h2>أُرتِّبُ الأحداثَ بحسبِ التّسلسلِ الزّمنيّ</h2><p class="hint">حرِّك الأحداثَ بالأسهم حتّى تُرتِّبَها كما حدثت، ثمّ اضغط «أتحقّق».</p></div>
+    </div>
+    <div class="order" id="order"></div>
+    <div class="check">
+      <button id="checkOrder">أتحقّق ✓</button>
+      <span class="res" id="orderRes"></span>
+    </div>
+  </section>
+
+  <footer>
+    <div>سمعٌ ووعي! 👂 تابِع رحلتَك مع المهارة التّالية.</div>
+    <a class="next" href="speaking.html">التّالي: مهارة التّحدّث 🗣️ ←</a>
+  </footer>
+
+</div>
+
+<script>
+const segments=[
+"أَتَذَكَّرُ عِنْدَما كُنْتُ في التّاسِعَةِ مِنْ عُمْري، وَكُنْتُ أُتابِعُ دِراسَتي في مَدْرَسَةٍ قَريبَةٍ مِنْ مَنْزِلي. في جوينه، يَوْمَذاكَ، طَلَبَتْ مِنّي الْمُعَلِّمَةُ تَحْضيرَ مَقْطَعٍ مِنْ نَصِّ الْقِراءَةِ وَشَرْحَهُ أَمامَ التّلاميذِ. وَذَكَّرَتْني بِمَراحِلِ التَّحْضيرِ الّتي عَلَيَّ اتّباعُها.",
+"عُدْتُ إلى الْبَيْتِ مَهْمومًا. هَلْ أَنْجَحُ في تَحْضيرِ هذا الدَّرْسِ؟ إنَّهُ امْتِحانٌ صَعْبٌ. لكِنَّني سَأَقْبَلُ التَّحَدّيَ وَسَأَسْتَعِدُّ لَهُ جَيِّدًا.",
+"ما إِنْ أَنْهَيْتُ تَناوُلَ طَعامِ الْغَداءِ حَتّى دَخَلْتُ غُرْفَتي، وَبَدَأْتُ الْعَمَلَ. إتَّبَعْتُ الْخُطُواتِ الّتي حَدَّدَتْها الْمُعَلِّمَةُ خُطْوَةً خُطْوَة. واجَهَتْني صُعوباتٌ كَثيرَة. شَعَرْتُ أَحْيانًا أَنَّني عاجِزٌ عَنْ تَنْفيذِ هذا الْعَمَلِ، لكِنَّني ثابَرْتُ وَصَبَرْتُ وَفَكَّرْتُ. وَفي النِّهايَةِ، اكْتَمَلَ التَّحْضيرُ، وَكُنْتُ راضِيًا عَنْه.",
+"في الْيَوْمِ التّالي، دَعَتْني الْمُعَلِّمَةُ إلى الْمِنْبَرِ. راحَتْ دَقّاتُ قَلْبي تَتَسارَع. شَعَرْتُ أَنَّني عاجِزٌ عَنِ الْكَلامِ وَسَأَتَلَعْثَمُ أَمامَ رِفاقي. جَميعُهُمْ يَنْظُرونَ إلَيَّ. إِسْتَجْمَعْتُ قِوايَ وَبَدَأْتُ شَرْحَ الْمَقْطَعِ الْمَطْلوب. كانَ الصَّفُّ هادِئًا، وَرِفاقي يُصْغونَ إلَيَّ إِصْغاءً تامًّا. عَرَفْتُ أَنَّني أُؤَدّي دَوْري بِنَجاحٍ فَتَشَجَّعْتُ وَازْدادَتْ ثِقَتي بِنَفْسي.",
+"وَما إِنْ أَنْهَيْتُ الْعَرْضَ حَتّى عَلا التَّصْفيقُ وَهَنَّأَتْني الْمُعَلِّمَةُ بِحَرارَة. ثُمَّ رَفَعَ أَحَدُ رِفاقي إِصْبَعَهُ وَطَرَحَ سُؤالًا، فَأَجَبْتُهُ بِكُلِّ ثِقَةٍ. عُدْتُ إلى مَقْعَدي مُرْتاحًا وَمَسْرورًا. ما أَجْمَلَ أَنْ يَقْبَلَ الإنْسانُ التَّحَدّيَ وَيَنْجَحَ فيه!"
+];
+
+let arVoice=null;
+function pickVoice(){const v=speechSynthesis.getVoices().find(x=>x.lang&&x.lang.startsWith('ar'));if(v)arVoice=v;}
+pickVoice(); speechSynthesis.onvoiceschanged=pickVoice;
+
+const waves=document.getElementById('waves');
+const statusEl=document.getElementById('status');
+function speakText(text,onend){
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang='ar-SA';u.rate=.85;if(arVoice)u.voice=arVoice;
+  u.onstart=()=>waves.classList.add('on');
+  u.onend=()=>{waves.classList.remove('on');if(onend)onend();};
+  speechSynthesis.speak(u);
+}
+function stopAll(){speechSynthesis.cancel();waves.classList.remove('on');
+  document.querySelectorAll('.seg-row button').forEach(b=>b.classList.remove('playing'));
+  document.getElementById('playAll').textContent='▶';}
+
+document.getElementById('playAll').addEventListener('click',function(){
+  if(speechSynthesis.speaking){stopAll();statusEl.textContent='القصّة كاملة';return;}
+  this.textContent='⏸';statusEl.textContent='يُقرأ الآن…';
+  speakText(segments.join(' '),()=>{this.textContent='▶';statusEl.textContent='القصّة كاملة';});
+});
+
+document.querySelectorAll('.seg-row button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    stopAll();const i=+b.dataset.i;b.classList.add('playing');
+    statusEl.textContent='المقطع '+['١','٢','٣','٤','٥'][i];
+    speakText(segments[i],()=>b.classList.remove('playing'));
+  });
+});
+
+/* ===== MCQ ===== */
+const questions=[
+ {q:"كم كان عُمرُ الرّاوي حين وقعت القصّة؟",a:["في السّابعة","في التّاسعة","في الثّانية عشرة"],c:1},
+ {q:"ماذا طَلَبَتِ المُعلِّمةُ من الرّاوي؟",a:["أن يكتبَ قصّةً جديدة","أن يُحضِّرَ مقطعًا ويَشرحَهُ أمام التّلاميذ","أن يرسمَ لوحة"],c:1},
+ {q:"كيف شعَر الرّاوي حين عاد إلى البيت؟",a:["مَهمومًا وخائفًا من الفشل","فَرِحًا ومطمئنًّا","غاضبًا من المعلِّمة"],c:0},
+ {q:"ما الذي فعله حين واجَهَتْهُ الصّعوبات؟",a:["تركَ العملَ واستسلم","ثابَرَ وصَبَرَ وفكَّر","طلبَ من أحدٍ أن يُنجِزَهُ عنه"],c:1},
+ {q:"كيف انتهت القصّة؟",a:["فشِل أمام رفاقه","نجح وعلا التّصفيقُ وهنّأتْهُ المعلِّمة","نسيَ ما حضّره"],c:1}
+];
+const mcq=document.getElementById('mcq');
+questions.forEach((it,qi)=>{
+  const card=document.createElement('div');card.className='qcard';
+  card.innerHTML=`<div class="qt"><span class="n">${['١','٢','٣','٤','٥'][qi]}</span><span>${it.q}</span></div>`;
+  it.a.forEach((ans,ai)=>{
+    const btn=document.createElement('button');btn.className='choice';btn.textContent=ans;
+    btn.addEventListener('click',()=>{
+      [...card.querySelectorAll('.choice')].forEach(c=>c.disabled=true);
+      if(ai===it.c){btn.classList.add('right');}
+      else{btn.classList.add('wrong');card.querySelectorAll('.choice')[it.c].classList.add('right');}
+    });
+    card.appendChild(btn);
+  });
+  mcq.appendChild(card);
+});
+
+/* ===== ORDERING ===== */
+const events=[
+ {t:"طَلَبَتِ المُعلِّمةُ من الولد تحضيرَ مقطعٍ وشَرْحَهُ في الصّفّ.",o:1},
+ {t:"شعَر الولدُ بالخوفِ، لكنّه قرّر أن يتحدّى نفسَه ويبدأ التّحضير.",o:2},
+ {t:"في اليومِ التّالي شرَح المقطعَ أمام رفاقه رغم خوفه.",o:3},
+ {t:"علا التّصفيقُ وهنّأتْهُ المعلِّمةُ بحرارة.",o:4}
+];
+let cur=[3,0,2,1]; // shuffled start
+const orderEl=document.getElementById('order');
+function renderOrder(){
+  orderEl.innerHTML='';
+  cur.forEach((idx,pos)=>{
+    const e=events[idx];
+    const div=document.createElement('div');div.className='ev';
+    div.innerHTML=`<span class="pos">${['١','٢','٣','٤'][pos]}</span><span>${e.t}</span>
+      <span class="arrows"><button data-up="${pos}">▲</button><button data-down="${pos}">▼</button></span>`;
+    orderEl.appendChild(div);
+  });
+  orderEl.querySelectorAll('[data-up]').forEach(b=>b.addEventListener('click',()=>{
+    const p=+b.dataset.up;if(p===0)return;[cur[p-1],cur[p]]=[cur[p],cur[p-1]];renderOrder();}));
+  orderEl.querySelectorAll('[data-down]').forEach(b=>b.addEventListener('click',()=>{
+    const p=+b.dataset.down;if(p===cur.length-1)return;[cur[p+1],cur[p]]=[cur[p],cur[p+1]];renderOrder();}));
+}
+renderOrder();
+document.getElementById('checkOrder').addEventListener('click',()=>{
+  let ok=0;const rows=orderEl.querySelectorAll('.ev');
+  cur.forEach((idx,pos)=>{
+    const correct=events[idx].o===pos+1;
+    rows[pos].classList.remove('ok','no');
+    rows[pos].classList.add(correct?'ok':'no');
+    if(correct)ok++;
+  });
+  const res=document.getElementById('orderRes');
+  if(ok===4){res.textContent='ممتاز! التّرتيبُ صحيحٌ كاملًا 🎉';res.style.color='var(--good)';}
+  else{res.textContent=`أصبتَ ${['صفر','واحدًا','اثنين','ثلاثة','أربعة'][ok]} من أربعة — حاوِل مرّةً أخرى.`;res.style.color='var(--warn)';}
+});
+window.addEventListener('beforeunload',()=>speechSynthesis.cancel());
+</script>
+</body>
+</html>

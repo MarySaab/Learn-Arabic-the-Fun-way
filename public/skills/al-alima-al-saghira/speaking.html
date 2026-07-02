@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>التّحدّث · العالِمة الصّغيرة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@400;500;700;800&family=Lalezar&display=swap" rel="stylesheet">
+<style>
+:root{
+  --space:#0c1838; --space-2:#1a2c5a; --paper:#fbeae2; --paper-2:#fff6f1;
+  --ink:#2e2620; --muted:#8a6e5f; --line:#f0d6c8; --star:#ffd874;
+  --accent:#d65a36; --accent-2:#ee8a5e; --accent-soft:#fbe0d4;
+  --good:#2f7d62; --warn:#c4502e;
+  --shadow:0 14px 30px -18px rgba(120,50,20,.45);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Tajawal",system-ui,sans-serif;
+  background:radial-gradient(1200px 500px at 80% -8%, #fff3ec 0%, transparent 60%),var(--paper);
+  color:var(--ink);line-height:1.9;-webkit-font-smoothing:antialiased}
+.wrap{max-width:920px;margin:0 auto;padding:0 18px 70px}
+.topbar{position:sticky;top:0;z-index:30;background:rgba(12,24,56,.97);backdrop-filter:blur(6px);color:#eaf0ff;box-shadow:0 6px 20px -10px rgba(0,0,0,.6)}
+.topbar .row{max-width:920px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 18px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-family:"Lalezar",cursive;font-size:1.3rem}
+.brand .dot{width:14px;height:14px;border-radius:50%;background:var(--star);box-shadow:0 0 10px var(--star)}
+.nav{display:flex;gap:6px;flex-wrap:wrap}
+.nav a{color:#cdd8f5;text-decoration:none;font-weight:700;font-size:.92rem;padding:7px 13px;border-radius:999px;display:flex;align-items:center;gap:6px;border:1px solid transparent;transition:.18s}
+.nav a:hover{background:rgba(255,255,255,.08)}
+.nav a.active{background:var(--accent);color:#fff;border-color:var(--accent-2)}
+
+.hero{margin:26px 0 8px;border-radius:22px;overflow:hidden;position:relative;
+  background:radial-gradient(120% 140% at 85% 10%, #20406b 0%, var(--space) 60%);color:#eef3ff;box-shadow:var(--shadow);border:1px solid #2c3e72}
+.stars{position:absolute;inset:0;background-image:
+  radial-gradient(1.5px 1.5px at 20% 30%,#fff,transparent),radial-gradient(1.5px 1.5px at 60% 70%,#fff,transparent),
+  radial-gradient(1px 1px at 80% 20%,#fff,transparent),radial-gradient(1.5px 1.5px at 40% 80%,#fff,transparent),
+  radial-gradient(1px 1px at 75% 55%,#fff,transparent),radial-gradient(1px 1px at 30% 60%,#fff,transparent);opacity:.7}
+.hero .inner{position:relative;padding:34px 30px}
+.eyebrow{font-weight:700;letter-spacing:3px;font-size:.8rem;color:var(--star);display:flex;align-items:center;gap:8px}
+.hero h1{font-family:"Lalezar",cursive;font-weight:400;margin:.25em 0 .1em;font-size:clamp(2.1rem,7vw,3.3rem);line-height:1.1;text-shadow:0 2px 8px rgba(0,0,0,.4)}
+.hero p.sub{margin:.2em 0 0;color:#c5d0ee;max-width:50ch}
+.skill-chip{display:inline-flex;align-items:center;gap:8px;margin-bottom:6px;background:rgba(238,138,94,.18);border:1px solid rgba(238,138,94,.5);color:#f6c3ab;padding:5px 14px;border-radius:999px;font-weight:700;font-size:.9rem}
+
+section{margin-top:34px}
+.sec-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.sec-head .num{font-family:"Lalezar",cursive;color:var(--accent);background:var(--accent-soft);width:42px;height:42px;border-radius:14px;display:grid;place-items:center;font-size:1.3rem;flex:none;border:1.5px solid var(--accent-2)}
+.sec-head h2{margin:0;font-size:1.5rem;font-weight:800}
+.sec-head .hint{margin:0;color:var(--muted);font-size:.92rem}
+
+.read{display:flex;flex-direction:column;gap:14px}
+.rc{background:var(--paper-2);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:var(--shadow)}
+.rc .tagline{font-size:.85rem;font-weight:700;color:var(--accent);margin-bottom:6px}
+.rc .line{font-family:"Amiri",serif;font-size:1.4rem;line-height:2;margin-bottom:12px}
+.rc .tools{display:flex;gap:10px;flex-wrap:wrap}
+.btn{cursor:pointer;border:0;font-family:inherit;font-weight:700;border-radius:12px;padding:9px 16px;display:inline-flex;align-items:center;gap:7px;transition:.15s;box-shadow:var(--shadow)}
+.btn.model{background:var(--space);color:#fff}.btn.model:hover{background:var(--space-2)}
+.btn.rec{background:#fff;color:var(--accent);border:2px solid var(--accent-2)}
+.btn.rec.on{background:var(--accent);color:#fff;animation:pulse 1.2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(214,90,54,.5)}50%{box-shadow:0 0 0 10px rgba(214,90,54,0)}}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn:focus-visible{outline:3px solid var(--space);outline-offset:2px}
+.rc audio{margin-top:12px;width:100%}
+.note{margin-top:6px;background:#fff8e8;border:1px solid #f1dca0;border-radius:12px;padding:10px 14px;color:#7a5a16;font-size:.92rem}
+
+.think{display:flex;flex-direction:column;gap:12px}
+.tk{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 18px;box-shadow:var(--shadow);display:flex;gap:14px;align-items:flex-start}
+.tk .ic{flex:none;width:40px;height:40px;border-radius:12px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-size:1.25rem}
+.tk .body b{display:block;font-size:1.08rem;margin-bottom:3px}
+.tk .body span{color:var(--muted)}
+.tk .body .hintline{display:block;margin-top:6px;color:var(--accent);font-size:.9rem;font-weight:700}
+
+.prompts{display:flex;flex-direction:column;gap:12px}
+.pr{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 18px;box-shadow:var(--shadow);display:flex;gap:14px;align-items:flex-start}
+.pr .ic{flex:none;width:40px;height:40px;border-radius:12px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-size:1.3rem}
+.pr .body b{display:block;font-size:1.1rem;margin-bottom:3px}.pr .body span{color:var(--muted)}
+
+footer{margin-top:46px;text-align:center;color:var(--muted);font-size:.9rem;border-top:1px dashed var(--line);padding-top:20px}
+.next{display:inline-flex;align-items:center;gap:8px;margin-top:14px;text-decoration:none;background:var(--space);color:#eef3ff;padding:11px 22px;border-radius:999px;font-weight:700;box-shadow:var(--shadow)}
+.next:hover{background:var(--space-2)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="row">
+  <div class="brand"><span class="dot"></span> العالِمة الصّغيرة</div>
+  <nav class="nav">
+    <a href="listening.html">🎧 استماع</a>
+    <a href="speaking.html" class="active">🗣️ تحدّث</a>
+    <a href="reading.html">📖 قراءة</a>
+    <a href="writing.html">✍️ كتابة</a>
+  </nav>
+</div></div>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="stars"></div>
+    <div class="inner">
+      <span class="skill-chip">🗣️ مهارة التّحدّث</span>
+      <div class="eyebrow">✦ أقرأُ بوضوحٍ وأُعبِّرُ عن رأيي</div>
+      <h1>العالِمة الصّغيرة</h1>
+      <p class="sub">تخيَّلْ أنّك تقدّمُ مشروعَك في المعرضِ مثل يارا! اقرأ بصوتٍ واضح، وسجِّل نفسَك، ثمّ عبِّر عن رأيك بثقة.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="sec-head"><div class="num">١</div><div><h2>أقرأُ بصوتٍ جَهْريّ</h2><p class="hint">١) اضغط «استمِع للنموذج».  ٢) اقرأ الجملةَ بنفسِك.  ٣) سجِّل صوتَك واستمِع إليه. المقطعُ الأخيرُ يُقرأ بنبرةٍ <b>خِطابيّة</b> حماسيّة.</p></div></div>
+    <div class="read" id="read"></div>
+    <div class="note">🎙️ سيطلبُ المتصفّحُ إذنَ استخدامِ الميكروفون عند أوّلِ تسجيل. إن لم يعمل التّسجيل، يكفي أن تقرأ بصوتٍ جَهْريّ.</div>
+  </section>
+
+  <section>
+    <div class="sec-head"><div class="num">٢</div><div><h2>زاويةُ المُفكِّر</h2><p class="hint">فكِّر في كلّ سؤال، ثمّ تحدّثْ بجوابٍ من عندك بجُملٍ كاملة.</p></div></div>
+    <div class="think">
+      <div class="tk"><span class="ic">🤔</span><div class="body"><b>هل يجبُ أن أخجَلَ من طرحِ الأسئلة؟ لماذا؟</b><span>تذكَّرْ نصيحةَ يارا قبل أن تُجيب.</span><span class="hintline">💡 يارا قالت: الأسئلةُ والأخطاءُ فُرَصٌ للتّعلّمِ والنّموّ.</span></div></div>
+      <div class="tk"><span class="ic">💌</span><div class="body"><b>أُسدي إلى رفيقي نصيحةً أُشجِّعُهُ بها على تحقيقِ حُلمِه.</b><span>قُلْ جملةً أو جملتين كأنّك تتحدّثُ إليه مباشرة.</span></div></div>
+      <div class="tk"><span class="ic">🏅</span><div class="body"><b>هل تستحقُّ يارا لقبَ «العالِمة الصّغيرة»؟ لماذا؟</b><span>أعطِ سببًا من النّصّ يدعمُ رأيَك.</span></div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><div class="num">٣</div><div><h2>أتحدّثُ شَفويًّا</h2><p class="hint">اختَرْ موضوعًا وتحدّثْ عنه بجُملٍ مرتّبة.</p></div></div>
+    <div class="prompts">
+      <div class="pr"><span class="ic">🔬</span><div class="body"><b>تجربةٌ أحببتُها</b><span>أحكي عن تجربةٍ علميّةٍ أو نشاطٍ أعجبني: ماذا فعلتُ؟ وماذا تعلّمتُ منه؟</span></div></div>
+      <div class="pr"><span class="ic">🪐</span><div class="body"><b>عجائبُ الكون</b><span>أتحدّثُ عمّا أعرفُهُ عن النّظامِ الشّمسيِّ أو الكواكب، كما تعلّمَتْ يارا في المكتبة.</span></div></div>
+      <div class="pr"><span class="ic">🎯</span><div class="body"><b>حُلمي الكبير</b><span>ما الحلمُ الذي أريدُ تحقيقَه؟ وما الخطواتُ التي سأتّبعُها للوصولِ إليه؟</span></div></div>
+      <div class="pr"><span class="ic">🌟</span><div class="body"><b>سِرُّ النّجاح</b><span>برأيي، ما أهمُّ صفةٍ ساعدت يارا على النّجاح؟ ولماذا اخترتُها؟</span></div></div>
+    </div>
+  </section>
+
+  <footer>
+    <div>صوتُك واثقٌ وواضح! 🗣️ تابِع إلى القراءة المتأنّية.</div>
+    <a class="next" href="reading.html">التّالي: مهارة القراءة 📖 ←</a>
+  </footer>
+
+</div>
+
+<script>
+const lines=[
+ {t:"يارا فتاةٌ صَغيرةٌ تَعيشُ في مَدينةٍ بَعيدة. تُحِبُّ قِراءَةَ الْكُتُبِ الْعِلْميّة.",tag:"قراءةٌ هادئة"},
+ {t:"كَرَّسَتْ يارا أَسابيعَ عَديدَةً لإعْدادِ مَشْروعِها، وَفي يَوْمِ الْمَعْرِضِ قَدَّمَتْهُ بِثِقَةٍ وَشَرَحَتْ تَفاصيلَ عَمَلِها بِدِقَّة.",tag:"انتبِه لنطقِ الغين والخاء"},
+ {t:"أَثْمَرَتِ الْجُهودُ الشّاقَّةُ الّتي بَذَلَتْها يارا فَفازَتْ بِالْجائِزَةِ الأولى.",tag:"قراءةٌ واضحة"},
+ {t:"لا تَخافوا مِنْ طَرْحِ الأَسْئِلَةِ، وَلا تَخْجَلوا مِنِ ارْتِكابِ الأَخْطاءِ! إِحْلَموا أَحْلامًا عَظيمَةً، وَثابِروا في الْعَمَلِ، وَآمِنوا بِقُدُراتِكُمْ فَتُحَقِّقوا أَحْلامَكُمْ.",tag:"بنبرةٍ خِطابيّةٍ حماسيّة"}
+];
+let arVoice=null;
+function pick(){const v=speechSynthesis.getVoices().find(x=>x.lang&&x.lang.startsWith('ar'));if(v)arVoice=v;}
+pick();speechSynthesis.onvoiceschanged=pick;
+function model(t){speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='ar-SA';u.rate=.8;if(arVoice)u.voice=arVoice;speechSynthesis.speak(u);}
+
+const read=document.getElementById('read');
+lines.forEach(o=>{
+  const card=document.createElement('div');card.className='rc';
+  card.innerHTML=`<div class="tagline">🎵 ${o.tag}</div><div class="line">${o.t}</div>
+    <div class="tools"><button class="btn model">🔊 استمِع للنموذج</button><button class="btn rec">🎙️ سجِّل صوتي</button></div>`;
+  card.querySelector('.model').addEventListener('click',()=>model(o.t));
+  setupRec(card.querySelector('.rec'),card);
+  read.appendChild(card);
+});
+function setupRec(btn,card){
+  let rec=null,chunks=[],stream=null;
+  btn.addEventListener('click',async ()=>{
+    if(btn.classList.contains('on')){rec&&rec.stop();return;}
+    try{
+      stream=await navigator.mediaDevices.getUserMedia({audio:true});
+      rec=new MediaRecorder(stream);chunks=[];
+      rec.ondataavailable=e=>chunks.push(e.data);
+      rec.onstop=()=>{const blob=new Blob(chunks,{type:'audio/webm'});const url=URL.createObjectURL(blob);
+        let a=card.querySelector('audio');if(!a){a=document.createElement('audio');a.controls=true;card.appendChild(a);}
+        a.src=url;btn.classList.remove('on');btn.textContent='🎙️ سجِّل مرّةً أخرى';stream.getTracks().forEach(t=>t.stop());};
+      rec.start();btn.classList.add('on');btn.textContent='⏹️ أوقِف التّسجيل';
+    }catch(e){btn.disabled=true;btn.textContent='⚠️ الميكروفون غير متاح';}
+  });
+}
+window.addEventListener('beforeunload',()=>speechSynthesis.cancel());
+</script>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الاستِماع — يومٌ عِندَ جَدَّتي</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF3E9; --paper:#FFFCF7; --rose:#E07856; --rose-d:#C75B3C;
+    --green:#4FA192; --green-d:#3C7F73; --brown:#7A4E2D; --brown-d:#5E3A1F; --honey:#F4B860;
+    --ink:#3A2E2A; --soft:#8A7A70; --good:#4FA192; --bad:#E07856; --line:#EEDFCB;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Tajawal',sans-serif;background:var(--cream);color:var(--ink);line-height:1.9;
+    background-image:radial-gradient(circle at 15% 10%, #fdeede 0, transparent 30%),
+                     radial-gradient(circle at 85% 90%, #f4ead4 0, transparent 30%);
+    background-attachment:fixed;-webkit-text-size-adjust:100%}
+  .wrap{max-width:780px;margin:0 auto;padding:18px 16px 80px}
+  h1,h2,h3{font-family:'Baloo Bhaijaan 2',cursive}
+  .hero{background:linear-gradient(135deg,var(--brown),var(--honey));border-radius:28px;padding:26px 22px;color:#fff;text-align:center;box-shadow:0 14px 30px rgba(122,78,45,.28)}
+  .hero .scene{font-size:46px;letter-spacing:6px;margin-bottom:6px;filter:drop-shadow(0 4px 4px rgba(0,0,0,.12))}
+  .hero h1{font-size:28px;font-weight:800;text-shadow:0 2px 4px rgba(0,0,0,.15)}
+  .hero p{font-size:16px;margin-top:6px}
+  .crumbs{display:inline-block;background:rgba(255,255,255,.22);border-radius:999px;padding:4px 14px;font-size:13px;margin-top:12px;font-weight:700}
+  .card{background:var(--paper);border:2px solid var(--line);border-radius:22px;padding:20px 18px;margin-top:20px;box-shadow:0 6px 16px rgba(107,66,38,.06)}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'Baloo Bhaijaan 2';font-size:14px;font-weight:700;color:#fff;background:var(--brown);padding:5px 14px;border-radius:999px;margin-bottom:14px}
+  .eyebrow.green{background:var(--green)} .eyebrow.rose{background:var(--rose)} .eyebrow.honey{background:var(--honey);color:#6b4f1d}
+  h2{font-size:22px;color:var(--brown-d);margin-bottom:6px}
+  .lead{color:var(--soft);font-size:15px;margin-bottom:10px}
+  .goals{display:grid;gap:10px}
+  .goal{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:12px 14px}
+  .goal .ic{font-size:24px;flex:none}.goal b{color:var(--brown-d)}
+  /* big player */
+  .player{background:linear-gradient(160deg,#fff,#fff6e8);border:2px solid var(--line);border-radius:22px;padding:24px 18px;text-align:center}
+  .disc{width:120px;height:120px;border-radius:50%;margin:0 auto 14px;background:
+     radial-gradient(circle at center,#fff 0 14%,var(--brown) 15% 17%,var(--honey) 18% 100%);
+     display:flex;align-items:center;justify-content:center;font-size:44px;box-shadow:0 8px 20px rgba(122,78,45,.25);position:relative}
+  .disc.spin{animation:spin 3s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .pbtns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:6px}
+  .btn{font-family:'Baloo Bhaijaan 2';font-weight:700;font-size:15px;border:none;border-radius:14px;padding:12px 20px;cursor:pointer;color:#fff;background:var(--brown);box-shadow:0 4px 0 var(--brown-d);transition:transform .08s;display:inline-flex;align-items:center;gap:8px}
+  .btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--brown-d)}
+  .btn.green{background:var(--green);box-shadow:0 4px 0 var(--green-d)}.btn.green:active{box-shadow:0 1px 0 var(--green-d)}
+  .btn.ghost{background:#fff;color:var(--brown);border:2px solid var(--line);box-shadow:0 4px 0 var(--line)}.btn.ghost:active{box-shadow:0 1px 0 var(--line)}
+  .btn[disabled]{opacity:.5;cursor:not-allowed}
+  .count{font-family:'Baloo Bhaijaan 2';color:var(--soft);font-size:14px;margin-top:12px}
+  .tip{background:#fff6e3;border:1.5px solid #f3e3c4;border-radius:14px;padding:11px 14px;font-size:14px;color:#8a6d3b;margin-top:14px}
+  /* hidden text */
+  .secret{margin-top:14px}
+  .reveal{font-size:17px;line-height:2.2;background:#fff;border:1.5px dashed var(--brown);border-radius:14px;padding:14px;display:none}
+  .reveal.show{display:block}
+  /* prelisten */
+  .opts{display:grid;gap:10px}
+  .opt{display:flex;align-items:center;gap:12px;background:#fff;border:2px solid var(--line);border-radius:14px;padding:13px 14px;cursor:pointer;font-size:16px;font-weight:500;transition:.15s;text-align:right}
+  .opt:hover{border-color:var(--honey)}
+  .opt .mk{width:26px;height:26px;border-radius:50%;border:2px solid var(--line);flex:none;display:flex;align-items:center;justify-content:center;color:transparent;font-weight:700}
+  .opt.correct{border-color:var(--good);background:#eaf6f3}.opt.correct .mk{background:var(--good);border-color:var(--good);color:#fff}
+  .opt.wrong{border-color:var(--bad);background:#fdeee8}.opt.wrong .mk{background:var(--bad);border-color:var(--bad);color:#fff}
+  .opt.lock{pointer-events:none;opacity:.92}
+  .q{margin-top:16px;padding-top:16px;border-top:2px dashed var(--line)}.q:first-of-type{border-top:none;padding-top:0;margin-top:0}
+  .qnum{font-family:'Baloo Bhaijaan 2';color:var(--brown);font-size:15px}
+  .qtext{font-size:18px;font-weight:700;color:var(--brown-d);margin:4px 0 12px}
+  .fb{margin-top:10px;font-size:15px;border-radius:12px;padding:10px 14px;display:none}.fb.show{display:block}
+  .fb.ok{background:#eaf6f3;color:var(--green-d);border:1.5px solid #bfe3db}.fb.no{background:#fdeee8;color:var(--rose-d);border:1.5px solid #f4cdbd}
+  .scorebar{position:sticky;top:8px;z-index:5;background:#fff;border:2px solid var(--line);border-radius:999px;padding:8px 16px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 6px 16px rgba(107,66,38,.08);margin-bottom:6px}
+  .scorebar b{font-family:'Baloo Bhaijaan 2';color:var(--brown-d)}.stars{font-size:18px;letter-spacing:2px}
+  .result{display:none;text-align:center;background:linear-gradient(135deg,var(--brown),var(--honey));color:#fff;border-radius:22px;padding:24px;margin-top:18px;box-shadow:0 12px 26px rgba(122,78,45,.3)}
+  .result.show{display:block;animation:pop .4s}@keyframes pop{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}
+  .result .big{font-family:'Baloo Bhaijaan 2';font-size:40px}.result h3{font-family:'Baloo Bhaijaan 2';font-size:24px;margin:4px 0}
+  /* dictation */
+  .blank{display:inline-block;min-width:90px;border:none;border-bottom:2px dashed var(--brown);background:#fff6e8;font-family:'Tajawal';font-size:17px;text-align:center;padding:2px 6px}
+  .dict{font-size:17px;line-height:2.4}
+  .check{margin-top:12px}
+  .foot{text-align:center;color:var(--soft);font-size:13px;margin-top:30px}
+  .locked{opacity:.45;pointer-events:none;filter:grayscale(.3)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="scene">🎧📻👵</div>
+    <h1>الاستِماع</h1>
+    <p>أُصغي جَيِّدًا إلى نَصِّ «يَومٌ عِندَ جَدَّتي»</p>
+    <span class="crumbs">👂 أَستَمِع • أَفهَم • أُجيب</span>
+  </header>
+
+  <section class="card">
+    <span class="eyebrow honey">🎯 هَدَفي</span>
+    <div class="goals">
+      <div class="goal"><span class="ic">👂</span><div>أُرَكِّزُ سَمعي وأَلتَقِطُ <b>المَعلوماتِ المُهِمّة</b>.</div></div>
+      <div class="goal"><span class="ic">🧩</span><div>أَتَذَكَّرُ <b>الأحداثَ والتَّفاصيل</b> دونَ أنْ أقرأ.</div></div>
+      <div class="goal"><span class="ic">✍️</span><div>أُكمِلُ الفَراغاتِ بِما سَمِعْتُه.</div></div>
+    </div>
+  </section>
+
+  <!-- pre-listening -->
+  <section class="card">
+    <span class="eyebrow green">🔮 قَبلَ الاستِماع</span>
+    <h2>أَتَوَقَّع</h2>
+    <p class="lead">مِنَ العُنوانِ «يَومٌ عِندَ جَدَّتي»، عَمَّ سيَتَحَدَّثُ النَّصُّ بِرَأيِك؟</p>
+    <div class="opts" id="predict">
+      <button class="opt"><span class="mk">✓</span><span>عن زِيارَةِ عائِلةٍ لِجَدَّتِهِم ويَومٍ جَميلٍ مَعَها</span></button>
+      <button class="opt"><span class="mk">✓</span><span>عن رِحلةٍ إلى الفَضاء</span></button>
+      <button class="opt"><span class="mk">✓</span><span>عن مُباراةِ كُرَةِ قَدَم</span></button>
+    </div>
+    <div class="fb" id="predFb"></div>
+  </section>
+
+  <!-- player -->
+  <section class="card">
+    <span class="eyebrow">🎧 الاستِماع</span>
+    <h2>أُصغي إلى النَّصّ</h2>
+    <p class="lead">اضغَطْ «استَمِع». أصغِ مَرَّتَين على الأقَلّ قَبلَ الإجابة. النَّصُّ مُخفًى لِتَتَدَرَّبَ على الإصغاء.</p>
+    <div class="player">
+      <div class="disc" id="disc">🎵</div>
+      <div class="pbtns">
+        <button class="btn" id="play">▶️ استَمِع</button>
+        <button class="btn ghost" id="pause" disabled>⏸️ إيقاف</button>
+        <button class="btn green" id="replay">🔁 إعادة</button>
+      </div>
+      <div class="count">مَرّاتُ الاستِماع: <span id="plays">0</span></div>
+    </div>
+    <div class="tip" id="ttsTip" style="display:none">💡 لا يَتوفّرُ صوتٌ عربيّ على هذا الجِهاز؟ اطلُبْ مِن مُعَلِّمِكَ أو والِدَيكَ قِراءةَ النَّصّ، أو اضغَطْ «أظهِرِ النَّصّ».</div>
+    <div class="secret">
+      <button class="btn ghost" id="revealBtn">👁️ أظهِرِ النَّصّ (بَعدَ الاستِماع)</button>
+      <div class="reveal" id="reveal">
+        تَسكُنُ جَدَّتي في مَنزِلٍ مُنفَرِدٍ أمامَهُ ساحَةٌ واسِعَة. نَزورُها في عُطلَةِ نِهايَةِ الأُسبوع.
+        يَومَ السَّبتِ الماضي قَصَدْنا بَيتَها، فَرَكَضَتْ نَحوَنا تُقَبِّلُنا، ثُمَّ دَعَتْنا إلى المَطبَخِ
+        وسَأَلَتْنا عَمّا حَضَّرَتْه، فَعَرَفنا أنَّهُ قالَبُ حَلوى بالشّوكولا. طَلَبَتْ أنْ نَأكُلَهُ بَعدَ الغَداء،
+        فَحَزِنّا، لكنَّ أحَدَنا أقنَعَها بِقُبلةٍ ووَعدٍ، فَسَمَحَتْ لنا. دَخَلَ الجَدُّ وقَبَّلَنا وراقَبَنا مُبتَسِمًا.
+        عِندَ جَدَّتي نُشاهِدُ الأفلامَ ونَلعَبُ ونُغَنّي ونَلعَبُ في السّاحة. جَدَّتي لَطيفَةٌ مُحِبَّة، ونَنتَظِرُ زِيارَتَها دائِمًا.
+      </div>
+    </div>
+  </section>
+
+  <!-- questions -->
+  <section class="card" id="qSection">
+    <span class="eyebrow rose">✅ بَعدَ الاستِماع</span>
+    <h2>أُجيبُ مِمّا سَمِعْت</h2>
+    <p class="lead">اختَرِ الإجابةَ الصَّحيحةَ اعتِمادًا على سَمعِكَ فَقَط 🎧</p>
+    <div class="scorebar"><b>نَتيجَتي</b><span class="stars" id="stars">☆☆☆☆☆☆</span><b id="scoreNum">0 / 6</b></div>
+    <div id="quiz"></div>
+    <div class="result" id="result">
+      <div class="big" id="rEmoji">🎉</div><h3 id="rTitle"></h3><p id="rMsg"></p>
+      <button class="btn green" style="margin-top:14px" onclick="location.reload()">🔁 أُعيدُ النَّشاط</button>
+    </div>
+  </section>
+
+  <!-- dictation -->
+  <section class="card">
+    <span class="eyebrow honey">✍️ أُكمِلُ ما سَمِعت</span>
+    <h2>الفَراغاتُ المُختَفِية</h2>
+    <p class="lead">استَمِعْ مَرَّةً أُخرى واملأِ الفَراغاتِ بالكَلِمةِ الصَّحيحة:</p>
+    <p class="dict">
+      تَسكُنُ جَدَّتي في مَنزِلٍ <input class="blank" data-a="مُنفَرِد" placeholder="......">،
+      ونَزورُها في عُطلَةِ نِهايَةِ <input class="blank" data-a="الأُسبوع" placeholder="......">.
+      حَضَّرَتْ لَنا قالَبَ <input class="blank" data-a="حَلوى" placeholder="......"> بالشّوكولا.
+      جَدَّتي لَطيفَةٌ <input class="blank" data-a="مُحِبّة" placeholder="......">.
+    </p>
+    <button class="btn check" id="checkDict">✅ تَحَقَّقْ</button>
+    <div class="fb" id="dictFb"></div>
+  </section>
+
+  <p class="foot">نَشاطُ استِماعٍ تَفاعُليّ • نَصُّ «يَومٌ عِندَ جَدَّتي» 🎧</p>
+</div>
+
+<script>
+/* ---- pre-listening ---- */
+const predBtns=[...document.querySelectorAll('#predict .opt')];
+predBtns.forEach((b,i)=>b.onclick=()=>{
+  if(document.getElementById('predict').dataset.done)return;
+  document.getElementById('predict').dataset.done='1';
+  predBtns.forEach(x=>x.classList.add('lock'));
+  const fb=document.getElementById('predFb');
+  predBtns[0].classList.add('correct');predBtns[0].querySelector('.mk').textContent='✓';
+  if(i===0){fb.className='fb show ok';fb.textContent='👏 تَوَقُّعٌ ذَكِيّ! لِنَستَمِعْ ونَتأكَّد.';}
+  else{b.classList.add('wrong');b.querySelector('.mk').textContent='✕';fb.className='fb show no';fb.textContent='🤔 العُنوانُ يَدُلُّ على زِيارَةِ الجَدَّة. لِنَستَمِع!';}
+});
+
+/* ---- TTS player ---- */
+const TEXT=`تَسكُنُ جَدَّتي في مَنزِلٍ مُنفَرِدٍ أمامَهُ ساحَةٌ واسِعَة. نَزورُها في عُطلَةِ نِهايَةِ الأُسبوع.
+يَومَ السَّبتِ الماضي قَصَدنا بَيتَها، فَرَكَضَتْ نَحوَنا تُقَبِّلُنا، ثُمَّ دَعَتنا إلى المَطبَخِ وسَأَلَتنا عَمّا حَضَّرَتْه، فَعَرَفنا أنَّهُ قالَبُ حَلوى بالشّوكولا.
+طَلَبَتْ أنْ نَأكُلَهُ بَعدَ الغَداء، فَحَزِنّا، لكنَّ أحَدَنا أقنَعَها بِقُبلةٍ ووَعدٍ فَسَمَحَتْ لنا.
+دَخَلَ الجَدُّ وقَبَّلَنا وراقَبَنا مُبتَسِمًا. عِندَ جَدَّتي نُشاهِدُ الأفلامَ ونَلعَبُ ونُغَنّي ونَلعَبُ في السّاحة.
+جَدَّتي لَطيفَةٌ مُحِبَّة، ونَنتَظِرُ زِيارَتَها دائِمًا.`;
+let arVoice=null,plays=0;
+function pick(){const vs=speechSynthesis.getVoices();arVoice=vs.find(v=>/ar(-|_)?/i.test(v.lang))||null;}
+pick();speechSynthesis.onvoiceschanged=pick;
+const play=document.getElementById('play'),pause=document.getElementById('pause'),replay=document.getElementById('replay'),disc=document.getElementById('disc');
+function start(){
+  if(!('speechSynthesis'in window)){document.getElementById('ttsTip').style.display='block';return;}
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(TEXT);u.lang='ar-SA';u.rate=.88;if(arVoice)u.voice=arVoice;
+  if(!arVoice)document.getElementById('ttsTip').style.display='block';
+  u.onstart=()=>{disc.classList.add('spin');disc.textContent='🔊';play.disabled=true;pause.disabled=false;};
+  u.onend=()=>{disc.classList.remove('spin');disc.textContent='🎵';play.disabled=false;pause.disabled=true;};
+  u.onerror=()=>{document.getElementById('ttsTip').style.display='block';disc.classList.remove('spin');play.disabled=false;};
+  speechSynthesis.speak(u);plays++;document.getElementById('plays').textContent=plays;
+}
+play.onclick=start; replay.onclick=start;
+pause.onclick=()=>{speechSynthesis.cancel();disc.classList.remove('spin');disc.textContent='🎵';play.disabled=false;pause.disabled=true;};
+document.getElementById('revealBtn').onclick=()=>document.getElementById('reveal').classList.toggle('show');
+
+/* ---- listening quiz ---- */
+const QS=[
+ {q:"أينَ يَقَعُ مَنزِلُ الجَدَّة؟",o:["داخِلَ سوقٍ مُزدَحِم","مُنفَرِدٌ أمامَهُ ساحَةٌ واسِعَة","فَوقَ تَلَّةٍ عالِية"],a:1,e:"سَمِعنا: مَنزِلٌ مُنفَرِدٌ أمامَهُ ساحَةٌ واسِعَة."},
+ {q:"متى زارَ الأطفالُ جَدَّتَهُم؟",o:["يَومَ السَّبتِ الماضي","صَباحَ العيد","لَيلَةَ الجُمعة"],a:0,e:"«يَومَ السَّبتِ الماضي قَصَدنا بَيتَها»."},
+ {q:"ماذا حَضَّرَتِ الجَدَّة؟",o:["شَوربَةَ خَضار","قالَبَ حَلوى بالشّوكولا","سَلَطَةَ فَواكِه"],a:1,e:"حَضَّرَتْ قالَبَ حَلوى بالشّوكولا."},
+ {q:"لماذا حَزِنَ الأطفال؟",o:["لأنَّهُم تَأخَّروا","لأنَّ عَلَيهِم الانتِظارَ إلى ما بَعدَ الغَداء","لأنَّ الجَدَّ غابَ"],a:1,e:"طَلَبَتْ أنْ يَأكُلوا الحَلوى بَعدَ الغَداء."},
+ {q:"كيفَ تَصَرَّفَ الجَدُّ حينَ دَخَل؟",o:["نامَ في غُرفَتِه","قَبَّلَهُم وراقَبَهُم مُبتَسِمًا","خَرَجَ إلى الحَديقة"],a:1,e:"دَخَلَ الجَدُّ وقَبَّلَهُم وراقَبَهُم مُبتَسِمًا."},
+ {q:"بِأيِّ صِفةٍ خُتِمَ وَصْفُ الجَدَّة؟",o:["مَشغولة","لَطيفةٌ مُحِبّة","صارِمة"],a:1,e:"«جَدَّتي لَطيفةٌ مُحِبّة»."}
+];
+const quiz=document.getElementById('quiz');let score=0,answered=0;
+QS.forEach((it,qi)=>{
+  const w=document.createElement('div');w.className='q';
+  w.innerHTML=`<div class="qnum">سؤال ${qi+1}</div><div class="qtext">${it.q}</div>`;
+  const op=document.createElement('div');op.className='opts';
+  it.o.forEach((t,oi)=>{const b=document.createElement('button');b.className='opt';b.innerHTML=`<span class="mk"></span><span>${t}</span>`;b.onclick=()=>pickAns(w,op,b,oi,it);op.appendChild(b);});
+  w.appendChild(op);const fb=document.createElement('div');fb.className='fb';w.appendChild(fb);quiz.appendChild(w);
+});
+function pickAns(w,op,btn,oi,it){
+  if(w.dataset.done)return;w.dataset.done='1';answered++;
+  [...op.children].forEach(b=>b.classList.add('lock'));const fb=w.querySelector('.fb');
+  if(oi===it.a){btn.classList.add('correct');btn.querySelector('.mk').textContent='✓';score++;fb.className='fb show ok';fb.textContent='👏 صَحيح! '+it.e;}
+  else{btn.classList.add('wrong');btn.querySelector('.mk').textContent='✕';op.children[it.a].classList.add('correct');op.children[it.a].querySelector('.mk').textContent='✓';fb.className='fb show no';fb.textContent='🎧 الصَّحيحُ بالأخضَر. '+it.e;}
+  document.getElementById('scoreNum').textContent=score+' / '+QS.length;
+  document.getElementById('stars').textContent='★'.repeat(score)+'☆'.repeat(QS.length-score);
+  if(answered===QS.length){const r=document.getElementById('result');r.classList.add('show');const p=score/QS.length;
+    let e='🌟',t='عَمَلٌ جَيِّد!',m='';
+    if(p===1){e='🏆';t='أُذُنٌ ذَهَبِيّة!';m='التَقَطْتَ كُلَّ التَّفاصيل. مُستَمِعٌ بارِع!';}
+    else if(p>=.66){e='🎉';t='أحسَنْت!';m='إصغاؤُكَ جَيِّدٌ جِدًّا.';}
+    else{e='👂';t='أعِدِ الاستِماع';m='استَمِعْ مَرَّةً أُخرى بِتَركيز، ستَتَحَسَّن!';}
+    document.getElementById('rEmoji').textContent=e;document.getElementById('rTitle').textContent=t;
+    document.getElementById('rMsg').textContent=m+' ('+score+' مِن '+QS.length+')';
+    r.scrollIntoView({behavior:'smooth',block:'center'});}
+}
+
+/* ---- dictation ---- */
+document.getElementById('checkDict').onclick=()=>{
+  const bl=[...document.querySelectorAll('.blank')];let ok=0;
+  bl.forEach(i=>{const v=i.value.trim().replace(/[ـًٌٍَُِّْ]/g,'');const a=i.dataset.a.replace(/[ـًٌٍَُِّْ]/g,'');
+    if(v&&a.indexOf(v)>-1&&v.length>=a.length-2){i.style.background='#eaf6f3';i.style.borderColor='#4FA192';ok++;}
+    else{i.style.background='#fdeee8';i.style.borderColor='#E07856';}});
+  const fb=document.getElementById('dictFb');
+  if(ok===bl.length){fb.className='fb show ok';fb.textContent='🌟 رائِع! ملأتَ كُلَّ الفَراغاتِ بِشَكلٍ صَحيح.';}
+  else{fb.className='fb show no';fb.textContent=`أصَبْتَ ${ok} مِن ${bl.length}. استَمِعْ مَرَّةً أُخرى وأكمِلِ الباقي.`;}
+};
+</script>
+</body>
+</html>

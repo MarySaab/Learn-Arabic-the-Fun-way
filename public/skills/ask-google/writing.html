@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الكتابة · إسأل غوغِل</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@400;500;700;800&family=Lalezar&display=swap" rel="stylesheet">
+<style>
+:root{
+  --screen:#1f2750; --screen-2:#2c3768; --paper:#ece8f4; --paper-2:#f9f6fd;
+  --ink:#2a2530; --muted:#6f6479; --line:#ded3ec; --glow:#ffd874;
+  --accent:#7c5cbf; --accent-2:#9b7fd6; --accent-soft:#e8defa;
+  --good:#2f7d62; --warn:#c4502e;
+  --shadow:0 14px 30px -18px rgba(70,40,120,.4);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Tajawal",system-ui,sans-serif;
+  background:radial-gradient(1200px 500px at 80% -8%, #f4eefc 0%, transparent 60%),var(--paper);
+  color:var(--ink);line-height:1.9;-webkit-font-smoothing:antialiased}
+.wrap{max-width:920px;margin:0 auto;padding:0 18px 70px}
+.topbar{position:sticky;top:0;z-index:30;background:rgba(31,39,80,.97);backdrop-filter:blur(6px);color:#eef1ff;box-shadow:0 6px 20px -10px rgba(0,0,0,.6)}
+.topbar .row{max-width:920px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 18px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-family:"Lalezar",cursive;font-size:1.3rem}
+.brand .dot{width:14px;height:14px;border-radius:50%;background:var(--glow);box-shadow:0 0 10px var(--glow)}
+.nav{display:flex;gap:6px;flex-wrap:wrap}
+.nav a{color:#cdd3f2;text-decoration:none;font-weight:700;font-size:.92rem;padding:7px 13px;border-radius:999px;display:flex;align-items:center;gap:6px;border:1px solid transparent;transition:.18s}
+.nav a:hover{background:rgba(255,255,255,.08)}
+.nav a.active{background:var(--accent);color:#fff;border-color:var(--accent-2)}
+
+.hero{margin:26px 0 8px;border-radius:22px;overflow:hidden;position:relative;
+  background:radial-gradient(120% 140% at 85% 10%, #34316f 0%, var(--screen) 60%);color:#eef1ff;box-shadow:var(--shadow);border:1px solid #3a3878}
+.hero .inner{position:relative;padding:34px 30px}
+.eyebrow{font-weight:700;letter-spacing:3px;font-size:.8rem;color:var(--glow);display:flex;align-items:center;gap:8px}
+.hero h1{font-family:"Lalezar",cursive;font-weight:400;margin:.25em 0 .1em;font-size:clamp(2.1rem,7vw,3.3rem);line-height:1.1;text-shadow:0 2px 8px rgba(0,0,0,.4)}
+.hero p.sub{margin:.2em 0 0;color:#c3c9ec;max-width:50ch}
+.skill-chip{display:inline-flex;align-items:center;gap:8px;margin-bottom:6px;background:rgba(155,127,214,.22);border:1px solid rgba(155,127,214,.5);color:#d6c6f4;padding:5px 14px;border-radius:999px;font-weight:700;font-size:.9rem}
+
+section{margin-top:34px}
+.sec-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.sec-head .num{font-family:"Lalezar",cursive;color:var(--accent);background:var(--accent-soft);width:42px;height:42px;border-radius:14px;display:grid;place-items:center;font-size:1.3rem;flex:none;border:1.5px solid var(--accent-2)}
+.sec-head h2{margin:0;font-size:1.5rem;font-weight:800}
+.sec-head .hint{margin:0;color:var(--muted);font-size:.92rem}
+
+.def{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:var(--shadow)}
+.def .lead{font-size:1.15rem;color:var(--screen);font-weight:700;margin-bottom:14px}
+.types{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.types{grid-template-columns:1fr}}
+.tcard{background:var(--paper-2);border:1px solid var(--line);border-radius:16px;padding:18px;position:relative;overflow:hidden}
+.tcard.active{border:2px solid var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.tcard::before{content:"";position:absolute;top:0;right:0;height:100%;width:8px;background:linear-gradient(var(--accent),var(--accent-2))}
+.tcard h3{margin:.1em 0 .4em;font-size:1.15rem;color:var(--screen);font-family:"Lalezar",cursive;font-weight:400}
+.tcard .ic{font-size:1.6rem}.tcard p{margin:0;color:#4d4458;font-size:.98rem}
+.tcard .tag{display:inline-block;margin-top:10px;background:var(--accent-soft);color:var(--accent);font-weight:700;border-radius:8px;padding:2px 12px;font-size:.88rem}
+.tcard .tag.you{background:#eafaf2;color:var(--good)}
+
+.feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.ft{background:var(--paper-2);border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;gap:12px;align-items:center;box-shadow:var(--shadow)}
+.ft .chk{flex:none;width:34px;height:34px;border-radius:10px;background:var(--good);color:#fff;display:grid;place-items:center;font-size:1.1rem}
+.ft b{font-size:1.02rem}
+.tip{margin-top:14px;background:#eef6ff;border:1px solid #cfe2f7;border-radius:12px;padding:12px 16px;color:#2c4a6b;font-size:.97rem}
+.tip b{color:#1c3a5b}
+
+.studio{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);overflow:hidden}
+.studio .head{background:linear-gradient(var(--accent),var(--accent-2));color:#fff;padding:16px 20px}
+.studio .head b{font-size:1.2rem}.studio .head span{display:block;color:#f0e7ff;font-size:.92rem}
+.field{padding:16px 20px;border-bottom:1px dashed var(--line)}
+.field label{display:block;font-weight:800;margin-bottom:4px;color:var(--screen)}
+.field .guide{color:var(--muted);font-size:.9rem;margin-bottom:8px}
+.field textarea,.field input{width:100%;font-family:"Amiri",serif;font-size:1.25rem;line-height:1.9;border:2px solid var(--line);border-radius:12px;padding:12px;background:#fdfbff;color:var(--ink);resize:vertical}
+.field textarea:focus,.field input:focus{outline:0;border-color:var(--accent-2);background:#fff}
+.field input{font-size:1.15rem}
+.bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding:16px 20px;background:var(--paper-2)}
+.bar .count{color:var(--muted);font-weight:700;margin-inline-end:auto}
+.bar button{cursor:pointer;border:0;font-family:inherit;font-weight:700;border-radius:999px;padding:11px 20px;display:inline-flex;gap:7px;align-items:center;box-shadow:var(--shadow)}
+.bar .save{background:var(--screen);color:#fff}.bar .save:hover{background:var(--screen-2)}
+.bar .print{background:#fff;color:var(--accent);border:2px solid var(--accent-2)}
+.bar .clear{background:#fff;color:var(--warn);border:2px solid #f0c9bd}
+.bar button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.warnbox{background:#fdeee9;border:1px solid #f0c9bd;border-radius:12px;padding:10px 14px;color:var(--warn);font-size:.92rem;margin-top:10px}
+
+footer{margin-top:46px;text-align:center;color:var(--muted);font-size:.9rem;border-top:1px dashed var(--line);padding-top:20px}
+.next{display:inline-flex;align-items:center;gap:8px;margin-top:14px;text-decoration:none;background:var(--screen);color:#eef1ff;padding:11px 22px;border-radius:999px;font-weight:700;box-shadow:var(--shadow)}
+.next:hover{background:var(--screen-2)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="row">
+  <div class="brand"><span class="dot"></span> إسأل غوغِل</div>
+  <nav class="nav">
+    <a href="listening.html">🎧 استماع</a>
+    <a href="speaking.html">🗣️ تحدّث</a>
+    <a href="reading.html">📖 قراءة</a>
+    <a href="writing.html" class="active">✍️ كتابة</a>
+  </nav>
+</div></div>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="inner">
+      <span class="skill-chip">✍️ مهارة الكتابة</span>
+      <div class="eyebrow">✦ أكتشفُ السّرد ثمّ أكتُب</div>
+      <h1>إسأل غوغِل</h1>
+      <p class="sub">نصُّ «إسأل غوغِل» سَرْدٌ تحكي فيه الفتاةُ حدثًا جرى معها. تعرَّفْ إلى السّرد والرّاوي، ثمّ اكتُبْ سردًا عن «يومٍ عند جدّي».</p>
+    </div>
+  </div>
+
+  <!-- WHAT IS NARRATION -->
+  <section>
+    <div class="sec-head"><div class="num">١</div><div><h2>ما هو السَّرد؟</h2><p class="hint">السّردُ هو مجموعةُ أحداثٍ يُخبِرُها الرّاوي. وقد يكونُ الرّاوي على نوعَين:</p></div></div>
+    <div class="def">
+      <div class="types">
+        <div class="tcard active">
+          <span class="ic">🙋</span>
+          <h3>راوٍ حاضرٌ في النّصّ</h3>
+          <p>أي أنّه شخصيّةٌ من شخصيّاتِ القصّة، ويستعملُ <b>ضميرَ المتكلّم</b> (أنا).</p>
+          <span class="tag you">✓ نصُّ «إسأل غوغِل» من هذا النّوع (الفتاة تروي)</span>
+        </div>
+        <div class="tcard">
+          <span class="ic">👁️</span>
+          <h3>راوٍ غائبٌ عن النّصّ</h3>
+          <p>أي أنّه خارجَ أحداثِ القصّة وليس جزءًا منها، ويستعملُ <b>ضميرَ الغائب</b> (هو/هي).</p>
+          <span class="tag">مثل نصّ «العالِمة الصّغيرة»</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section>
+    <div class="sec-head"><div class="num">٢</div><div><h2>ما الذي يدُلُّ على السَّردِ في النّصّ؟</h2><p class="hint">انتبِه إلى هذه العناصرِ الأربعة.</p></div></div>
+    <div class="feats">
+      <div class="ft"><span class="chk">⏳</span><b>الزَّمان</b></div>
+      <div class="ft"><span class="chk">📍</span><b>المكان</b></div>
+      <div class="ft"><span class="chk">👥</span><b>الشّخصيّات</b></div>
+      <div class="ft"><span class="chk">⟳</span><b>الأفعالُ الماضية</b></div>
+    </div>
+    <div class="tip">🔎 في نصّنا، الرّاوي <b>حاضر</b>: لاحِظ أفعالَ المتكلّم الماضية التي تعودُ إلى الفتاة: «<b>أدَرْتُ</b>، <b>كتبتُ</b>، <b>ضغطتُ</b>، <b>شعرتُ</b>، <b>أسرعتُ</b>». لو قال الكاتبُ «أدارَتْ، كتبَتْ» لصار الرّاوي <b>غائبًا</b>.</div>
+  </section>
+
+  <!-- STUDIO -->
+  <section>
+    <div class="sec-head"><div class="num">٣</div><div><h2>أُعبِّرُ كتابيًّا: يومٌ عند جدّي</h2><p class="hint">اكتُبْ سردًا تحكي فيه كيف قضيتَ يومًا في زيارةِ جدِّك وجدّتك. استعملْ ضميرَ المتكلّم والفعلَ الماضي.</p></div></div>
+
+    <div class="studio">
+      <div class="head"><b>دفتري — سَرْدُ حدث</b><span>اتّبِعِ التّصميم: المقدّمة (نُحدّدُ فيها الموضوعَ والمكانَ والزّمانَ والشّخصيّات) ← صلبُ الموضوع (الأحداث) ← الخاتمة.</span></div>
+
+      <div class="field"><label>📌 العنوان</label>
+        <div class="guide">اختَرْ عنوانًا يصِفُ يومَك.</div>
+        <input id="f_title" placeholder="مثال: يومٌ لا يُنسى في بيتِ جدّي"></div>
+
+      <div class="field"><label>① المقدّمة</label>
+        <div class="guide">متى كانت الزّيارة؟ وأين؟ ومن كان معك؟ وما الموضوع — دون سردِ الأحداثِ هنا.</div>
+        <textarea id="f_intro" rows="3" placeholder="مثال: في عُطلةِ نهايةِ الأسبوع، ذهبتُ مع إخوتي إلى بيتِ جدّي وجدّتي في القرية…"></textarea></div>
+
+      <div class="field"><label>② صلبُ الموضوع (الأحداث بالتّسلسلِ الزّمنيّ)</label>
+        <div class="guide">احكِ ما جرى خطوةً خطوة: ماذا فعلتم أوّلًا؟ ثمّ ماذا؟ ماذا عرَض الجَدّان عليكم؟ بمَ لعِبتم؟</div>
+        <textarea id="f_events" rows="6" placeholder="مثال: استقبلَنا جدّي بحرارة، ثمّ جلسنا في غرفةِ الجلوس نستمعُ إلى حكاياتِه… وبعد الغداء…"></textarea></div>
+
+      <div class="field"><label>③ الخاتمة (مشاعري والعِبرة)</label>
+        <div class="guide">كيف شعرتَ في ذلك اليوم؟ وماذا تعلّمتَ أو أحببتَ في زيارةِ جدّيك؟</div>
+        <textarea id="f_end" rows="2" placeholder="مثال: عُدتُ إلى البيتِ سعيدًا، وأدركتُ كم تجمعُنا بجدّينا علاقةُ محبّةٍ واحترام…"></textarea></div>
+
+      <div class="bar">
+        <span class="count" id="count">عددُ الكلمات: ٠</span>
+        <button class="save" id="save">⬇️ أحفظُ نصّي</button>
+        <button class="print" id="print">🖨️ أطبَع</button>
+        <button class="clear" id="clear">🗑️ أمسح</button>
+      </div>
+    </div>
+    <div class="warnbox">ℹ️ ملاحظة صغيرة: ما تكتبُهُ هنا يبقى على شاشتك فقط ولا يُرسَلُ إلى أيِّ مكان. احفظْ نصَّك (زرّ «أحفظ») قبل إغلاقِ الصّفحة كي لا يضيع.</div>
+  </section>
+
+  <footer>
+    <div>أنتَ كاتبٌ صغير! ✍️ عُدْ إلى البداية متى شئت.</div>
+    <a class="next" href="listening.html">العودة للبداية: الاستماع 🎧 ←</a>
+  </footer>
+
+</div>
+
+<script>
+const ids=['f_title','f_intro','f_events','f_end'];
+const fields=ids.map(id=>document.getElementById(id));
+const ar=n=>n.toString().replace(/\d/g,d=>'٠١٢٣٤٥٦٧٨٩'[d]);
+function countWords(){
+  const txt=['f_intro','f_events','f_end'].map(id=>document.getElementById(id).value).join(' ');
+  const w=txt.trim().split(/\s+/).filter(Boolean).length;
+  document.getElementById('count').textContent='عددُ الكلمات: '+ar(w);
+}
+fields.forEach(f=>f.addEventListener('input',countWords));countWords();
+function buildText(){
+  const t=document.getElementById('f_title').value||'يومٌ عند جدّي';
+  return ['— '+t+' —','','المقدّمة:',document.getElementById('f_intro').value,'',
+    'صلبُ الموضوع:',document.getElementById('f_events').value,'',
+    'الخاتمة:',document.getElementById('f_end').value].join('\n');
+}
+document.getElementById('save').addEventListener('click',()=>{
+  const blob=new Blob([buildText()],{type:'text/plain;charset=utf-8'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download=(document.getElementById('f_title').value||'يوم_عند_جدّي')+'.txt';a.click();
+});
+document.getElementById('print').addEventListener('click',()=>{
+  const w=window.open('','_blank');
+  w.document.write('<html dir="rtl"><head><meta charset="utf-8"><title>نصّي</title>'+
+    '<style>body{font-family:serif;padding:40px;line-height:2;font-size:18px}h1{text-align:center}'+
+    'h3{color:#7c5cbf;margin-bottom:2px}p{margin-top:2px;white-space:pre-wrap}</style></head><body>');
+  w.document.write('<h1>'+(document.getElementById('f_title').value||'يومٌ عند جدّي')+'</h1>');
+  [['المقدّمة','f_intro'],['صلبُ الموضوع','f_events'],['الخاتمة','f_end']]
+    .forEach(([h,id])=>{w.document.write('<h3>'+h+'</h3><p>'+(document.getElementById(id).value||'…')+'</p>');});
+  w.document.write('</body></html>');w.document.close();w.print();
+});
+document.getElementById('clear').addEventListener('click',()=>{
+  if(confirm('هل تريدُ مَسحَ كلِّ ما كتبتَ؟')){fields.forEach(f=>f.value='');countWords();}
+});
+</script>
+</body>
+</html>

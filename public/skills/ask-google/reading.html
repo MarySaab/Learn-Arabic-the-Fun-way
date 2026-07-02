@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>القراءة · إسأل غوغِل</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@400;500;700;800&family=Lalezar&display=swap" rel="stylesheet">
+<style>
+:root{
+  --screen:#1f2750; --screen-2:#2c3768; --paper:#f1ecdf; --paper-2:#fdf9ef;
+  --ink:#26221b; --muted:#766a57; --line:#e6dcc3; --glow:#ffd874;
+  --accent:#c98a1e; --accent-2:#e6a93a; --accent-soft:#fbeccb;
+  --good:#2f7d62; --warn:#c4502e;
+  --shadow:0 14px 30px -18px rgba(30,30,70,.5);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Tajawal",system-ui,sans-serif;
+  background:radial-gradient(1200px 500px at 80% -8%, #fff7e7 0%, transparent 60%),var(--paper);
+  color:var(--ink);line-height:1.9;-webkit-font-smoothing:antialiased}
+.wrap{max-width:920px;margin:0 auto;padding:0 18px 70px}
+.topbar{position:sticky;top:0;z-index:30;background:rgba(31,39,80,.97);backdrop-filter:blur(6px);color:#eef1ff;box-shadow:0 6px 20px -10px rgba(0,0,0,.6)}
+.topbar .row{max-width:920px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 18px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-family:"Lalezar",cursive;font-size:1.3rem}
+.brand .dot{width:14px;height:14px;border-radius:50%;background:var(--glow);box-shadow:0 0 10px var(--glow)}
+.nav{display:flex;gap:6px;flex-wrap:wrap}
+.nav a{color:#cdd3f2;text-decoration:none;font-weight:700;font-size:.92rem;padding:7px 13px;border-radius:999px;display:flex;align-items:center;gap:6px;border:1px solid transparent;transition:.18s}
+.nav a:hover{background:rgba(255,255,255,.08)}
+.nav a.active{background:var(--accent);color:#1f1402;border-color:var(--accent-2)}
+
+.hero{margin:26px 0 8px;border-radius:22px;overflow:hidden;position:relative;
+  background:radial-gradient(120% 140% at 85% 10%, #2e3a72 0%, var(--screen) 60%);color:#eef1ff;box-shadow:var(--shadow);border:1px solid #353f78}
+.hero .inner{position:relative;padding:32px 30px}
+.eyebrow{font-weight:700;letter-spacing:3px;font-size:.8rem;color:var(--glow);display:flex;align-items:center;gap:8px}
+.hero h1{font-family:"Lalezar",cursive;font-weight:400;margin:.25em 0 .1em;font-size:clamp(2.1rem,7vw,3.3rem);line-height:1.1;text-shadow:0 2px 8px rgba(0,0,0,.4)}
+.hero p.sub{margin:.2em 0 14px;color:#c3c9ec;max-width:48ch}
+.hero .author{font-family:"Amiri",serif;font-style:italic;color:#e7d9b5}
+/* search bar motif */
+.searchbar{display:flex;align-items:center;gap:10px;background:#fff;border-radius:999px;padding:11px 18px;
+  max-width:420px;box-shadow:0 10px 24px -10px rgba(0,0,0,.5);margin-top:6px}
+.searchbar .mag{font-size:1.1rem}
+.searchbar .qtext{color:#222;font-family:"Tajawal";font-weight:500;font-size:1.02rem;white-space:nowrap;overflow:hidden}
+.searchbar .cursor{width:2px;height:20px;background:var(--accent);animation:blink 1s steps(1) infinite}
+.searchbar .go{margin-inline-start:auto;background:var(--accent);color:#fff;border-radius:999px;padding:4px 12px;font-weight:700;font-size:.85rem}
+@keyframes blink{50%{opacity:0}}
+.skill-chip{display:inline-flex;align-items:center;gap:8px;margin-bottom:6px;background:rgba(230,169,58,.18);border:1px solid rgba(230,169,58,.45);color:var(--glow);padding:5px 14px;border-radius:999px;font-weight:700;font-size:.9rem}
+
+section{margin-top:34px}
+.sec-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.sec-head .num{font-family:"Lalezar",cursive;color:var(--accent);background:var(--accent-soft);width:42px;height:42px;border-radius:14px;display:grid;place-items:center;font-size:1.3rem;flex:none;border:1.5px solid var(--accent-2)}
+.sec-head h2{margin:0;font-size:1.5rem;font-weight:800}
+.sec-head .hint{margin:0;color:var(--muted);font-size:.92rem}
+
+.story{background:var(--paper-2);border:1px solid var(--line);border-radius:18px;padding:8px 6px;box-shadow:var(--shadow)}
+.para{display:flex;gap:14px;padding:16px 18px;border-bottom:1px dashed var(--line);align-items:flex-start}
+.para:last-child{border-bottom:0}
+.para .badge{flex:none;font-family:"Lalezar",cursive;font-size:1.05rem;color:#fff;background:var(--accent);width:34px;height:34px;border-radius:10px;display:grid;place-items:center;margin-top:4px;box-shadow:0 4px 10px -4px var(--accent)}
+.para .txt{font-family:"Amiri",serif;font-size:1.5rem;line-height:2.05}
+.para .txt b{color:var(--warn);font-weight:700}
+.para .txt .dia{color:var(--screen-2);font-weight:700}
+.para:hover{background:#fffdf6}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;top:0;right:0;width:8px;height:100%;background:linear-gradient(var(--accent),var(--accent-2))}
+.card .word{font-family:"Amiri",serif;font-size:1.7rem;font-weight:700;color:var(--screen)}
+.card .mean{color:var(--muted);margin-top:4px}
+
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chips button{font-family:"Amiri",serif;font-size:1.35rem;cursor:pointer;background:#fff;border:2px solid var(--accent-2);color:var(--screen);padding:8px 18px;border-radius:14px;transition:.15s;box-shadow:var(--shadow)}
+.chips button:hover{background:var(--accent);color:#fff;transform:translateY(-2px)}
+.chips button:focus-visible{outline:3px solid var(--screen);outline-offset:2px}
+.miniNote{margin-top:10px;color:var(--muted);font-size:.92rem}
+
+.qa{display:flex;flex-direction:column;gap:12px}
+.q{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);overflow:hidden}
+.q>button{width:100%;text-align:right;background:none;border:0;cursor:pointer;font-family:inherit;font-size:1.1rem;font-weight:700;color:var(--ink);padding:16px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.q>button .qmark{flex:none;width:30px;height:30px;border-radius:9px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-family:"Lalezar",cursive}
+.q>button .arrow{transition:.25s;color:var(--accent)}
+.q.open>button .arrow{transform:rotate(180deg)}
+.answer{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.q.open .answer{max-height:360px}
+.answer .inner{padding:0 18px 18px;color:#4a4234;font-size:1.06rem;border-top:1px dashed var(--line);margin-top:-2px;padding-top:14px}
+.answer .inner .pill{display:inline-block;background:var(--accent-soft);color:var(--accent);font-weight:700;border-radius:8px;padding:1px 10px;margin:0 2px}
+
+/* match phrase->feeling */
+.matchrows{display:flex;flex-direction:column;gap:14px}
+.mrow{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 18px;box-shadow:var(--shadow)}
+.mrow .phrase{font-family:"Amiri",serif;font-size:1.3rem;color:var(--screen);margin-bottom:10px}
+.mrow .opts{display:flex;gap:9px;flex-wrap:wrap}
+.mrow .opts button{cursor:pointer;border:2px solid var(--line);background:#fbfdfd;border-radius:10px;padding:8px 16px;font-family:inherit;font-weight:700;color:var(--ink);transition:.15s}
+.mrow .opts button:hover{border-color:var(--accent-2)}
+.mrow .opts button.right{border-color:var(--good);background:#eafaf2;color:var(--good)}
+.mrow .opts button.wrong{border-color:var(--warn);background:#fdeee9;color:var(--warn)}
+
+footer{margin-top:46px;text-align:center;color:var(--muted);font-size:.9rem;border-top:1px dashed var(--line);padding-top:20px}
+.next{display:inline-flex;align-items:center;gap:8px;margin-top:14px;text-decoration:none;background:var(--screen);color:#eef1ff;padding:11px 22px;border-radius:999px;font-weight:700;box-shadow:var(--shadow)}
+.next:hover{background:var(--screen-2)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="row">
+  <div class="brand"><span class="dot"></span> إسأل غوغِل</div>
+  <nav class="nav">
+    <a href="listening.html">🎧 استماع</a>
+    <a href="speaking.html">🗣️ تحدّث</a>
+    <a href="reading.html" class="active">📖 قراءة</a>
+    <a href="writing.html">✍️ كتابة</a>
+  </nav>
+</div></div>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="inner">
+      <span class="skill-chip">📖 مهارة القراءة</span>
+      <div class="eyebrow">✦ القراءة فهمًا وتحليلًا · النصّ الثاني</div>
+      <h1>إسأل غوغِل</h1>
+      <p class="sub">فتاةٌ تبحثُ عن معلومةٍ على الإنترنت فتتوهُ بين المواقع، حتّى تكتشفُ أنّ مجلّداتِ جدّتها قد تكونُ الحلَّ. قصّةٌ عن التّكنولوجيا والكتاب معًا.</p>
+      <div class="searchbar"><span class="mag">🔍</span><span class="qtext">دورةُ القمرِ حولَ الأرض</span><span class="cursor"></span><span class="go">بحث</span></div>
+      <div class="author" style="margin-top:14px">بقلم: د. مادونا الشّرتوني</div>
+    </div>
+  </div>
+
+  <!-- TEXT -->
+  <section>
+    <div class="sec-head"><div class="num">١</div><div>
+      <h2>النّصّ</h2>
+      <p class="hint">المقطعُ الأوّلُ <span style="color:var(--screen-2);font-weight:700">حوارٌ</span> بين الجَدّةِ وحفيدتها. الكلماتُ <b style="color:var(--warn)">الحمراء</b> في قسم المفردات.</p>
+    </div></div>
+
+    <div class="story">
+      <div class="para"><div class="badge">١</div><div class="txt">
+        <span class="dia">– جَدَّتي! جَدَّتي!</span> طَلَبَتْ مِنّا الْمُعَلِّمَةُ أَنْ نُجْرِيَ بَحْثًا عَنْ دَوْرَةِ الْقَمَرِ حَوْلَ الأَرْض.<br>
+        <span class="dia">– آه! تَعالَيْ مَعي إلى الْمَكْتَبَةِ</span> حَيْثُ أَحْتَفِظُ بِمَجْموعَةٍ مِنَ الْمُجَلَّدات.<br>
+        <span class="dia">– مُجَلَّدات؟!</span> وَمَنْ يَسْتَخْدِمُها في أَيّامِنا هذِه؟ سَأَسْأَلُ «غوغِل»، وَحَتْمًا سَأَجِدُ ما أَبْحَثُ عَنْه.
+      </div></div>
+
+      <div class="para"><div class="badge">٢</div><div class="txt">
+        أَدَرْتُ الْكُمبيوتر وَفَتَحْتُ مَوْقِعَ «غوغِل»، وَكَتَبْتُ في الْمَكانِ الْمُخَصَّصِ لِلْبَحْثِ: «دَوْرَةُ الْقَمَرِ حَوْلَ الأَرْض.» يا لَلْمُفاجَأَةِ، مَواقِعُ عَديدَةٌ، مَعْلوماتٌ كَثيرَة! كَيْفَ أَبْدَأُ؟ أَيَّ مَوْقِعٍ أَخْتار؟
+      </div></div>
+
+      <div class="para"><div class="badge">٣</div><div class="txt">
+        ضَغَطْتُ عَلى الْمَوْقِعِ الأَوَّلِ فَظَهَرَتْ كَمِّيَّةٌ كَبيرَةٌ مِنَ الْمَعْلوماتِ وَالصُّوَر. لا أَسْتَطيعُ قِراءَتَها كُلَّها! ضَغَطْتُ عَلى الْمَوْقِعِ الثّاني ثُمَّ الثّالِثِ فَوَجَدْتُ <b>تَضارُبًا</b> في الْمَعْلومات. لَمْ أَعْرِفْ أَيًّا مِنْها هُوَ الصَّحيحُ وَالْكامِل. شَعَرْتُ بِالْحَيْرَةِ وَالضَّياع.
+      </div></div>
+
+      <div class="para"><div class="badge">٤</div><div class="txt">
+        لَيْتَني أَجِدُ مَوْقِعًا مَوْثوقًا بِهِ <b>أَنْتَقي</b> مِنْهُ الْمَعْلوماتِ الأَساسِيَّةَ فَقَطْ مَعَ بَعْضِ الصُّوَر. ما الْحَلُّ؟ هُنا خَطَرَتْ لي فِكْرَة. مُجَلَّداتُ جَدَّتي! طَبْعًا!
+      </div></div>
+
+      <div class="para"><div class="badge">٥</div><div class="txt">
+        أَسْرَعْتُ إلى الْمَكْتَبَةِ، وَفَتَحْتُ الْمُجَلَّدَ الْمُناسِبَ وَرُحْتُ أَبْحَثُ فيهِ عَمّا أُريدُ بِحَسَبِ التَّرْتيبِ الأَبْجَديِّ، إلى أَنْ ظَهَرَتْ أَمامي الْمَعْلوماتُ، وَكانَتْ مَعْروضَةً بِطَريقَةٍ مُنَظَّمَةٍ وَواضِحَة. قَرَأْتُها وَانْتَقَيْتُ مِنْها ما أَحْتاجُ إلَيْه. كانَتْ جَدَّتي تَنْظُرُ إلَيَّ مُبْتَسِمَةً، فَقُلْتُ لَها: «لا <b>ضَرَرَ</b> مِنَ اللُّجوءِ إلى تِلْكَ الْمُجَلَّداتِ، إذْ بِالإمْكانِ الاسْتِفادَةُ مِنْها في بَعْضِ الأَحْيان.»
+      </div></div>
+    </div>
+  </section>
+
+  <!-- VOCAB -->
+  <section>
+    <div class="sec-head"><div class="num">٢</div><div>
+      <h2>مُعجَم المُفردات</h2><p class="hint">معاني الكلمات الجديدة كما وردت في الكتاب.</p>
+    </div></div>
+    <div class="cards">
+      <div class="card"><div class="word">تَضارُب</div><div class="mean">اختِلاف.</div></div>
+      <div class="card"><div class="word">أَنْتَقي</div><div class="mean">أَختار.</div></div>
+      <div class="card"><div class="word">ضَرَر</div><div class="mean">أَذًى · سوء.</div></div>
+    </div>
+  </section>
+
+  <!-- FLUENCY -->
+  <section>
+    <div class="sec-head"><div class="num">٣</div><div>
+      <h2>أقرأُ بطلاقة</h2><p class="hint">انتبِه إلى الفرقِ بين نطقِ <b>القاف (ق)</b> و<b>الكاف (ك)</b>. اضغط على كلّ كلمة لتسمعَ لفظها.</p>
+    </div></div>
+    <div class="chips" id="fluency">
+      <button>الْقَمَر</button><button>الْكُمبيوتر</button><button>كَمِّيَّة</button>
+      <button>الْكامِل</button><button>مُجَلَّدات</button><button>التَّرْتيب</button>
+    </div>
+    <div class="miniNote">💡 «القاف» صوتٌ من أقصى الحَلق، و«الكاف» أخفُّ منه. جرِّب: قَمَر / كَمَر.</div>
+  </section>
+
+  <!-- COMPREHENSION -->
+  <section>
+    <div class="sec-head"><div class="num">٤</div><div>
+      <h2>أفهم النّصّ</h2><p class="hint">فكّر في الجواب أوّلًا، ثمّ اضغط على السّؤال لتتأكّد.</p>
+    </div></div>
+    <div class="qa">
+      <div class="q"><button><span style="display:flex;gap:10px;align-items:center"><span class="qmark">؟</span> ماذا طَلَبَتِ المُعلِّمةُ من التّلاميذ؟</span><span class="arrow">▾</span></button>
+        <div class="answer"><div class="inner">طَلَبَتْ منهم إجراءَ بحثٍ عن <span class="pill">دَوْرةِ القمرِ حولَ الأرض</span>.</div></div></div>
+
+      <div class="q"><button><span style="display:flex;gap:10px;align-items:center"><span class="qmark">؟</span> ماذا عرَضَتِ الجَدّةُ على حفيدتها؟</span><span class="arrow">▾</span></button>
+        <div class="answer"><div class="inner">عرَضَتْ عليها أن ترافقها إلى المكتبةِ للاستفادةِ من <span class="pill">مجموعةِ المُجلّدات</span> التي تحتفظُ بها.</div></div></div>
+
+      <div class="q"><button><span style="display:flex;gap:10px;align-items:center"><span class="qmark">؟</span> هل رحّبَتِ الفتاةُ بفكرةِ الجَدّة؟ ما الدّليل؟</span><span class="arrow">▾</span></button>
+        <div class="answer"><div class="inner">كلّا، لم تُرحِّبْ في البداية، <span class="pill">إذ قامت بطرحِ السّؤالِ على «غوغِل»</span> بدلًا من المجلّدات.</div></div></div>
+
+      <div class="q"><button><span style="display:flex;gap:10px;align-items:center"><span class="qmark">؟</span> كيف كانت المعلوماتُ التي وجدَتها عبر «غوغِل»؟</span><span class="arrow">▾</span></button>
+        <div class="answer"><div class="inner">كانت <span class="pill">متوفّرةً بكمّيّةٍ كبيرة</span> و<span class="pill">متضاربة</span>، فلم تعرفِ الصّحيحَ منها.</div></div></div>
+
+      <div class="q"><button><span style="display:flex;gap:10px;align-items:center"><span class="qmark">؟</span> ما الحلُّ الذي وجدَتْهُ الفتاة؟</span><span class="arrow">▾</span></button>
+        <div class="answer"><div class="inner">اللّجوءُ إلى <span class="pill">مُجلّداتِ جدّتها</span>، فوجَدَتِ المعلوماتِ منظّمةً وواضحةً بحسبِ التّرتيبِ الأبجديّ.</div></div></div>
+
+      <div class="q"><button><span style="display:flex;gap:10px;align-items:center"><span class="qmark">؟</span> علامَ تدُلُّ إجابةُ الفتاةِ في آخرِ النّصّ؟</span><span class="arrow">▾</span></button>
+        <div class="answer"><div class="inner">على أنّ <span class="pill">الكتبَ والمجلّداتِ ما زالت مفيدة</span>، ويمكنُ الاستفادةُ منها أحيانًا إلى جانبِ الإنترنت.</div></div></div>
+    </div>
+  </section>
+
+  <!-- MATCH -->
+  <section>
+    <div class="sec-head"><div class="num">٥</div><div>
+      <h2>أصِلُ العبارةَ بدلالتها</h2><p class="hint">ما الشّعورُ الذي تدُلُّ عليه كلُّ عبارة؟ اختَرِ الإجابةَ الصّحيحة.</p>
+    </div></div>
+    <div class="matchrows" id="match">
+      <div class="mrow" data-correct="التّفاجؤ"><div class="phrase">«مواقعُ عديدةٌ، معلوماتٌ كثيرة!»</div>
+        <div class="opts"><button>الحَيْرة</button><button>التّفاجؤ</button><button>الثّقة</button></div></div>
+      <div class="mrow" data-correct="الحَيْرة"><div class="phrase">«كيف أبدأُ؟ أيَّ موقعٍ أختار؟»</div>
+        <div class="opts"><button>التّفاجؤ</button><button>الثّقة</button><button>الحَيْرة</button></div></div>
+      <div class="mrow" data-correct="الثّقة"><div class="phrase">«حتمًا سأجدُ ما أبحثُ عنه.»</div>
+        <div class="opts"><button>الثّقة</button><button>الحَيْرة</button><button>التّفاجؤ</button></div></div>
+    </div>
+  </section>
+
+  <footer>
+    <div>قراءةٌ موفّقة! 🌟 الآن انتقِل إلى مهارةٍ جديدة.</div>
+    <a class="next" href="writing.html">التّالي: مهارة الكتابة ✍️ ←</a>
+  </footer>
+
+</div>
+
+<script>
+let arVoice=null;
+function pick(){const v=speechSynthesis.getVoices().find(x=>x.lang&&x.lang.startsWith('ar'));if(v)arVoice=v;}
+pick();speechSynthesis.onvoiceschanged=pick;
+function speak(t){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='ar-SA';u.rate=.85;if(arVoice)u.voice=arVoice;speechSynthesis.speak(u);}catch(e){}}
+document.querySelectorAll('#fluency button').forEach(b=>b.addEventListener('click',()=>speak(b.textContent.trim())));
+document.querySelectorAll('.q>button').forEach(b=>b.addEventListener('click',()=>b.parentElement.classList.toggle('open')));
+document.querySelectorAll('.mrow').forEach(row=>{
+  const correct=row.dataset.correct;
+  row.querySelectorAll('.opts button').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      row.querySelectorAll('.opts button').forEach(b=>b.classList.remove('right','wrong'));
+      if(btn.textContent.trim()===correct)btn.classList.add('right');
+      else{btn.classList.add('wrong');[...row.querySelectorAll('.opts button')].find(b=>b.textContent.trim()===correct).classList.add('right');}
+    });
+  });
+});
+window.addEventListener('beforeunload',()=>speechSynthesis.cancel());
+</script>
+</body>
+</html>

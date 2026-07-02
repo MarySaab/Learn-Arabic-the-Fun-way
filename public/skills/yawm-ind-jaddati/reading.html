@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>القراءة — يومٌ عِندَ جَدَّتي</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;600;700;800&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FDF6EC; --paper:#FFFCF6; --rose:#E07856; --rose-d:#C75B3C;
+    --green:#4FA192; --green-d:#3C7F73; --brown:#6B4226; --honey:#F4B860;
+    --ink:#3A2E2A; --soft:#8A7A70; --good:#4FA192; --bad:#E07856;
+    --line:#EEDFCB;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Tajawal',sans-serif; background:var(--cream); color:var(--ink);
+    line-height:1.9; -webkit-text-size-adjust:100%;
+    background-image:radial-gradient(circle at 12% 8%, #fff2dd 0, transparent 28%),
+                     radial-gradient(circle at 88% 92%, #f6e3d2 0, transparent 30%);
+    background-attachment:fixed;
+  }
+  .wrap{max-width:780px;margin:0 auto;padding:18px 16px 80px}
+  h1,h2,h3,.disp{font-family:'Baloo Bhaijaan 2',cursive}
+  /* ---- Hero ---- */
+  .hero{
+    background:linear-gradient(135deg,var(--rose),var(--honey));
+    border-radius:28px;padding:26px 22px;color:#fff;text-align:center;
+    box-shadow:0 14px 30px rgba(224,120,86,.28);position:relative;overflow:hidden;
+  }
+  .hero .scene{font-size:48px;letter-spacing:6px;line-height:1;margin-bottom:6px;filter:drop-shadow(0 4px 4px rgba(0,0,0,.12))}
+  .hero h1{font-size:30px;font-weight:800;text-shadow:0 2px 4px rgba(0,0,0,.15)}
+  .hero p{font-size:16px;margin-top:6px;opacity:.97}
+  .crumbs{display:inline-block;background:rgba(255,255,255,.22);border-radius:999px;
+    padding:4px 14px;font-size:13px;margin-top:12px;font-weight:700}
+  /* ---- Cards ---- */
+  .card{background:var(--paper);border:2px solid var(--line);border-radius:22px;
+    padding:20px 18px;margin-top:20px;box-shadow:0 6px 16px rgba(107,66,38,.06)}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'Baloo Bhaijaan 2';
+    font-size:14px;font-weight:700;color:#fff;background:var(--green);
+    padding:5px 14px;border-radius:999px;margin-bottom:14px}
+  .eyebrow.rose{background:var(--rose)} .eyebrow.brown{background:var(--brown)}
+  h2{font-size:22px;color:var(--brown);margin-bottom:6px}
+  .lead{color:var(--soft);font-size:15px;margin-bottom:6px}
+  /* ---- Objectives ---- */
+  .goals{display:grid;gap:10px;margin-top:6px}
+  .goal{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1.5px solid var(--line);
+    border-radius:16px;padding:12px 14px}
+  .goal .ic{font-size:24px;flex:none}
+  .goal b{color:var(--brown)}
+  /* ---- Read controls ---- */
+  .toolbar{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px}
+  .btn{font-family:'Baloo Bhaijaan 2';font-weight:700;font-size:15px;border:none;
+    border-radius:14px;padding:11px 18px;cursor:pointer;color:#fff;background:var(--green);
+    box-shadow:0 4px 0 var(--green-d);transition:transform .08s, box-shadow .08s;display:inline-flex;align-items:center;gap:8px}
+  .btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--green-d)}
+  .btn.rose{background:var(--rose);box-shadow:0 4px 0 var(--rose-d)}
+  .btn.rose:active{box-shadow:0 1px 0 var(--rose-d)}
+  .btn.ghost{background:#fff;color:var(--brown);border:2px solid var(--line);box-shadow:0 4px 0 var(--line)}
+  .btn.ghost:active{box-shadow:0 1px 0 var(--line)}
+  .btn[disabled]{opacity:.5;cursor:not-allowed}
+  /* ---- Text ---- */
+  .story{font-size:20px;line-height:2.35;color:#33271f}
+  .story .para{counter-increment:p;position:relative;padding:6px 0 6px 0;margin:2px 0;border-radius:10px;transition:background .2s}
+  .story .para::before{content:counter(p);font-family:'Baloo Bhaijaan 2';font-size:13px;color:#fff;
+    background:var(--honey);width:24px;height:24px;border-radius:50%;display:inline-flex;
+    align-items:center;justify-content:center;margin-inline-start:8px;vertical-align:middle;flex:none}
+  .story{counter-reset:p}
+  .story .para.on{background:#fff6e3}
+  .gloss{border-bottom:2px dotted var(--rose);cursor:help;color:var(--rose-d);font-weight:700}
+  mark{background:#ffe6b0;border-radius:5px;padding:0 3px}
+  /* ---- Glossary chips ---- */
+  .words{display:grid;gap:10px;grid-template-columns:1fr 1fr}
+  @media(max-width:520px){.words{grid-template-columns:1fr}}
+  .word{background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:12px 14px}
+  .word b{font-family:'Baloo Bhaijaan 2';color:var(--rose-d);font-size:18px}
+  .word span{display:block;color:var(--soft);font-size:15px;margin-top:2px}
+  /* ---- Quiz ---- */
+  .q{margin-top:16px;padding-top:16px;border-top:2px dashed var(--line)}
+  .q:first-of-type{border-top:none;padding-top:0;margin-top:0}
+  .q .qnum{font-family:'Baloo Bhaijaan 2';color:var(--green-d);font-size:15px}
+  .q .qtext{font-size:18px;font-weight:700;color:var(--brown);margin:4px 0 12px}
+  .opts{display:grid;gap:10px}
+  .opt{display:flex;align-items:center;gap:12px;background:#fff;border:2px solid var(--line);
+    border-radius:14px;padding:13px 14px;cursor:pointer;font-size:16px;font-weight:500;
+    transition:border-color .15s,background .15s,transform .08s;text-align:right}
+  .opt:hover{border-color:var(--honey)}
+  .opt:active{transform:scale(.99)}
+  .opt .mk{width:26px;height:26px;border-radius:50%;border:2px solid var(--line);flex:none;
+    display:flex;align-items:center;justify-content:center;font-weight:700;color:transparent;font-size:16px}
+  .opt.correct{border-color:var(--good);background:#eaf6f3}
+  .opt.correct .mk{background:var(--good);border-color:var(--good);color:#fff}
+  .opt.wrong{border-color:var(--bad);background:#fdeee8}
+  .opt.wrong .mk{background:var(--bad);border-color:var(--bad);color:#fff}
+  .opt.lock{pointer-events:none;opacity:.92}
+  .fb{margin-top:10px;font-size:15px;border-radius:12px;padding:10px 14px;display:none}
+  .fb.show{display:block}
+  .fb.ok{background:#eaf6f3;color:var(--green-d);border:1.5px solid #bfe3db}
+  .fb.no{background:#fdeee8;color:var(--rose-d);border:1.5px solid #f4cdbd}
+  /* ---- Score ---- */
+  .scorebar{position:sticky;top:8px;z-index:5;background:#fff;border:2px solid var(--line);
+    border-radius:999px;padding:8px 16px;display:flex;align-items:center;justify-content:space-between;
+    box-shadow:0 6px 16px rgba(107,66,38,.08);margin-bottom:6px}
+  .scorebar b{font-family:'Baloo Bhaijaan 2';color:var(--brown)}
+  .stars{font-size:18px;letter-spacing:2px}
+  .result{display:none;text-align:center;background:linear-gradient(135deg,var(--green),#7fc4b7);
+    color:#fff;border-radius:22px;padding:24px;margin-top:18px;box-shadow:0 12px 26px rgba(79,161,146,.3)}
+  .result.show{display:block;animation:pop .4s}
+  @keyframes pop{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}
+  .result .big{font-family:'Baloo Bhaijaan 2';font-size:40px}
+  .result h3{font-family:'Baloo Bhaijaan 2';font-size:24px;margin:4px 0}
+  /* ---- open Q ---- */
+  .open{background:#fff;border:1.5px dashed var(--rose);border-radius:14px;padding:12px 14px;margin-top:10px}
+  .open .qtext{color:var(--rose-d)}
+  textarea{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:10px;
+    font-family:'Tajawal';font-size:16px;resize:vertical;min-height:64px;background:#fffdf9}
+  .hint{display:none;margin-top:8px;background:#fff6e3;border-radius:10px;padding:10px;font-size:14px;color:#8a6d3b}
+  .hint.show{display:block}
+  .foot{text-align:center;color:var(--soft);font-size:13px;margin-top:30px}
+  .tip{background:#fff6e3;border:1.5px solid #f3e3c4;border-radius:14px;padding:10px 14px;font-size:14px;color:#8a6d3b;margin-top:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="scene">🏡🌳👵🍰</div>
+    <h1>يَوْمٌ عِنْدَ جَدَّتي</h1>
+    <p>القِراءة: فَهْمُ النَّصِّ وَتَحْليلُه</p>
+    <span class="crumbs">📖 نَصٌّ سَرْديّ • الكاتب: كمال الشُّزْنوني</span>
+  </header>
+
+  <!-- Objectives -->
+  <section class="card">
+    <span class="eyebrow">🎯 ماذا سَأَتَعَلَّم؟</span>
+    <div class="goals">
+      <div class="goal"><span class="ic">👂</span><div>أَقرأُ النَّصَّ وَأَفهَمُ <b>أحداثَه</b> وَشَخصِيّاتِه.</div></div>
+      <div class="goal"><span class="ic">🔤</span><div>أَتعرَّفُ على <b>كَلِماتٍ جَديدة</b> وَمَعانيها.</div></div>
+      <div class="goal"><span class="ic">💡</span><div>أُجيبُ عن <b>أسئلةِ الفَهْم</b> وَأُفكِّرُ في القِيَم.</div></div>
+    </div>
+  </section>
+
+  <!-- The text -->
+  <section class="card">
+    <span class="eyebrow rose">📜 النَّصّ</span>
+    <h2>أَقرأُ وَأَستَمِع</h2>
+    <p class="lead">اضْغَطْ على الكَلِماتِ المُلوَّنة لِتَعرِفَ مَعناها، وعلى زِرِّ الاستماع لِتَسمَعَ القِراءة.</p>
+    <div class="toolbar">
+      <button class="btn" id="play">🔊 استَمِعْ إلى النَّصّ</button>
+      <button class="btn ghost" id="stop" disabled>⏹️ إيقاف</button>
+    </div>
+    <div class="story" id="story">
+      <p class="para">تَسْكُنُ جَدَّتي في مَنزِلٍ مُنفَرِدٍ، أمامَهُ ساحَةٌ واسِعَةٌ، تُحيطُ بِهِ أنواعٌ كَثيرَةٌ مِنَ الأشجار.</p>
+      <p class="para">نَزورُ جَدَّتي في عُطْلَةِ نِهايَةِ الأُسبوع.</p>
+      <p class="para">يَومَ السَّبْتِ الماضي، قَصَدْنا بَيتَ جَدَّتي. ما إِنْ وَصَلْنا حتّى رَكَضَتْ نَحوَنا تُقَبِّلُني أنا وأُختَيَّ. ثُمَّ دَعَتْنا إلى المَطبَخِ والبَسْمَةُ على شَفَتَيها وسَأَلَتْنا: «إِحْزِروا، ما الّذي حَضَّرْتُ لَكُم؟»، فَصَرَخْنا جَميعًا: «قالَبَ حَلوى مَعَ الشّوكولا!»، قالَتْ جَدَّتي: «عَظيم! إِنَّهُ قالَبُ حَلوى مَعَ الشّوكولا، ولكِنْ لَنْ نَأكُلَ مِنهُ إلّا بَعدَ تَناوُلِ طَعامِ الغَداء»، سادَ صَمْتٌ حَزين.</p>
+      <p class="para">نَظَرَ بَعضُنا إلى بَعضٍ <span class="gloss" data-d="حُزْنٌ وَنَدَم">بِحَسْرَةٍ</span> تُعَبِّرُ عن عَدَمِ رِضانا.</p>
+      <p class="para">رَكَضْتُ نَحوَ جَدَّتي، غَمَزْتُها وقَبَّلْتُها مُحاوِلًا إِقناعَها بأنْ نَأكُلَ الحَلوى الآن، ووَعَدْتُها بأنْ نَتَناوَلَ لاحِقًا طَعامَ الغَداءِ كُلَّه. عِندَئِذٍ، رَقَّ قَلبُها وحَنَّ، فَسَمَحَتْ لَنا بأنْ نَأكُلَ الحَلوى.</p>
+      <p class="para">جَمَعَتْنا جَدَّتي حَولَ المائِدَةِ في المَطبَخ. راحَتْ تَدورُ حَولَنا، تُحادِثُنا <span class="gloss" data-d="تُعامِلُنا بِحَنانٍ ولُطْفٍ وتُرضي رَغَباتِنا">وتُدَلِّلُنا</span>. فَجأةً، دَخَلَ جَدّي وقَبَّلَ كُلًّا مِنّا. راحَ يُراقِبُنا ويَبتَسِم. ثُمَّ عادَ إلى مَكتَبِه.</p>
+      <p class="para">عِندَ جَدَّتي غاليًا ما نُشاهِدُ التِّلفِزْيون. نَلعَبُ بِواسِطَةِ اللَّوحَةِ الذَّكِيَّة. نَحضُرُ أفلامًا مُختَلِفَة. نُخبِرُ جَدّي وجَدَّتي أخبارَ المَدرَسَةِ والرِّفاق. نُكَرِّرُ أمامَهُما أُغنِياتٍ تَعَلَّمناها. نَلعَبُ في السّاحَةِ أمامَ البَيت.</p>
+      <p class="para">جَدَّتي لَطيفَةٌ مُحِبَّة. نَنتَظِرُ دائِمًا أنْ نَزورَها هي وجَدّي وَنُمضِيَ مَعَهُما أجمَلَ الأوقات.</p>
+    </div>
+    <div class="tip" id="ttsTip" style="display:none">💡 إنْ لم تَسمَعِ الصّوت، فقد لا يَتوفّرُ صوتٌ عربيّ على هذا الجِهاز. جرِّبْ هاتفًا أو حاسوبًا آخر، أو اقرأِ النّصَّ بِنَفسِك.</div>
+  </section>
+
+  <!-- Glossary -->
+  <section class="card">
+    <span class="eyebrow brown">🔤 مُعجَمُ المُفرَدات</span>
+    <h2>كَلِماتٌ أَتَعَلَّمُها</h2>
+    <div class="words">
+      <div class="word"><b>حَسْرَة</b><span>حُزْنٌ وَنَدَم.</span></div>
+      <div class="word"><b>تُدَلِّلُنا</b><span>تُعامِلُنا بِحَنانٍ ولُطْف وتُرضي رَغَباتِنا.</span></div>
+      <div class="word"><b>مُنفَرِد</b><span>مَنزِلٌ وَحدَه، لا يَلتَصِقُ بِغَيرِه.</span></div>
+      <div class="word"><b>رَقَّ قَلبُها وحَنَّ</b><span>عَطَفَتْ ولانَتْ وأَحَبَّتْ أنْ تُرضِيَنا.</span></div>
+      <div class="word"><b>سادَ صَمْتٌ حَزين</b><span>عَمَّ السُّكوتُ بِسَبَبِ الحُزن.</span></div>
+      <div class="word"><b>غَمَزَها</b><span>أشارَ إليها بِعَينِه إشارةً وُدِّيَّة.</span></div>
+    </div>
+  </section>
+
+  <!-- Quiz -->
+  <section class="card">
+    <span class="eyebrow">✅ أَفهَمُ النَّصّ</span>
+    <h2>أَختَبِرُ فَهْمي</h2>
+    <p class="lead">اختَرِ الإجابةَ الصَّحيحة. ستَظهَرُ لكَ النّتيجةُ فَورًا 🌟</p>
+    <div class="scorebar"><b>نَتيجَتي</b><span class="stars" id="stars">☆☆☆☆☆☆☆☆</span><b id="scoreNum">0 / 8</b></div>
+    <div id="quiz"></div>
+    <div class="result" id="result">
+      <div class="big" id="rEmoji">🎉</div>
+      <h3 id="rTitle">أحسَنْت!</h3>
+      <p id="rMsg"></p>
+      <button class="btn rose" style="margin-top:14px" onclick="location.reload()">🔁 أُعيدُ المُحاوَلة</button>
+    </div>
+  </section>
+
+  <!-- Thinking corner -->
+  <section class="card">
+    <span class="eyebrow rose">🧠 زاوِيَةُ المُفَكِّر</span>
+    <h2>أُفَكِّرُ وَأُعَبِّر</h2>
+    <p class="lead">لا توجَدُ إجابةٌ واحِدة — عَبِّرْ بِرَأيِك! اكتُبْ ثُمَّ اقرأْ على رِفاقِك.</p>
+    <div class="open">
+      <div class="qtext">١. لو كانَ عُنوانُ النَّصِّ «يَومٌ عِندَ جَدّي»، ما الّذي كانَ سيَتبدَّلُ في الأحداث؟</div>
+      <textarea placeholder="أُفَكِّر... مَثلًا: مَن يَستَقبِلُنا؟ ماذا يُحَضِّرُ لنا؟ ماذا نَلعَبُ معه؟"></textarea>
+    </div>
+    <div class="open">
+      <div class="qtext">٢. هل تُحِبُّ قَضاءَ الوقتِ مع جَدِّكَ وجَدَّتِك؟ لماذا؟ وكيف تُساعِدُهُما؟</div>
+      <textarea placeholder="أكتُبُ ثلاثَ أفكار..."></textarea>
+    </div>
+    <button class="btn ghost" onclick="document.getElementById('valHint').classList.toggle('show')">💛 القِيمَةُ المُستَفادة</button>
+    <div class="hint" id="valHint">المَحبَّةُ والألْفَةُ تَجمَعُ العائِلة. زِيارَةُ الأجدادِ تَملأُ القَلبَ فَرَحًا، وعَلَينا أنْ نُبادِلَهُم الحُبَّ والاحْتِرام.</div>
+  </section>
+
+  <p class="foot">نَشاطُ قِراءةٍ تَفاعُليّ • نَصُّ «يَومٌ عِندَ جَدَّتي» 🍰</p>
+</div>
+
+<script>
+/* ----- Glossary tap ----- */
+document.querySelectorAll('.gloss').forEach(g=>{
+  g.addEventListener('click',()=>{ alert(g.textContent.trim()+' : '+g.dataset.d); });
+});
+
+/* ----- Text to speech ----- */
+const playBtn=document.getElementById('play'), stopBtn=document.getElementById('stop');
+const paras=[...document.querySelectorAll('#story .para')];
+let voices=[], arVoice=null, idx=0, speaking=false;
+function pickVoice(){
+  voices=speechSynthesis.getVoices();
+  arVoice=voices.find(v=>/ar(-|_)?/i.test(v.lang))||null;
+}
+pickVoice(); speechSynthesis.onvoiceschanged=pickVoice;
+function speakFrom(i){
+  if(i>=paras.length){ reset(); return; }
+  paras.forEach(p=>p.classList.remove('on'));
+  paras[i].classList.add('on');
+  paras[i].scrollIntoView({behavior:'smooth',block:'center'});
+  const u=new SpeechSynthesisUtterance(paras[i].textContent);
+  u.lang='ar-SA'; u.rate=.9; if(arVoice)u.voice=arVoice;
+  u.onend=()=>{ if(speaking) speakFrom(i+1); };
+  u.onerror=()=>{ document.getElementById('ttsTip').style.display='block'; };
+  speechSynthesis.speak(u);
+}
+function reset(){ speaking=false; idx=0; paras.forEach(p=>p.classList.remove('on'));
+  playBtn.disabled=false; stopBtn.disabled=true; playBtn.textContent='🔊 استَمِعْ إلى النَّصّ'; }
+playBtn.addEventListener('click',()=>{
+  if(!('speechSynthesis'in window)){document.getElementById('ttsTip').style.display='block';return;}
+  speechSynthesis.cancel(); speaking=true; idx=0;
+  playBtn.disabled=true; stopBtn.disabled=false; playBtn.textContent='🔊 جارٍ القِراءة...';
+  if(!arVoice){document.getElementById('ttsTip').style.display='block';}
+  speakFrom(0);
+});
+stopBtn.addEventListener('click',()=>{ speechSynthesis.cancel(); reset(); });
+
+/* ----- Quiz data ----- */
+const QUESTIONS=[
+ {q:"أينَ تَسكُنُ الجَدّة؟",o:["في شَقَّةٍ داخِلَ المَدينة","في مَنزِلٍ مُنفَرِدٍ أمامَهُ ساحَةٌ واسِعَة","في بَيتٍ على شاطِئِ البَحر"],a:1,
+  e:"تَسكُنُ في مَنزِلٍ مُنفَرِدٍ تُحيطُ بِهِ الأشجارُ وأمامَهُ ساحَةٌ واسِعَة."},
+ {q:"متى يَزورُ الرّاوي جَدَّتَه؟",o:["في عُطلَةِ العيد","يَومَ الخَميس","في عُطلَةِ نِهايَةِ الأُسبوع"],a:2,
+  e:"«نَزورُ جَدَّتي في عُطلَةِ نِهايَةِ الأُسبوع»."},
+ {q:"ما الّذي حَضَّرَتْهُ الجَدَّةُ لِأحفادِها؟",o:["قالَبَ حَلوى مَعَ الشّوكولا","فَطائِرَ بالجُبن","عَصيرَ الفَواكِه"],a:0,
+  e:"حَزَرَ الأولادُ أنَّهُ قالَبُ حَلوى مَعَ الشّوكولا، وصَرَخوا بِهِ جَميعًا."},
+ {q:"لِماذا حَزِنَ الأولادُ في البِداية؟",o:["لأنَّ الحَلوى احتَرَقَت","لأنَّ الجَدَّةَ مَنَعَتْهُم مِنَ الأكلِ قَبلَ الغَداء","لأنَّهُم لم يُحِبّوا الشّوكولا"],a:1,
+  e:"قالَتِ الجَدَّةُ لن نَأكُلَ مِنهُ إلّا بَعدَ الغَداء، فَسادَ صَمْتٌ حَزين."},
+ {q:"كيفَ أَقنَعَ الرّاوي جَدَّتَه؟",o:["بَكى أمامَها كَثيرًا","غَمَزَها وقَبَّلَها ووَعَدَها بِتَناوُلِ الغَداءِ لاحِقًا","طَلَبَ مِن جَدِّهِ أنْ يَتَدَخَّل"],a:1,
+  e:"غَمَزَها وقَبَّلَها مُحاوِلًا إقناعَها، ووَعَدَها بأكلِ الغَداءِ كُلِّهِ لاحِقًا."},
+ {q:"ماذا فَعَلَ الجَدُّ حينَ دَخَل؟",o:["عاتَبَ الأحفاد","قَبَّلَ كُلًّا مِنهُم وراحَ يُراقِبُهُم ويَبتَسِم","جَلَسَ يُشاهِدُ التِّلفِزْيون"],a:1,
+  e:"عَبَّرَ عن حُبِّهِ: قَبَّلَ كُلًّا مِنهُم وراحَ يُراقِبُهُم ويَبتَسِم."},
+ {q:"أيُّ نَشاطٍ مِمّا يَلي يَقومُ بِهِ الأولادُ عِندَ جَدَّتِهِم؟",o:["يَزرَعونَ الحَديقة","يُكَرِّرونَ أُغنِياتٍ تَعَلَّموها ويَلعَبونَ في السّاحة","يَطبَخونَ الغَداءَ بِأنفُسِهِم"],a:1,
+  e:"مِن نَشاطاتِهِم: مُشاهَدَةُ الأفلام، تَكرارُ الأغاني، واللَّعِبُ في السّاحة."},
+ {q:"كيفَ وَصَفَ الرّاوي جَدَّتَهُ في النِّهاية؟",o:["صارِمَةً وغاضِبة","لَطيفَةً مُحِبَّة","مَشغولَةً دائِمًا"],a:1,
+  e:"«جَدَّتي لَطيفَةٌ مُحِبَّة» — وهُم يَنتَظِرونَ زِيارَتَها دائِمًا."}
+];
+/* ----- Build quiz ----- */
+const quiz=document.getElementById('quiz'); let score=0, answered=0;
+QUESTIONS.forEach((item,qi)=>{
+  const wrap=document.createElement('div'); wrap.className='q';
+  wrap.innerHTML=`<div class="qnum">سؤال ${qi+1}</div><div class="qtext">${item.q}</div>`;
+  const opts=document.createElement('div'); opts.className='opts';
+  item.o.forEach((txt,oi)=>{
+    const b=document.createElement('button'); b.className='opt';
+    b.innerHTML=`<span class="mk"></span><span>${txt}</span>`;
+    b.addEventListener('click',()=>choose(wrap,opts,b,oi,item));
+    opts.appendChild(b);
+  });
+  wrap.appendChild(opts);
+  const fb=document.createElement('div'); fb.className='fb'; wrap.appendChild(fb);
+  quiz.appendChild(wrap);
+});
+function choose(wrap,opts,btn,oi,item){
+  if(wrap.dataset.done)return; wrap.dataset.done='1'; answered++;
+  const buttons=[...opts.children]; buttons.forEach(b=>b.classList.add('lock'));
+  const fb=wrap.querySelector('.fb');
+  if(oi===item.a){ btn.classList.add('correct'); btn.querySelector('.mk').textContent='✓';
+    score++; fb.className='fb show ok'; fb.textContent='👏 إجابةٌ صَحيحة! '+item.e; }
+  else{ btn.classList.add('wrong'); btn.querySelector('.mk').textContent='✕';
+    buttons[item.a].classList.add('correct'); buttons[item.a].querySelector('.mk').textContent='✓';
+    fb.className='fb show no'; fb.textContent='🤔 الإجابةُ الصَّحيحة مُلَوَّنةٌ بالأخضَر. '+item.e; }
+  updateScore();
+  if(answered===QUESTIONS.length) finish();
+}
+function updateScore(){
+  document.getElementById('scoreNum').textContent=score+' / '+QUESTIONS.length;
+  const s='★'.repeat(score)+'☆'.repeat(QUESTIONS.length-score);
+  document.getElementById('stars').textContent=s;
+}
+function finish(){
+  const r=document.getElementById('result'); r.classList.add('show');
+  const pct=score/QUESTIONS.length;
+  let e='🌟',t='عَمَلٌ رائِع!',m='';
+  if(pct===1){e='🏆';t='مُمتاز! عَلامَةٌ كامِلة!';m='لقد فَهِمتَ النَّصَّ فَهمًا تامًّا. أنتَ قارِئٌ بارِع!';}
+  else if(pct>=.75){e='🎉';t='أحسَنْت!';m='فَهمُكَ جَيِّدٌ جِدًّا. راجِعِ السُّؤالَ الّذي أخطأتَ فيهِ وستُتقِنُه.';}
+  else if(pct>=.5){e='💪';t='على الطَّريقِ الصَّحيح!';m='أعِدْ قِراءَةَ النَّصِّ بِهُدوء، ثُمَّ حاوِلْ مَرَّةً أُخرى.';}
+  else{e='📖';t='لا بأس، التَّعَلُّمُ خُطوة خُطوة';m='استَمِعْ إلى النَّصِّ مَرَّةً أُخرى وأَعِدِ المُحاوَلة — ستَتَحَسَّن!';}
+  document.getElementById('rEmoji').textContent=e;
+  document.getElementById('rTitle').textContent=t;
+  document.getElementById('rMsg').textContent=m+' ('+score+' مِن '+QUESTIONS.length+')';
+  r.scrollIntoView({behavior:'smooth',block:'center'});
+}
+updateScore();
+</script>
+</body>
+</html>

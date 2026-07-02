@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الاستماع · العالِمة الصّغيرة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@400;500;700;800&family=Lalezar&display=swap" rel="stylesheet">
+<style>
+:root{
+  --space:#0c1838; --space-2:#1a2c5a; --paper:#e6f0f2; --paper-2:#f5fbfc;
+  --ink:#1f2c2e; --muted:#5f7470; --line:#cee2df; --star:#ffd874;
+  --accent:#2c8a93; --accent-2:#4cb3bb; --accent-soft:#d6eef0;
+  --good:#2f7d62; --warn:#c4502e;
+  --shadow:0 14px 30px -18px rgba(20,40,60,.5);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Tajawal",system-ui,sans-serif;
+  background:radial-gradient(1200px 500px at 80% -8%, #eefafa 0%, transparent 60%),var(--paper);
+  color:var(--ink);line-height:1.9;-webkit-font-smoothing:antialiased}
+.wrap{max-width:920px;margin:0 auto;padding:0 18px 70px}
+.topbar{position:sticky;top:0;z-index:30;background:rgba(12,24,56,.97);backdrop-filter:blur(6px);color:#eaf0ff;box-shadow:0 6px 20px -10px rgba(0,0,0,.6)}
+.topbar .row{max-width:920px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 18px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-family:"Lalezar",cursive;font-size:1.3rem}
+.brand .dot{width:14px;height:14px;border-radius:50%;background:var(--star);box-shadow:0 0 10px var(--star)}
+.nav{display:flex;gap:6px;flex-wrap:wrap}
+.nav a{color:#cdd8f5;text-decoration:none;font-weight:700;font-size:.92rem;padding:7px 13px;border-radius:999px;display:flex;align-items:center;gap:6px;border:1px solid transparent;transition:.18s}
+.nav a:hover{background:rgba(255,255,255,.08)}
+.nav a.active{background:var(--accent);color:#eafdff;border-color:var(--accent-2)}
+
+.hero{margin:26px 0 8px;border-radius:22px;overflow:hidden;position:relative;
+  background:radial-gradient(120% 140% at 85% 10%, #20406b 0%, var(--space) 60%);color:#eef3ff;box-shadow:var(--shadow);border:1px solid #2c3e72}
+.stars{position:absolute;inset:0;background-image:
+  radial-gradient(1.5px 1.5px at 20% 30%,#fff,transparent),radial-gradient(1.5px 1.5px at 60% 70%,#fff,transparent),
+  radial-gradient(1px 1px at 80% 20%,#fff,transparent),radial-gradient(1.5px 1.5px at 40% 80%,#fff,transparent),
+  radial-gradient(1px 1px at 75% 55%,#fff,transparent),radial-gradient(1px 1px at 30% 60%,#fff,transparent);opacity:.7}
+.hero .inner{position:relative;padding:34px 30px}
+.eyebrow{font-weight:700;letter-spacing:3px;font-size:.8rem;color:var(--star);display:flex;align-items:center;gap:8px}
+.hero h1{font-family:"Lalezar",cursive;font-weight:400;margin:.25em 0 .1em;font-size:clamp(2.1rem,7vw,3.3rem);line-height:1.1;text-shadow:0 2px 8px rgba(0,0,0,.4)}
+.hero p.sub{margin:.2em 0 0;color:#c5d0ee;max-width:50ch}
+.skill-chip{display:inline-flex;align-items:center;gap:8px;margin-bottom:6px;background:rgba(76,179,187,.18);border:1px solid rgba(76,179,187,.5);color:#a9e6ea;padding:5px 14px;border-radius:999px;font-weight:700;font-size:.9rem}
+
+section{margin-top:34px}
+.sec-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.sec-head .num{font-family:"Lalezar",cursive;color:var(--accent);background:var(--accent-soft);width:42px;height:42px;border-radius:14px;display:grid;place-items:center;font-size:1.3rem;flex:none;border:1.5px solid var(--accent-2)}
+.sec-head h2{margin:0;font-size:1.5rem;font-weight:800}
+.sec-head .hint{margin:0;color:var(--muted);font-size:.92rem}
+
+.player{background:var(--paper-2);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:var(--shadow)}
+.player .big{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.playbtn{appearance:none;border:0;cursor:pointer;background:linear-gradient(var(--accent),var(--accent-2));color:#fff;width:74px;height:74px;border-radius:50%;font-size:1.8rem;flex:none;box-shadow:0 10px 22px -8px var(--accent);display:grid;place-items:center;transition:.15s}
+.playbtn:hover{transform:scale(1.05)}
+.playbtn:focus-visible{outline:3px solid var(--space);outline-offset:3px}
+.player .meta b{font-size:1.15rem}.player .meta div{color:var(--muted)}
+.waves{display:flex;gap:4px;align-items:flex-end;height:34px;margin-top:4px}
+.waves span{width:5px;background:var(--accent-2);border-radius:3px;height:8px}
+.waves.on span{animation:bounce 1s infinite ease-in-out}
+.waves span:nth-child(2){animation-delay:.1s}.waves span:nth-child(3){animation-delay:.2s}.waves span:nth-child(4){animation-delay:.3s}
+.waves span:nth-child(5){animation-delay:.4s}.waves span:nth-child(6){animation-delay:.15s}.waves span:nth-child(7){animation-delay:.35s}
+@keyframes bounce{0%,100%{height:8px}50%{height:30px}}
+.seg-row{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
+.seg-row button{cursor:pointer;border:2px solid var(--accent-2);background:#fff;color:var(--space);font-family:inherit;font-weight:700;border-radius:12px;padding:8px 14px;transition:.15s}
+.seg-row button:hover{background:var(--accent);color:#fff}
+.seg-row button.playing{background:var(--accent);color:#fff;box-shadow:0 6px 14px -6px var(--accent)}
+.note{margin-top:14px;background:#fff8e8;border:1px solid #f1dca0;border-radius:12px;padding:10px 14px;color:#7a5a16;font-size:.92rem}
+
+.mcq{display:flex;flex-direction:column;gap:16px}
+.qcard{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow)}
+.qcard .qt{font-weight:800;font-size:1.12rem;margin-bottom:12px;display:flex;gap:10px}
+.qcard .qt .n{flex:none;background:var(--accent-soft);color:var(--accent);width:30px;height:30px;border-radius:9px;display:grid;place-items:center;font-family:"Lalezar",cursive}
+.choice{display:block;width:100%;text-align:right;cursor:pointer;border:2px solid var(--line);background:#fbfdfd;border-radius:12px;padding:12px 14px;margin-bottom:9px;font-family:inherit;font-size:1.02rem;font-weight:600;color:var(--ink);transition:.15s}
+.choice:hover{border-color:var(--accent-2)}
+.choice.right{border-color:var(--good);background:#eafaf2;color:var(--good)}
+.choice.wrong{border-color:var(--warn);background:#fdeee9;color:var(--warn)}
+.choice:disabled{cursor:default}
+
+.order{display:flex;flex-direction:column;gap:10px}
+.ev{background:#fff;border:2px solid var(--line);border-radius:14px;padding:12px 14px;display:flex;align-items:center;gap:12px;box-shadow:var(--shadow)}
+.ev .pos{flex:none;width:32px;height:32px;border-radius:9px;background:var(--accent-soft);color:var(--accent);font-family:"Lalezar",cursive;display:grid;place-items:center}
+.ev .arrows{margin-inline-start:auto;display:flex;gap:6px}
+.ev .arrows button{border:1px solid var(--line);background:#fff;border-radius:8px;width:32px;height:32px;cursor:pointer;font-size:1rem;color:var(--accent)}
+.ev .arrows button:hover{background:var(--accent-soft)}
+.ev.ok{border-color:var(--good);background:#eafaf2}.ev.no{border-color:var(--warn);background:#fdeee9}
+.check{margin-top:14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.check button{cursor:pointer;border:0;background:var(--space);color:#fff;font-weight:700;border-radius:999px;padding:11px 24px;font-family:inherit;box-shadow:var(--shadow)}
+.check .res{font-weight:800}
+
+footer{margin-top:46px;text-align:center;color:var(--muted);font-size:.9rem;border-top:1px dashed var(--line);padding-top:20px}
+.next{display:inline-flex;align-items:center;gap:8px;margin-top:14px;text-decoration:none;background:var(--space);color:#eef3ff;padding:11px 22px;border-radius:999px;font-weight:700;box-shadow:var(--shadow)}
+.next:hover{background:var(--space-2)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="row">
+  <div class="brand"><span class="dot"></span> العالِمة الصّغيرة</div>
+  <nav class="nav">
+    <a href="listening.html" class="active">🎧 استماع</a>
+    <a href="speaking.html">🗣️ تحدّث</a>
+    <a href="reading.html">📖 قراءة</a>
+    <a href="writing.html">✍️ كتابة</a>
+  </nav>
+</div></div>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="stars"></div>
+    <div class="inner">
+      <span class="skill-chip">🎧 مهارة الاستماع</span>
+      <div class="eyebrow">✦ أُصغي ثمّ أُجيب</div>
+      <h1>العالِمة الصّغيرة</h1>
+      <p class="sub">أصغِ جيّدًا إلى رحلةِ يارا من المكتبةِ إلى المختبرِ إلى المعرضِ العلميّ. تتبَّعِ الأحداثَ بترتيبها، وانتبِه لِما تغيّر في حياتها.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="sec-head"><div class="num">١</div><div><h2>أستمِعُ إلى النّصّ</h2><p class="hint">اضغط زرّ التّشغيل لسماع القصّة كاملة، أو استمِع إلى مقطعٍ مقطع.</p></div></div>
+    <div class="player">
+      <div class="big">
+        <button class="playbtn" id="playAll" aria-label="تشغيل القصّة">▶</button>
+        <div class="meta"><b id="status">القصّة كاملة</b><div>أصغِ بتأنٍّ إلى قصّةِ يارا</div>
+          <div class="waves" id="waves"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        </div>
+      </div>
+      <div class="seg-row" id="segs">
+        <button data-i="0">المقطع ١</button><button data-i="1">المقطع ٢</button>
+        <button data-i="2">المقطع ٣</button><button data-i="3">المقطع ٤</button><button data-i="4">المقطع ٥</button>
+      </div>
+      <div class="note">💡 إن لم تسمع صوتًا عربيًّا واضحًا، فقد لا يتوفّر صوت عربيّ على جهازك. جرِّب جهازًا آخر أو استعِن بمعلِّمك للقراءة.</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><div class="num">٢</div><div><h2>أستمِعُ وأُجيب</h2><p class="hint">بعد الاستماع، اختَرِ الإجابةَ الصّحيحة لكلّ سؤال.</p></div></div>
+    <div class="mcq" id="mcq"></div>
+  </section>
+
+  <section>
+    <div class="sec-head"><div class="num">٣</div><div><h2>أُرتِّبُ الأحداثَ بحسبِ التّسلسلِ الزّمنيّ</h2><p class="hint">حرِّك الأحداثَ بالأسهم حتّى تُرتِّبَها كما حدثت، ثمّ اضغط «أتحقّق».</p></div></div>
+    <div class="order" id="order"></div>
+    <div class="check"><button id="checkOrder">أتحقّق ✓</button><span class="res" id="orderRes"></span></div>
+  </section>
+
+  <footer>
+    <div>سمعٌ ووعي! 👂 تابِع رحلتَك مع المهارة التّالية.</div>
+    <a class="next" href="speaking.html">التّالي: مهارة التّحدّث 🗣️ ←</a>
+  </footer>
+
+</div>
+
+<script>
+const segments=[
+"يارا فتاةٌ صَغيرةٌ تَعيشُ في مَدينةٍ بَعيدة. تُحِبُّ قِراءَةَ الْكُتُبِ الْعِلْميّة. عِنْدَما كانَتْ يارا في السّابِعَةِ مِنْ عُمْرِها، كانَتْ تَقْضي ساعاتٍ في الْمَكْتَبَةِ تَتَعَلَّمُ عَنْ عَجائِبِ الْكَوْن.",
+"عِنْدَما بَلَغَتِ التّاسِعَةَ مِنْ عُمْرِها، قَرَّرَتْ يارا إجْراءَ تَجارِبِها الْخاصَّةِ، فَأَعَدَّتْ مُخْتَبَرًا صَغيرًا في غُرْفَتِها. جَهَّزَتْهُ بِقَواريرَ وَأَنابيبَ اخْتِباريّةٍ، وَراحَتْ تَخْلِطُ فيها سَوائِلَ مُخْتَلِفَةً وَتُراقِبُ التَّفاعُلاتِ الْمُلَوَّنَة.",
+"إِقْتَرَبَ مَوْعِدُ الْمَعْرِضِ الْعِلْميِّ في الْمَدْرَسَة. كَرَّسَتْ يارا أَسابيعَ عَديدَةً لإعْدادِ مَشْروعِها. رَسَمَتْ نَموذَجًا لِلنِّظامِ الشَّمْسيِّ ثُمَّ صَنَعَتِ الْكَواكِبَ بِالأَوْراقِ الْمُلَوَّنَةِ وَعَلَّقَتْها. وَفي يَوْمِ الْمَعْرِضِ، قَدَّمَتْ مَشْروعَها بِثِقَةٍ وَشَرَحَتْ تَفاصيلَ عَمَلِها بِدِقَّة.",
+"أَثْمَرَتِ الْجُهودُ الشّاقَّةُ الّتي بَذَلَتْها يارا فَفازَتْ بِالْجائِزَةِ الأولى. إِسْتَطاعَتْ، بِفَضْلِ الْجائِزَةِ، أَنْ تَشْتَريَ الْمَزيدَ مِنَ الْكُتُبِ وَالْمُعَدّات. بَعْدَ فَتْرَةٍ قَصيرَةٍ، انْضَمَّتْ يارا إلى أَنْدِيَةِ الْعُلومِ حَيْثُ الْتَقَتْ بِعُلَماءَ يُشارِكونَها الشَّغَفَ نَفْسَه.",
+"وَها هِيَ الْيَوْمَ، وَقَدْ بَلَغَتِ الْحادِيَةَ وَالْعِشْرينَ مِنْ عُمْرِها، تُحَقِّقُ حُلْمَها الْكَبير! لَقَدْ أَصْبَحَتْ عالِمَةً ناجِحَة. باتَتْ تَعْمَلُ مَعَ الْعُلَماءِ الصِّغارِ وَتُدَرِّبُهُمْ وَتُشَجِّعُهُمْ: لا تَخافوا مِنْ طَرْحِ الأَسْئِلَةِ، وَلا تَخْجَلوا مِنِ ارْتِكابِ الأَخْطاءِ، فَهِيَ فُرَصٌ لِلتَّعَلُّمِ وَالنُّمُوّ."
+];
+let arVoice=null;
+function pick(){const v=speechSynthesis.getVoices().find(x=>x.lang&&x.lang.startsWith('ar'));if(v)arVoice=v;}
+pick();speechSynthesis.onvoiceschanged=pick;
+const waves=document.getElementById('waves'),statusEl=document.getElementById('status');
+function speakText(text,onend){speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='ar-SA';u.rate=.85;if(arVoice)u.voice=arVoice;
+  u.onstart=()=>waves.classList.add('on');u.onend=()=>{waves.classList.remove('on');if(onend)onend();};speechSynthesis.speak(u);}
+function stopAll(){speechSynthesis.cancel();waves.classList.remove('on');document.querySelectorAll('.seg-row button').forEach(b=>b.classList.remove('playing'));document.getElementById('playAll').textContent='▶';}
+document.getElementById('playAll').addEventListener('click',function(){
+  if(speechSynthesis.speaking){stopAll();statusEl.textContent='القصّة كاملة';return;}
+  this.textContent='⏸';statusEl.textContent='يُقرأ الآن…';
+  speakText(segments.join(' '),()=>{this.textContent='▶';statusEl.textContent='القصّة كاملة';});
+});
+document.querySelectorAll('.seg-row button').forEach(b=>b.addEventListener('click',()=>{
+  stopAll();const i=+b.dataset.i;b.classList.add('playing');statusEl.textContent='المقطع '+['١','٢','٣','٤','٥'][i];
+  speakText(segments[i],()=>b.classList.remove('playing'));
+}));
+
+const questions=[
+ {q:"ماذا كانت يارا تُحبُّ منذ صِغَرها؟",a:["اللّعبَ في الحديقة","قراءةَ الكتبِ العلميّة","رسمَ اللّوحات"],c:1},
+ {q:"ماذا أعدّت يارا في غرفتها وهي في التّاسعة؟",a:["مكتبةً كبيرة","مختبرًا صغيرًا","حديقةً للنّباتات"],c:1},
+ {q:"بماذا فازت يارا في المعرض العلميّ؟",a:["بالجائزةِ الأولى","بشهادةِ مشاركة","بكتابٍ جديد"],c:0},
+ {q:"بمَ استطاعت أن تفعلَ بفضلِ الجائزة؟",a:["أن تسافرَ حول العالم","أن تشتريَ المزيدَ من الكتبِ والمعدّات","أن تبنيَ مدرسة"],c:1},
+ {q:"ماذا أصبحت يارا في النّهاية؟",a:["معلِّمةً للرّسم","عالِمةً ناجحة","طبيبةً مشهورة"],c:1}
+];
+const mcq=document.getElementById('mcq');
+questions.forEach((it,qi)=>{
+  const card=document.createElement('div');card.className='qcard';
+  card.innerHTML=`<div class="qt"><span class="n">${['١','٢','٣','٤','٥'][qi]}</span><span>${it.q}</span></div>`;
+  it.a.forEach((ans,ai)=>{
+    const btn=document.createElement('button');btn.className='choice';btn.textContent=ans;
+    btn.addEventListener('click',()=>{[...card.querySelectorAll('.choice')].forEach(c=>c.disabled=true);
+      if(ai===it.c)btn.classList.add('right');else{btn.classList.add('wrong');card.querySelectorAll('.choice')[it.c].classList.add('right');}});
+    card.appendChild(btn);
+  });
+  mcq.appendChild(card);
+});
+
+const events=[
+ {t:"كانت يارا تقضي ساعاتٍ في المكتبةِ تتعلّمُ عن عجائبِ الكون.",o:1},
+ {t:"أعدّت مختبرًا صغيرًا في غرفتها وأجرَتْ تجاربها الخاصّة.",o:2},
+ {t:"قدّمت مشروعَها في المعرضِ العلميّ وفازت بالجائزةِ الأولى.",o:3},
+ {t:"انضمّت إلى أنديةِ العلومِ والتقت بعلماءَ يُشاركونها الشّغف.",o:4},
+ {t:"أصبحت عالِمةً ناجحةً تُدرّبُ العلماءَ الصّغار.",o:5}
+];
+let cur=[2,4,0,3,1];
+const orderEl=document.getElementById('order');
+function renderOrder(){
+  orderEl.innerHTML='';
+  cur.forEach((idx,pos)=>{
+    const e=events[idx];const div=document.createElement('div');div.className='ev';
+    div.innerHTML=`<span class="pos">${['١','٢','٣','٤','٥'][pos]}</span><span>${e.t}</span>
+      <span class="arrows"><button data-up="${pos}">▲</button><button data-down="${pos}">▼</button></span>`;
+    orderEl.appendChild(div);
+  });
+  orderEl.querySelectorAll('[data-up]').forEach(b=>b.addEventListener('click',()=>{const p=+b.dataset.up;if(p===0)return;[cur[p-1],cur[p]]=[cur[p],cur[p-1]];renderOrder();}));
+  orderEl.querySelectorAll('[data-down]').forEach(b=>b.addEventListener('click',()=>{const p=+b.dataset.down;if(p===cur.length-1)return;[cur[p+1],cur[p]]=[cur[p],cur[p+1]];renderOrder();}));
+}
+renderOrder();
+document.getElementById('checkOrder').addEventListener('click',()=>{
+  let ok=0;const rows=orderEl.querySelectorAll('.ev');
+  cur.forEach((idx,pos)=>{const correct=events[idx].o===pos+1;rows[pos].classList.remove('ok','no');rows[pos].classList.add(correct?'ok':'no');if(correct)ok++;});
+  const res=document.getElementById('orderRes');
+  if(ok===5){res.textContent='ممتاز! التّرتيبُ صحيحٌ كاملًا 🎉';res.style.color='var(--good)';}
+  else{res.textContent=`أصبتَ ${['صفر','واحدًا','اثنين','ثلاثة','أربعة','خمسة'][ok]} من خمسة — حاوِل مرّةً أخرى.`;res.style.color='var(--warn)';}
+});
+window.addEventListener('beforeunload',()=>speechSynthesis.cancel());
+</script>
+</body>
+</html>

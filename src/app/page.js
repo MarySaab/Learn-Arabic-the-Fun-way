@@ -5,8 +5,11 @@ import Timeline from "@/components/Timeline";
 import QuoteOfDay from "@/components/QuoteOfDay";
 import FactCard from "@/components/FactCard";
 import HeroArt from "@/components/HeroArt";
+import TestPreview from "@/components/TestPreview";
+import WelcomeAudio from "@/components/WelcomeAudio";
 import ScrollRevealClient from "@/components/ScrollRevealClient";
 import { stageIdForLevel } from "@/lib/data/journey";
+import { lessons } from "@/lib/data/lessons";
 import { toArabicDigits } from "@/lib/format";
 import styles from "./page.module.css";
 
@@ -26,6 +29,27 @@ const STEPS = [
   { icon: "👥", ar: "انضمّ إلى مجموعتك", en: "Join your group", desc: "نضعك في مجموعة تناسب مستواك تماماً." },
   { icon: "💻", ar: "تعلّم وتدرّب أسبوعياً", en: "Learn weekly", desc: "حصّة أسبوعية عبر Google Meet، وتدريبات ممتعة على الموقع." },
 ];
+
+// Why learn Arabic at all — speaks to international students & professionals.
+const WHY_ARABIC = [
+  { icon: "🌍", ar: "لغة ٤٠٠+ مليون إنسان", en: "400M+ speakers", desc: "تُتحدَّث في أكثر من ٢٥ دولة، وهي من اللغات الستّ الرسمية للأمم المتحدة." },
+  { icon: "📜", ar: "بوّابة حضارة عريقة", en: "A rich civilization", desc: "أدب وشعر وتاريخ وعلوم — كنوز تُقرأ في لغتها الأصلية." },
+  { icon: "💼", ar: "ميزة مهنيّة حقيقية", en: "Career advantage", desc: "مطلوبة في الأعمال والدبلوماسية والإعلام والسياحة." },
+  { icon: "🕌", ar: "سفر أغنى وتواصل أعمق", en: "Travel & connect", desc: "من المغرب إلى الخليج: افهم الناس وتحدّث إليهم بلغتهم." },
+];
+
+// What the platform itself offers (features grid).
+const FEATURES = [
+  { icon: "🧭", ar: "اختبار مستوى بأربع مهارات", en: "4-skill placement test" },
+  { icon: "📚", ar: "دروس تفاعلية بالصوت", en: "Interactive audio lessons" },
+  { icon: "🎮", ar: "ألعاب تعليمية ممتعة", en: "Learning games" },
+  { icon: "🎧", ar: "استماع وإملاء وتسجيل صوتي", en: "Listening, dictation & recording" },
+  { icon: "🏅", ar: "تتبّع تقدّمك ونجومك", en: "Progress & rewards" },
+  { icon: "🇬🇧", ar: "زرّ الإنجليزية للطلاب الأجانب", en: "English toggle" },
+];
+
+// Hand-picked lessons to showcase on the home page.
+const FEATURED_SLUGS = ["arabic-alphabet", "sun-moon-letters", "nominal-verbal", "reading-comprehension"];
 
 // Why parents and students choose Mariana (appeals to mothers especially).
 const BENEFITS = [
@@ -121,6 +145,25 @@ export default function HomePage({ searchParams }) {
             سواء كنت تبدأ من الحروف أو تصقل قواعدك المتقدّمة، ستجد معها خطّةً واضحةً
             تناسب مستواك وهدفك.
           </p>
+          <WelcomeAudio />
+        </div>
+      </section>
+
+      {/* ---------- WHY LEARN ARABIC ---------- */}
+      <section className={styles.benefitsSection}>
+        <div className="container">
+          <header className={styles.sectionHead}>
+            <h2><Bilingual ar="لماذا تتعلّم العربية؟" en="Why learn Arabic?" /></h2>
+          </header>
+          <div className={styles.benefits}>
+            {WHY_ARABIC.map((w) => (
+              <div key={w.ar} className={styles.benefit} data-reveal>
+                <span className={styles.benefitIcon} aria-hidden="true">{w.icon}</span>
+                <h3><Bilingual ar={w.ar} en={w.en} /></h3>
+                <p>{w.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -171,6 +214,79 @@ export default function HomePage({ searchParams }) {
             <p>ثماني محطّات تأخذك من الحرف الأوّل إلى الإتقان. اكتشف أين تقف بإجراء اختبار المستوى.</p>
           </header>
           <Timeline highlightStageId={highlightStageId} />
+        </div>
+      </section>
+
+      {/* ---------- PLATFORM FEATURES ---------- */}
+      <section className="container">
+        <header className={styles.sectionHead}>
+          <h2><Bilingual ar="ماذا تجد في المنصّة؟" en="Platform features" /></h2>
+        </header>
+        <div className={styles.features}>
+          {FEATURES.map((f) => (
+            <div key={f.ar} className={styles.feature} data-reveal>
+              <span className={styles.featureIcon} aria-hidden="true">{f.icon}</span>
+              <span className={styles.featureText}>
+                <Bilingual ar={f.ar} en={f.en} />
+              </span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ---------- PLACEMENT TEST PREVIEW ---------- */}
+      <section className={styles.benefitsSection}>
+        <div className="container">
+          <header className={styles.sectionHead}>
+            <h2><Bilingual ar="اختبر نفسك في ثوانٍ" en="Try the test" /></h2>
+            <p>ذُق طعم اختبار تحديد المستوى قبل أن تبدأه.</p>
+          </header>
+          <TestPreview />
+        </div>
+      </section>
+
+      {/* ---------- FEATURED LESSONS ---------- */}
+      <section className="container">
+        <header className={styles.sectionHead}>
+          <h2><Bilingual ar="دروس مختارة" en="Featured lessons" /></h2>
+        </header>
+        <div className={styles.featuredGrid}>
+          {FEATURED_SLUGS.map((slug) => {
+            const lesson = lessons.find((l) => l.slug === slug);
+            if (!lesson) return null;
+            return (
+              <Link key={slug} href={`/lessons/${slug}`} className={styles.featuredCard} data-reveal>
+                <span className={styles.featuredIcon} aria-hidden="true">{lesson.icon}</span>
+                <span className={styles.featuredTitle}>
+                  <Bilingual ar={lesson.title_ar} en={lesson.title_en} />
+                </span>
+                <span className={styles.featuredGo} aria-hidden="true">←</span>
+              </Link>
+            );
+          })}
+        </div>
+        <p className={styles.moreLink}>
+          <Link href="/lessons">عرض كلّ الدروس — ١٨ درساً ←</Link>
+        </p>
+      </section>
+
+      {/* ---------- INTERACTIVE GAMES & SKILLS ---------- */}
+      <section className={styles.benefitsSection}>
+        <div className="container">
+          <header className={styles.sectionHead}>
+            <h2><Bilingual ar="ألعاب وقصص تفاعلية" en="Games & stories" /></h2>
+            <p>تعلّمٌ يشبه اللعب: ألعاب قواعد وإملاء، وقصص تدرّب المهارات الأربع.</p>
+          </header>
+          <div className={styles.gamesRow}>
+            {lessons.filter((l) => l.game).map((l) => (
+              <Link key={l.slug} href={`/lessons/${l.slug}`} className={styles.gameChip} data-reveal>
+                <span aria-hidden="true">{l.icon}</span> {l.title_ar}
+              </Link>
+            ))}
+          </div>
+          <p className={styles.moreLink}>
+            <Link href="/skills">🎧 مختبر المهارات: أربع قصص كاملة بالاستماع والتحدّث والقراءة والكتابة ←</Link>
+          </p>
         </div>
       </section>
 
@@ -249,6 +365,25 @@ export default function HomePage({ searchParams }) {
               <p>خذ الاختبار ثم اضغط «احجز حصّة» — يصلك تأكيد عبر واتساب أو البريد الإلكتروني.</p>
             </details>
           </div>
+        </div>
+      </section>
+
+      {/* ---------- CONTACT ---------- */}
+      <section className="container">
+        <header className={styles.sectionHead}>
+          <h2><Bilingual ar="تواصل مع مريانا" en="Contact" /></h2>
+          <p>سؤال؟ استفسار عن المواعيد أو المستويات؟ مريانا يسعدها أن تسمع منك.</p>
+        </header>
+        <div className={styles.contactRow}>
+          <a className="btn btn-primary" href="https://wa.me/96171297998" target="_blank" rel="noreferrer">
+            💬 واتساب
+          </a>
+          <a className="btn btn-gold" href="mailto:marianasaab50@gmail.com">
+            ✉️ marianasaab50@gmail.com
+          </a>
+          <a className="btn btn-ghost" href="tel:+96171297998" dir="ltr">
+            📞 +961 71 297 998
+          </a>
         </div>
       </section>
 

@@ -227,6 +227,99 @@
 }
 .statLabel { font-size: 0.88rem; font-weight: 700; color: var(--teal-deep); }
 
+/* ---- Platform features ---- */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+}
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--parchment);
+  border: 1px solid var(--parchment-line);
+  border-radius: var(--radius-sm);
+  padding: 16px 18px;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+.feature:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+.featureIcon {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: var(--gold-soft);
+  font-size: 1.4rem;
+}
+.featureText { font-weight: 700; font-size: 0.98rem; }
+
+/* ---- Featured lessons ---- */
+.featuredGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 14px;
+}
+.featuredCard {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--parchment);
+  border: 1px solid var(--parchment-line);
+  border-radius: var(--radius-sm);
+  padding: 16px 18px;
+  box-shadow: var(--shadow-soft);
+  color: var(--ink);
+  font-weight: 700;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+.featuredCard:hover { transform: translateY(-3px); border-color: var(--gold); color: var(--teal); }
+.featuredIcon { font-size: 1.6rem; flex: 0 0 auto; }
+.featuredTitle { flex: 1; line-height: 1.5; }
+.featuredGo { color: var(--gold); font-weight: 800; }
+.moreLink {
+  text-align: center;
+  margin: 22px 0 0;
+  font-weight: 700;
+}
+
+/* ---- Games row ---- */
+.gamesRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+.gameChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--parchment);
+  border: 1.5px solid var(--parchment-line);
+  border-radius: 999px;
+  padding: 9px 18px;
+  font-weight: 700;
+  color: var(--ink);
+  transition: border-color 0.15s ease, transform 0.12s ease, background 0.15s ease;
+}
+.gameChip:hover {
+  border-color: var(--gold);
+  background: var(--gold-soft);
+  color: var(--teal-deep);
+  transform: translateY(-2px);
+}
+
+/* ---- Contact ---- */
+.contactRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+}
+
 /* ---- FAQ ---- */
 .faqSection { background: var(--parchment-deep); }
 .faqList {

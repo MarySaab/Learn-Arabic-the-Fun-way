@@ -75,23 +75,26 @@ export default class PlacementTest {
     return map;
   }
 
-  // CEFR-like level for ONE skill from its weighted ratio.
-  static cefrFor(ratio) {
-    if (ratio < 0.25) return "A0";
-    if (ratio < 0.5) return "A1";
-    if (ratio < 0.8) return "A2";
-    return "B1";
+  // Level letters (A = beginner … D = advanced) with their Arabic names.
+  static LETTER_LEVELS = {
+    A: { ar: "مبتدئ", en: "Beginner", levelId: "beginner" },
+    B: { ar: "أساسي", en: "Elementary", levelId: "elementary" },
+    C: { ar: "متوسّط", en: "Intermediate", levelId: "intermediate" },
+    D: { ar: "متقدّم", en: "Advanced", levelId: "advanced" },
+  };
+
+  // Letter for ONE skill from its weighted ratio.
+  static letterFor(ratio) {
+    if (ratio < 0.25) return "A";
+    if (ratio < 0.5) return "B";
+    if (ratio < 0.8) return "C";
+    return "D";
   }
 
-  // Overall CEFR-like level across the whole test.
-  cefr() {
+  // Overall letter across the whole test (same scale as the group level).
+  letter() {
     const max = this.maxScore();
-    const ratio = max ? this.score() / max : 0;
-    if (ratio < 0.2) return "A0";
-    if (ratio < 0.4) return "A1";
-    if (ratio < 0.6) return "A2";
-    if (ratio < 0.8) return "B1";
-    return "B2";
+    return PlacementTest.letterFor(max ? this.score() / max : 0);
   }
 
   // Turns a correct/total ratio into a simple A/B/C grade.

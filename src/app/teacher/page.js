@@ -194,7 +194,7 @@ export default function TeacherPage() {
               <span>النتيجة: {toArabicDigits(r.score)}</span>
               {r.readingGrade && <span>قراءة: {r.readingGrade}</span>}
               {r.writingGrade && <span>كتابة: {r.writingGrade}</span>}
-              {r.listeningGrade && <span>استماع: {r.listeningGrade}</span>}
+              {r.dictationGrade && <span>إملاء: {r.dictationGrade}</span>}
               {r.grammarGrade && <span>قواعد: {r.grammarGrade}</span>}
               <span className={styles.resultDate}>{fmtDate(r.createdAt)}</span>
             </li>

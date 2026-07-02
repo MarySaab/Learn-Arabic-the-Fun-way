@@ -84,7 +84,7 @@ export default function TestRunner() {
         score: test.correctCount(),
         readingGrade: gradeOf("reading"),
         writingGrade: gradeOf("writing"),
-        listeningGrade: gradeOf("listening"),
+        dictationGrade: gradeOf("dictation"),
         grammarGrade: gradeOf("grammar"),
       }),
     }).catch(() => {});
@@ -116,9 +116,9 @@ export default function TestRunner() {
       <div className={styles.result}>
         <div className={styles.resultCard} data-reveal>
           <p className={styles.resultKicker}>
-            <Bilingual ar="نتيجتك" en="Your result" />
+            <Bilingual ar="مستواك" en="Your level" />
           </p>
-          <div className={styles.cefrBadge}>{test.cefr()}</div>
+          <div className={styles.cefrBadge}>{test.letter()}</div>
           <h2 className={styles.levelName}>
             <Bilingual ar={levelInfo?.ar} en={levelInfo?.en} />
           </h2>
@@ -144,13 +144,18 @@ export default function TestRunner() {
             {testSections.map((s) => {
               const d = breakdown[s.id] || { correct: 0, total: 0, points: 0, max: 0 };
               const r = d.max ? d.points / d.max : 0;
+              const letter = PlacementTest.letterFor(r);
+              const letterInfo = PlacementTest.LETTER_LEVELS[letter];
               return (
                 <div key={s.id} className={styles.skillCard}>
                   <span className={styles.skillIcon} aria-hidden="true">{s.icon}</span>
                   <b className={styles.skillName}>
                     <Bilingual ar={s.ar} en={s.en} />
                   </b>
-                  <span className={styles.skillCefr}>{PlacementTest.cefrFor(r)}</span>
+                  <span className={styles.skillCefr}>{letter}</span>
+                  <span className={styles.skillLevelAr}>
+                    <Bilingual ar={letterInfo.ar} en={letterInfo.en} />
+                  </span>
                   <span className={styles.skillScore}>
                     {toArabicDigits(d.correct)} / {toArabicDigits(d.total)}
                   </span>
@@ -270,6 +275,15 @@ export default function TestRunner() {
               {opt.text}
             </button>
           ))}
+          {/* honest escape hatch for beginners — counts as unanswered-wrong,
+              so low levels are measured without forcing guesses */}
+          <button
+            className={`${styles.option} ${styles.optionSkip} ${chosen === "skip" ? styles.optionChosen : ""}`}
+            onClick={() => choose("skip")}
+            aria-pressed={chosen === "skip"}
+          >
+            🤷 لا أعرف <span className="en-gloss">(I don&apos;t know)</span>
+          </button>
         </div>
       </div>
 

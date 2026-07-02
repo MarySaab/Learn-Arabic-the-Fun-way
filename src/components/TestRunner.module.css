@@ -68,6 +68,13 @@
   background: var(--gold-soft);
   box-shadow: 0 0 0 2px var(--gold-soft);
 }
+.optionSkip {
+  border-style: dashed;
+  background: var(--parchment);
+  color: var(--teal-deep);
+  opacity: 0.85;
+  font-weight: 600;
+}
 
 .nav {
   display: flex;
@@ -292,6 +299,7 @@
   border-radius: 999px;
   padding: 2px 14px;
 }
+.skillLevelAr { font-size: 0.82rem; font-weight: 700; color: var(--teal-deep); }
 .skillScore { font-size: 0.85rem; color: var(--teal-deep); opacity: 0.8; }
 
 /* ---- Print-friendly: show only the result card ---- */

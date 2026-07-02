@@ -15,7 +15,7 @@ export async function POST(request) {
     body = {};
   }
 
-  const { level, score, readingGrade, writingGrade, listeningGrade, grammarGrade } =
+  const { level, score, readingGrade, writingGrade, dictationGrade, grammarGrade } =
     body || {};
   if (!level || typeof score !== "number") {
     return NextResponse.json(
@@ -33,7 +33,7 @@ export async function POST(request) {
         score,
         readingGrade: readingGrade ?? null,
         writingGrade: writingGrade ?? null,
-        listeningGrade: listeningGrade ?? null,
+        dictationGrade: dictationGrade ?? null,
         grammarGrade: grammarGrade ?? null,
         studentId: null, // no auth yet (MVP) — anonymous result
       },

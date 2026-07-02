@@ -1,0 +1,50 @@
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  color: var(--teal);
+  margin-bottom: 18px;
+}
+
+.header {
+  text-align: center;
+  max-width: 62ch;
+  margin: 0 auto 36px;
+}
+.headIcon { font-size: 3rem; line-height: 1; display: block; margin-bottom: 8px; }
+.pill {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  padding: 4px 14px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+}
+.beginner     { background: #d9efe4; color: #1f6b46; }
+.elementary   { background: #dfeaff; color: #2a4f9b; }
+.intermediate { background: #fdeecf; color: #93670f; }
+.advanced     { background: #f6ddda; color: #97392f; }
+.desc { color: var(--teal); margin: 6px 0 0; }
+
+/* Embedded interactive game */
+.gameWrap { margin-bottom: 36px; }
+.gameFrame {
+  width: 100%;
+  height: 680px;
+  border: 1px solid var(--parchment-line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  background: var(--parchment);
+}
+.gameLink {
+  display: inline-block;
+  margin-top: 10px;
+  font-weight: 700;
+  color: var(--teal);
+}
+
+.cta {
+  text-align: center;
+  margin-top: 44px;
+}

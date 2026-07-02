@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import Link from "next/link";
 import Bilingual from "./Bilingual";
 import LessonCatalog from "@/lib/classes/LessonCatalog";
 import { lessons as allLessons, levels } from "@/lib/data/lessons";
@@ -101,30 +102,30 @@ export default function LessonsExplorer() {
       {status === "ready" && results.length > 0 && (
         <ul className={styles.grid}>
           {results.map((lesson) => (
-            <li key={lesson.id} className={styles.card} data-reveal>
-              <div className={styles.cardTop}>
-                <span className={styles.icon} aria-hidden="true">{lesson.icon}</span>
-                <span className={`${styles.pill} ${styles[lesson.level]}`}>
-                  <Bilingual
-                    ar={levels.find((l) => l.id === lesson.level)?.ar}
-                    en={levels.find((l) => l.id === lesson.level)?.en}
-                  />
+            <li key={lesson.id} data-reveal>
+              <Link href={`/lessons/${lesson.slug}`} className={styles.card}>
+                <div className={styles.cardTop}>
+                  <span className={styles.icon} aria-hidden="true">{lesson.icon}</span>
+                  <span className={`${styles.pill} ${styles[lesson.level]}`}>
+                    <Bilingual
+                      ar={levels.find((l) => l.id === lesson.level)?.ar}
+                      en={levels.find((l) => l.id === lesson.level)?.en}
+                    />
+                  </span>
+                </div>
+                <h3 className={styles.cardTitle}>
+                  <Bilingual ar={lesson.title_ar} en={lesson.title_en} />
+                </h3>
+                <p className={styles.cardDesc}>{lesson.desc}</p>
+                <span className={styles.openRow}>
+                  {lesson.game ? (
+                    <Bilingual ar="🎮 درس تفاعلي" en="Interactive lesson" />
+                  ) : (
+                    <Bilingual ar="📖 ابدأ الدرس" en="Start lesson" />
+                  )}
+                  <span className={styles.arrow} aria-hidden="true">←</span>
                 </span>
-              </div>
-              <h3 className={styles.cardTitle}>
-                <Bilingual ar={lesson.title_ar} en={lesson.title_en} />
-              </h3>
-              <p className={styles.cardDesc}>{lesson.desc}</p>
-              {lesson.game && (
-                <a
-                  className={styles.playLink}
-                  href={`/games/${lesson.game}.html`}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  ▶ <Bilingual ar="العب وتدرّب" en="Play & Practice" />
-                </a>
-              )}
+              </Link>
             </li>
           ))}
         </ul>

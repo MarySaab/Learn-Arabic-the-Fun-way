@@ -1,0 +1,105 @@
+/* ---- Learn cards ---- */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+  margin-bottom: 44px;
+}
+.card {
+  background: var(--parchment);
+  border: 1px solid var(--parchment-line);
+  border-radius: var(--radius);
+  padding: 22px;
+  box-shadow: var(--shadow-soft);
+}
+.cardHead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.cardIcon { font-size: 1.7rem; }
+.cardTitle { margin: 0; font-size: 1.2rem; color: var(--teal); }
+.cardBody { margin: 0 0 12px; line-height: 1.8; }
+.examples {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.example {
+  background: var(--parchment-deep);
+  border: 1px solid var(--parchment-line);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+/* ---- Quiz ---- */
+.quiz {
+  max-width: 620px;
+  margin-inline: auto;
+}
+.quizTitle {
+  text-align: center;
+  margin-bottom: 18px;
+}
+.quizCard {
+  background: var(--parchment);
+  border: 1px solid var(--parchment-line);
+  border-radius: var(--radius);
+  padding: 26px 24px;
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+}
+.quizProgress {
+  font-weight: 700;
+  color: var(--teal);
+  margin-bottom: 12px;
+}
+.prompt {
+  font-size: 1.25rem;
+  line-height: 1.7;
+  margin: 0 0 20px;
+}
+.options {
+  display: grid;
+  gap: 12px;
+}
+.option {
+  font-family: var(--font-arabic);
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 13px 18px;
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--parchment-line);
+  background: var(--parchment-deep);
+  color: var(--ink);
+  cursor: pointer;
+  transition: border-color 0.15s ease, transform 0.12s ease;
+}
+.option:hover:not(:disabled) { border-color: var(--teal); transform: translateY(-2px); }
+.option:disabled { cursor: default; }
+.correct {
+  border-color: var(--success);
+  background: #e6f4ec;
+  color: #1f6b46;
+}
+.wrong {
+  border-color: var(--error);
+  background: #f7e3e1;
+  color: #97392f;
+}
+
+.feedback { margin-top: 18px; }
+.good { color: var(--success); font-weight: 800; margin: 0 0 4px; }
+.bad { color: var(--error); font-weight: 800; margin: 0 0 4px; }
+.explain { color: var(--teal-deep); margin: 0 0 16px; }
+
+/* ---- Result ---- */
+.resultBig { font-size: 3rem; }
+.resultScore { font-size: 1.5rem; font-weight: 800; margin: 6px 0; }
+.resultMsg { color: var(--teal-deep); margin: 0 0 18px; }

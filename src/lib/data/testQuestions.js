@@ -1,12 +1,15 @@
-// Placement-test questions — 10 real multiple-choice questions across four
-// skills (letters, vocabulary, grammar, reading) at mixed difficulty. Each
-// question's `answer` is the id of the correct option. Written as genuine
-// Arabic questions, no filler.
+// Placement-test questions — 12 real multiple-choice questions across four
+// skills (letters, vocabulary, grammar, reading) at THREE difficulty tiers.
+// Difficulty drives the weighted score in the PlacementTest class
+// (easy ×1, medium ×2, hard ×3), so reaching "advanced" requires answering
+// genuinely advanced grammar/reading — not just the beginner basics.
 
 export const testQuestions = [
+  // ---------- EASY (beginner floor) ----------
   {
     id: "q1",
     skill: "letters",
+    difficulty: "easy",
     prompt: "كم عددُ حروف الأبجدية العربية؟",
     options: [
       { id: "a", text: "٢٦" },
@@ -18,31 +21,8 @@ export const testQuestions = [
   },
   {
     id: "q2",
-    skill: "letters",
-    prompt: "أيُّ الكلمات التالية تبدأ بحرفٍ شمسيّ (تختفي فيه اللام)؟",
-    options: [
-      { id: "a", text: "القَمَر" },
-      { id: "b", text: "الكِتاب" },
-      { id: "c", text: "الشَّمس" },
-      { id: "d", text: "البَيت" },
-    ],
-    answer: "c",
-  },
-  {
-    id: "q3",
     skill: "vocabulary",
-    prompt: "ما الكلمة التي تعني «أداةً للكتابة»؟",
-    options: [
-      { id: "a", text: "القَلَم" },
-      { id: "b", text: "الكُرسيّ" },
-      { id: "c", text: "الشَّجرة" },
-      { id: "d", text: "البابُ" },
-    ],
-    answer: "a",
-  },
-  {
-    id: "q4",
-    skill: "vocabulary",
+    difficulty: "easy",
     prompt: "عكسُ كلمة «كبير» هو:",
     options: [
       { id: "a", text: "طويل" },
@@ -53,20 +33,50 @@ export const testQuestions = [
     answer: "c",
   },
   {
+    id: "q3",
+    skill: "vocabulary",
+    difficulty: "easy",
+    prompt: "ما الكلمة التي تعني «أداةً للكتابة»؟",
+    options: [
+      { id: "a", text: "القَلَم" },
+      { id: "b", text: "الكُرسيّ" },
+      { id: "c", text: "الشَّجرة" },
+      { id: "d", text: "البابُ" },
+    ],
+    answer: "a",
+  },
+
+  // ---------- MEDIUM (elementary / lower-intermediate) ----------
+  {
+    id: "q4",
+    skill: "letters",
+    difficulty: "medium",
+    prompt: "أيُّ الكلمات التالية تبدأ بحرفٍ شمسيّ (تختفي فيه لام «الـ»)؟",
+    options: [
+      { id: "a", text: "القَمَر" },
+      { id: "b", text: "الكِتاب" },
+      { id: "c", text: "الشَّمس" },
+      { id: "d", text: "البَيت" },
+    ],
+    answer: "c",
+  },
+  {
     id: "q5",
     skill: "grammar",
+    difficulty: "medium",
     prompt: "كلمة «يَكتُبُ» هي:",
     options: [
       { id: "a", text: "اسم" },
-      { id: "b", text: "فعل" },
-      { id: "c", text: "حرف" },
-      { id: "d", text: "ظرف" },
+      { id: "b", text: "فعل ماضٍ" },
+      { id: "c", text: "فعل مضارع" },
+      { id: "d", text: "حرف" },
     ],
-    answer: "b",
+    answer: "c",
   },
   {
     id: "q6",
     skill: "grammar",
+    difficulty: "medium",
     prompt: "جملة «الوَلَدُ نشيطٌ» هي جملة:",
     options: [
       { id: "a", text: "اسمية" },
@@ -78,53 +88,85 @@ export const testQuestions = [
   },
   {
     id: "q7",
-    skill: "grammar",
-    prompt: "كلمة «كِتاباً» تنتهي بتنوين:",
+    skill: "vocabulary",
+    difficulty: "medium",
+    prompt: "ما معنى كلمة «غزير» في عبارة «مطرٌ غزيرٌ»؟",
     options: [
-      { id: "a", text: "الضمّ" },
-      { id: "b", text: "الكسر" },
-      { id: "c", text: "الفتح" },
-      { id: "d", text: "لا تنوين فيها" },
-    ],
-    answer: "c",
-  },
-  {
-    id: "q8",
-    skill: "grammar",
-    prompt: "كلمة «مُعلِّمة» هي اسمٌ:",
-    options: [
-      { id: "a", text: "مذكّر" },
-      { id: "b", text: "مؤنّث" },
-      { id: "c", text: "مثنّى" },
-      { id: "d", text: "جمع" },
+      { id: "a", text: "خفيف" },
+      { id: "b", text: "كثير" },
+      { id: "c", text: "بارد" },
+      { id: "d", text: "متقطّع" },
     ],
     answer: "b",
   },
   {
-    id: "q9",
+    id: "q8",
     skill: "reading",
+    difficulty: "medium",
     prompt:
-      "اقرأ: «ذهب سامي إلى المدرسة صباحاً، وحمل حقيبته وكُتُبه.» متى ذهب سامي إلى المدرسة؟",
+      "اقرأ: «ذهب سامي إلى المدرسة صباحاً ماشياً، وفي الطريق قابل صديقه خالداً فسارا معاً.» كيف ذهب سامي إلى المدرسة؟",
     options: [
-      { id: "a", text: "مساءً" },
-      { id: "b", text: "ظهراً" },
-      { id: "c", text: "صباحاً" },
-      { id: "d", text: "ليلاً" },
+      { id: "a", text: "بالسيارة" },
+      { id: "b", text: "بالحافلة" },
+      { id: "c", text: "ماشياً" },
+      { id: "d", text: "بالدراجة" },
+    ],
+    answer: "c",
+  },
+
+  // ---------- HARD (upper-intermediate / advanced) ----------
+  {
+    id: "q9",
+    skill: "grammar",
+    difficulty: "hard",
+    prompt: "في جملة «قرأَ الطالبُ الكتابَ»، إعراب كلمة «الكتابَ» هو:",
+    options: [
+      { id: "a", text: "فاعل مرفوع" },
+      { id: "b", text: "مفعول به منصوب" },
+      { id: "c", text: "مبتدأ مرفوع" },
+      { id: "d", text: "اسم مجرور" },
+    ],
+    answer: "b",
+  },
+  {
+    id: "q10",
+    skill: "grammar",
+    difficulty: "hard",
+    prompt: "اختر الصيغة الصحيحة: «شاهدتُ ___ اثنين في الملعب.»",
+    options: [
+      { id: "a", text: "لاعبانِ" },
+      { id: "b", text: "لاعبَينِ" },
+      { id: "c", text: "لاعبونَ" },
+      { id: "d", text: "لاعبينَ جمعاً" },
+    ],
+    answer: "b",
+  },
+  {
+    id: "q11",
+    skill: "grammar",
+    difficulty: "hard",
+    prompt: "أيُّ جملة صحيحة إعرابياً؟",
+    options: [
+      { id: "a", text: "إنّ العلمُ نورٌ" },
+      { id: "b", text: "إنّ العلمِ نورٌ" },
+      { id: "c", text: "إنّ العلمَ نورٌ" },
+      { id: "d", text: "إنّ العلمَ نوراً" },
     ],
     answer: "c",
   },
   {
-    id: "q10",
+    id: "q12",
     skill: "reading",
+    difficulty: "hard",
     prompt:
-      "اقرأ: «القراءةُ غذاءُ العقل، ومن يقرأْ كثيراً يزددْ علماً ومعرفة.» ما موضوع النصّ؟",
+      "اقرأ: «ما أجملَ أن يغرسَ الإنسانُ شجرةً لا يأكلُ من ثمرها، بل يتركُها لمن يأتي بعدَه.» ما الفكرة التي يدعو إليها النصّ؟",
     options: [
-      { id: "a", text: "أهمية القراءة" },
-      { id: "b", text: "فوائد الرياضة" },
-      { id: "c", text: "أنواع الطعام" },
-      { id: "d", text: "متعة السفر" },
+      { id: "a", text: "أهمية أكل الفواكه" },
+      { id: "b", text: "العطاء دون انتظار مقابل" },
+      { id: "c", text: "طرق زراعة الأشجار" },
+      { id: "d", text: "المحافظة على الغابات" },
     ],
-    answer: "a",
+    answer: "b",
   },
 ];
 

@@ -29,12 +29,33 @@ export default class PlacementTest {
     return this.questions.filter((q) => this.answers[q.id] != null).length;
   }
 
-  // Number of correct answers.
-  score() {
+  // Question weights by difficulty: hard questions count more toward the
+  // level, so "advanced" genuinely requires advanced answers.
+  static WEIGHTS = { easy: 1, medium: 2, hard: 3 };
+
+  weightOf(question) {
+    return PlacementTest.WEIGHTS[question.difficulty] ?? 1;
+  }
+
+  // Number of correct answers (what we show the learner: e.g. ٩ / ١٢).
+  correctCount() {
     return this.questions.reduce(
       (total, q) => total + (this.answers[q.id] === q.answer ? 1 : 0),
       0
     );
+  }
+
+  // Weighted points (used to decide the level).
+  score() {
+    return this.questions.reduce(
+      (total, q) =>
+        total + (this.answers[q.id] === q.answer ? this.weightOf(q) : 0),
+      0
+    );
+  }
+
+  maxScore() {
+    return this.questions.reduce((total, q) => total + this.weightOf(q), 0);
   }
 
   // Correct / total grouped by skill (letters, vocabulary, grammar, reading).
@@ -57,12 +78,15 @@ export default class PlacementTest {
     return "C";
   }
 
-  // Maps the score ratio to one of the four levels.
+  // Maps the WEIGHTED score ratio to one of the four levels. With weights,
+  // getting all easy+medium right lands mid-intermediate; "advanced" needs
+  // most of the hard (i'rab, dual/plural, inference) questions too.
   level() {
-    const ratio = this.total ? this.score() / this.total : 0;
-    if (ratio < 0.35) return "beginner";
-    if (ratio < 0.65) return "elementary";
-    if (ratio < 0.85) return "intermediate";
+    const max = this.maxScore();
+    const ratio = max ? this.score() / max : 0;
+    if (ratio < 0.25) return "beginner";
+    if (ratio < 0.5) return "elementary";
+    if (ratio < 0.8) return "intermediate";
     return "advanced";
   }
 

@@ -14,8 +14,8 @@ export default function TestPage() {
       <header style={{ textAlign: "center", maxWidth: "56ch", margin: "0 auto 32px" }}>
         <h1><Bilingual ar="اختبار تحديد المستوى" en="Placement Test" /></h1>
         <p style={{ color: "var(--teal)" }}>
-          عشرة أسئلة قصيرة في الحروف والمفردات والقواعد والقراءة. أجب بصدق
-          لتحصل على المستوى الأنسب لك.
+          اثنا عشر سؤالاً متدرّج الصعوبة في الحروف والمفردات والقواعد والقراءة.
+          أجب بصدق لتحصل على المستوى الأنسب لك.
         </p>
       </header>
       <TestRunner />

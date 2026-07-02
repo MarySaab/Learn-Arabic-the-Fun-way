@@ -59,7 +59,7 @@ export default function TestRunner() {
     const readingGrade = reading
       ? PlacementTest.grade(reading.correct, reading.total)
       : null;
-    saveResult(level, test.score(), readingGrade);
+    saveResult(level, test.correctCount(), readingGrade);
     // Remember the level so the booking page can pre-fill it even without the URL.
     if (typeof window !== "undefined") {
       localStorage.setItem("lwm-level", level);
@@ -91,7 +91,7 @@ export default function TestRunner() {
             <Bilingual ar={levelInfo?.ar} en={levelInfo?.en} />
           </h2>
           <p className={styles.score}>
-            {toArabicDigits(test.score())} / {toArabicDigits(test.total)}
+            {toArabicDigits(test.correctCount())} / {toArabicDigits(test.total)}
           </p>
           <p className={styles.message}>{levelMessages[level]}</p>
 

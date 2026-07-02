@@ -1,0 +1,59 @@
+.card {
+  background: var(--parchment-deep);
+  border: 1px solid var(--parchment-line);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  box-shadow: var(--shadow-soft);
+  max-width: 520px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.label {
+  color: var(--gold);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  margin: 0 0 6px;
+}
+
+.word {
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: 800;
+  color: var(--ink);
+  margin: 4px 0;
+}
+
+.translation {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--teal);
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.example {
+  margin: 12px 0 0;
+  color: var(--teal-deep);
+}
+
+/* Shared box for the loading / error / empty states so the card doesn't jump. */
+.state {
+  min-height: 96px;
+  display: grid;
+  place-items: center;
+  gap: 12px;
+}
+
+.spinner {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 3px solid var(--parchment-line);
+  border-top-color: var(--teal);
+  animation: lwm-spin 0.8s linear infinite;
+}
+
+.errorText {
+  color: var(--error);
+  margin: 0;
+}

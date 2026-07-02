@@ -1,0 +1,109 @@
+/* ===================== Home page section styles ===================== */
+
+/* --- Hero: full-width teal treatment with overlay text --- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  color: var(--parchment);
+  padding-block: clamp(64px, 12vw, 132px);
+  background:
+    radial-gradient(120% 120% at 85% 10%, rgba(216, 173, 58, 0.18), transparent 55%),
+    linear-gradient(135deg, var(--teal-deep), var(--teal));
+}
+.heroInner {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+.heroKicker {
+  color: var(--gold-bright);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  margin-bottom: 10px;
+}
+.hero h1 { color: var(--parchment); }
+.heroSub {
+  font-size: 1.25rem;
+  color: var(--gold-soft);
+  max-width: 44ch;
+  margin: 0 auto 2rem;
+}
+.heroCtas {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+/* A parchment-coloured ghost button that reads on the teal hero. */
+.heroGhost {
+  background: transparent;
+  color: var(--parchment);
+  border-color: rgba(245, 238, 221, 0.6);
+}
+.heroGhost:hover {
+  background: rgba(245, 238, 221, 0.12);
+  color: var(--parchment);
+}
+
+/* --- Section heading block (centered intro above a section) --- */
+.sectionHead {
+  text-align: center;
+  max-width: 60ch;
+  margin: 0 auto clamp(28px, 5vw, 48px);
+}
+.sectionHead p { color: var(--teal); margin: 0; }
+
+/* --- Meet Mariana --- */
+.meet {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: clamp(24px, 5vw, 56px);
+  align-items: center;
+}
+.meetBody h2 { margin-bottom: 0.4em; }
+@media (max-width: 720px) {
+  .meet {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+}
+
+/* --- Learning Journey wrapper (raised parchment panel) --- */
+.journey { background: var(--parchment-deep); }
+
+/* --- Testimonials --- */
+.quoteGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+.quote {
+  background: var(--parchment-deep);
+  border: 1px solid var(--parchment-line);
+  border-radius: var(--radius);
+  padding: 22px 20px;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+.quote:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+.quoteMark {
+  color: var(--gold);
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  line-height: 0.5;
+}
+.quoteText { font-size: 1.02rem; margin: 8px 0 14px; }
+.quoteName { font-weight: 700; color: var(--teal); margin: 0; }
+.quoteMeta {
+  font-size: 0.82rem;
+  color: var(--teal-deep);
+  opacity: 0.75;
+  margin: 0;
+}

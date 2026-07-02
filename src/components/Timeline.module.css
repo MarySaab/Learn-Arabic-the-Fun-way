@@ -1,0 +1,141 @@
+/* =========================================================================
+   Timeline — the Learning Journey (custom UI requirement).
+   Desktop: horizontal Flexbox row of stages, connected by one track line,
+   flowing right → left in RTL. Mobile: vertical "road" down the start side.
+   ========================================================================= */
+
+.track {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 10px;
+  position: relative;
+}
+
+/* The line linking the stages, sitting behind the round nodes. It passes
+   through the vertical centre of the node row (top == node radius). */
+.track::before {
+  content: "";
+  position: absolute;
+  top: 33px;
+  inset-inline: 7%;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--parchment-line),
+    var(--gold-soft),
+    var(--parchment-line)
+  );
+  border-radius: 4px;
+  z-index: 0;
+}
+
+.stage {
+  position: relative;
+  z-index: 1;
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+}
+
+/* --- Node (the round marker) --- */
+.node {
+  position: relative;
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--parchment);
+  border: 3px solid var(--parchment-line);
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.icon { font-size: 1.6rem; line-height: 1; }
+.num {
+  position: absolute;
+  inset-block-start: -8px;
+  inset-inline-end: -8px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--teal);
+  color: var(--parchment);
+  font-size: 0.72rem;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+}
+
+/* --- Card (label + description under the node) --- */
+.card {
+  position: relative;
+  width: 100%;
+  background: var(--parchment);
+  border: 1px solid var(--parchment-line);
+  border-radius: var(--radius-sm);
+  padding: 14px 12px;
+}
+.stageTitle { font-size: 1.02rem; margin: 0 0 4px; }
+.stageDesc {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--teal-deep);
+  opacity: 0.85;
+}
+
+/* --- "You are here" active stage: glowing gold --- */
+.active .node {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 4px var(--gold-soft), 0 0 22px -2px var(--gold-bright);
+  transform: translateY(-4px) scale(1.06);
+}
+.active .card {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 2px var(--gold-soft);
+}
+.youAreHere {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--teal-deep);
+  font-weight: 800;
+  font-size: 0.72rem;
+  padding: 2px 10px;
+  border-radius: 999px;
+  margin-bottom: 6px;
+}
+
+/* ========================= Mobile: vertical road ========================= */
+@media (max-width: 760px) {
+  .track {
+    flex-direction: column;
+    gap: 22px;
+  }
+  .track::before {
+    top: 0;
+    bottom: 0;
+    height: auto;
+    width: 4px;
+    inset-inline: auto;
+    inset-inline-start: 31px; /* centre of the 66px node */
+    background: linear-gradient(
+      180deg,
+      var(--parchment-line),
+      var(--gold-soft),
+      var(--parchment-line)
+    );
+  }
+  .stage {
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: start;
+    gap: 16px;
+  }
+  .node { flex: 0 0 auto; }
+  .card { flex: 1 1 auto; }
+}

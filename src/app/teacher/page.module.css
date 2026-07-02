@@ -1,0 +1,148 @@
+.head {
+  text-align: center;
+  max-width: 56ch;
+  margin: 0 auto 28px;
+}
+.head p { color: var(--teal); margin: 0; }
+
+/* ---- Passcode gate ---- */
+.gate {
+  max-width: 380px;
+  margin-inline: auto;
+  background: var(--parchment);
+  border: 1px solid var(--parchment-line);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: center;
+}
+.gateLabel { font-weight: 700; }
+.gateInput {
+  font-size: 1.1rem;
+  padding: 11px 14px;
+  border: 2px solid var(--parchment-line);
+  border-radius: var(--radius-sm);
+  background: var(--parchment-deep);
+  color: var(--ink);
+  text-align: center;
+}
+.gateInput:focus {
+  outline: none;
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(20, 106, 99, 0.15);
+}
+.gateError { color: var(--error); font-weight: 700; margin: 0; }
+.gateNote {
+  background: var(--gold-soft);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  font-size: 0.9rem;
+  margin: 0;
+  color: var(--teal-deep);
+}
+
+/* ---- Totals ---- */
+.stats {
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.stat {
+  min-width: 180px;
+  background: var(--parchment);
+  border: 1px solid var(--parchment-line);
+  border-radius: var(--radius);
+  padding: 22px;
+  text-align: center;
+  box-shadow: var(--shadow-soft);
+}
+.statNum {
+  display: block;
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--teal);
+}
+.statLabel { color: var(--teal-deep); font-weight: 600; }
+
+.subhead { margin: 36px 0 16px; }
+
+/* ---- Level bars ---- */
+.bars { display: grid; gap: 10px; max-width: 560px; }
+.barRow {
+  display: grid;
+  grid-template-columns: 90px 1fr 40px;
+  align-items: center;
+  gap: 12px;
+}
+.barLabel { font-weight: 700; }
+.barTrack {
+  height: 16px;
+  background: var(--parchment-deep);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.barFill {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--teal), var(--gold));
+  transition: width 0.4s ease;
+}
+.barCount { font-weight: 800; color: var(--teal); }
+
+/* ---- Bookings table ---- */
+.tableWrap { overflow-x: auto; }
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--parchment);
+  border: 1px solid var(--parchment-line);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  font-size: 0.95rem;
+}
+.table th, .table td {
+  padding: 10px 14px;
+  text-align: start;
+  border-bottom: 1px solid var(--parchment-line);
+}
+.table th {
+  background: var(--parchment-deep);
+  font-weight: 800;
+  color: var(--teal-deep);
+}
+.table tr:last-child td { border-bottom: none; }
+
+/* ---- Recent results ---- */
+.resultList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+.resultItem {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  background: var(--parchment);
+  border: 1px solid var(--parchment-line);
+  border-radius: var(--radius-sm);
+  padding: 10px 16px;
+}
+.resultLevel {
+  font-weight: 800;
+  color: var(--teal);
+  background: var(--gold-soft);
+  border-radius: 999px;
+  padding: 3px 12px;
+}
+.resultDate { margin-inline-start: auto; color: var(--teal-deep); opacity: 0.7; }
+
+.empty { color: var(--teal-deep); opacity: 0.8; }

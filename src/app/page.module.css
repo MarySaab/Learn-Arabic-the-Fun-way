@@ -208,7 +208,6 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 16px;
-  padding-block: clamp(24px, 4vw, 40px);
 }
 .stat {
   text-align: center;
@@ -235,7 +234,7 @@
 }
 .feature {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 14px;
   background: var(--parchment);
   border: 1px solid var(--parchment-line);
@@ -255,7 +254,18 @@
   background: var(--gold-soft);
   font-size: 1.4rem;
 }
+.featureBody {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
 .featureText { font-weight: 700; font-size: 0.98rem; }
+.featureDesc {
+  font-size: 0.84rem;
+  line-height: 1.7;
+  color: var(--teal-deep);
+  opacity: 0.85;
+}
 
 /* ---- Featured lessons ---- */
 .featuredGrid {
@@ -265,7 +275,7 @@
 }
 .featuredCard {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
   background: var(--parchment);
   border: 1px solid var(--parchment-line);
@@ -273,13 +283,25 @@
   padding: 16px 18px;
   box-shadow: var(--shadow-soft);
   color: var(--ink);
-  font-weight: 700;
   transition: transform 0.15s ease, border-color 0.15s ease;
 }
-.featuredCard:hover { transform: translateY(-3px); border-color: var(--gold); color: var(--teal); }
+.featuredCard:hover { transform: translateY(-3px); border-color: var(--gold); }
+.featuredCard:hover .featuredTitle { color: var(--teal); }
 .featuredIcon { font-size: 1.6rem; flex: 0 0 auto; }
-.featuredTitle { flex: 1; line-height: 1.5; }
-.featuredGo { color: var(--gold); font-weight: 800; }
+.featuredBody {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.featuredTitle { font-weight: 700; line-height: 1.5; }
+.featuredDesc {
+  font-size: 0.83rem;
+  line-height: 1.65;
+  color: var(--teal-deep);
+  opacity: 0.85;
+}
+.featuredGo { color: var(--gold); font-weight: 800; align-self: center; }
 .moreLink {
   text-align: center;
   margin: 22px 0 0;

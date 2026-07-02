@@ -40,12 +40,12 @@ const WHY_ARABIC = [
 
 // What the platform itself offers (features grid).
 const FEATURES = [
-  { icon: "🧭", ar: "اختبار مستوى بأربع مهارات", en: "4-skill placement test" },
-  { icon: "📚", ar: "دروس تفاعلية بالصوت", en: "Interactive audio lessons" },
-  { icon: "🎮", ar: "ألعاب تعليمية ممتعة", en: "Learning games" },
-  { icon: "🎧", ar: "استماع وإملاء وتسجيل صوتي", en: "Listening, dictation & recording" },
-  { icon: "🏅", ar: "تتبّع تقدّمك ونجومك", en: "Progress & rewards" },
-  { icon: "🇬🇧", ar: "زرّ الإنجليزية للطلاب الأجانب", en: "English toggle" },
+  { icon: "🧭", ar: "اختبار مستوى بأربع مهارات", en: "4-skill placement test", desc: "ستة عشر سؤالاً في القراءة والكتابة والاستماع والقواعد، تمنحك مستوى عاماً ومستوى لكلّ مهارة على حدة." },
+  { icon: "📚", ar: "دروس تفاعلية بالصوت", en: "Interactive audio lessons", desc: "ثمانية عشر درساً بشرحٍ وأمثلةٍ منطوقة تضغط عليها لتسمعها، وتمارين تصحَّح فوراً." },
+  { icon: "🎮", ar: "ألعاب تعليمية ممتعة", en: "Learning games", desc: "القواعد والإملاء على شكل ألعابٍ بالنجوم والتحدّيات، مأخوذة من موادّ مريانا التعليمية الحقيقية." },
+  { icon: "🎧", ar: "استماع وإملاء وتسجيل صوتي", en: "Listening, dictation & recording", desc: "قصص مسموعة بسرعاتٍ مختلفة، وإملاء تفاعلي، وإمكانية تسجيل صوتك لتسمع نفسك وتتحسّن." },
+  { icon: "🏅", ar: "تتبّع تقدّمك ونجومك", en: "Progress & rewards", desc: "علامات إكمال على كلّ درس، ونجوم واحتفالات عند النجاح، وزرّ «تابع من حيث توقّفت»." },
+  { icon: "🇬🇧", ar: "زرّ الإنجليزية للطلاب الأجانب", en: "English toggle", desc: "زرّ واحد في الأعلى يُظهر الترجمة الإنجليزية بين قوسين بجانب العناوين — للمتعلّم الأجنبي ولأهله." },
 ];
 
 // Hand-picked lessons to showcase on the home page.
@@ -154,6 +154,10 @@ export default function HomePage({ searchParams }) {
         <div className="container">
           <header className={styles.sectionHead}>
             <h2><Bilingual ar="لماذا تتعلّم العربية؟" en="Why learn Arabic?" /></h2>
+            <p>
+              العربية ليست مادّةً دراسيةً فحسب — إنها مفتاح عالمٍ كامل من الناس
+              والثقافة والفرص. أربعة أسباب تجعل تعلّمها استثماراً يستحقّ.
+            </p>
           </header>
           <div className={styles.benefits}>
             {WHY_ARABIC.map((w) => (
@@ -172,6 +176,10 @@ export default function HomePage({ searchParams }) {
         <div className="container">
           <header className={styles.sectionHead}>
             <h2><Bilingual ar="لماذا تتعلّم مع مريانا؟" en="Why Mariana?" /></h2>
+            <p>
+              لأنّ اللغة تُتعلَّم مع إنسانٍ قبل أن تُتعلَّم من كتاب — هذه أربعة
+              أشياء يلمسها كلّ طالبٍ وكلّ أمٍّ منذ الحصّة الأولى.
+            </p>
           </header>
           <div className={styles.benefits}>
             {BENEFITS.map((b) => (
@@ -186,7 +194,12 @@ export default function HomePage({ searchParams }) {
       </section>
 
       {/* ---------- STATS BAND ---------- */}
-      <section className={`container ${styles.statsBand}`} data-reveal>
+      <section className="container" data-reveal>
+        <header className={styles.sectionHead}>
+          <h2><Bilingual ar="المنصّة بالأرقام" en="At a glance" /></h2>
+          <p>لمحة سريعة عمّا ينتظرك داخل «تعلّم مع مريانا» — ويكبر العدد مع كلّ أسبوع.</p>
+        </header>
+        <div className={styles.statsBand}>
         <div className={styles.stat}>
           <span className={styles.statNum}>{toArabicDigits(18)}+</span>
           <span className={styles.statLabel}><Bilingual ar="درساً تفاعلياً" en="Interactive lessons" /></span>
@@ -202,6 +215,7 @@ export default function HomePage({ searchParams }) {
         <div className={styles.stat}>
           <span className={styles.statNum}>{toArabicDigits(10)}+</span>
           <span className={styles.statLabel}><Bilingual ar="ألعاب وقصص تفاعلية" en="Games & stories" /></span>
+        </div>
         </div>
       </section>
 
@@ -221,13 +235,20 @@ export default function HomePage({ searchParams }) {
       <section className="container">
         <header className={styles.sectionHead}>
           <h2><Bilingual ar="ماذا تجد في المنصّة؟" en="Platform features" /></h2>
+          <p>
+            كلّ ما تحتاجه لتراجع وتتدرّب وتتقدّم بين حصّةٍ وأخرى — مبنيّ خصّيصاً
+            لهذه الرحلة، لا قوالب جاهزة.
+          </p>
         </header>
         <div className={styles.features}>
           {FEATURES.map((f) => (
             <div key={f.ar} className={styles.feature} data-reveal>
               <span className={styles.featureIcon} aria-hidden="true">{f.icon}</span>
-              <span className={styles.featureText}>
-                <Bilingual ar={f.ar} en={f.en} />
+              <span className={styles.featureBody}>
+                <span className={styles.featureText}>
+                  <Bilingual ar={f.ar} en={f.en} />
+                </span>
+                <span className={styles.featureDesc}>{f.desc}</span>
               </span>
             </div>
           ))}
@@ -249,6 +270,10 @@ export default function HomePage({ searchParams }) {
       <section className="container">
         <header className={styles.sectionHead}>
           <h2><Bilingual ar="دروس مختارة" en="Featured lessons" /></h2>
+          <p>
+            أربع بوّابات مختلفة للدخول إلى العربية: من حروفك الأولى، إلى أسرار
+            النطق، إلى بناء الجملة، وصولاً إلى قراءة النصوص وفهمها.
+          </p>
         </header>
         <div className={styles.featuredGrid}>
           {FEATURED_SLUGS.map((slug) => {
@@ -257,8 +282,11 @@ export default function HomePage({ searchParams }) {
             return (
               <Link key={slug} href={`/lessons/${slug}`} className={styles.featuredCard} data-reveal>
                 <span className={styles.featuredIcon} aria-hidden="true">{lesson.icon}</span>
-                <span className={styles.featuredTitle}>
-                  <Bilingual ar={lesson.title_ar} en={lesson.title_en} />
+                <span className={styles.featuredBody}>
+                  <span className={styles.featuredTitle}>
+                    <Bilingual ar={lesson.title_ar} en={lesson.title_en} />
+                  </span>
+                  <span className={styles.featuredDesc}>{lesson.desc}</span>
                 </span>
                 <span className={styles.featuredGo} aria-hidden="true">←</span>
               </Link>
@@ -294,6 +322,9 @@ export default function HomePage({ searchParams }) {
       <section className="container">
         <header className={styles.sectionHead}>
           <h2><Bilingual ar="كيف تسير الرحلة؟" en="How it works" /></h2>
+          <p>
+            ثلاث خطوات فقط تفصلك عن أوّل حصّة — وكلّ خطوة تأخذ دقائق، لا أيّاماً.
+          </p>
         </header>
         <ol className={styles.steps}>
           {STEPS.map((step, i) => (
@@ -309,6 +340,13 @@ export default function HomePage({ searchParams }) {
 
       {/* ---------- DAILY: Quote (Arabic) + Fact (API Ninjas) ---------- */}
       <section className={`container ${styles.dailySection}`} data-reveal>
+        <header className={styles.sectionHead}>
+          <h2><Bilingual ar="جرعتك اليومية" en="Your daily dose" /></h2>
+          <p>
+            اقتباس عربيّ عن العلم يلهمك، ومعلومة طريفة بالإنجليزية تُدهشك —
+            يتجدّدان مع كلّ زيارة.
+          </p>
+        </header>
         <div className={styles.dailyGrid}>
           <QuoteOfDay />
           <FactCard />
@@ -319,6 +357,10 @@ export default function HomePage({ searchParams }) {
       <section className="container">
         <header className={styles.sectionHead}>
           <h2><Bilingual ar="آراء المتعلّمين وأولياء الأمور" en="Testimonials" /></h2>
+          <p>
+            أفضل من يصف التجربة من عاشها: طلابٌ بدأوا من الصفر، وأمّهاتٌ
+            يتابعن تقدّم أولادهنّ أسبوعاً بأسبوع.
+          </p>
         </header>
         <div className={styles.quoteGrid}>
           {TESTIMONIALS.map((t) => (
@@ -342,6 +384,10 @@ export default function HomePage({ searchParams }) {
         <div className="container">
           <header className={styles.sectionHead}>
             <h2><Bilingual ar="أسئلة شائعة" en="FAQ" /></h2>
+            <p>
+              أكثر ما يسألنا عنه الطلاب والأهالي قبل البدء — اضغط على السؤال
+              لتظهر إجابته.
+            </p>
           </header>
           <div className={styles.faqList}>
             <details className={styles.faq}>

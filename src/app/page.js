@@ -6,10 +6,8 @@ import Timeline from "@/components/Timeline";
 import QuoteOfDay from "@/components/QuoteOfDay";
 import FactCard from "@/components/FactCard";
 import HeroArt from "@/components/HeroArt";
-import WelcomeAudio from "@/components/WelcomeAudio";
 import ScrollRevealClient from "@/components/ScrollRevealClient";
 import { stageIdForLevel } from "@/lib/data/journey";
-import { lessons } from "@/lib/data/lessons";
 import { toArabicDigits } from "@/lib/format";
 import styles from "./page.module.css";
 
@@ -42,14 +40,6 @@ const STEPS = [
   { icon: "💻", ar: "تعلّم وتدرّب أسبوعياً", en: "Learn weekly", desc: "حصّة أسبوعية عبر Google Meet، وتدريبات ممتعة على الموقع.", descEn: "A weekly lesson on Google Meet, plus fun practice on the site." },
 ];
 
-// Why learn Arabic at all — speaks to international students & professionals.
-const WHY_ARABIC = [
-  { icon: "🌍", ar: "لغة ٤٠٠+ مليون إنسان", en: "400M+ speakers", desc: "تُتحدَّث في أكثر من ٢٥ دولة، وهي من اللغات الستّ الرسمية للأمم المتحدة.", descEn: "Spoken in 25+ countries, and one of the six official UN languages." },
-  { icon: "📜", ar: "بوّابة حضارة عريقة", en: "A rich civilization", desc: "أدب وشعر وتاريخ وعلوم — كنوز تُقرأ في لغتها الأصلية.", descEn: "Literature, poetry, history and science — treasures best read in their own language." },
-  { icon: "💼", ar: "ميزة مهنيّة حقيقية", en: "Career advantage", desc: "مطلوبة في الأعمال والدبلوماسية والإعلام والسياحة.", descEn: "In demand across business, diplomacy, media and tourism." },
-  { icon: "🕌", ar: "سفر أغنى وتواصل أعمق", en: "Travel & connect", desc: "من المغرب إلى الخليج: افهم الناس وتحدّث إليهم بلغتهم.", descEn: "From Morocco to the Gulf: understand people and speak their language." },
-];
-
 // What the platform itself offers (features grid).
 const FEATURES = [
   { icon: "🧭", ar: "اختبار مستوى بأربع مهارات", en: "4-skill placement test", desc: "ستة عشر سؤالاً في القراءة والكتابة والإملاء والقواعد — مستوى عامّ ومستوى لكلّ مهارة (A B C D).", descEn: "Sixteen questions across reading, writing, dictation and grammar — an overall level plus a level per skill (A, B, C, D)." },
@@ -59,9 +49,6 @@ const FEATURES = [
   { icon: "🏅", ar: "تتبّع تقدّمك ونجومك", en: "Progress & rewards", desc: "علامات إكمال على كلّ درس، ونجوم واحتفالات، وزرّ «تابع من حيث توقّفت».", descEn: "Completion marks, stars and celebrations, and a 'continue where you left off' button." },
   { icon: "🇬🇧", ar: "زرّ الإنجليزية للطلاب الأجانب", en: "English toggle", desc: "زرّ واحد في الأعلى يعرض الترجمة الإنجليزية للعناوين والشروح.", descEn: "One button at the top shows English translations of titles and explanations." },
 ];
-
-// Hand-picked lessons to showcase on the home page.
-const FEATURED_SLUGS = ["arabic-alphabet", "sun-moon-letters", "nominal-verbal", "reading-comprehension"];
 
 // Why parents and students choose Mariana (appeals to mothers especially).
 const BENEFITS = [
@@ -195,29 +182,6 @@ export default function HomePage({ searchParams }) {
             ar="سواء كنت تبدأ من الحروف أو تصقل قواعدك المتقدّمة، ستجد معها خطّةً واضحةً تناسب مستواك وهدفك."
             en="Whether you're starting from the alphabet or polishing advanced grammar, you'll have a clear plan that fits your level and your goal."
           />
-          <WelcomeAudio />
-        </div>
-      </section>
-
-      {/* ---------- WHY LEARN ARABIC ---------- */}
-      <section className={styles.benefitsSection}>
-        <div className="container">
-          <header className={styles.sectionHead}>
-            <h2><Bilingual ar="لماذا تتعلّم العربية؟" en="Why learn Arabic?" /></h2>
-            <BiText
-              ar="العربية ليست مادّةً دراسيةً فحسب — إنها مفتاح عالمٍ كامل من الناس والثقافة والفرص."
-              en="Arabic isn't just a school subject — it's the key to a whole world of people, culture and opportunity."
-            />
-          </header>
-          <div className={styles.benefits}>
-            {WHY_ARABIC.map((w) => (
-              <div key={w.ar} className={styles.benefit} data-reveal>
-                <span className={styles.benefitIcon} aria-hidden="true">{w.icon}</span>
-                <h3><Bilingual ar={w.ar} en={w.en} /></h3>
-                <BiText ar={w.desc} en={w.descEn} />
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -308,66 +272,6 @@ export default function HomePage({ searchParams }) {
               </span>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* ---------- FEATURED LESSONS ---------- */}
-      <section className="container">
-        <header className={styles.sectionHead}>
-          <h2><Bilingual ar="دروس مختارة" en="Featured lessons" /></h2>
-          <BiText
-            ar="أربع بوّابات مختلفة للدخول إلى العربية: من حروفك الأولى إلى قراءة النصوص وفهمها."
-            en="Four doorways into Arabic: from your first letters to reading and understanding texts."
-          />
-        </header>
-        <div className={styles.featuredGrid}>
-          {FEATURED_SLUGS.map((slug) => {
-            const lesson = lessons.find((l) => l.slug === slug);
-            if (!lesson) return null;
-            return (
-              <Link key={slug} href={`/lessons/${slug}`} className={styles.featuredCard} data-reveal>
-                <span className={styles.featuredIcon} aria-hidden="true">{lesson.icon}</span>
-                <span className={styles.featuredBody}>
-                  <span className={styles.featuredTitle}>
-                    <Bilingual ar={lesson.title_ar} en={lesson.title_en} />
-                  </span>
-                  <span className={styles.featuredDesc}>{lesson.desc}</span>
-                </span>
-                <span className={styles.featuredGo} aria-hidden="true">←</span>
-              </Link>
-            );
-          })}
-        </div>
-        <p className={styles.moreLink}>
-          <Link href="/lessons">
-            <Bilingual ar="عرض كلّ الدروس — ١٨ درساً" en="See all 18 lessons" /> ←
-          </Link>
-        </p>
-      </section>
-
-      {/* ---------- INTERACTIVE GAMES & SKILLS ---------- */}
-      <section className={styles.benefitsSection}>
-        <div className="container">
-          <header className={styles.sectionHead}>
-            <h2><Bilingual ar="ألعاب وقصص تفاعلية" en="Games & stories" /></h2>
-            <BiText
-              ar="تعلّمٌ يشبه اللعب: ألعاب قواعد وإملاء، وقصص تدرّب الاستماع والقراءة والكتابة."
-              en="Learning that feels like play: grammar and spelling games, plus stories that train listening, reading and writing."
-            />
-          </header>
-          <div className={styles.gamesRow}>
-            {lessons.filter((l) => l.game).map((l) => (
-              <Link key={l.slug} href={`/lessons/${l.slug}`} className={styles.gameChip} data-reveal>
-                <span aria-hidden="true">{l.icon}</span>{" "}
-                <Bilingual ar={l.title_ar} en={l.title_en} />
-              </Link>
-            ))}
-          </div>
-          <p className={styles.moreLink}>
-            <Link href="/skills">
-              🎧 <Bilingual ar="مختبر المهارات: قصص كاملة بالاستماع والقراءة والكتابة" en="Skills Lab: full stories with listening, reading & writing" /> ←
-            </Link>
-          </p>
         </div>
       </section>
 

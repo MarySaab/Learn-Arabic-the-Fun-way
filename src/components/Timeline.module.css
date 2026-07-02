@@ -35,12 +35,15 @@
   position: relative;
   z-index: 1;
   flex: 1 1 0;
+  min-width: 0; /* let cards shrink instead of overflowing */
   display: flex;
 }
 
 /* The whole stage (node + card) is one button. */
 .stageBtn {
   flex: 1;
+  min-width: 0;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -95,21 +98,23 @@
   background: var(--parchment);
   border: 1px solid var(--parchment-line);
   border-radius: var(--radius-sm);
-  padding: 14px 12px;
+  padding: 12px 8px;
+  overflow-wrap: break-word; /* long words wrap inside the box */
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 .stageBtn:hover .card { border-color: var(--teal); }
 .stageTitle {
   display: block;
-  font-size: 1.02rem;
+  font-size: 0.95rem;
   font-weight: 800;
+  line-height: 1.5;
   margin: 0 0 4px;
 }
 .stageDesc {
   display: block;
   margin: 0;
-  font-size: 0.82rem;
-  line-height: 1.5;
+  font-size: 0.78rem;
+  line-height: 1.55;
   color: var(--teal-deep);
   opacity: 0.85;
 }
@@ -189,6 +194,16 @@
   color: var(--teal);
 }
 .panelEmpty { margin: 0; color: var(--teal-deep); font-weight: 600; }
+
+/* ============== Laptop / tablet: two rows of four stages ============== */
+@media (min-width: 761px) and (max-width: 1150px) {
+  .track {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 26px 12px;
+  }
+  .track::before { display: none; } /* the single line can't span two rows */
+}
 
 /* ========================= Mobile: vertical road ========================= */
 @media (max-width: 760px) {

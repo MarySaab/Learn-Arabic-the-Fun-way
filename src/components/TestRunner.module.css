@@ -1,0 +1,161 @@
+/* ---- Quiz (question view) ---- */
+.quiz {
+  max-width: 640px;
+  margin-inline: auto;
+}
+
+.progressHead {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  color: var(--teal);
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+.progressBar {
+  height: 12px;
+  background: var(--parchment-deep);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 28px;
+}
+.progressBar i {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--teal), var(--gold));
+  transition: width 0.35s ease;
+}
+
+.question {
+  background: var(--parchment);
+  border: 1px solid var(--parchment-line);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  box-shadow: var(--shadow-soft);
+  animation: lwm-q-in 0.3s ease;
+}
+@keyframes lwm-q-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+.prompt {
+  font-size: 1.3rem;
+  line-height: 1.7;
+  margin: 0 0 20px;
+}
+
+.options {
+  display: grid;
+  gap: 12px;
+}
+.option {
+  font-family: var(--font-arabic);
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-align: start;
+  padding: 14px 18px;
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--parchment-line);
+  background: var(--parchment-deep);
+  color: var(--ink);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, transform 0.12s ease;
+}
+.option:hover { border-color: var(--teal); transform: translateY(-2px); }
+.optionChosen {
+  border-color: var(--gold);
+  background: var(--gold-soft);
+  box-shadow: 0 0 0 2px var(--gold-soft);
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+/* ---- Result view ---- */
+.result {
+  max-width: 900px;
+  margin-inline: auto;
+}
+.resultCard {
+  text-align: center;
+  background: var(--parchment);
+  border: 1px solid var(--parchment-line);
+  border-radius: var(--radius);
+  padding: 36px 28px;
+  box-shadow: var(--shadow);
+}
+.resultKicker {
+  color: var(--gold);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  margin: 0 0 4px;
+}
+.levelName {
+  font-size: clamp(2rem, 6vw, 3rem);
+  color: var(--teal);
+  margin: 0;
+}
+.score {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--ink);
+  margin: 4px 0 10px;
+}
+.message {
+  font-size: 1.1rem;
+  max-width: 46ch;
+  margin: 0 auto 20px;
+}
+
+.grades {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+  margin-bottom: 26px;
+}
+.gradeItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 78px;
+}
+.gradeLetter {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--teal);
+  color: var(--parchment);
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+.gradeSkill { font-size: 0.85rem; color: var(--teal-deep); }
+
+.resultActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.timelineWrap {
+  margin-top: 48px;
+}
+.timelineTitle {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+/* ---- Print-friendly: show only the result card ---- */
+@media print {
+  .timelineWrap, .resultActions { display: none !important; }
+  .resultCard { box-shadow: none; border: 1px solid #ccc; }
+}

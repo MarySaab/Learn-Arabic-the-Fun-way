@@ -110,7 +110,8 @@ section { padding-block: clamp(48px, 8vw, 96px); }
   cursor: pointer;
   transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
-.btn:active { transform: translateY(1px); }
+.btn:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+.btn:active { transform: translateY(1px); box-shadow: var(--shadow-soft); }
 
 .btn-primary {
   background: var(--teal);

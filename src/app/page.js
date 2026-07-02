@@ -45,6 +45,11 @@ export default function HomePage({ searchParams }) {
 
       {/* ---------- HERO ---------- */}
       <section className={styles.hero}>
+        {/* decorative floating Arabic letters */}
+        <div className={styles.floaties} aria-hidden="true">
+          <span>ا</span><span>ب</span><span>ج</span><span>س</span>
+          <span>ع</span><span>ق</span><span>م</span><span>ي</span>
+        </div>
         <div className={styles.heroInner}>
           <p className={styles.heroKicker}>✦ تعلّم مع مريانا ✦</p>
           <h1>رحلتك نحو إتقان اللغة العربية تبدأ من هنا</h1>

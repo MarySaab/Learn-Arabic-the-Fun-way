@@ -5,9 +5,9 @@ import Timeline from "@/components/Timeline";
 import QuoteOfDay from "@/components/QuoteOfDay";
 import FactCard from "@/components/FactCard";
 import HeroArt from "@/components/HeroArt";
-import PhotoFrame from "@/components/PhotoFrame";
 import ScrollRevealClient from "@/components/ScrollRevealClient";
 import { stageIdForLevel } from "@/lib/data/journey";
+import { toArabicDigits } from "@/lib/format";
 import styles from "./page.module.css";
 
 /*
@@ -18,6 +18,13 @@ const TESTIMONIALS = [
   { text: "بدأتُ من الحروف ووصلتُ إلى قراءة النصوص. طريقة مريانا صبورة وواضحة.", name: "ليلى", meta: "طالبة مبتدئة", emoji: "🌸" },
   { text: "الاختبار وضعني في المستوى المناسب تماماً، فلم أضِع وقتي في دروس أعرفها.", name: "كريم", meta: "مستوى متوسّط", emoji: "🧑‍🎓" },
   { text: "ابنتي أصبحت تحبّ العربيّة! الدروس ممتعة والمتابعة رائعة.", name: "أمّ جود", meta: "وليّة أمر", emoji: "👩‍👧" },
+];
+
+// The actual journey a new student takes — shown as three numbered steps.
+const STEPS = [
+  { icon: "📝", ar: "خذ اختبار المستوى", en: "Take the test", desc: "دقائق قليلة تكشف نقطة انطلاقك على خريطة الرحلة." },
+  { icon: "👥", ar: "انضمّ إلى مجموعتك", en: "Join your group", desc: "نضعك في مجموعة تناسب مستواك تماماً." },
+  { icon: "💻", ar: "تعلّم وتدرّب أسبوعياً", en: "Learn weekly", desc: "حصّة أسبوعية عبر Google Meet، وتدريبات ممتعة على الموقع." },
 ];
 
 // Why parents and students choose Mariana (appeals to mothers especially).
@@ -99,17 +106,21 @@ export default function HomePage({ searchParams }) {
         </div>
       </section>
 
-      {/* ---------- GALLERY (photo slots) ---------- */}
-      <section className={`container ${styles.gallerySection}`}>
+      {/* ---------- HOW IT WORKS (3 steps) ---------- */}
+      <section className="container">
         <header className={styles.sectionHead}>
-          <h2><Bilingual ar="لمحات من رحلة التعلّم" en="Glimpses" /></h2>
-          <p>صور من الحصص والأنشطة (ستُضاف قريباً).</p>
+          <h2><Bilingual ar="كيف تسير الرحلة؟" en="How it works" /></h2>
         </header>
-        <div className={styles.gallery}>
-          <PhotoFrame src="/images/class-1.jpg" alt="لمحة من حصّة" label="صورة من حصّة" emoji="📚" />
-          <PhotoFrame src="/images/class-2.jpg" alt="نشاط تعليمي" label="نشاط تعليمي" emoji="✏️" />
-          <PhotoFrame src="/images/class-3.jpg" alt="لحظة نجاح" label="لحظة نجاح" emoji="🎉" />
-        </div>
+        <ol className={styles.steps}>
+          {STEPS.map((step, i) => (
+            <li key={step.ar} className={styles.step} data-reveal>
+              <span className={styles.stepNum}>{toArabicDigits(i + 1)}</span>
+              <span className={styles.stepIcon} aria-hidden="true">{step.icon}</span>
+              <h3><Bilingual ar={step.ar} en={step.en} /></h3>
+              <p>{step.desc}</p>
+            </li>
+          ))}
+        </ol>
       </section>
 
       {/* ---------- DAILY: Quote (Arabic) + Fact (API Ninjas) ---------- */}

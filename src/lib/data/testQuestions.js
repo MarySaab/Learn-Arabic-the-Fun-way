@@ -1,176 +1,227 @@
-// Placement-test questions — 12 real multiple-choice questions across four
-// skills (letters, vocabulary, grammar, reading) at THREE difficulty tiers.
-// Difficulty drives the weighted score in the PlacementTest class
-// (easy ×1, medium ×2, hard ×3), so reaching "advanced" requires answering
-// genuinely advanced grammar/reading — not just the beginner basics.
+// Placement test v2 — ONE comprehensive test in FOUR skill sections
+// (Reading, Writing, Listening, Grammar), 4 questions each, tiered by
+// difficulty (easy ×1, medium ×2, hard ×3 in the weighted score).
+// Each section gets its own score + CEFR-like level (A0–B1) on the result,
+// plus one overall CEFR-like level (A0–B2) and the internal group level.
+//
+// Listening questions carry a `listen` text spoken by the Speaker class
+// (browser Arabic TTS, playback speeds 0.75/1/1.25). Reading questions share
+// a short passage (`passage`).
 
-export const testQuestions = [
-  // ---------- EASY (beginner floor) ----------
-  {
-    id: "q1",
-    skill: "letters",
-    difficulty: "easy",
-    prompt: "كم عددُ حروف الأبجدية العربية؟",
-    options: [
-      { id: "a", text: "٢٦" },
-      { id: "b", text: "٢٨" },
-      { id: "c", text: "٣٠" },
-      { id: "d", text: "٢٤" },
-    ],
-    answer: "b",
-  },
-  {
-    id: "q2",
-    skill: "vocabulary",
-    difficulty: "easy",
-    prompt: "عكسُ كلمة «كبير» هو:",
-    options: [
-      { id: "a", text: "طويل" },
-      { id: "b", text: "جميل" },
-      { id: "c", text: "صغير" },
-      { id: "d", text: "واسع" },
-    ],
-    answer: "c",
-  },
-  {
-    id: "q3",
-    skill: "vocabulary",
-    difficulty: "easy",
-    prompt: "ما الكلمة التي تعني «أداةً للكتابة»؟",
-    options: [
-      { id: "a", text: "القَلَم" },
-      { id: "b", text: "الكُرسيّ" },
-      { id: "c", text: "الشَّجرة" },
-      { id: "d", text: "البابُ" },
-    ],
-    answer: "a",
-  },
+const READING_PASSAGE =
+  "تسكنُ جدّتي في منزلٍ منفردٍ أمامه ساحةٌ واسعة. نزورها في عطلةِ نهايةِ الأسبوع، " +
+  "فتستقبلنا بالقُبلاتِ وتحضّر لنا قالبَ حلوى بالشوكولا. نلعبُ في الساحةِ ونشاهدُ الأفلام، " +
+  "ونعودُ إلى بيتنا مساءً وقلوبُنا مليئةٌ بالفرح.";
 
-  // ---------- MEDIUM (elementary / lower-intermediate) ----------
+export const testSections = [
   {
-    id: "q4",
-    skill: "letters",
-    difficulty: "medium",
-    prompt: "أيُّ الكلمات التالية تبدأ بحرفٍ شمسيّ (تختفي فيه لام «الـ»)؟",
-    options: [
-      { id: "a", text: "القَمَر" },
-      { id: "b", text: "الكِتاب" },
-      { id: "c", text: "الشَّمس" },
-      { id: "d", text: "البَيت" },
+    id: "reading",
+    icon: "📖",
+    ar: "القراءة",
+    en: "Reading",
+    desc: "اقرأ النصَّ القصير بتأنٍّ ثم أجب عن الأسئلة.",
+    questions: [
+      {
+        id: "r1", skill: "reading", difficulty: "easy", passage: READING_PASSAGE,
+        prompt: "أين تسكن الجدّة؟",
+        options: [
+          { id: "a", text: "في شقّةٍ داخل المدينة" },
+          { id: "b", text: "في منزلٍ منفردٍ أمامه ساحةٌ واسعة" },
+          { id: "c", text: "في بيتٍ على شاطئ البحر" },
+        ],
+        answer: "b",
+      },
+      {
+        id: "r2", skill: "reading", difficulty: "medium", passage: READING_PASSAGE,
+        prompt: "متى يزور الأحفادُ جدّتهم؟",
+        options: [
+          { id: "a", text: "كلّ يوم" },
+          { id: "b", text: "في الأعياد فقط" },
+          { id: "c", text: "في عطلة نهاية الأسبوع" },
+        ],
+        answer: "c",
+      },
+      {
+        id: "r3", skill: "reading", difficulty: "medium", passage: READING_PASSAGE,
+        prompt: "ما معنى «منفرد» في النصّ؟",
+        options: [
+          { id: "a", text: "منزلٌ وحدَه لا يلتصق بغيره" },
+          { id: "b", text: "منزلٌ قديم" },
+          { id: "c", text: "منزلٌ صغير" },
+        ],
+        answer: "a",
+      },
+      {
+        id: "r4", skill: "reading", difficulty: "hard", passage: READING_PASSAGE,
+        prompt: "ما الشعور العامّ الذي يعبّر عنه النصّ؟",
+        options: [
+          { id: "a", text: "الملل من الزيارات العائلية" },
+          { id: "b", text: "المحبّة والفرح بزيارة الجدّة" },
+          { id: "c", text: "التعب من اللعب" },
+        ],
+        answer: "b",
+      },
     ],
-    answer: "c",
   },
   {
-    id: "q5",
-    skill: "grammar",
-    difficulty: "medium",
-    prompt: "كلمة «يَكتُبُ» هي:",
-    options: [
-      { id: "a", text: "اسم" },
-      { id: "b", text: "فعل ماضٍ" },
-      { id: "c", text: "فعل مضارع" },
-      { id: "d", text: "حرف" },
+    id: "writing",
+    icon: "✍️",
+    ar: "الكتابة",
+    en: "Writing",
+    desc: "هذا القسم يقيس دقّة الإملاء: اختر الكتابة الصحيحة.",
+    questions: [
+      {
+        id: "w1", skill: "writing", difficulty: "easy",
+        prompt: "أيُّ كلمةٍ مكتوبةٌ كتابةً صحيحة؟",
+        options: [
+          { id: "a", text: "مدرسة" },
+          { id: "b", text: "مدرست" },
+          { id: "c", text: "مدرسه بالتاء المفتوحة" },
+        ],
+        answer: "a",
+      },
+      {
+        id: "w2", skill: "writing", difficulty: "medium",
+        prompt: "اختر الجملة الصحيحة إملائياً:",
+        options: [
+          { id: "a", text: "قرأتُ كتابً مفيداً" },
+          { id: "b", text: "قرأتُ كتاباً مفيداً" },
+          { id: "c", text: "قرأتُ كتابن مفيداً" },
+        ],
+        answer: "b",
+      },
+      {
+        id: "w3", skill: "writing", difficulty: "medium",
+        prompt: "أيُّ كلمةٍ تنتهي بتاءٍ مبسوطة (ت)؟",
+        options: [
+          { id: "a", text: "شجرة" },
+          { id: "b", text: "معلّمة" },
+          { id: "c", text: "بِنت" },
+        ],
+        answer: "c",
+      },
+      {
+        id: "w4", skill: "writing", difficulty: "hard",
+        prompt: "اختر الكتابة الصحيحة لتنوين الفتح:",
+        options: [
+          { id: "a", text: "شربتُ ماءً بارداً" },
+          { id: "b", text: "شربتُ ماءاً بارداً" },
+          { id: "c", text: "شربتُ ماءن بارداً" },
+        ],
+        answer: "a",
+      },
     ],
-    answer: "c",
   },
   {
-    id: "q6",
-    skill: "grammar",
-    difficulty: "medium",
-    prompt: "جملة «الوَلَدُ نشيطٌ» هي جملة:",
-    options: [
-      { id: "a", text: "اسمية" },
-      { id: "b", text: "فعلية" },
-      { id: "c", text: "شرطية" },
-      { id: "d", text: "استفهامية" },
+    id: "listening",
+    icon: "🎧",
+    ar: "الاستماع",
+    en: "Listening",
+    desc: "اضغط زرّ الاستماع وأصغِ جيّداً ثم أجب. يمكنك الإعادة وتغيير السرعة.",
+    questions: [
+      {
+        id: "l1", skill: "listening", difficulty: "easy",
+        listen: "السلامُ عليكم، اسمي مريم، وأنا معلّمةُ لغةٍ عربية.",
+        prompt: "استمع ثم أجب: ما اسم المتحدّثة؟",
+        options: [
+          { id: "a", text: "مريم" },
+          { id: "b", text: "سارة" },
+          { id: "c", text: "ليلى" },
+        ],
+        answer: "a",
+      },
+      {
+        id: "l2", skill: "listening", difficulty: "medium",
+        listen: "ذهب سامي إلى السوقِ صباحاً، واشترى تفّاحاً وموزاً.",
+        prompt: "استمع ثم أجب: ماذا اشترى سامي؟",
+        options: [
+          { id: "a", text: "خبزاً وحليباً" },
+          { id: "b", text: "تفّاحاً وموزاً" },
+          { id: "c", text: "عصيراً وحلوى" },
+        ],
+        answer: "b",
+      },
+      {
+        id: "l3", skill: "listening", difficulty: "medium",
+        listen: "الجوُّ اليومَ ماطرٌ وباردٌ، فخذْ معك المظلّةَ والمعطف.",
+        prompt: "استمع ثم أجب: كيف الجوّ اليوم؟",
+        options: [
+          { id: "a", text: "مشمسٌ وحارّ" },
+          { id: "b", text: "معتدل" },
+          { id: "c", text: "ماطرٌ وبارد" },
+        ],
+        answer: "c",
+      },
+      {
+        id: "l4", skill: "listening", difficulty: "hard",
+        listen: "قال المعلّمُ لتلاميذه: من يقرأْ كلَّ يومٍ صفحةً واحدةً، يقرأْ في السنةِ كتباً كثيرة.",
+        prompt: "استمع ثم أجب: ما النصيحة التي قدّمها المعلّم؟",
+        options: [
+          { id: "a", text: "القراءةُ اليوميّة ولو كانت قليلة" },
+          { id: "b", text: "شراءُ كتبٍ كثيرة" },
+          { id: "c", text: "القراءةُ في العطلة فقط" },
+        ],
+        answer: "a",
+      },
     ],
-    answer: "a",
   },
   {
-    id: "q7",
-    skill: "vocabulary",
-    difficulty: "medium",
-    prompt: "ما معنى كلمة «غزير» في عبارة «مطرٌ غزيرٌ»؟",
-    options: [
-      { id: "a", text: "خفيف" },
-      { id: "b", text: "كثير" },
-      { id: "c", text: "بارد" },
-      { id: "d", text: "متقطّع" },
+    id: "grammar",
+    icon: "🧩",
+    ar: "القواعد",
+    en: "Grammar",
+    desc: "أسئلة في قواعد اللغة، من الأساسيات إلى الإعراب.",
+    questions: [
+      {
+        id: "g1", skill: "grammar", difficulty: "easy",
+        prompt: "كلمة «يكتبُ» هي:",
+        options: [
+          { id: "a", text: "اسم" },
+          { id: "b", text: "فعل مضارع" },
+          { id: "c", text: "حرف" },
+        ],
+        answer: "b",
+      },
+      {
+        id: "g2", skill: "grammar", difficulty: "medium",
+        prompt: "جملة «الولدُ نشيطٌ» هي جملة:",
+        options: [
+          { id: "a", text: "اسمية" },
+          { id: "b", text: "فعلية" },
+          { id: "c", text: "استفهامية" },
+        ],
+        answer: "a",
+      },
+      {
+        id: "g3", skill: "grammar", difficulty: "hard",
+        prompt: "في جملة «قرأَ الطالبُ الكتابَ»، إعراب «الكتابَ» هو:",
+        options: [
+          { id: "a", text: "فاعل مرفوع" },
+          { id: "b", text: "مفعول به منصوب" },
+          { id: "c", text: "اسم مجرور" },
+        ],
+        answer: "b",
+      },
+      {
+        id: "g4", skill: "grammar", difficulty: "hard",
+        prompt: "أيُّ جملة صحيحة إعرابياً؟",
+        options: [
+          { id: "a", text: "إنّ العلمُ نورٌ" },
+          { id: "b", text: "إنّ العلمَ نورٌ" },
+          { id: "c", text: "إنّ العلمِ نورٌ" },
+        ],
+        answer: "b",
+      },
     ],
-    answer: "b",
-  },
-  {
-    id: "q8",
-    skill: "reading",
-    difficulty: "medium",
-    prompt:
-      "اقرأ: «ذهب سامي إلى المدرسة صباحاً ماشياً، وفي الطريق قابل صديقه خالداً فسارا معاً.» كيف ذهب سامي إلى المدرسة؟",
-    options: [
-      { id: "a", text: "بالسيارة" },
-      { id: "b", text: "بالحافلة" },
-      { id: "c", text: "ماشياً" },
-      { id: "d", text: "بالدراجة" },
-    ],
-    answer: "c",
-  },
-
-  // ---------- HARD (upper-intermediate / advanced) ----------
-  {
-    id: "q9",
-    skill: "grammar",
-    difficulty: "hard",
-    prompt: "في جملة «قرأَ الطالبُ الكتابَ»، إعراب كلمة «الكتابَ» هو:",
-    options: [
-      { id: "a", text: "فاعل مرفوع" },
-      { id: "b", text: "مفعول به منصوب" },
-      { id: "c", text: "مبتدأ مرفوع" },
-      { id: "d", text: "اسم مجرور" },
-    ],
-    answer: "b",
-  },
-  {
-    id: "q10",
-    skill: "grammar",
-    difficulty: "hard",
-    prompt: "اختر الصيغة الصحيحة: «شاهدتُ ___ اثنين في الملعب.»",
-    options: [
-      { id: "a", text: "لاعبانِ" },
-      { id: "b", text: "لاعبَينِ" },
-      { id: "c", text: "لاعبونَ" },
-      { id: "d", text: "لاعبينَ جمعاً" },
-    ],
-    answer: "b",
-  },
-  {
-    id: "q11",
-    skill: "grammar",
-    difficulty: "hard",
-    prompt: "أيُّ جملة صحيحة إعرابياً؟",
-    options: [
-      { id: "a", text: "إنّ العلمُ نورٌ" },
-      { id: "b", text: "إنّ العلمِ نورٌ" },
-      { id: "c", text: "إنّ العلمَ نورٌ" },
-      { id: "d", text: "إنّ العلمَ نوراً" },
-    ],
-    answer: "c",
-  },
-  {
-    id: "q12",
-    skill: "reading",
-    difficulty: "hard",
-    prompt:
-      "اقرأ: «ما أجملَ أن يغرسَ الإنسانُ شجرةً لا يأكلُ من ثمرها، بل يتركُها لمن يأتي بعدَه.» ما الفكرة التي يدعو إليها النصّ؟",
-    options: [
-      { id: "a", text: "أهمية أكل الفواكه" },
-      { id: "b", text: "العطاء دون انتظار مقابل" },
-      { id: "c", text: "طرق زراعة الأشجار" },
-      { id: "d", text: "المحافظة على الغابات" },
-    ],
-    answer: "b",
   },
 ];
 
-// Encouraging Arabic micro-copy shown on the result, keyed by level.
+// Flat list used by the PlacementTest class (section id kept on each question).
+export const testQuestions = testSections.flatMap((s) =>
+  s.questions.map((q) => ({ ...q, section: s.id }))
+);
+
+// Encouraging Arabic micro-copy shown on the result, keyed by internal level.
 export const levelMessages = {
   beginner:
     "أهلاً بك في بداية الرحلة! ستبدأ من الحروف والكلمات الأولى، خطوةً بخطوة.",

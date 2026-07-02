@@ -34,6 +34,7 @@ model PlacementResult {
   readingGrade   String? // "A" | "B" | "C" ...
   writingGrade   String?
   listeningGrade String?
+  grammarGrade   String?
   createdAt      DateTime @default(now())
 
   student   Student? @relation(fields: [studentId], references: [id])

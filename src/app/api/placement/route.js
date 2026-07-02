@@ -15,7 +15,8 @@ export async function POST(request) {
     body = {};
   }
 
-  const { level, score, readingGrade } = body || {};
+  const { level, score, readingGrade, writingGrade, listeningGrade, grammarGrade } =
+    body || {};
   if (!level || typeof score !== "number") {
     return NextResponse.json(
       { saved: false, error: "بيانات غير مكتملة" },
@@ -31,6 +32,9 @@ export async function POST(request) {
         level,
         score,
         readingGrade: readingGrade ?? null,
+        writingGrade: writingGrade ?? null,
+        listeningGrade: listeningGrade ?? null,
+        grammarGrade: grammarGrade ?? null,
         studentId: null, // no auth yet (MVP) — anonymous result
       },
     });

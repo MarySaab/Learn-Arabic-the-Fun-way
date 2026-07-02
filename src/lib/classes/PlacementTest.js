@@ -58,15 +58,40 @@ export default class PlacementTest {
     return this.questions.reduce((total, q) => total + this.weightOf(q), 0);
   }
 
-  // Correct / total grouped by skill (letters, vocabulary, grammar, reading).
+  // Per-skill breakdown (reading/writing/listening/grammar): plain counts for
+  // display plus weighted points for the per-skill CEFR-like level.
   skillBreakdown() {
     const map = {};
     for (const q of this.questions) {
-      if (!map[q.skill]) map[q.skill] = { correct: 0, total: 0 };
+      if (!map[q.skill]) map[q.skill] = { correct: 0, total: 0, points: 0, max: 0 };
+      const w = this.weightOf(q);
       map[q.skill].total += 1;
-      if (this.answers[q.id] === q.answer) map[q.skill].correct += 1;
+      map[q.skill].max += w;
+      if (this.answers[q.id] === q.answer) {
+        map[q.skill].correct += 1;
+        map[q.skill].points += w;
+      }
     }
     return map;
+  }
+
+  // CEFR-like level for ONE skill from its weighted ratio.
+  static cefrFor(ratio) {
+    if (ratio < 0.25) return "A0";
+    if (ratio < 0.5) return "A1";
+    if (ratio < 0.8) return "A2";
+    return "B1";
+  }
+
+  // Overall CEFR-like level across the whole test.
+  cefr() {
+    const max = this.maxScore();
+    const ratio = max ? this.score() / max : 0;
+    if (ratio < 0.2) return "A0";
+    if (ratio < 0.4) return "A1";
+    if (ratio < 0.6) return "A2";
+    if (ratio < 0.8) return "B1";
+    return "B2";
   }
 
   // Turns a correct/total ratio into a simple A/B/C grade.

@@ -6,36 +6,43 @@ import Bilingual from "./Bilingual";
 import Timeline from "./Timeline";
 import PlacementTest from "@/lib/classes/PlacementTest";
 import Celebration from "@/lib/classes/Celebration";
-import { testQuestions, levelMessages } from "@/lib/data/testQuestions";
+import Speaker from "@/lib/classes/Speaker";
+import { testQuestions, testSections, levelMessages } from "@/lib/data/testQuestions";
 import { levels } from "@/lib/data/lessons";
 import { stageIdForLevel } from "@/lib/data/journey";
 import { toArabicDigits } from "@/lib/format";
 import styles from "./TestRunner.module.css";
 
 /*
-  TestRunner — drives the PlacementTest class through the UI:
-    - one question per screen with a progress bar (السؤال 3 من 10)
-    - Previous / Next navigation
-    - on submit: computes the level, shows encouraging micro-copy, HIGHLIGHTS
-      the matching stage on the same Timeline from the home page, and links to
-      /book?level=<level>
-    - best-effort save of the result to the database (POST /api/placement)
+  TestRunner — drives the 4-skill placement test (Reading, Writing, Listening,
+  Grammar) through the PlacementTest class:
+    - a short intro screen opens each section
+    - one question per screen with a progress bar; listening questions get a
+      play button with speeds (٠٫٧٥× / ١× / ١٫٢٥×) via the Speaker class
+    - the result shows an overall CEFR-like level (A0–B2), a CEFR-like level
+      per skill, the group level highlighted on the Timeline, and saves all
+      grades to the database (best-effort).
 */
-const SKILL_LABELS = {
-  letters:    { ar: "الحروف",   en: "Letters" },
-  vocabulary: { ar: "المفردات", en: "Vocabulary" },
-  grammar:    { ar: "القواعد",  en: "Grammar" },
-  reading:    { ar: "القراءة",  en: "Reading" },
-};
+const RATES = [
+  { label: "٠٫٧٥×", value: 0.75 },
+  { label: "١×", value: 1 },
+  { label: "١٫٢٥×", value: 1.25 },
+];
 
 export default function TestRunner() {
   const test = useMemo(() => new PlacementTest(testQuestions), []);
   const celebration = useMemo(() => new Celebration(), []);
+  const speaker = useMemo(() => new Speaker(), []);
+
   const [index, setIndex] = useState(0);
-  const [, setTick] = useState(0); // force re-render when an answer changes
+  const [, setTick] = useState(0); // re-render when an answer changes
   const [submitted, setSubmitted] = useState(false);
+  // section whose intro screen is currently showing (starts with the first)
+  const [introFor, setIntroFor] = useState(testQuestions[0]?.section ?? null);
+  const [rate, setRate] = useState(1);
 
   const current = testQuestions[index];
+  const section = testSections.find((s) => s.id === current.section);
   const chosen = test.getAnswer(current.id);
   const progress = ((index + 1) / test.total) * 100;
 
@@ -44,26 +51,43 @@ export default function TestRunner() {
     setTick((t) => t + 1);
   };
 
-  const saveResult = (level, score, readingGrade) => {
-    // Best-effort: if the DB isn't configured, the result still shows fine.
-    fetch("/api/placement", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ level, score, readingGrade }),
-    }).catch(() => {});
+  const goNext = () => {
+    speaker.stop();
+    const nextIndex = Math.min(test.total - 1, index + 1);
+    if (testQuestions[nextIndex].section !== current.section) {
+      setIntroFor(testQuestions[nextIndex].section);
+    }
+    setIndex(nextIndex);
+  };
+
+  const goPrev = () => {
+    speaker.stop();
+    setIndex((i) => Math.max(0, i - 1));
   };
 
   const submit = () => {
+    speaker.stop();
     setSubmitted(true);
     const level = test.level();
-    const breakdown = test.skillBreakdown();
-    const reading = breakdown.reading;
-    const readingGrade = reading
-      ? PlacementTest.grade(reading.correct, reading.total)
-      : null;
-    saveResult(level, test.correctCount(), readingGrade);
+    const b = test.skillBreakdown();
+    const gradeOf = (s) =>
+      b[s] ? PlacementTest.grade(b[s].correct, b[s].total) : null;
+
+    // Best-effort save; the result shows regardless of DB availability.
+    fetch("/api/placement", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        level,
+        score: test.correctCount(),
+        readingGrade: gradeOf("reading"),
+        writingGrade: gradeOf("writing"),
+        listeningGrade: gradeOf("listening"),
+        grammarGrade: gradeOf("grammar"),
+      }),
+    }).catch(() => {});
+
     celebration.burst(70);
-    // Remember the level so the booking page can pre-fill it even without the URL.
     if (typeof window !== "undefined") {
       localStorage.setItem("lwm-level", level);
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -74,6 +98,7 @@ export default function TestRunner() {
     test.reset();
     setIndex(0);
     setSubmitted(false);
+    setIntroFor(testQuestions[0]?.section ?? null);
     setTick((t) => t + 1);
   };
 
@@ -83,6 +108,7 @@ export default function TestRunner() {
     const levelInfo = levels.find((l) => l.id === level);
     const breakdown = test.skillBreakdown();
     const stageId = stageIdForLevel(level);
+    const ratio = test.total ? test.correctCount() / test.total : 0;
 
     return (
       <div className={styles.result}>
@@ -90,21 +116,16 @@ export default function TestRunner() {
           <p className={styles.resultKicker}>
             <Bilingual ar="نتيجتك" en="Your result" />
           </p>
+          <div className={styles.cefrBadge}>{test.cefr()}</div>
           <h2 className={styles.levelName}>
             <Bilingual ar={levelInfo?.ar} en={levelInfo?.en} />
           </h2>
-          <div
-            className={styles.starRow}
-            aria-label={`${test.correctCount()} إجابة صحيحة من ${test.total}`}
-          >
+
+          <div className={styles.starRow} aria-label={`${test.correctCount()} إجابة صحيحة من ${test.total}`}>
             {[1, 2, 3].map((n) => (
               <span
                 key={n}
-                className={
-                  test.correctCount() / test.total >= n / 3
-                    ? styles.starOn
-                    : styles.starOff
-                }
+                className={ratio >= n / 3 ? styles.starOn : styles.starOff}
                 style={{ animationDelay: `${n * 0.15}s` }}
               >
                 ★
@@ -116,18 +137,24 @@ export default function TestRunner() {
           </p>
           <p className={styles.message}>{levelMessages[level]}</p>
 
-          {/* per-skill grades */}
-          <div className={styles.grades}>
-            {Object.entries(breakdown).map(([skill, { correct, total }]) => (
-              <div key={skill} className={styles.gradeItem}>
-                <span className={styles.gradeLetter}>
-                  {PlacementTest.grade(correct, total)}
-                </span>
-                <span className={styles.gradeSkill}>
-                  <Bilingual ar={SKILL_LABELS[skill]?.ar} en={SKILL_LABELS[skill]?.en} />
-                </span>
-              </div>
-            ))}
+          {/* per-skill profile: CEFR-like level for each of the 4 skills */}
+          <div className={styles.skillGrid}>
+            {testSections.map((s) => {
+              const d = breakdown[s.id] || { correct: 0, total: 0, points: 0, max: 0 };
+              const r = d.max ? d.points / d.max : 0;
+              return (
+                <div key={s.id} className={styles.skillCard}>
+                  <span className={styles.skillIcon} aria-hidden="true">{s.icon}</span>
+                  <b className={styles.skillName}>
+                    <Bilingual ar={s.ar} en={s.en} />
+                  </b>
+                  <span className={styles.skillCefr}>{PlacementTest.cefrFor(r)}</span>
+                  <span className={styles.skillScore}>
+                    {toArabicDigits(d.correct)} / {toArabicDigits(d.total)}
+                  </span>
+                </div>
+              );
+            })}
           </div>
 
           <div className={styles.resultActions}>
@@ -154,20 +181,81 @@ export default function TestRunner() {
     );
   }
 
+  // -------------------- SECTION INTRO --------------------
+  if (introFor) {
+    const s = testSections.find((x) => x.id === introFor);
+    const sIndex = testSections.findIndex((x) => x.id === introFor);
+    return (
+      <div className={styles.quiz}>
+        <div className={styles.sectionIntro}>
+          <span className={styles.sectionIntroIcon} aria-hidden="true">{s.icon}</span>
+          <p className={styles.sectionIntroKicker}>
+            القسم {toArabicDigits(sIndex + 1)} من {toArabicDigits(testSections.length)}
+          </p>
+          <h2><Bilingual ar={s.ar} en={s.en} /></h2>
+          <p className={styles.sectionIntroDesc}>{s.desc}</p>
+          <p className={styles.sectionIntroCount}>
+            {toArabicDigits(s.questions.length)} أسئلة
+          </p>
+          <button className="btn btn-primary" onClick={() => setIntroFor(null)}>
+            ابدأ القسم
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   // -------------------- QUESTION VIEW --------------------
   return (
     <div className={styles.quiz}>
       <div className={styles.progressHead}>
+        <span className={styles.sectionChip}>
+          {section.icon} {section.ar}
+        </span>
         <span>
           السؤال {toArabicDigits(index + 1)} من {toArabicDigits(test.total)}
         </span>
-        <span>{toArabicDigits(test.answeredCount())} / {toArabicDigits(test.total)}</span>
       </div>
       <div className={styles.progressBar}>
         <i style={{ width: `${progress}%` }} />
       </div>
 
       <div className={styles.question} key={current.id}>
+        {/* reading passage */}
+        {current.passage && (
+          <div className={styles.passage}>{current.passage}</div>
+        )}
+
+        {/* listening player */}
+        {current.listen && (
+          <div className={styles.listenBox}>
+            <button
+              type="button"
+              className="btn btn-primary"
+              onClick={() => speaker.speak(current.listen, { rate })}
+            >
+              🔊 استمع
+            </button>
+            <div className={styles.rates} role="group" aria-label="سرعة القراءة">
+              {RATES.map((r) => (
+                <button
+                  key={r.value}
+                  type="button"
+                  className={`${styles.rateBtn} ${rate === r.value ? styles.rateActive : ""}`}
+                  onClick={() => setRate(r.value)}
+                  aria-pressed={rate === r.value}
+                >
+                  {r.label}
+                </button>
+              ))}
+            </div>
+            <p className={styles.listenHint}>
+              يمكنك الاستماع أكثر من مرّة. إن لم يتوفّر صوتٌ عربيّ على جهازك،
+              جرّب جهازاً آخر.
+            </p>
+          </div>
+        )}
+
         <h2 className={styles.prompt}>{current.prompt}</h2>
         <div className={styles.options}>
           {current.options.map((opt) => (
@@ -184,28 +272,16 @@ export default function TestRunner() {
       </div>
 
       <div className={styles.nav}>
-        <button
-          className="btn btn-ghost"
-          onClick={() => setIndex((i) => Math.max(0, i - 1))}
-          disabled={index === 0}
-        >
+        <button className="btn btn-ghost" onClick={goPrev} disabled={index === 0}>
           السابق
         </button>
 
         {index < test.total - 1 ? (
-          <button
-            className="btn btn-primary"
-            onClick={() => setIndex((i) => Math.min(test.total - 1, i + 1))}
-            disabled={chosen == null}
-          >
+          <button className="btn btn-primary" onClick={goNext} disabled={chosen == null}>
             التالي
           </button>
         ) : (
-          <button
-            className="btn btn-gold"
-            onClick={submit}
-            disabled={!test.isComplete()}
-          >
+          <button className="btn btn-gold" onClick={submit} disabled={!test.isComplete()}>
             اعرض النتيجة
           </button>
         )}

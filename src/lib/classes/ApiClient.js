@@ -19,4 +19,17 @@ export default class ApiClient {
     }
     return res.json();
   }
+
+  // Fetches a "Did you know?" fact from our /api/facts route (which calls the
+  // external API Ninjas service server-side using the secret key).
+  async fetchFact({ signal } = {}) {
+    const res = await fetch(`${this.baseEndpoint}/facts`, {
+      signal,
+      cache: "no-store",
+    });
+    if (!res.ok) {
+      throw new Error(`تعذّر جلب المعلومة (${res.status})`);
+    }
+    return res.json();
+  }
 }

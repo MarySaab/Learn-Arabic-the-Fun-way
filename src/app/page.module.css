@@ -100,10 +100,67 @@
   line-height: 0.5;
 }
 .quoteText { font-size: 1.02rem; margin: 8px 0 14px; }
-.quoteName { font-weight: 700; color: var(--teal); margin: 0; }
-.quoteMeta {
-  font-size: 0.82rem;
-  color: var(--teal-deep);
-  opacity: 0.75;
-  margin: 0;
+.quoteFoot { display: flex; align-items: center; gap: 10px; }
+.quoteAvatar {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--gold-soft);
+  font-size: 1.3rem;
+  flex: 0 0 auto;
+}
+.quoteName { display: block; font-weight: 700; color: var(--teal); }
+.quoteMeta { display: block; font-size: 0.82rem; color: var(--teal-deep); opacity: 0.75; }
+
+/* ---- Hero decorative art ---- */
+.heroArt {
+  display: block;
+  width: min(260px, 70%);
+  height: auto;
+  margin: 26px auto 0;
+}
+
+/* ---- Benefits ("Why Mariana") ---- */
+.benefitsSection { background: var(--parchment-deep); }
+.benefits {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 18px;
+}
+.benefit {
+  background: var(--parchment);
+  border: 1px solid var(--parchment-line);
+  border-radius: var(--radius);
+  padding: 24px 18px;
+  text-align: center;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.16s ease, box-shadow 0.2s ease;
+}
+.benefit:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.benefitIcon {
+  font-size: 2.4rem;
+  display: block;
+  margin-bottom: 8px;
+}
+.benefit h3 { font-size: 1.12rem; margin: 0 0 6px; }
+.benefit p { margin: 0; font-size: 0.9rem; color: var(--teal-deep); opacity: 0.9; }
+
+/* ---- Gallery (photo slots) ---- */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+/* ---- Daily: Quote + Fact side by side ---- */
+.dailyGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+@media (max-width: 720px) {
+  .dailyGrid { grid-template-columns: 1fr; }
 }

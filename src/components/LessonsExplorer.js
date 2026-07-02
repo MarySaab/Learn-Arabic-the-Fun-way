@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import Bilingual from "./Bilingual";
 import LessonCatalog from "@/lib/classes/LessonCatalog";
+import ProgressTracker from "@/lib/classes/ProgressTracker";
 import { lessons as allLessons, levels } from "@/lib/data/lessons";
 import { toArabicDigits } from "@/lib/format";
 import styles from "./LessonsExplorer.module.css";
@@ -21,17 +22,28 @@ export default function LessonsExplorer() {
   // One catalog instance for the component's lifetime.
   const catalog = useMemo(() => new LessonCatalog(allLessons), []);
 
+  const tracker = useMemo(() => new ProgressTracker(), []);
+
   const [status, setStatus] = useState("loading"); // "loading" | "ready"
   const [text, setText] = useState("");            // what the user typed
   const [debounced, setDebounced] = useState("");  // debounced query
   const [level, setLevel] = useState("all");
+  const [completed, setCompleted] = useState(new Set()); // completed slugs
   const timer = useRef(null);
 
-  // Brief skeleton on first mount so the loading state is visible.
+  // Brief skeleton on first mount so the loading state is visible; read the
+  // visitor's saved progress at the same time (localStorage is client-only).
   useEffect(() => {
+    setCompleted(tracker.read());
     const t = setTimeout(() => setStatus("ready"), 350);
     return () => clearTimeout(t);
-  }, []);
+  }, [tracker]);
+
+  // First not-yet-completed lesson → "continue where you left off".
+  const nextLesson = useMemo(
+    () => allLessons.find((l) => !completed.has(l.slug)),
+    [completed]
+  );
 
   // Debounce the typed text by ~150ms before querying.
   useEffect(() => {
@@ -47,6 +59,26 @@ export default function LessonsExplorer() {
 
   return (
     <div>
+      {/* ---- Progress ("أكملت ٥ من ١٨ درساً") + continue card ---- */}
+      {completed.size > 0 && (
+        <div className={styles.progressBox}>
+          <div className={styles.progressText}>
+            🏅 أكملتَ {toArabicDigits(completed.size)} من {toArabicDigits(allLessons.length)} درساً
+          </div>
+          <div className={styles.progressTrack}>
+            <i style={{ width: `${(completed.size / allLessons.length) * 100}%` }} />
+          </div>
+          {nextLesson && (
+            <Link href={`/lessons/${nextLesson.slug}`} className={styles.continueLink}>
+              تابع من حيث توقّفت: {nextLesson.icon} {nextLesson.title_ar} ←
+            </Link>
+          )}
+          {!nextLesson && (
+            <p className={styles.allDone}>🎉 أكملتَ كلّ الدروس — أنت بطل!</p>
+          )}
+        </div>
+      )}
+
       {/* ---- Controls: search + level filters ---- */}
       <div className={styles.controls}>
         <div className={styles.searchWrap}>
@@ -107,6 +139,9 @@ export default function LessonsExplorer() {
               <Link href={`/lessons/${lesson.slug}`} className={styles.card}>
                 <div className={styles.cardTop}>
                   <span className={styles.icon} aria-hidden="true">{lesson.icon}</span>
+                  {completed.has(lesson.slug) && (
+                    <span className={styles.doneBadge} title="درس مكتمل">✓</span>
+                  )}
                   <span className={`${styles.pill} ${styles[lesson.level]}`}>
                     <Bilingual
                       ar={levels.find((l) => l.id === lesson.level)?.ar}

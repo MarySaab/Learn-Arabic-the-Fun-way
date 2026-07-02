@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Celebration from "@/lib/classes/Celebration";
+import ProgressTracker from "@/lib/classes/ProgressTracker";
 import { toArabicDigits } from "@/lib/format";
 import styles from "./LessonView.module.css";
 
@@ -12,9 +13,10 @@ import styles from "./LessonView.module.css";
   an encouraging message and a retry button — the same playful learn→practice
   flow as the standalone games.
 */
-export default function LessonView({ content }) {
+export default function LessonView({ content, slug }) {
   const quiz = useMemo(() => content.quiz || [], [content]);
   const celebration = useMemo(() => new Celebration(), []);
+  const tracker = useMemo(() => new ProgressTracker(), []);
 
   const [index, setIndex] = useState(0);
   const [picked, setPicked] = useState(null); // chosen option index (locks the question)
@@ -35,6 +37,7 @@ export default function LessonView({ content }) {
       setPicked(null);
     } else {
       setFinished(true);
+      if (slug) tracker.complete(slug); // remember this lesson as done
       // celebrate proportionally to the score
       if (score === quiz.length) celebration.burst(80);
       else if (score >= quiz.length / 2) celebration.burst(40);

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Bilingual from "@/components/Bilingual";
 import LessonView from "@/components/LessonView";
+import MarkComplete from "@/components/MarkComplete";
 import ScrollRevealClient from "@/components/ScrollRevealClient";
 import { lessons, levels } from "@/lib/data/lessons";
 import { lessonContent } from "@/lib/data/lessonContent";
@@ -60,11 +61,12 @@ export default function LessonPage({ params }) {
           >
             ↗ افتح اللعبة في صفحة كاملة
           </a>
+          <MarkComplete slug={lesson.slug} />
         </div>
       )}
 
       {/* Learn + practice quiz (for content lessons) */}
-      {content && <LessonView content={content} />}
+      {content && <LessonView content={content} slug={lesson.slug} />}
 
       {/* Fallback if a lesson somehow has neither */}
       {!content && !lesson.game && (

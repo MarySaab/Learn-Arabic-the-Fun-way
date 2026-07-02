@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Celebration from "@/lib/classes/Celebration";
 import { toArabicDigits } from "@/lib/format";
 import styles from "./LessonView.module.css";
 
@@ -13,6 +14,7 @@ import styles from "./LessonView.module.css";
 */
 export default function LessonView({ content }) {
   const quiz = useMemo(() => content.quiz || [], [content]);
+  const celebration = useMemo(() => new Celebration(), []);
 
   const [index, setIndex] = useState(0);
   const [picked, setPicked] = useState(null); // chosen option index (locks the question)
@@ -33,8 +35,16 @@ export default function LessonView({ content }) {
       setPicked(null);
     } else {
       setFinished(true);
+      // celebrate proportionally to the score
+      if (score === quiz.length) celebration.burst(80);
+      else if (score >= quiz.length / 2) celebration.burst(40);
     }
   };
+
+  // 0–3 stars for the finish screen
+  const stars = finished
+    ? score === quiz.length ? 3 : score >= quiz.length * 0.66 ? 2 : score >= quiz.length * 0.33 ? 1 : 0
+    : 0;
 
   const restart = () => {
     setIndex(0);
@@ -113,6 +123,17 @@ export default function LessonView({ content }) {
             <div className={styles.quizCard}>
               <div className={styles.resultBig} aria-hidden="true">
                 {score === quiz.length ? "🏆" : score >= quiz.length / 2 ? "🌟" : "💪"}
+              </div>
+              <div className={styles.starRow} aria-label={`${stars} من ٣ نجوم`}>
+                {[1, 2, 3].map((n) => (
+                  <span
+                    key={n}
+                    className={n <= stars ? styles.starOn : styles.starOff}
+                    style={{ animationDelay: `${n * 0.15}s` }}
+                  >
+                    ★
+                  </span>
+                ))}
               </div>
               <p className={styles.resultScore}>
                 نتيجتك: {toArabicDigits(score)} / {toArabicDigits(quiz.length)}

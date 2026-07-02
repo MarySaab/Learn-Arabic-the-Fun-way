@@ -5,6 +5,7 @@ import Link from "next/link";
 import Bilingual from "./Bilingual";
 import Timeline from "./Timeline";
 import PlacementTest from "@/lib/classes/PlacementTest";
+import Celebration from "@/lib/classes/Celebration";
 import { testQuestions, levelMessages } from "@/lib/data/testQuestions";
 import { levels } from "@/lib/data/lessons";
 import { stageIdForLevel } from "@/lib/data/journey";
@@ -29,6 +30,7 @@ const SKILL_LABELS = {
 
 export default function TestRunner() {
   const test = useMemo(() => new PlacementTest(testQuestions), []);
+  const celebration = useMemo(() => new Celebration(), []);
   const [index, setIndex] = useState(0);
   const [, setTick] = useState(0); // force re-render when an answer changes
   const [submitted, setSubmitted] = useState(false);
@@ -60,6 +62,7 @@ export default function TestRunner() {
       ? PlacementTest.grade(reading.correct, reading.total)
       : null;
     saveResult(level, test.correctCount(), readingGrade);
+    celebration.burst(70);
     // Remember the level so the booking page can pre-fill it even without the URL.
     if (typeof window !== "undefined") {
       localStorage.setItem("lwm-level", level);
@@ -90,6 +93,24 @@ export default function TestRunner() {
           <h2 className={styles.levelName}>
             <Bilingual ar={levelInfo?.ar} en={levelInfo?.en} />
           </h2>
+          <div
+            className={styles.starRow}
+            aria-label={`${test.correctCount()} إجابة صحيحة من ${test.total}`}
+          >
+            {[1, 2, 3].map((n) => (
+              <span
+                key={n}
+                className={
+                  test.correctCount() / test.total >= n / 3
+                    ? styles.starOn
+                    : styles.starOff
+                }
+                style={{ animationDelay: `${n * 0.15}s` }}
+              >
+                ★
+              </span>
+            ))}
+          </div>
           <p className={styles.score}>
             {toArabicDigits(test.correctCount())} / {toArabicDigits(test.total)}
           </p>

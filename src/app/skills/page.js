@@ -30,8 +30,8 @@ const SUITES = [
     ar: "يومٌ عند جدّتي",
     en: "A Day at Grandma's",
     levelAr: "مبتدئ",
-    desc: "قصّة دافئة عن زيارة الجدّة: استمع إليها، صِف الصورة وسجّل صوتك، واقرأ وافهم.",
-    skills: ["reading", "speaking", "listening"],
+    desc: "قصّة دافئة عن زيارة الجدّة: استمع إليها وأكمل الإملاء، واقرأ وافهم.",
+    skills: ["reading", "listening"],
   },
   {
     slug: "ana-l-mouallem",
@@ -39,8 +39,8 @@ const SUITES = [
     ar: "أنا المعلّم",
     en: "I Am the Teacher",
     levelAr: "أساسي",
-    desc: "صبيٌّ يقبل تحدّياً صعباً: أن يشرح درساً أمام رفاقه. سيرة ذاتية بأربع مهارات.",
-    skills: ["listening", "speaking", "reading", "writing"],
+    desc: "صبيٌّ يقبل تحدّياً صعباً: أن يشرح درساً أمام رفاقه. سيرة ذاتية بثلاث مهارات.",
+    skills: ["listening", "reading", "writing"],
   },
   {
     slug: "al-alima-al-saghira",
@@ -48,8 +48,8 @@ const SUITES = [
     ar: "العالِمة الصغيرة",
     en: "The Little Scientist",
     levelAr: "متوسّط",
-    desc: "يارا تحبّ العلوم منذ صغرها وتحقّق حلمها. سيرة غيريّة مع تعبير شفويّ وكتابيّ.",
-    skills: ["listening", "speaking", "reading", "writing"],
+    desc: "يارا تحبّ العلوم منذ صغرها وتحقّق حلمها. سيرة غيريّة مع تعبير كتابيّ.",
+    skills: ["listening", "reading", "writing"],
   },
   {
     slug: "ask-google",
@@ -57,8 +57,8 @@ const SUITES = [
     ar: "إسأل غوغِل",
     en: "Ask Google",
     levelAr: "متقدّم",
-    desc: "بين الإنترنت ومجلّدات الجدّة: نصّ سرديّ عن التكنولوجيا والكتاب، بأربع مهارات.",
-    skills: ["listening", "speaking", "reading", "writing"],
+    desc: "بين الإنترنت ومجلّدات الجدّة: نصّ سرديّ عن التكنولوجيا والكتاب، بثلاث مهارات.",
+    skills: ["listening", "reading", "writing"],
   },
 ];
 
@@ -69,9 +69,8 @@ export default function SkillsPage() {
       <header className={styles.head}>
         <h1><Bilingual ar="مختبر المهارات" en="Skills Lab" /></h1>
         <p>
-          أربع قصص حقيقية من موادّ مريانا التعليمية، كلٌّ منها يدرّب المهارات
-          الأربع: استمع بسرعات مختلفة، سجّل صوتك واسمع نفسك، اقرأ وافهم، ثم
-          اكتب في «دفترك». اختر قصّةً وابدأ بأيّ مهارة.
+          أربع قصص حقيقية من موادّ مريانا التعليمية: استمع وأكمل الإملاء،
+          اقرأ وافهم، ثم اكتب في «دفترك». اختر قصّةً وابدأ بأيّ مهارة.
         </p>
       </header>
 
@@ -108,8 +107,8 @@ export default function SkillsPage() {
       </div>
 
       <p className={styles.note}>
-        💡 التسجيل الصوتي في صفحات «التحدّث» يبقى على جهازك ولا يُرسل إلى أيّ
-        مكان — وتقييم النطق يكون مع مريانا في الحصّة المباشرة.
+        🗣️ مهارة التحدّث والنطق تُتدرَّب مع مريانا مباشرةً في حصص Google Meet —
+        هنا تجهّز أذنك وقلمك وعينيك.
       </p>
     </section>
   );

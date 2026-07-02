@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { toArabicDigits } from "@/lib/format";
 import styles from "./LessonView.module.css";
 
 /*
@@ -72,7 +73,7 @@ export default function LessonView({ content }) {
           {!finished ? (
             <div className={styles.quizCard}>
               <div className={styles.quizProgress}>
-                السؤال {index + 1} من {quiz.length}
+                السؤال {toArabicDigits(index + 1)} من {toArabicDigits(quiz.length)}
               </div>
               <p className={styles.prompt}>{q.prompt}</p>
 
@@ -114,7 +115,7 @@ export default function LessonView({ content }) {
                 {score === quiz.length ? "🏆" : score >= quiz.length / 2 ? "🌟" : "💪"}
               </div>
               <p className={styles.resultScore}>
-                نتيجتك: {score} / {quiz.length}
+                نتيجتك: {toArabicDigits(score)} / {toArabicDigits(quiz.length)}
               </p>
               <p className={styles.resultMsg}>
                 {score === quiz.length

@@ -35,13 +35,13 @@ export default function Footer() {
             <Bilingual ar="تواصل معنا" en="Contact" />
           </h4>
           <ul className={styles.list}>
-            <li><a href="mailto:hello@learnwithmariana.com">hello@learnwithmariana.com</a></li>
-            <li><a href="https://wa.me/9610000000" target="_blank" rel="noreferrer">WhatsApp</a></li>
+            <li><a href="mailto:marianasaab50@gmail.com">marianasaab50@gmail.com</a></li>
+            <li><a href="tel:+96171297998" dir="ltr">+961 71 297 998</a></li>
           </ul>
-          <div className={styles.social} aria-label="روابط التواصل الاجتماعي">
-            <a href="#" aria-label="Instagram">◐</a>
-            <a href="#" aria-label="Facebook">◑</a>
-            <a href="#" aria-label="YouTube">▷</a>
+          <div className={styles.social} aria-label="طرق التواصل">
+            <a href="https://wa.me/96171297998" target="_blank" rel="noreferrer" aria-label="WhatsApp" title="WhatsApp">💬</a>
+            <a href="mailto:marianasaab50@gmail.com" aria-label="البريد الإلكتروني" title="Email">✉️</a>
+            <a href="tel:+96171297998" aria-label="اتصال" title="Phone">📞</a>
           </div>
         </div>
       </div>

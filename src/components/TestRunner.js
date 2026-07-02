@@ -8,6 +8,7 @@ import PlacementTest from "@/lib/classes/PlacementTest";
 import { testQuestions, levelMessages } from "@/lib/data/testQuestions";
 import { levels } from "@/lib/data/lessons";
 import { stageIdForLevel } from "@/lib/data/journey";
+import { toArabicDigits } from "@/lib/format";
 import styles from "./TestRunner.module.css";
 
 /*
@@ -59,7 +60,11 @@ export default function TestRunner() {
       ? PlacementTest.grade(reading.correct, reading.total)
       : null;
     saveResult(level, test.score(), readingGrade);
-    if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: "smooth" });
+    // Remember the level so the booking page can pre-fill it even without the URL.
+    if (typeof window !== "undefined") {
+      localStorage.setItem("lwm-level", level);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
 
   const restart = () => {
@@ -86,7 +91,7 @@ export default function TestRunner() {
             <Bilingual ar={levelInfo?.ar} en={levelInfo?.en} />
           </h2>
           <p className={styles.score}>
-            {test.score()} / {test.total}
+            {toArabicDigits(test.score())} / {toArabicDigits(test.total)}
           </p>
           <p className={styles.message}>{levelMessages[level]}</p>
 
@@ -133,9 +138,9 @@ export default function TestRunner() {
     <div className={styles.quiz}>
       <div className={styles.progressHead}>
         <span>
-          السؤال {index + 1} من {test.total}
+          السؤال {toArabicDigits(index + 1)} من {toArabicDigits(test.total)}
         </span>
-        <span>{test.answeredCount()} / {test.total}</span>
+        <span>{toArabicDigits(test.answeredCount())} / {toArabicDigits(test.total)}</span>
       </div>
       <div className={styles.progressBar}>
         <i style={{ width: `${progress}%` }} />

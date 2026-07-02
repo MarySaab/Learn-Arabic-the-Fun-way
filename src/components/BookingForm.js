@@ -1,16 +1,16 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import Bilingual from "./Bilingual";
 import FormValidator from "@/lib/classes/FormValidator";
 import { levels } from "@/lib/data/lessons";
 import styles from "./BookingForm.module.css";
 
-// Mariana's WhatsApp number (international format, digits only). Replace with
-// the real number before submitting/deploying.
-const WHATSAPP_NUMBER = "9610000000";
-const CONTACT_EMAIL = "hello@learnwithmariana.com";
+// Mariana's contact details (WhatsApp number in international format, digits
+// only: Lebanon +961, 71 297 998).
+const WHATSAPP_NUMBER = "96171297998";
+const CONTACT_EMAIL = "marianasaab50@gmail.com";
 
 const TIME_OPTIONS = [
   { id: "morning",   label: "صباحاً (٩–١٢)" },
@@ -40,6 +40,22 @@ export default function BookingForm({ initialLevel = "" }) {
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
   const [submitState, setSubmitState] = useState("idle"); // idle | sending | done | error
+  // Where the level came from: "test" (from URL or a saved test result) or "none".
+  const [levelSource, setLevelSource] = useState(initialLevel ? "test" : null);
+
+  // If they didn't arrive from the test (no ?level=), try the level saved by the
+  // test in localStorage. If there's none, we prompt them to take the test.
+  useEffect(() => {
+    if (initialLevel) return;
+    if (typeof window === "undefined") return;
+    const saved = localStorage.getItem("lwm-level");
+    if (saved) {
+      setValues((v) => ({ ...v, level: saved }));
+      setLevelSource("test");
+    } else {
+      setLevelSource("none");
+    }
+  }, [initialLevel]);
 
   const update = (name, value) => {
     setValues((v) => ({ ...v, [name]: value }));
@@ -118,6 +134,22 @@ export default function BookingForm({ initialLevel = "" }) {
 
   return (
     <form className={styles.form} onSubmit={(e) => e.preventDefault()} noValidate>
+      {levelSource === "none" && (
+        <div className={styles.notice}>
+          <p>
+            لم تأخذ اختبار تحديد المستوى بعد. خذ الاختبار القصير أولاً لنعرف مستواك
+            ونضعك في المجموعة المناسبة.
+          </p>
+          <Link href="/test" className="btn btn-gold">ابدأ اختبار المستوى</Link>
+        </div>
+      )}
+      {levelSource === "test" && values.level && (
+        <div className={styles.levelNote}>
+          ✓ مستواك من الاختبار:{" "}
+          <strong>{levels.find((l) => l.id === values.level)?.ar}</strong>
+        </div>
+      )}
+
       <div className={styles.field}>
         <label htmlFor="name"><Bilingual ar="الاسم" en="Name" /></label>
         <input

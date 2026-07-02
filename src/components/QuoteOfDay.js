@@ -74,8 +74,8 @@ export default function QuoteOfDay() {
 
       {status === "ready" && quote && (
         <figure className={styles.quoteFig}>
-          <blockquote className={styles.quote}>“{quote.quote}”</blockquote>
-          <figcaption className={styles.author}>— {quote.author}</figcaption>
+          <blockquote className={styles.quote}>«{quote.quote}»</blockquote>
+          {quote.author && <figcaption className={styles.author}>— {quote.author}</figcaption>}
         </figure>
       )}
     </div>

@@ -5,6 +5,7 @@ import Link from "next/link";
 import Bilingual from "./Bilingual";
 import LessonCatalog from "@/lib/classes/LessonCatalog";
 import { lessons as allLessons, levels } from "@/lib/data/lessons";
+import { toArabicDigits } from "@/lib/format";
 import styles from "./LessonsExplorer.module.css";
 
 /*
@@ -134,7 +135,7 @@ export default function LessonsExplorer() {
       {/* Count summary */}
       {status === "ready" && (
         <p className={styles.count}>
-          {results.length} <Bilingual ar="درساً" en="lessons" />
+          {toArabicDigits(results.length)} <Bilingual ar="درساً" en="lessons" />
         </p>
       )}
     </div>

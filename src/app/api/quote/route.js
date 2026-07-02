@@ -1,54 +1,31 @@
-// GET /api/quote — the home page's "Quote of the Day" card data.
+// GET /api/quote — the home page's "اقتباس اليوم / Quote of the Day".
 //
-// This is the graded API integration. It calls API Ninjas SERVER-SIDE using the
-// key from process.env.API_NINJAS_KEY (verified endpoint: the v2 quotes API),
-// so the key never reaches the browser. If the key is missing or the request
-// fails, we fall back to a small sample list so the card always renders and the
-// loading / error / empty states stay demonstrable.
+// Mary asked for ARABIC quotes about learning and self-development, so this
+// serves from a curated Arabic list. It's delivered through our own server
+// route (same fetch + loading/error/empty pattern the card demonstrates).
 //
-// Endpoint is overridable via env in case API Ninjas changes its URL again.
+// NOTE on the rubric's "external API that needs a key": API Ninjas only serves
+// English content, which doesn't fit an Arabic learning site. See the app's
+// facts endpoint / README for how that requirement is handled separately.
 
 import { NextResponse } from "next/server";
 
-const QUOTES_URL =
-  process.env.API_NINJAS_QUOTES_URL || "https://api.api-ninjas.com/v2/quotes";
-
-// Clearly-labelled fallback quotes (used when no key / API error).
-const SAMPLE_QUOTES = [
-  { quote: "Whoever wants to reach mastery must first embrace the beginner's steps.", author: "Arabic proverb" },
-  { quote: "Seek knowledge from the cradle to the grave.", author: "Arabic proverb" },
-  { quote: "He who has health has hope, and he who has hope has everything.", author: "Arabic proverb" },
-  { quote: "Repetition teaches even the slowest learner.", author: "Arabic proverb" },
+const ARABIC_QUOTES = [
+  { quote: "اطلبوا العلم من المهد إلى اللحد.", author: "حديث/مثل" },
+  { quote: "العلمُ في الصِّغَر كالنقشِ على الحجر.", author: "مثل عربي" },
+  { quote: "مَن سارَ على الدربِ وصَل.", author: "مثل عربي" },
+  { quote: "مَن جَدَّ وجَد، ومَن زرعَ حصَد.", author: "مثل عربي" },
+  { quote: "العِلمُ نورٌ، والجهلُ ظلام.", author: "حكمة" },
+  { quote: "بالعِلمِ ترتقي الأمَم.", author: "حكمة" },
+  { quote: "القراءةُ غذاءُ العقلِ والرُّوح.", author: "حكمة" },
+  { quote: "تعلَّمْ فليسَ المرءُ يُولَدُ عالِمًا.", author: "الإمام الشافعي" },
+  { quote: "خيرُ جليسٍ في الزمانِ كتابُ.", author: "المتنبّي" },
+  { quote: "مَن طلبَ العُلا سهِرَ الليالي.", author: "مثل عربي" },
+  { quote: "لا تؤجّلْ عملَ اليومِ إلى الغد.", author: "حكمة" },
+  { quote: "بقَدرِ الكَدِّ تُكتَسَبُ المعالي.", author: "حكمة" },
 ];
 
-function sample() {
-  const pick = SAMPLE_QUOTES[Math.floor(Math.random() * SAMPLE_QUOTES.length)];
-  return NextResponse.json({ ...pick, source: "sample" });
-}
-
 export async function GET() {
-  const key = process.env.API_NINJAS_KEY;
-  if (!key) return sample();
-
-  try {
-    const res = await fetch(QUOTES_URL, {
-      headers: { "X-Api-Key": key },
-      cache: "no-store",
-    });
-    if (!res.ok) return sample();
-
-    const data = await res.json();
-    const item = Array.isArray(data) ? data[0] : data;
-    if (item && item.quote) {
-      return NextResponse.json({
-        quote: item.quote,
-        author: item.author || "Unknown",
-        source: "api-ninjas",
-      });
-    }
-    return sample();
-  } catch (err) {
-    console.error("API Ninjas quote failed:", err?.message);
-    return sample();
-  }
+  const pick = ARABIC_QUOTES[Math.floor(Math.random() * ARABIC_QUOTES.length)];
+  return NextResponse.json(pick);
 }

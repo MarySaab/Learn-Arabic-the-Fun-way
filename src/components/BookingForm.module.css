@@ -11,6 +11,27 @@
   gap: 18px;
 }
 
+/* Prompt shown when the visitor hasn't taken the placement test. */
+.notice {
+  background: var(--gold-soft);
+  border: 1px solid var(--gold);
+  border-radius: var(--radius-sm);
+  padding: 16px 18px;
+  text-align: center;
+}
+.notice p { margin: 0 0 12px; color: var(--teal-deep); font-weight: 600; }
+
+/* Small confirmation when the level came from the test. */
+.levelNote {
+  background: #e6f4ec;
+  border: 1px solid var(--success);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  color: #1f6b46;
+  font-weight: 600;
+  text-align: center;
+}
+
 .row {
   display: grid;
   grid-template-columns: 1fr 1fr;

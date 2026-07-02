@@ -76,6 +76,14 @@ a {
 }
 a:hover { color: var(--teal-bright); }
 
+/* Full English translation block (shown when the language toggle is on). */
+.lwm-en {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.95em;
+  opacity: 0.85;
+}
+
 /* The English gloss shown in parentheses (Fraunces italic, quieter). */
 .en-gloss {
   font-family: var(--font-display);

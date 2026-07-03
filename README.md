@@ -27,16 +27,19 @@ with a glowing gold "أنت هنا (You are here)" marker. Marked in the code wi
 - Core logic in **ES6 classes**: `PlacementTest`, `LessonCatalog`, `ApiClient`,
   `FormValidator`, plus `ScrollReveal`
 - **Prisma + Neon (PostgreSQL)** for placement results and bookings
-- **API used:** [API Ninjas](https://api-ninjas.com) Quotes endpoint, called
-  **server-side** so the key never reaches the browser
+- **API used:** [API Ninjas](https://api-ninjas.com) Facts endpoint (the
+  "هل تعلم؟ / Did you know?" card), called **server-side** so the key never
+  reaches the browser; the daily Arabic quote is a curated local list
 
 ## Pages
 | Route | What it does |
 |-------|--------------|
-| `/` | Hero, Meet Mariana, the **timeline**, **Quote of the Day** (API), testimonials |
-| `/test` | 10-question placement test → level + timeline highlight → book |
-| `/lessons` | 18 lessons, live search + level filter, 6 interactive practice games |
-| `/book` | Booking form with real-time validation + WhatsApp/email handoff |
+| `/` | Hero, bilingual intro, Meet Mariana, the **timeline**, daily quote + API fact, FAQ, contact |
+| `/test` | 16-question placement test in 4 sections (reading, writing, **dictation with audio**, grammar) → overall + per-skill levels (A/B/C/D) highlighted on the timeline |
+| `/lessons` | 18 lessons (incl. full 28-letter alphabet chart), live search + level filter, 6 practice games, browser-saved progress |
+| `/skills` | Skills Lab: 4 real story suites (listening/dictation, reading, writing) |
+| `/book` | Booking form with real-time validation (incl. country) + WhatsApp/email handoff |
+| `/teacher` | Passcode-protected dashboard: level distribution, bookings, results |
 
 Rubric features: **API integration with loading/error/empty states** (Quote of the
 Day) · **client-side search + filter** (Lessons) · **15+ real items** (18 lessons)

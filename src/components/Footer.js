@@ -26,6 +26,7 @@ export default function Footer() {
             <li><Link href="/"><Bilingual ar="الرئيسية" en="Home" /></Link></li>
             <li><Link href="/test"><Bilingual ar="اختبار المستوى" en="Placement Test" /></Link></li>
             <li><Link href="/lessons"><Bilingual ar="الدروس" en="Lessons" /></Link></li>
+            <li><Link href="/skills"><Bilingual ar="المهارات" en="Skills Lab" /></Link></li>
             <li><Link href="/book"><Bilingual ar="احجز حصّة" en="Book a Session" /></Link></li>
           </ul>
         </div>

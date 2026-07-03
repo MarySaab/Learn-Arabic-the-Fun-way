@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import AlphabetChart from "@/components/AlphabetChart";
 import Bilingual from "@/components/Bilingual";
 import LessonView from "@/components/LessonView";
 import MarkComplete from "@/components/MarkComplete";
@@ -64,6 +65,9 @@ export default function LessonPage({ params }) {
           <MarkComplete slug={lesson.slug} />
         </div>
       )}
+
+      {/* The alphabet lesson opens with the full interactive 28-letter chart */}
+      {lesson.slug === "arabic-alphabet" && <AlphabetChart />}
 
       {/* Learn + practice quiz (for content lessons) */}
       {content && <LessonView content={content} slug={lesson.slug} />}

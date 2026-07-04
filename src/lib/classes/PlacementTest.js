@@ -97,15 +97,6 @@ export default class PlacementTest {
     return PlacementTest.letterFor(max ? this.score() / max : 0);
   }
 
-  // Turns a correct/total ratio into a simple A/B/C grade.
-  static grade(correct, total) {
-    if (!total) return null;
-    const ratio = correct / total;
-    if (ratio >= 0.8) return "A";
-    if (ratio >= 0.5) return "B";
-    return "C";
-  }
-
   // Maps the WEIGHTED score ratio to one of the four levels. With weights,
   // getting all easy+medium right lands mid-intermediate; "advanced" needs
   // most of the hard (i'rab, dual/plural, inference) questions too.

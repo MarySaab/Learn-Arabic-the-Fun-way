@@ -72,8 +72,11 @@ export default function TestRunner() {
     setSubmitted(true);
     const level = test.level();
     const b = test.skillBreakdown();
+    // Per-skill grade uses the SAME weighted A/B/C/D scale as the level letters
+    // and the on-screen per-skill cards, so the dashboard matches the result
+    // (A = advanced … D = beginner). Failing a skill correctly lands on D.
     const gradeOf = (s) =>
-      b[s] ? PlacementTest.grade(b[s].correct, b[s].total) : null;
+      b[s] && b[s].max ? PlacementTest.letterFor(b[s].points / b[s].max) : null;
 
     // Best-effort save; the result shows regardless of DB availability.
     fetch("/api/placement", {

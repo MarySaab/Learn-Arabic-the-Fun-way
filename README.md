@@ -34,7 +34,7 @@ with a glowing gold "أنت هنا (You are here)" marker. Marked in the code wi
 ## Pages
 | Route | What it does |
 |-------|--------------|
-| `/` | Hero, bilingual intro, Meet Mariana, the **timeline**, daily quote + **searchable API facts** (API Ninjas), FAQ, contact |
+| `/` | Hero, bilingual intro, Meet Mariana, the **timeline**, daily quote + **API fact card** (API Ninjas, paged), FAQ, contact |
 | `/test` | 16-question placement test in 4 sections (reading, writing, **dictation with audio**, grammar) → overall + per-skill levels (A/B/C/D) highlighted on the timeline |
 | `/lessons` | 18 lessons (incl. full 28-letter alphabet chart), live search + level filter, 9 practice games, browser-saved progress |
 | `/skills` | Skills Lab: 4 real story suites (listening/dictation, reading, writing) |
@@ -42,10 +42,10 @@ with a glowing gold "أنت هنا (You are here)" marker. Marked in the code wi
 | `/teacher` | Passcode-protected dashboard: level distribution, bookings, results |
 
 Rubric features: **external key-based API** (API Ninjas facts) with **client-side
-search over the fetched data** and **loading/error/empty states** (the "هل تعلم؟"
-explorer on the home page) · additional **search + level filter** over the 18
-lessons · **15+ real items** (18 lessons) · consistent navbar · fully responsive ·
-ES6-class logic.
+pagination over the fetched data** (the "معلومة أخرى / Another fact" button) and
+**loading/error/empty states** (the "هل تعلم؟" card on the home page) · additional
+**search + level filter** over the 18 lessons · **15+ real items** (18 lessons) ·
+consistent navbar · fully responsive · ES6-class logic.
 
 ## Run locally
 ```bash

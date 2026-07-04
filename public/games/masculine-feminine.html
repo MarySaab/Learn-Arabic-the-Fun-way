@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>عالَمُ المُذَكَّرِ والمُؤَنَّثِ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&family=Lalezar&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --m:#1f95a8;        /* مذكّر - teal */
+  --m-soft:#dff3f5;
+  --m-deep:#137384;
+  --f:#e86a7c;        /* مؤنّث - rose */
+  --f-soft:#fde6ea;
+  --f-deep:#c94a5d;
+  --ink:#2b2440;
+  --paper:#fffdf7;
+  --sun:#ffc84b;
+  --leaf:#7bc47f;
+  --grape:#8a6bd1;
+  --line:#efe7d8;
+  --ok:#3bb273;
+  --no:#e5544b;
+  --shadow:0 10px 0 rgba(0,0,0,.08);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{
+  font-family:'Baloo Bhaijaan 2','Tajawal',sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 12% 8%, #fff6dd 0 14%, transparent 14.2%),
+    radial-gradient(circle at 88% 6%, #ffe3ea 0 12%, transparent 12.2%),
+    linear-gradient(180deg,#fef6e9 0%, #f3fbfb 60%, #eef8f0 100%);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+.wrap{max-width:940px;margin:0 auto;padding:16px 16px 48px}
+.screen{display:none;animation:pop .4s ease both}
+.screen.active{display:block}
+@keyframes pop{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+
+/* ---------- header ---------- */
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+.brand{font-family:'Lalezar',cursive;font-size:1.5rem;color:var(--f-deep);letter-spacing:.5px}
+.brand b{color:var(--m-deep)}
+.homebtn{border:none;background:#fff;border:3px solid var(--line);border-radius:16px;font-family:'Tajawal';font-weight:800;
+  font-size:1rem;padding:8px 16px;cursor:pointer;color:var(--ink);box-shadow:var(--shadow);transition:transform .12s}
+.homebtn:active{transform:translateY(3px);box-shadow:0 4px 0 rgba(0,0,0,.08)}
+
+/* ---------- home ---------- */
+.hero{
+  background:linear-gradient(160deg,#ffffff, #fffaf0);
+  border:4px solid #fff;border-radius:34px;padding:26px 22px 30px;text-align:center;
+  box-shadow:0 18px 0 rgba(0,0,0,.06), inset 0 0 0 3px var(--line);position:relative;overflow:hidden;
+}
+.hero h1{font-family:'Lalezar',cursive;font-size:clamp(2.1rem,7vw,3.2rem);margin:.1em 0 .1em;line-height:1.05}
+.hero h1 .a{color:var(--m)}
+.hero h1 .b{color:var(--f)}
+.hero p{font-family:'Tajawal';font-weight:700;font-size:1.15rem;color:#6c6580;margin:.2em auto .2em;max-width:34ch}
+.mascots{display:flex;justify-content:center;gap:16px;margin:6px 0 2px;font-size:clamp(2.6rem,11vw,4.4rem)}
+.mascots span{display:inline-block;animation:bob 2.4s ease-in-out infinite}
+.mascots span:last-child{animation-delay:.5s}
+@keyframes bob{50%{transform:translateY(-10px) rotate(-4deg)}}
+.pill{display:inline-block;font-family:'Baloo Bhaijaan 2';font-weight:800;padding:4px 16px;border-radius:999px;font-size:1.15rem}
+.pill.m{background:var(--m-soft);color:var(--m-deep)}
+.pill.f{background:var(--f-soft);color:var(--f-deep)}
+
+.menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:20px}
+.card{
+  border:none;cursor:pointer;text-align:right;border-radius:26px;padding:20px 20px 18px;color:#fff;
+  font-family:'Baloo Bhaijaan 2';box-shadow:var(--shadow);transition:transform .12s;position:relative;overflow:hidden;
+}
+.card:active{transform:translateY(4px);box-shadow:0 4px 0 rgba(0,0,0,.12)}
+.card .ico{font-size:2.6rem;line-height:1}
+.card .t{font-size:1.5rem;font-weight:800;margin-top:6px}
+.card .d{font-family:'Tajawal';font-weight:600;font-size:1rem;opacity:.95;margin-top:2px}
+.card .num{position:absolute;left:14px;bottom:10px;font-family:'Lalezar';font-size:2.6rem;opacity:.22}
+.c-learn{background:linear-gradient(150deg,#8a6bd1,#6f4fc0)}
+.c-sort{background:linear-gradient(150deg,#1f95a8,#137384)}
+.c-match{background:linear-gradient(150deg,#e86a7c,#c94a5d)}
+.c-dem{background:linear-gradient(150deg,#f5a623,#e8890b)}
+.c-quiz{background:linear-gradient(150deg,#3bb273,#2b9160)}
+
+/* ---------- section title ---------- */
+.stitle{font-family:'Lalezar';font-size:1.9rem;text-align:center;margin:4px 0 14px;color:var(--ink)}
+.stitle small{display:block;font-family:'Tajawal';font-weight:700;font-size:1rem;color:#7d768f;margin-top:2px}
+
+/* ---------- learn ---------- */
+.rule{background:#fff;border:3px solid var(--line);border-radius:24px;padding:18px 20px;margin-bottom:18px;box-shadow:var(--shadow)}
+.rule .row{display:flex;gap:12px;align-items:center;font-family:'Tajawal';font-weight:700;font-size:1.12rem;line-height:1.9}
+.tag{font-family:'Baloo Bhaijaan 2';font-weight:800;padding:2px 14px;border-radius:12px;white-space:nowrap;font-size:1.15rem}
+.tag.m{background:var(--m-soft);color:var(--m-deep)}
+.tag.f{background:var(--f-soft);color:var(--f-deep)}
+.note{font-family:'Tajawal';font-weight:600;font-size:1rem;color:#6c6580;margin-top:10px;line-height:1.9;border-top:2px dashed var(--line);padding-top:10px}
+
+.catbar{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:16px}
+.catbtn{border:3px solid var(--line);background:#fff;border-radius:14px;font-family:'Tajawal';font-weight:800;font-size:1rem;
+  padding:7px 14px;cursor:pointer;color:var(--ink);transition:.12s}
+.catbtn.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
+.wcard{background:#fff;border-radius:22px;padding:14px 10px 12px;text-align:center;box-shadow:var(--shadow);
+  border:4px solid #fff;position:relative;transition:transform .12s;cursor:pointer}
+.wcard:active{transform:scale(.97)}
+.wcard.m{outline:3px solid var(--m-soft)}
+.wcard.f{outline:3px solid var(--f-soft)}
+.wcard .em{font-size:2.9rem;line-height:1}
+.wcard .dem{font-family:'Tajawal';font-weight:800;font-size:1rem;margin-top:6px}
+.wcard.m .dem{color:var(--m)}
+.wcard.f .dem{color:var(--f)}
+.wcard .w{font-family:'Baloo Bhaijaan 2';font-weight:800;font-size:1.5rem;margin-top:-2px}
+.wcard .swatch{width:44px;height:44px;border-radius:50%;margin:2px auto 0;border:3px solid rgba(0,0,0,.08)}
+
+/* ---------- generic game shell ---------- */
+.hud{display:flex;justify-content:space-between;align-items:center;background:#fff;border:3px solid var(--line);
+  border-radius:18px;padding:8px 14px;margin-bottom:14px;box-shadow:var(--shadow);flex-wrap:wrap;gap:8px}
+.hud .stat{font-family:'Baloo Bhaijaan 2';font-weight:800;font-size:1.1rem;display:flex;align-items:center;gap:6px}
+.progress{height:14px;background:var(--line);border-radius:999px;overflow:hidden;margin-bottom:16px}
+.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--sun),var(--leaf));transition:width .4s}
+
+.stage{background:#fff;border:4px solid #fff;border-radius:30px;box-shadow:0 14px 0 rgba(0,0,0,.06),inset 0 0 0 3px var(--line);
+  padding:26px 20px;text-align:center;min-height:230px;display:flex;flex-direction:column;justify-content:center;align-items:center}
+.bigem{font-size:clamp(3.4rem,16vw,6rem);line-height:1}
+.bigword{font-family:'Baloo Bhaijaan 2';font-weight:800;font-size:clamp(2.2rem,9vw,3.4rem);margin:4px 0 2px}
+.qhint{font-family:'Tajawal';font-weight:700;color:#7d768f;font-size:1.05rem;margin-top:4px}
+
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+.choice{border:none;cursor:pointer;border-radius:22px;padding:20px 10px;font-family:'Baloo Bhaijaan 2';font-weight:800;
+  font-size:1.6rem;color:#fff;box-shadow:var(--shadow);transition:transform .1s}
+.choice small{display:block;font-family:'Tajawal';font-weight:700;font-size:.95rem;opacity:.92;margin-top:2px}
+.choice:active{transform:translateY(4px);box-shadow:0 4px 0 rgba(0,0,0,.12)}
+.choice.m{background:linear-gradient(150deg,#1f95a8,#137384)}
+.choice.f{background:linear-gradient(150deg,#e86a7c,#c94a5d)}
+.choice.dim{opacity:.35;filter:grayscale(.4)}
+.choice.right{animation:goodshake .5s}
+.choice.wrong{animation:badshake .4s}
+@keyframes goodshake{0%,100%{transform:none}30%{transform:scale(1.08)}60%{transform:scale(.96)}}
+@keyframes badshake{0%,100%{transform:none}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+
+.feedback{min-height:34px;font-family:'Baloo Bhaijaan 2';font-weight:800;font-size:1.4rem;margin-top:12px}
+.feedback.ok{color:var(--ok)}
+.feedback.no{color:var(--no)}
+
+.bigbtn{border:none;cursor:pointer;background:linear-gradient(150deg,var(--sun),#f0a419);color:#5a3d00;
+  font-family:'Baloo Bhaijaan 2';font-weight:800;font-size:1.3rem;padding:14px 30px;border-radius:20px;
+  box-shadow:var(--shadow);transition:transform .1s;margin-top:6px}
+.bigbtn:active{transform:translateY(4px);box-shadow:0 4px 0 rgba(0,0,0,.12)}
+.bigbtn.ghost{background:#fff;border:3px solid var(--line);color:var(--ink)}
+
+/* ---------- match ---------- */
+.matchgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:12px}
+.mcard{background:#fff;border:4px solid var(--line);border-radius:20px;padding:14px 6px 12px;text-align:center;
+  cursor:pointer;box-shadow:var(--shadow);transition:transform .1s;min-height:120px;display:flex;flex-direction:column;
+  justify-content:center;align-items:center}
+.mcard .em{font-size:2.4rem;line-height:1}
+.mcard .w{font-family:'Baloo Bhaijaan 2';font-weight:800;font-size:1.35rem;margin-top:4px}
+.mcard.m{border-color:var(--m-soft)}
+.mcard.f{border-color:var(--f-soft)}
+.mcard.sel{transform:translateY(-4px)}
+.mcard.sel.m{border-color:var(--m);background:var(--m-soft)}
+.mcard.sel.f{border-color:var(--f);background:var(--f-soft)}
+.mcard.done{opacity:0;pointer-events:none;transform:scale(.6);transition:.4s}
+.mcard.err{animation:badshake .4s}
+
+/* ---------- results ---------- */
+.result{text-align:center;background:#fff;border:4px solid #fff;border-radius:30px;padding:30px 22px;
+  box-shadow:0 14px 0 rgba(0,0,0,.06),inset 0 0 0 3px var(--line)}
+.result .medal{font-size:5rem;animation:bob 2s infinite}
+.result h2{font-family:'Lalezar';font-size:2.2rem;margin:.2em 0}
+.result .score{font-family:'Baloo Bhaijaan 2';font-weight:800;font-size:1.5rem;color:var(--m-deep)}
+.stars{font-size:2.4rem;letter-spacing:6px;margin:8px 0}
+.result .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+
+/* confetti */
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:60}
+
+.footer{text-align:center;font-family:'Tajawal';font-weight:600;color:#a79f8f;font-size:.9rem;margin-top:26px}
+
+@media (max-width:520px){
+  .choices{grid-template-columns:1fr}
+  .card{padding:16px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms !important;transition-duration:.05ms !important}
+}
+</style>
+</head>
+<body>
+<canvas id="confetti"></canvas>
+<div class="wrap">
+
+  <div class="topbar">
+    <div class="brand">عالَمُ <b>المُذَكَّرِ</b> والمُؤَنَّثِ</div>
+    <button class="homebtn" onclick="go('home')">🏠 الرَّئيسيَّة</button>
+  </div>
+
+  <!-- ===================== HOME ===================== -->
+  <section id="home" class="screen active">
+    <div class="hero">
+      <div class="mascots"><span>👦</span><span>👧</span></div>
+      <h1><span class="a">هٰذا</span> وَ <span class="b">هٰذِهِ</span></h1>
+      <p>نَتَعَلَّمُ المُذَكَّرَ والمُؤَنَّثَ باللَّعِبِ وَالمَرَحِ!</p>
+      <div>
+        <span class="pill m">👦 مُذَكَّر = هٰذا</span>
+        <span class="pill f">👧 مُؤَنَّث = هٰذِهِ</span>
+      </div>
+    </div>
+
+    <div class="menu">
+      <button class="card c-learn" onclick="go('learn')">
+        <div class="ico">📚</div><div class="t">أَتَعَلَّمُ</div>
+        <div class="d">القاعِدَةُ والكَلِماتُ بِالصُّوَرِ</div><div class="num">١</div>
+      </button>
+      <button class="card c-sort" onclick="startSort()">
+        <div class="ico">🗂️</div><div class="t">لُعْبَةُ الفَرْزِ</div>
+        <div class="d">مُذَكَّر أَمْ مُؤَنَّث؟</div><div class="num">٢</div>
+      </button>
+      <button class="card c-match" onclick="go('matchMenu')">
+        <div class="ico">🧩</div><div class="t">لُعْبَةُ المُطابَقَةِ</div>
+        <div class="d">صِلِ الكَلِمَةَ بِزَوجِها</div><div class="num">٣</div>
+      </button>
+      <button class="card c-dem" onclick="startDem()">
+        <div class="ico">👉</div><div class="t">هٰذا أَمْ هٰذِهِ؟</div>
+        <div class="d">اِخْتَرِ الإِشارَةَ الصَّحيحَةَ</div><div class="num">٤</div>
+      </button>
+      <button class="card c-quiz" onclick="startQuiz()">
+        <div class="ico">🏆</div><div class="t">التَّحَدّي الكَبيرُ</div>
+        <div class="d">عَشْرُ أَسْئِلَةٍ… هَلْ تَفوزُ؟</div><div class="num">٥</div>
+      </button>
+    </div>
+    <div class="footer"></div>
+  </section>
+
+  <!-- ===================== LEARN ===================== -->
+  <section id="learn" class="screen">
+    <div class="stitle">أَتَعَلَّمُ المُذَكَّرَ والمُؤَنَّثَ</div>
+    <div class="rule">
+      <div class="row"><span class="tag m">هٰذا</span> نُشيرُ بِها إِلى <b>المُذَكَّرِ</b> (الوَلَدُ، الأَبُ، الحِصانُ).</div>
+      <div class="row" style="margin-top:8px"><span class="tag f">هٰذِهِ</span> نُشيرُ بِها إِلى <b>المُؤَنَّثِ</b> (البِنْتُ، الأُمُّ، الفَرَسُ).</div>
+      <div class="note">💡 كَثيرٌ مِنَ المُؤَنَّثِ يَنْتَهي بِالتّاءِ المَرْبوطَةِ <b>(ة)</b> مِثْلَ: مُعَلِّمَة، بَقَرَة، حَقيبَة.<br>
+      وَبَعْضُ المُؤَنَّثِ نَحْفَظُهُ حِفْظًا مِثْلَ: أُمّ، بِنْت، فَرَس، أَتان، نِساء.</div>
+    </div>
+    <div class="catbar" id="catbar"></div>
+    <div class="gallery" id="gallery"></div>
+    <div style="text-align:center;margin-top:18px"><button class="bigbtn ghost" onclick="go('home')">⬅ رُجوع</button></div>
+  </section>
+
+  <!-- ===================== SORT ===================== -->
+  <section id="sort" class="screen">
+    <div class="hud">
+      <div class="stat">⭐ <span id="sortScore">0</span></div>
+      <div class="stat">🎯 <span id="sortIdx">1</span>/<span id="sortTot">0</span></div>
+      <div class="stat">🔥 <span id="sortStreak">0</span></div>
+    </div>
+    <div class="progress"><i id="sortBar"></i></div>
+    <div class="stage">
+      <div class="bigword" id="sortWord"></div>
+      <div class="qhint">هَلْ هٰذِهِ الكَلِمَةُ مُذَكَّرٌ أَمْ مُؤَنَّثٌ؟</div>
+      <div class="choices">
+        <button class="choice m" onclick="answerSort('m',this)">مُذَكَّر<small>👦 هٰذا</small></button>
+        <button class="choice f" onclick="answerSort('f',this)">مُؤَنَّث<small>👧 هٰذِهِ</small></button>
+      </div>
+      <div class="feedback" id="sortFb"></div>
+    </div>
+  </section>
+
+  <!-- ===================== MATCH MENU ===================== -->
+  <section id="matchMenu" class="screen">
+    <div class="stitle">لُعْبَةُ المُطابَقَةِ<small>اِخْتَرْ مَجْموعَةً، ثُمَّ صِلِ الكَلِمَةَ المُذَكَّرَةَ بِالمُؤَنَّثَةِ</small></div>
+    <div class="menu" id="matchCats"></div>
+    <div style="text-align:center;margin-top:18px"><button class="bigbtn ghost" onclick="go('home')">⬅ رُجوع</button></div>
+  </section>
+
+  <!-- ===================== MATCH PLAY ===================== -->
+  <section id="match" class="screen">
+    <div class="hud">
+      <div class="stat">⭐ <span id="matchScore">0</span></div>
+      <div class="stat">🧩 <span id="matchDone">0</span>/<span id="matchTot">0</span></div>
+      <button class="homebtn" onclick="go('matchMenu')">↩ المَجْموعاتُ</button>
+    </div>
+    <div class="qhint" style="text-align:center;margin-bottom:12px" id="matchHint"></div>
+    <div class="matchgrid" id="matchGrid"></div>
+  </section>
+
+  <!-- ===================== DEMONSTRATIVE ===================== -->
+  <section id="dem" class="screen">
+    <div class="hud">
+      <div class="stat">⭐ <span id="demScore">0</span></div>
+      <div class="stat">🎯 <span id="demIdx">1</span>/<span id="demTot">0</span></div>
+      <div class="stat">🔥 <span id="demStreak">0</span></div>
+    </div>
+    <div class="progress"><i id="demBar"></i></div>
+    <div class="stage">
+      <div class="bigem" id="demEm"></div>
+      <div class="qhint">أَيُّ إِشارَةٍ نَقولُ؟</div>
+      <div class="choices">
+        <button class="choice m" onclick="answerDem('m',this)" id="demBtnM"></button>
+        <button class="choice f" onclick="answerDem('f',this)" id="demBtnF"></button>
+      </div>
+      <div class="feedback" id="demFb"></div>
+    </div>
+  </section>
+
+  <!-- ===================== QUIZ ===================== -->
+  <section id="quiz" class="screen">
+    <div class="hud">
+      <div class="stat">⭐ <span id="quizScore">0</span></div>
+      <div class="stat">🎯 <span id="quizIdx">1</span>/10</div>
+      <div class="stat">❤️ <span id="quizLife">3</span></div>
+    </div>
+    <div class="progress"><i id="quizBar"></i></div>
+    <div class="stage">
+      <div class="bigem" id="quizEm"></div>
+      <div class="bigword" id="quizWord"></div>
+      <div class="qhint" id="quizHint"></div>
+      <div class="choices">
+        <button class="choice m" onclick="answerQuiz('m',this)" id="quizBtnM"></button>
+        <button class="choice f" onclick="answerQuiz('f',this)" id="quizBtnF"></button>
+      </div>
+      <div class="feedback" id="quizFb"></div>
+    </div>
+  </section>
+
+  <!-- ===================== RESULT ===================== -->
+  <section id="result" class="screen">
+    <div class="result">
+      <div class="medal" id="resMedal">🏅</div>
+      <h2 id="resTitle"></h2>
+      <div class="stars" id="resStars"></div>
+      <div class="score" id="resScore"></div>
+      <div class="btns">
+        <button class="bigbtn" id="resAgain">🔁 مَرَّةً أُخْرى</button>
+        <button class="bigbtn ghost" onclick="go('home')">🏠 الرَّئيسيَّة</button>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+/* ============================================================
+   البيانات — كُلُّها من كتاب التلميذ (المذكّر والمؤنّث)
+   ============================================================ */
+const PAIRS = [
+  /* ---- أشخاص (مِهَن وأُسرة) ---- */
+  {c:'أشخاص', m:'طَبيبٌ',   f:'طَبيبَةٌ',   em:'👨‍⚕️', ef:'👩‍⚕️'},
+  {c:'أشخاص', m:'مُزارِعٌ', f:'مُزارِعَةٌ', em:'👨‍🌾', ef:'👩‍🌾'},
+  {c:'أشخاص', m:'مُعَلِّمٌ', f:'مُعَلِّمَةٌ', em:'👨‍🏫', ef:'👩‍🏫'},
+  {c:'أشخاص', m:'تِلْميذٌ', f:'تِلْميذَةٌ', em:'👦', ef:'👧'},
+  {c:'أشخاص', m:'وَلَدٌ',   f:'بِنْتٌ',     em:'👦', ef:'👧'},
+  {c:'أشخاص', m:'أَبٌ',     f:'أُمٌّ',      em:'👨', ef:'👩'},
+  {c:'أشخاص', m:'جَدٌّ',    f:'جَدَّةٌ',    em:'👴', ef:'👵'},
+  {c:'أشخاص', m:'عَمٌّ',    f:'عَمَّةٌ',    em:'🧔', ef:'👩'},
+  {c:'أشخاص', m:'ابْنٌ',    f:'ابْنَةٌ',    em:'👦', ef:'👧'},
+  {c:'أشخاص', m:'خالٌ',     f:'خالَةٌ',     em:'🧔', ef:'👩'},
+  {c:'أشخاص', m:'والِدٌ',   f:'والِدَةٌ',   em:'👨', ef:'👩'},
+  {c:'أشخاص', m:'صَبِيٌّ',  f:'صَبِيَّةٌ',  em:'👦', ef:'👧'},
+  {c:'أشخاص', m:'فَتىً',    f:'فَتاةٌ',     em:'🧑', ef:'👩'},
+  {c:'أشخاص', m:'رَجُلٌ',   f:'امْرَأَةٌ',  em:'👨', ef:'👩'},
+  {c:'أشخاص', m:'أَخٌ',     f:'أُخْتٌ',     em:'👦', ef:'👧'},
+  {c:'أشخاص', m:'رِجالٌ',   f:'نِساءٌ',     em:'👬', ef:'👭'},
+
+  /* ---- حيوانات ---- */
+  {c:'حيوانات', m:'حِصانٌ',  f:'فَرَسٌ',   em:'🐴', ef:'🐎'},
+  {c:'حيوانات', m:'أَسَدٌ',   f:'لَبُؤَةٌ', em:'🦁', ef:'🦁'},
+  {c:'حيوانات', m:'حِمارٌ',   f:'أَتانٌ',   em:'🫏', ef:'🫏'},
+  {c:'حيوانات', m:'جَمَلٌ',   f:'ناقَةٌ',   em:'🐫', ef:'🐪'},
+  {c:'حيوانات', m:'هِرٌّ',    f:'هِرَّةٌ',  em:'🐈', ef:'🐈'},
+  {c:'حيوانات', m:'ديكٌ',    f:'دَجاجَةٌ', em:'🐓', ef:'🐔'},
+  {c:'حيوانات', m:'ثَوْرٌ',   f:'بَقَرَةٌ', em:'🐂', ef:'🐄'},
+  {c:'حيوانات', m:'خَروفٌ',  f:'نَعْجَةٌ', em:'🐏', ef:'🐑'},
+  {c:'حيوانات', m:'تَيْسٌ',   f:'عَنْزَةٌ', em:'🐐', ef:'🐐'},
+  {c:'حيوانات', m:'دُبٌّ',    f:'دُبَّةٌ',  em:'🐻', ef:'🐻'},
+  {c:'حيوانات', m:'كَلْبٌ',   f:'كَلْبَةٌ', em:'🐕', ef:'🐩'},
+  {c:'حيوانات', m:'عُصْفورٌ', f:'عُصْفورَةٌ', em:'🐦', ef:'🐦'},
+  {c:'حيوانات', m:'فَأْرٌ',   f:'فَأْرَةٌ', em:'🐭', ef:'🐭'},
+
+  /* ---- ألوان ---- */
+  {c:'ألوان', m:'أَبْيَضُ', f:'بَيْضاءُ', color:'#ffffff'},
+  {c:'ألوان', m:'أَسْوَدُ', f:'سَوْداءُ', color:'#333333'},
+  {c:'ألوان', m:'أَحْمَرُ', f:'حَمْراءُ', color:'#e5544b'},
+  {c:'ألوان', m:'أَخْضَرُ', f:'خَضْراءُ', color:'#3bb273'},
+  {c:'ألوان', m:'أَزْرَقُ', f:'زَرْقاءُ', color:'#2f80ed'},
+  {c:'ألوان', m:'أَشْقَرُ', f:'شَقْراءُ', color:'#f2c14e'},
+  {c:'ألوان', m:'أَسْمَرُ', f:'سَمْراءُ', color:'#8b5a2b'},
+
+  /* ---- عاهات ---- */
+  {c:'عاهات', m:'أَطْرَشُ', f:'طَرْشاءُ', em:'🙉', ef:'🙉'},
+  {c:'عاهات', m:'أَخْرَسُ', f:'خَرْساءُ', em:'🤐', ef:'🤐'},
+  {c:'عاهات', m:'أَعْرَجُ', f:'عَرْجاءُ', em:'🦯', ef:'🦯'}
+];
+
+/* أشياءُ الدَّرْسِ (مُذَكَّرة ومُؤَنَّثة مُفْرَدة) */
+const OBJECTS = [
+  {w:'مِقَصٌّ',   g:'m', em:'✂️'},
+  {w:'قَلَمٌ',    g:'m', em:'✏️'},
+  {w:'كِتابٌ',    g:'m', em:'📖'},
+  {w:'مِبْراةٌ',  g:'f', em:'🖊️'},
+  {w:'مِسْطَرَةٌ', g:'f', em:'📏'},
+  {w:'حَقيبَةٌ',  g:'f', em:'🎒'}
+];
+
+const CAT_INFO = {
+  'أشخاص':  {ico:'👨‍👩‍👧', color:'c-match'},
+  'حيوانات':{ico:'🐴',   color:'c-sort'},
+  'ألوان':  {ico:'🎨',   color:'c-dem'},
+  'عاهات':  {ico:'🤟',   color:'c-learn'},
+  'أشياء':  {ico:'🎒',   color:'c-quiz'}
+};
+
+/* ============================================================
+   أدوات مساعدة
+   ============================================================ */
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]];}return a;}
+function go(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+/* بناء قائمة كلمات مفردة مع جنسها للفرز */
+function allWords(){
+  const list=[];
+  PAIRS.forEach(p=>{list.push({w:p.m,g:'m'});list.push({w:p.f,g:'f'});});
+  OBJECTS.forEach(o=>list.push({w:o.w,g:o.g}));
+  return list;
+}
+
+/* ---------- confetti ---------- */
+const cv=document.getElementById('confetti');const ctx=cv.getContext('2d');let parts=[];
+function sizeCv(){cv.width=innerWidth;cv.height=innerHeight;}sizeCv();addEventListener('resize',sizeCv);
+function burst(n){
+  const cols=['#ffc84b','#e86a7c','#1f95a8','#7bc47f','#8a6bd1','#f5a623'];
+  for(let i=0;i<n;i++)parts.push({x:innerWidth/2+(Math.random()-.5)*160,y:innerHeight/3,
+    vx:(Math.random()-.5)*9,vy:Math.random()*-11-4,g:.32,s:6+Math.random()*8,
+    c:cols[Math.random()*cols.length|0],r:Math.random()*6,vr:(Math.random()-.5)*.4,life:90});
+  if(parts.length&&!raf)tick();
+}
+let raf=null;
+function tick(){
+  ctx.clearRect(0,0,cv.width,cv.height);
+  parts.forEach(p=>{p.vy+=p.g;p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;p.life--;
+    ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.r);ctx.fillStyle=p.c;
+    ctx.fillRect(-p.s/2,-p.s/2,p.s,p.s*.6);ctx.restore();});
+  parts=parts.filter(p=>p.life>0&&p.y<cv.height+40);
+  if(parts.length)raf=requestAnimationFrame(tick);else{raf=null;ctx.clearRect(0,0,cv.width,cv.height);}
+}
+
+/* ============================================================
+   أَتَعَلَّم — المعرض
+   ============================================================ */
+const learnCats=['أشخاص','حيوانات','ألوان','عاهات','أشياء'];
+let learnCat='أشخاص';
+function buildCatbar(){
+  const bar=document.getElementById('catbar');bar.innerHTML='';
+  learnCats.forEach(c=>{
+    const b=document.createElement('button');
+    b.className='catbtn'+(c===learnCat?' on':'');
+    b.textContent=CAT_INFO[c].ico+' '+c;
+    b.onclick=()=>{learnCat=c;buildCatbar();buildGallery();};
+    bar.appendChild(b);
+  });
+}
+function galleryCard(word,gender,visual){
+  const div=document.createElement('div');
+  div.className='wcard '+gender;
+  const vis = visual.startsWith('#')
+      ? '<div class="swatch" style="background:'+visual+'"></div>'
+      : '<div class="em">'+visual+'</div>';
+  div.innerHTML=vis+
+    '<div class="dem">'+(gender==='m'?'هٰذا':'هٰذِهِ')+'</div>'+
+    '<div class="w">'+word+'</div>';
+  return div;
+}
+function buildGallery(){
+  const g=document.getElementById('gallery');g.innerHTML='';
+  if(learnCat==='أشياء'){
+    OBJECTS.forEach(o=>g.appendChild(galleryCard(o.w,o.g,o.em)));
+    return;
+  }
+  PAIRS.filter(p=>p.c===learnCat).forEach(p=>{
+    g.appendChild(galleryCard(p.m,'m',p.color?p.color:p.em));
+    g.appendChild(galleryCard(p.f,'f',p.color?p.color:p.ef));
+  });
+}
+
+/* ============================================================
+   لُعْبَةُ الفَرْز
+   ============================================================ */
+let sortList=[],sortI=0,sortScore=0,sortStreak=0,sortLock=false;
+function startSort(){
+  sortList=shuffle(allWords()).slice(0,16);
+  sortI=0;sortScore=0;sortStreak=0;sortLock=false;
+  document.getElementById('sortTot').textContent=sortList.length;
+  go('sort');renderSort();
+}
+function renderSort(){
+  sortLock=false;
+  const it=sortList[sortI];
+  document.getElementById('sortWord').innerHTML=it.w;
+  document.getElementById('sortIdx').textContent=sortI+1;
+  document.getElementById('sortScore').textContent=sortScore;
+  document.getElementById('sortStreak').textContent=sortStreak;
+  document.getElementById('sortFb').textContent='';document.getElementById('sortFb').className='feedback';
+  document.getElementById('sortBar').style.width=(sortI/sortList.length*100)+'%';
+  document.querySelectorAll('#sort .choice').forEach(c=>c.classList.remove('dim','right','wrong'));
+}
+function answerSort(g,btn){
+  if(sortLock)return;sortLock=true;
+  const it=sortList[sortI];const fb=document.getElementById('sortFb');
+  if(g===it.g){
+    sortScore+=10;sortStreak++;btn.classList.add('right');
+    fb.textContent='أَحْسَنْتَ! ✅';fb.className='feedback ok';
+    if(sortStreak>0&&sortStreak%4===0)burst(40);
+  }else{
+    sortStreak=0;btn.classList.add('wrong');
+    document.querySelector('#sort .choice.'+it.g).classList.remove('dim');
+    fb.textContent=(it.g==='m'?'هٰذا مُذَكَّر 👦':'هٰذِهِ مُؤَنَّث 👧');fb.className='feedback no';
+    document.querySelectorAll('#sort .choice').forEach(c=>{if(!c.classList.contains(it.g))c.classList.add('dim');});
+  }
+  document.getElementById('sortScore').textContent=sortScore;
+  document.getElementById('sortStreak').textContent=sortStreak;
+  setTimeout(()=>{
+    sortI++;
+    if(sortI>=sortList.length){showResult(sortScore,sortList.length*10,startSort);}
+    else renderSort();
+  },900);
+}
+
+/* ============================================================
+   لُعْبَةُ المُطابَقَة
+   ============================================================ */
+function buildMatchMenu(){
+  const box=document.getElementById('matchCats');box.innerHTML='';
+  ['أشخاص','حيوانات','ألوان','عاهات'].forEach(c=>{
+    const n=PAIRS.filter(p=>p.c===c).length;
+    const b=document.createElement('button');
+    b.className='card '+CAT_INFO[c].color;
+    b.onclick=()=>startMatch(c);
+    b.innerHTML='<div class="ico">'+CAT_INFO[c].ico+'</div><div class="t">'+c+'</div>'+
+      '<div class="d">'+n+' أَزْواجٍ لِلْوَصْلِ</div>';
+    box.appendChild(b);
+  });
+}
+let matchPairs=[],matchScore=0,matchDone=0,matchSel=null,matchTotal=0;
+function startMatch(cat){
+  let pool=shuffle(PAIRS.filter(p=>p.c===cat)).slice(0,6);
+  matchPairs=pool;matchTotal=pool.length;matchScore=0;matchDone=0;matchSel=null;
+  document.getElementById('matchTot').textContent=matchTotal;
+  document.getElementById('matchDone').textContent=0;
+  document.getElementById('matchScore').textContent=0;
+  document.getElementById('matchHint').textContent='اِضْغَطْ كَلِمَةً مُذَكَّرَةً ثُمَّ زَوجَها المُؤَنَّثَ 🤝';
+  const cards=[];
+  pool.forEach((p,i)=>{
+    cards.push({id:i,g:'m',w:p.m,em:p.color?null:p.em,color:p.color});
+    cards.push({id:i,g:'f',w:p.f,em:p.color?null:p.ef,color:p.color});
+  });
+  const grid=document.getElementById('matchGrid');grid.innerHTML='';
+  shuffle(cards).forEach(c=>{
+    const d=document.createElement('div');
+    d.className='mcard '+c.g;d.dataset.id=c.id;d.dataset.g=c.g;
+    const vis=c.color?'<div class="swatch" style="width:34px;height:34px;background:'+c.color+';border-radius:50%;margin:0 auto;border:3px solid rgba(0,0,0,.08)"></div>'
+                     :'<div class="em">'+c.em+'</div>';
+    d.innerHTML=vis+'<div class="w">'+c.w+'</div>';
+    d.onclick=()=>pickMatch(d);
+    grid.appendChild(d);
+  });
+  go('match');
+}
+function pickMatch(d){
+  if(d.classList.contains('done'))return;
+  if(!matchSel){matchSel=d;d.classList.add('sel');return;}
+  if(matchSel===d){d.classList.remove('sel');matchSel=null;return;}
+  if(matchSel.dataset.g===d.dataset.g){ // same gender - switch selection
+    matchSel.classList.remove('sel');matchSel=d;d.classList.add('sel');return;
+  }
+  // different genders: check same pair id
+  if(matchSel.dataset.id===d.dataset.id){
+    const a=matchSel,b=d;a.classList.add('done');b.classList.add('done');
+    matchSel=null;matchScore+=10;matchDone++;
+    document.getElementById('matchScore').textContent=matchScore;
+    document.getElementById('matchDone').textContent=matchDone;
+    burst(18);
+    if(matchDone>=matchTotal){setTimeout(()=>showResult(matchScore,matchTotal*10,()=>go('matchMenu')),700);}
+  }else{
+    const a=matchSel,b=d;a.classList.add('err');b.classList.add('err');
+    setTimeout(()=>{a.classList.remove('err','sel');b.classList.remove('err');},450);
+    matchSel=null;
+  }
+}
+
+/* ============================================================
+   هٰذا أَمْ هٰذِهِ؟
+   ============================================================ */
+let demList=[],demI=0,demScore=0,demStreak=0,demLock=false;
+function demPool(){
+  const p=[];
+  PAIRS.filter(x=>x.em||x.color).forEach(x=>{
+    const mv=x.color?{swatch:x.color}:{em:x.em};
+    const fv=x.color?{swatch:x.color}:{em:x.ef};
+    p.push({w:x.m,g:'m',...mv});p.push({w:x.f,g:'f',...fv});
+  });
+  OBJECTS.forEach(o=>p.push({w:o.w,g:o.g,em:o.em}));
+  return p;
+}
+function startDem(){
+  demList=shuffle(demPool()).slice(0,14);
+  demI=0;demScore=0;demStreak=0;demLock=false;
+  document.getElementById('demTot').textContent=demList.length;
+  document.getElementById('demBtnM').innerHTML='هٰذا<small>👦 مُذَكَّر</small>';
+  document.getElementById('demBtnF').innerHTML='هٰذِهِ<small>👧 مُؤَنَّث</small>';
+  go('dem');renderDem();
+}
+function renderDem(){
+  demLock=false;const it=demList[demI];
+  document.getElementById('demEm').innerHTML = it.swatch
+     ? '<div class="swatch" style="width:90px;height:90px;background:'+it.swatch+';border-radius:50%;margin:0 auto;border:5px solid rgba(0,0,0,.08)"></div>'
+     : it.em;
+  document.querySelector('#dem .qhint').innerHTML='… <b style="font-family:Baloo Bhaijaan 2">'+it.w+'</b>';
+  document.getElementById('demIdx').textContent=demI+1;
+  document.getElementById('demScore').textContent=demScore;
+  document.getElementById('demStreak').textContent=demStreak;
+  document.getElementById('demFb').textContent='';document.getElementById('demFb').className='feedback';
+  document.getElementById('demBar').style.width=(demI/demList.length*100)+'%';
+  document.querySelectorAll('#dem .choice').forEach(c=>c.classList.remove('dim','right','wrong'));
+}
+function answerDem(g,btn){
+  if(demLock)return;demLock=true;
+  const it=demList[demI];const fb=document.getElementById('demFb');
+  if(g===it.g){
+    demScore+=10;demStreak++;btn.classList.add('right');
+    fb.textContent=(g==='m'?'هٰذا '+it.w+' ✅':'هٰذِهِ '+it.w+' ✅');fb.className='feedback ok';
+    if(demStreak%4===0)burst(40);
+  }else{
+    demStreak=0;btn.classList.add('wrong');
+    fb.textContent='الصَّحيحُ: '+(it.g==='m'?'هٰذا 👦':'هٰذِهِ 👧');fb.className='feedback no';
+    document.querySelectorAll('#dem .choice').forEach(c=>{if(!c.classList.contains(it.g))c.classList.add('dim');});
+  }
+  document.getElementById('demScore').textContent=demScore;
+  document.getElementById('demStreak').textContent=demStreak;
+  setTimeout(()=>{demI++;if(demI>=demList.length)showResult(demScore,demList.length*10,startDem);else renderDem();},950);
+}
+
+/* ============================================================
+   التَّحَدّي الكَبير
+   ============================================================ */
+let quizList=[],quizI=0,quizScore=0,quizLife=3,quizLock=false;
+function quizPool(){
+  const p=[];
+  PAIRS.forEach(x=>{
+    p.push({w:x.m,g:'m',em:x.color?null:x.em,color:x.color});
+    p.push({w:x.f,g:'f',em:x.color?null:x.ef,color:x.color});
+  });
+  OBJECTS.forEach(o=>p.push({w:o.w,g:o.g,em:o.em}));
+  return p;
+}
+function startQuiz(){
+  quizList=shuffle(quizPool()).slice(0,10);
+  quizI=0;quizScore=0;quizLife=3;quizLock=false;
+  document.getElementById('quizBtnM').innerHTML='هٰذا<small>👦 مُذَكَّر</small>';
+  document.getElementById('quizBtnF').innerHTML='هٰذِهِ<small>👧 مُؤَنَّث</small>';
+  go('quiz');renderQuiz();
+}
+function renderQuiz(){
+  quizLock=false;const it=quizList[quizI];
+  document.getElementById('quizEm').innerHTML = it.color
+     ? '<div class="swatch" style="width:72px;height:72px;background:'+it.color+';border-radius:50%;margin:0 auto 4px;border:4px solid rgba(0,0,0,.08)"></div>'
+     : (it.em||'');
+  document.getElementById('quizWord').textContent=it.w;
+  document.getElementById('quizHint').textContent='مُذَكَّر (هٰذا) أَمْ مُؤَنَّث (هٰذِهِ)؟';
+  document.getElementById('quizIdx').textContent=quizI+1;
+  document.getElementById('quizScore').textContent=quizScore;
+  document.getElementById('quizLife').textContent=quizLife;
+  document.getElementById('quizFb').textContent='';document.getElementById('quizFb').className='feedback';
+  document.getElementById('quizBar').style.width=(quizI/10*100)+'%';
+  document.querySelectorAll('#quiz .choice').forEach(c=>c.classList.remove('dim','right','wrong'));
+}
+function answerQuiz(g,btn){
+  if(quizLock)return;quizLock=true;
+  const it=quizList[quizI];const fb=document.getElementById('quizFb');
+  if(g===it.g){
+    quizScore+=10;btn.classList.add('right');fb.textContent='صَحيح! ✅';fb.className='feedback ok';burst(14);
+  }else{
+    quizLife--;btn.classList.add('wrong');
+    fb.textContent='الصَّحيحُ: '+(it.g==='m'?'هٰذا':'هٰذِهِ');fb.className='feedback no';
+    document.querySelectorAll('#quiz .choice').forEach(c=>{if(!c.classList.contains(it.g))c.classList.add('dim');});
+  }
+  document.getElementById('quizScore').textContent=quizScore;
+  document.getElementById('quizLife').textContent=quizLife;
+  setTimeout(()=>{
+    if(quizLife<=0){showResult(quizScore,100,startQuiz,true);return;}
+    quizI++;
+    if(quizI>=quizList.length)showResult(quizScore,100,startQuiz);
+    else renderQuiz();
+  },950);
+}
+
+/* ============================================================
+   النتيجة
+   ============================================================ */
+function showResult(score,max,againFn,lost){
+  const pct=max?score/max:0;
+  let stars = pct>=.9?3 : pct>=.6?2 : pct>=.3?1 : 0;
+  let medal,title;
+  if(lost){medal='💪';title='حاوِلْ مِنْ جَديدٍ، أَنْتَ قَريبٌ!';stars=Math.max(stars,0);}
+  else if(pct>=.9){medal='🏆';title='بَطَلٌ! عَمَلٌ رائِعٌ!';}
+  else if(pct>=.6){medal='🥈';title='أَحْسَنْتَ! تَقَدُّمٌ جَميلٌ!';}
+  else if(pct>=.3){medal='🥉';title='جَيِّدٌ! تَدَرَّبْ أَكْثَرَ!';}
+  else{medal='🌱';title='بِدايَةٌ طَيِّبَةٌ، أَعِدِ المُحاوَلَةَ!';}
+  document.getElementById('resMedal').textContent=medal;
+  document.getElementById('resTitle').textContent=title;
+  document.getElementById('resStars').textContent='⭐'.repeat(stars)+'☆'.repeat(3-stars);
+  document.getElementById('resScore').textContent='نِقاطُكَ: '+score+' ⭐';
+  document.getElementById('resAgain').onclick=againFn;
+  go('result');
+  if(stars>=2)setTimeout(()=>burst(90),200);
+}
+
+/* ============================================================
+   بدء التشغيل
+   ============================================================ */
+buildCatbar();buildGallery();buildMatchMenu();
+document.getElementById('learn').addEventListener('transitionend',()=>{},{once:true});
+</script>
+</body>
+</html>

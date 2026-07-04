@@ -1,320 +1,563 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>الحروفُ الشّمسيّةُ والقمريّة · لُعبة تعليميّة</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --sun:#ff9d2e;      /* شمسيّة */
-    --sun-d:#e8841a;
-    --sun-soft:#fff1da;
-    --moon:#5b6bd6;     /* قمريّة */
-    --moon-d:#414fb0;
-    --moon-soft:#e6e9ff;
-    --ink:#2a2740;
-    --gold:#ffc94d;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{
-    font-family:'Tajawal',sans-serif;color:var(--ink);min-height:100vh;padding:18px;overflow-x:hidden;
-    background:
-      linear-gradient(160deg,#fff6e7 0%,#fff6e7 42%,#eef0ff 58%,#eef0ff 100%);
-  }
-  h1,h2,h3,.display{font-family:'Baloo Bhaijaan 2',cursive}
-  .wrap{max-width:940px;margin:0 auto}
-  header{text-align:center;padding:8px 0 4px}
-  h1{
-    font-size:clamp(1.8rem,6.2vw,3.1rem);line-height:1.12;
-    background:linear-gradient(90deg,var(--sun),var(--moon));
-    -webkit-background-clip:text;background-clip:text;color:transparent;
-    filter:drop-shadow(0 3px 0 rgba(0,0,0,.06));
-  }
-  .subtitle{font-size:1.05rem;color:#7a7290;margin-top:2px;font-weight:500}
-  .skyrow{display:flex;justify-content:center;gap:18px;font-size:2.2rem;margin:4px 0}
-  .skyrow .s{animation:spin 14s linear infinite;display:inline-block}
-  .skyrow .m{animation:float 4s ease-in-out infinite;display:inline-block}
+<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>الأحرف الشمسية والقمرية - المستوى 2 و3</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&family=Lalezar&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet"><style>
+:root{--one:#1f95a8;--two:#ef7d3b;--bg:#fff7ea;--ok:#2ecc71;--no:#e74c3c;--card:#fff;--shadow:0 8px 24px rgba(0,0,0,.08)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Baloo Bhaijaan 2',Tajawal,sans-serif;background:linear-gradient(135deg,#fef6e9 0%,#f0fafa 40%,#fff4ec 100%);min-height:100vh;color:#2b2440;overflow-x:hidden}
+.wrap{max-width:1000px;margin:auto;padding:20px 16px 60px}
+.screen{display:none}.active{display:block}
+.hero,.box{background:var(--card);border-radius:28px;padding:24px;box-shadow:var(--shadow);margin:14px 0}
+.hero{text-align:center;padding:32px 20px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-40px;right:-40px;width:120px;height:120px;border-radius:50%;background:rgba(31,149,168,.1)}
+.hero::after{content:'';position:absolute;bottom:-30px;left:-30px;width:100px;height:100px;border-radius:50%;background:rgba(239,125,59,.1)}
+.hero h1{font-family:Lalezar;font-size:52px;margin-bottom:4px;position:relative}
+.hero .lvl{font-size:20px;color:var(--two);font-weight:700;position:relative}
+.menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+.btn{border:none;background:linear-gradient(145deg,var(--one),#137384);color:#fff;padding:18px 12px;border-radius:20px;font-size:20px;cursor:pointer;font-family:inherit;font-weight:700;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(31,149,168,.3)}
+.btn:active{transform:scale(.97)}
+.btn2{background:linear-gradient(145deg,var(--two),#cf5f1f)}
+.btn2:hover{box-shadow:0 6px 18px rgba(239,125,59,.3)}
+.home{position:fixed;left:12px;top:12px;z-index:99;width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;padding:0;box-shadow:0 4px 12px rgba(0,0,0,.15)}
+.back{position:absolute;right:16px;top:16px;background:rgba(31,149,168,.1);color:var(--one);border:none;width:40px;height:40px;border-radius:50%;font-size:20px;cursor:pointer;font-family:inherit}
+.back:hover{background:rgba(31,149,168,.2)}
+h2{font-family:Lalezar;font-size:30px;color:var(--one);margin-bottom:12px}
+h3{font-family:Lalezar;font-size:24px;color:var(--two);margin:16px 0 8px}
+.box ul{list-style:none;padding:0}
+.box ul li{padding:8px 0;padding-right:28px;position:relative;font-size:18px;line-height:1.8}
+.box ul li::before{content:'●';position:absolute;right:0;color:var(--one);font-size:10px;top:14px}
+.letters-grid{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:16px 0}
+.letter-chip{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800;font-family:Lalezar;cursor:default;transition:transform .2s}
+.letter-chip:hover{transform:scale(1.12)}
+.sun-chip{background:linear-gradient(145deg,#ffe066,#ffb300);color:#5d4037;box-shadow:0 3px 10px rgba(255,179,0,.3)}
+.moon-chip{background:linear-gradient(145deg,#b3e5fc,#4fc3f7);color:#01579b;box-shadow:0 3px 10px rgba(79,195,247,.3)}
+.example-row{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.example-tag{padding:6px 16px;border-radius:12px;font-size:17px;font-weight:700}
+.sun-tag{background:rgba(255,179,0,.15);color:#e65100;border:2px solid rgba(255,179,0,.4)}
+.moon-tag{background:rgba(79,195,247,.15);color:#01579b;border:2px solid rgba(79,195,247,.4)}
+.rule-box{background:linear-gradient(135deg,rgba(31,149,168,.06),rgba(239,125,59,.06));border-radius:18px;padding:16px 20px;margin:12px 0;border-right:5px solid var(--one);font-size:18px;line-height:2}
+.rule-box.moon{border-right-color:var(--two)}
+.highlight{color:var(--one);font-weight:800}
+.highlight2{color:var(--two);font-weight:800}
+.compare-table{width:100%;border-collapse:separate;border-spacing:0 6px;margin:12px 0}
+.compare-table th{padding:10px;font-family:Lalezar;font-size:20px;color:#fff;border-radius:14px}
+.compare-table th.sun-h{background:linear-gradient(145deg,#ffb300,#ff8f00)}
+.compare-table th.moon-h{background:linear-gradient(145deg,#4fc3f7,#0288d1)}
+.compare-table td{padding:12px 16px;font-size:18px;font-weight:700;text-align:center}
+.compare-table tr td:first-child{border-radius:0 14px 14px 0;background:rgba(0,0,0,.03)}
+.compare-table tr td:last-child{border-radius:14px 0 0 14px;background:rgba(0,0,0,.03)}
+.sun-txt{color:#e65100}.moon-txt{color:#01579b}
+.score{text-align:center;font-size:24px;color:var(--one);font-weight:800;margin-bottom:8px}
+.q{font-size:30px;text-align:center;margin:12px 0;line-height:1.6}
+.choices button{width:100%;margin:8px 0;padding:14px;border:none;border-radius:16px;background:var(--two);color:#fff;font-size:21px;font-family:inherit;font-weight:700;cursor:pointer;transition:transform .12s,opacity .12s}
+.choices button:hover{transform:scale(1.02)}
+.choices button.correct{background:var(--ok)!important;transform:scale(1.03)}
+.choices button.wrong{background:var(--no)!important;opacity:.7}
+.drag-zone{min-height:80px;border:3px dashed rgba(31,149,168,.3);border-radius:18px;padding:12px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:8px 0;transition:border-color .2s}
+.drag-zone.over{border-color:var(--one);background:rgba(31,149,168,.05)}
+.drag-word{padding:10px 20px;border-radius:14px;font-size:20px;font-weight:700;cursor:grab;user-select:none;transition:transform .15s,box-shadow .15s}
+.drag-word:active{cursor:grabbing;transform:scale(1.05);box-shadow:0 4px 12px rgba(0,0,0,.15)}
+.drag-word.sun-w{background:linear-gradient(145deg,#ffe066,#ffb300);color:#5d4037}
+.drag-word.moon-w{background:linear-gradient(145deg,#b3e5fc,#4fc3f7);color:#01579b}
+.drag-word.placed{opacity:.4;pointer-events:none}
+.zone-label{font-family:Lalezar;font-size:20px;text-align:center;margin-bottom:4px}
+.progress-bar{height:8px;border-radius:4px;background:rgba(0,0,0,.06);margin:12px 0;overflow:hidden}
+.progress-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--one),var(--two));transition:width .3s}
+.result-box{text-align:center;padding:32px 20px}
+.result-box .big-score{font-family:Lalezar;font-size:72px;color:var(--one)}
+.result-box .msg{font-size:22px;margin:8px 0 20px;color:#555}
+.result-box .star{font-size:48px;margin:0 4px}
+.tabs{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.tab-btn{padding:10px 24px;border:none;border-radius:14px;font-size:18px;font-family:inherit;font-weight:700;cursor:pointer;background:rgba(31,149,168,.1);color:var(--one);transition:all .2s}
+.tab-btn.active{background:var(--one);color:#fff}
+.tab-content{display:none}.tab-content.active{display:block}
+.tip{background:rgba(239,125,59,.08);border-radius:14px;padding:14px 18px;margin:12px 0;font-size:17px;line-height:1.9;border-right:4px solid var(--two)}
+.wrong-list{text-align:right;font-size:17px;color:var(--no);margin:12px 0;padding:12px;background:rgba(231,76,60,.06);border-radius:14px}
+.fill-input{direction:rtl;text-align:center;font-size:28px;font-family:Lalezar;width:80px;padding:8px;border:3px solid rgba(31,149,168,.3);border-radius:14px;outline:none;transition:border-color .2s}
+.fill-input:focus{border-color:var(--one)}
+.fill-row{display:flex;align-items:center;justify-content:center;gap:8px;font-size:28px;font-family:Lalezar;margin:12px 0;flex-wrap:wrap}
+@media(max-width:600px){
+.hero h1{font-size:38px}
+.menu{grid-template-columns:1fr 1fr}
+.letter-chip{width:42px;height:42px;font-size:22px}
+.q{font-size:24px}
+.btn{font-size:17px;padding:14px 8px}
+}
 
-  .score{display:flex;justify-content:center;align-items:center;gap:8px;background:#fff;border:3px solid var(--gold);
-    border-radius:50px;width:max-content;margin:10px auto 4px;padding:7px 20px;font-weight:800;font-family:'Baloo Bhaijaan 2';box-shadow:0 6px 0 #f0d28a}
-  nav.tabs{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:16px 0}
-  .tab{font-family:'Baloo Bhaijaan 2';font-size:1.02rem;cursor:pointer;border:none;border-radius:16px;padding:11px 18px;
-    background:#fff;color:var(--ink);box-shadow:0 5px 0 #e3ddf0;transition:.15s;font-weight:700}
-  .tab:hover{transform:translateY(-2px)}.tab.active{background:var(--ink);color:#fff;box-shadow:0 5px 0 #161430}
-  .panel{display:none;animation:fade .35s ease}.panel.show{display:block}
-
-  /* لوحة التعلّم: شمس وقمر */
-  .duo{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-  .sky{border-radius:26px;padding:20px;color:#fff;position:relative;overflow:hidden;box-shadow:0 12px 26px rgba(80,60,30,.16)}
-  .sky.sun{background:radial-gradient(circle at 30% 25%,#ffd27a,#ff9d2e 70%)}
-  .sky.moon{background:radial-gradient(circle at 70% 25%,#8a97ee,#414fb0 75%)}
-  .sky h3{font-size:1.5rem;text-align:center}
-  .sky .badge{font-size:2.4rem;text-align:center;display:block;margin-bottom:2px}
-  .rule{background:rgba(255,255,255,.22);border-radius:16px;padding:10px 12px;margin:10px 0;font-weight:600;text-align:center;backdrop-filter:blur(2px)}
-  .demoword{font-family:'Baloo Bhaijaan 2';font-size:1.9rem;text-align:center;margin:6px 0}
-  .demoword .x{opacity:.45;text-decoration:line-through}
-  .demoword .shd{color:#fff7e0}
-  .letters{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:8px}
-  .lt{background:rgba(255,255,255,.9);color:var(--ink);width:34px;height:34px;border-radius:9px;display:grid;place-items:center;font-family:'Baloo Bhaijaan 2';font-size:1.1rem}
-  .sky .speak{margin:10px auto 0;display:block;background:#fff;color:var(--ink);border:none;border-radius:13px;padding:8px 16px;font-family:'Baloo Bhaijaan 2';cursor:pointer;box-shadow:0 4px 0 rgba(0,0,0,.18)}
-  .sky .speak:active{transform:translateY(2px)}
-  .note{background:#fff4dd;border:2px dashed var(--gold);border-radius:18px;padding:14px 18px;margin-top:16px;color:#8a6d2c;font-weight:600;text-align:center;line-height:1.9}
-  .center{text-align:center}
-  .btn{font-family:'Baloo Bhaijaan 2';border:none;border-radius:16px;padding:13px 26px;font-size:1.1rem;cursor:pointer;
-    background:var(--sun);color:#fff;box-shadow:0 6px 0 var(--sun-d);margin-top:14px}
-  .btn:active{transform:translateY(3px);box-shadow:0 3px 0 var(--sun-d)}
-  .btn.alt{background:var(--moon);box-shadow:0 6px 0 var(--moon-d)}
-
-  /* ساحة اللعب المشتركة */
-  .game-head{text-align:center;margin-bottom:12px}.game-head h2{font-size:1.6rem}.game-head p{color:#7a7290;font-weight:500}
-  .progress-row{display:flex;justify-content:center;gap:6px;margin:6px 0}
-  .dot{width:13px;height:13px;border-radius:50%;background:#e3ddf0}.dot.done{background:var(--gold)}.dot.miss{background:#f2a3a3}
-  .word-stage{display:flex;justify-content:center;min-height:118px;align-items:center;flex-direction:column;gap:6px}
-  .big-word{font-family:'Baloo Bhaijaan 2';font-size:2.9rem;background:#fff;border-radius:22px;padding:12px 36px;box-shadow:0 10px 0 #e6dff3;animation:drop .4s ease}
-  .ask{color:#7a7290;font-weight:600}
-  .bins{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
-  .bin{border:none;border-radius:22px;padding:20px 8px;cursor:pointer;color:#fff;font-family:'Baloo Bhaijaan 2';font-size:1.3rem;box-shadow:0 7px 0 var(--d);transition:.12s}
-  .bin small{display:block;font-family:'Tajawal';font-weight:600;font-size:.85rem;opacity:.95;margin-top:3px}
-  .bin:hover{transform:translateY(-3px)}.bin:active{transform:translateY(3px);box-shadow:0 4px 0 var(--d)}
-  .bin.sun{background:var(--sun);--d:var(--sun-d)}.bin.moon{background:var(--moon);--d:var(--moon-d)}
-  .bin.flash-ok{animation:okShake .5s}.bin.flash-no{animation:noShake .5s}
-  .feedback{text-align:center;font-family:'Baloo Bhaijaan 2';font-size:1.2rem;min-height:36px;margin-top:14px}
-
-  .result{text-align:center;background:#fff;border-radius:26px;padding:30px;box-shadow:0 12px 30px rgba(80,60,30,.16);margin-top:10px}
-  .result .big{font-size:3rem}.result h2{font-size:2rem;margin:6px 0;color:var(--sun-d)}
-  footer{text-align:center;color:#a99cc4;font-size:.85rem;margin:24px 0 6px;font-weight:500}
-
-  @keyframes spin{to{transform:rotate(360deg)}}
-  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
-  @keyframes drop{0%{transform:translateY(-30px) scale(.8);opacity:0}100%{transform:translateY(0) scale(1);opacity:1}}
-  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-  @keyframes okShake{0%,100%{transform:none}25%{transform:scale(1.06)}}
-  @keyframes noShake{0%,100%{transform:none}20%{transform:translateX(-6px)}60%{transform:translateX(6px)}}
-  @keyframes pop{0%{transform:scale(0)}70%{transform:scale(1.3)}100%{transform:scale(1)}}
-  .star{font-size:1.3rem}
-  .confetti{position:fixed;top:-14px;width:11px;height:16px;z-index:60;pointer-events:none;border-radius:2px}
-  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-  @media(max-width:560px){.duo{grid-template-columns:1fr}.big-word{font-size:2.2rem;padding:12px 26px}}
-</style>
-</head>
-<body>
+/* ===== consistency layer: match "مُفْرَد … مُثَنّى" vibe & animations ===== */
+:root{--line:#efe7d8;--one-deep:#137384;--two-deep:#cf5f1f;--sun:#ffc84b;--leaf:#7bc47f;--hard:0 10px 0 rgba(0,0,0,.08)}
+body{background:radial-gradient(circle at 12% 8%,#fff6dd 0 14%,transparent 14.2%),radial-gradient(circle at 88% 6%,#ffe3d4 0 12%,transparent 12.2%),linear-gradient(180deg,#fef6e9 0%,#f3fbfb 60%,#fff4ec 100%)}
+.wrap{max-width:940px}
+/* screen entrance */
+.screen{animation:pop .4s ease both}
+@keyframes pop{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+/* topbar (matches reference) */
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+.topbar .brand{font-family:'Lalezar',cursive;font-size:1.5rem;color:var(--two-deep)}
+.topbar .brand b{color:var(--one-deep)}
+.topbar .badge{font-family:'Tajawal';font-weight:800;font-size:.85rem;background:var(--leaf);color:#fff;padding:3px 12px;border-radius:999px}
+.topbar .homebtn{border:none;background:#fff;border:3px solid var(--line);border-radius:16px;font-family:'Tajawal';font-weight:800;font-size:1rem;padding:8px 16px;cursor:pointer;color:#2b2440;box-shadow:var(--hard);transition:transform .12s}
+.topbar .homebtn:active{transform:translateY(3px);box-shadow:0 4px 0 rgba(0,0,0,.08)}
+/* hero upgraded to reference look */
+.hero{background:linear-gradient(160deg,#ffffff,#fffaf0);border:4px solid #fff;border-radius:34px;box-shadow:0 18px 0 rgba(0,0,0,.06),inset 0 0 0 3px var(--line);padding:26px 22px 30px}
+.hero h1{font-family:'Lalezar',cursive;font-size:clamp(2rem,7vw,3rem);line-height:1.1}
+.mascots{font-size:clamp(2.4rem,10vw,4rem);margin-top:6px}
+.mascots span{display:inline-block;animation:bob 2.4s ease-in-out infinite}
+.mascots .d{animation-delay:.4s}
+@keyframes bob{50%{transform:translateY(-10px)}}
+.pill{display:inline-block;font-family:'Baloo Bhaijaan 2';font-weight:800;padding:4px 16px;border-radius:999px;font-size:1.1rem;margin:2px}
+.pill.one{background:#dff3f5;color:var(--one-deep)}
+.pill.two{background:#ffe9da;color:var(--two-deep)}
+/* menu cards get the chunky "hard shadow" press feel */
+.btn{box-shadow:var(--hard);border-radius:22px}
+.btn:active{transform:translateY(4px);box-shadow:0 4px 0 rgba(0,0,0,.12)}
+/* answer feedback animations (attach to existing JS classes — no JS change) */
+.choices button.correct{animation:goodshake .5s}
+.choices button.wrong{animation:badshake .4s}
+@keyframes goodshake{0%,100%{transform:none}30%{transform:scale(1.08)}60%{transform:scale(.96)}}
+@keyframes badshake{0%,100%{transform:none}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;transition-duration:.05ms!important}}
+</style></head><body>
+<button class="btn home" onclick="goHome()">🏠</button>
 <div class="wrap">
-  <header>
-    <div class="skyrow"><span class="s">☀️</span><span class="m">🌙</span></div>
-    <h1>الحروفُ الشّمسيّةُ والقمريّة</h1>
-    <p class="subtitle">متى تُلفَظُ لامُ «الـ» ومتى تختفي؟ هيّا نكتشفْ!</p>
-  </header>
 
-  <div class="score"><span>نُجومي:</span><span id="starCount">0</span><span class="star">⭐</span></div>
+<!-- ===== الشاشة الرئيسية ===== -->
+<section id="home" class="screen active">
+<div class="topbar">
+<div class="brand">الأحرف <b>الشَّمسيَّة</b> والقَمَريَّة <span class="badge">مُسْتَوى مُبْتَدِئ</span></div>
+</div>
+<div class="hero">
+<div class="mascots"><span>☀️</span> <span class="d">🌙</span></div>
+<h1>الأحرف الشمسيّة والقمرية</h1>
+<p class="lvl">المستوى 2 و 3</p>
+<div style="margin-top:8px">
+<span class="pill one">☀️ شمسيّة = تُدغَم</span>
+<span class="pill two">🌙 قمريّة = تُنطَق</span>
+</div>
+</div>
+<div class="menu">
+<button class="btn" onclick="show('learn')">📚 أتعلم</button>
+<button class="btn btn2" onclick="startClassify()">🗂️ صنّف الكلمات</button>
+<button class="btn" onclick="startType()">🔤 شمسية أم قمرية</button>
+<button class="btn btn2" onclick="startPronounce()">🗣️ النطق الصحيح</button>
+<button class="btn" onclick="startFill()">✍️ أكمِل بالناقص</button>
+<button class="btn btn2" onclick="startDrag()">🎯 السحب والإفلات</button>
+<button class="btn" onclick="startQuiz()">🏆 التحدي الكبير</button>
+</div>
+</section>
 
-  <nav class="tabs">
-    <button class="tab active" data-p="learn">📚 أتعلّم</button>
-    <button class="tab" data-p="letters">🔤 فرزُ الحروف</button>
-    <button class="tab" data-p="words">🗣️ هل تُلفَظُ اللام؟</button>
-    <button class="tab" data-p="quiz">🏆 التّحدّي</button>
-  </nav>
+<!-- ===== شاشة التعلم ===== -->
+<section id="learn" class="screen">
+<button class="back" onclick="goHome()">→</button>
+<div class="box">
+<h2>ما هي أل الشمسيّة وأل القمرية؟</h2>
+<div class="rule-box">
+عندما يأتي حرف <span class="highlight">ألـ</span> التعريف قبل الكلمة، نتعرّف على نوعها من خلال <span class="highlight">الحرف الأول</span> من الكلمة التي تلي ألـ.
+</div>
 
-  <!-- أتعلّم -->
-  <section class="panel show" id="learn">
-    <div class="duo">
-      <div class="sky sun">
-        <span class="badge">☀️</span>
-        <h3>الحروفُ الشّمسيّة</h3>
-        <div class="rule">اللامُ <b>لا تُلفَظ</b>، والحرفُ بعدَها يُشدَّدُ ( ّ )</div>
-        <div class="demoword">ال<span class="x">ـ</span><span class="shd">شّ</span>مس → اَشّْمس</div>
-        <div class="letters" id="sunLetters"></div>
-        <button class="speak" data-say="الشَّمس. التِّلفزيون. الدّجاجة. اللامُ لا تُلفظ.">🔊 استمعْ</button>
-      </div>
-      <div class="sky moon">
-        <span class="badge">🌙</span>
-        <h3>الحروفُ القمريّة</h3>
-        <div class="rule">اللامُ <b>تُلفَظ</b> واضحةً ساكنةً ( اَلْ )</div>
-        <div class="demoword">اَلْقَمَر → اَلْقَمَر</div>
-        <div class="letters" id="moonLetters"></div>
-        <button class="speak" data-say="القَمَر. الكِتاب. البَيت. اللامُ تُلفظ.">🔊 استمعْ</button>
-      </div>
-    </div>
-    <div class="note">
-      🔑 <b>حيلةٌ سحريّة:</b> ضعْ يدَك على فمِك وانطقِ الكلمة.
-      إنْ شعرتَ بـ«الـ» واضحةً فالحرفُ <b style="color:var(--moon)">قمريّ</b> 🌙،
-      وإنِ اختفتِ اللامُ وشُدِّدَ الحرفُ فهو <b style="color:var(--sun-d)">شمسيّ</b> ☀️.<br>
-      📝 جملةُ الحروفِ القمريّة لتحفظَها: «<b>اِبْغِ حَجَّكَ وَخَفْ عَقيمَهُ</b>».
-    </div>
-    <div class="center"><button class="btn" onclick="go('letters')">هيّا نلعبْ! 🔤</button></div>
-  </section>
+<div class="tabs">
+<button class="tab-btn active" onclick="switchTab('sun-tab',this)">☀️ الشمسيّة</button>
+<button class="tab-btn" onclick="switchTab('moon-tab',this)">🌙 القمرية</button>
+<button class="tab-btn" onclick="switchTab('compare-tab',this)">⚖️ المقارنة</button>
+</div>
 
-  <!-- فرز الحروف -->
-  <section class="panel" id="letters">
-    <div class="game-head"><h2>أينَ يسكُنُ هذا الحرف؟ 🔤</h2><p>هل هو حرفٌ شمسيٌّ أم قمريّ؟ اضغطِ الصندوقَ الصحيح.</p></div>
-    <div class="progress-row" id="lDots"></div>
-    <div class="word-stage"><div class="big-word" id="lWord">…</div><div class="ask">انظرْ كيف تُنطَقُ «الـ» مع هذا الحرف</div></div>
-    <div class="feedback" id="lFb">&nbsp;</div>
-    <div class="bins">
-      <button class="bin sun" data-k="sun">☀️ شمسيّ<small>اللام لا تُلفظ + شدّة</small></button>
-      <button class="bin moon" data-k="moon">🌙 قمريّ<small>اللام تُلفظ</small></button>
-    </div>
-  </section>
+<div id="sun-tab" class="tab-content active">
+<h3>أل الشمسيّة (١٤ حرفًا)</h3>
+<div class="rule-box">
+إذا كان الحرف الذي يلي ألـ من الحروف الشمسيّة، فإن <span class="highlight">لام أل تُدمج مع الحرف الذي بعدها</span> ويُنطق الحرف مشددًا. ولا تُكتب همزة وصل.
+</div>
+<p style="text-align:center;font-size:18px;margin:8px 0;color:#888">تُذكَر بجملة: <strong>طَبَثَ صِمَ دَقْ رَزْ سَلَ نَ</strong></p>
+<div class="letters-grid" id="sun-letters"></div>
+<h3>أمثلة على الكلمات الشمسية</h3>
+<div class="example-row">
+<span class="example-tag sun-tag">الشَّمْس</span>
+<span class="example-tag sun-tag">التُّفَّاح</span>
+<span class="example-tag sun-tag">النَّار</span>
+<span class="example-tag sun-tag">الرَّجُل</span>
+<span class="example-tag sun-tag">اللَّيْل</span>
+<span class="example-tag sun-tag">السَّمَاء</span>
+<span class="example-tag sun-tag">الطَّائِر</span>
+<span class="example-tag sun-tag">الذَّهَب</span>
+</div>
+<div class="tip">
+💡 لاحظ: في <strong>الشَّمْس</strong> ننطقها هكذا: أَشْ شَمْس — اللام اختفت والشين صارت مشدّدة!
+</div>
+</div>
 
-  <!-- هل تُلفظ اللام -->
-  <section class="panel" id="words">
-    <div class="game-head"><h2>هل تُلفَظُ اللامُ؟ 🗣️</h2><p>اقرأِ الكلمة بصوتٍ هادئ، ثمّ قرّرْ.</p></div>
-    <div class="progress-row" id="wDots"></div>
-    <button class="btn alt" style="display:block;margin:0 auto" id="wPlay">🔊 استمعْ إلى الكلمة</button>
-    <div class="word-stage"><div class="big-word" id="wWord">…</div></div>
-    <div class="feedback" id="wFb">&nbsp;</div>
-    <div class="bins">
-      <button class="bin sun" data-k="sun">☀️ شمسيّة<small>اللام لا تُلفظ</small></button>
-      <button class="bin moon" data-k="moon">🌙 قمريّة<small>اللام تُلفظ</small></button>
-    </div>
-  </section>
+<div id="moon-tab" class="tab-content">
+<h3>أل القمرية (١٤ حرفًا)</h3>
+<div class="rule-box moon">
+إذا كان الحرف الذي يلي ألـ من الحروف القمرية، فإن <span class="highlight2">لام أل تُنطق بشكل واضح</span> وهمزة الوصل تُلفظ همزة قطع في بداية الكلام.
+</div>
+<p style="text-align:center;font-size:18px;margin:8px 0;color:#888">تُذكَر بجملة: <strong>عَغْ خَ حَ جْ بَ أَ كْ فَ قْ مَ هـ وَ يَ</strong></p>
+<div class="letters-grid" id="moon-letters"></div>
+<h3>أمثلة على الكلمات القمرية</h3>
+<div class="example-row">
+<span class="example-tag moon-tag">القَمَر</span>
+<span class="example-tag moon-tag">الكِتَاب</span>
+<span class="example-tag moon-tag">البَيْت</span>
+<span class="example-tag moon-tag">الجَمَل</span>
+<span class="example-tag moon-tag">الهِلال</span>
+<span class="example-tag moon-tag">العِلْم</span>
+<span class="example-tag moon-tag">الوَرْدَة</span>
+<span class="example-tag moon-tag">اليَد</span>
+</div>
+<div class="tip">
+💡 لاحظ: في <strong>القَمَر</strong> ننطقها هكذا: أَلْ قَمَر — اللام واضحة ومسموعة!
+</div>
+</div>
 
-  <!-- التحدي -->
-  <section class="panel" id="quiz">
-    <div class="game-head"><h2>تحدّي البطل 🏆</h2><p>كلماتٌ من كتابك… صنّفْها بسرعة!</p></div>
-    <div class="progress-row" id="qDots"></div>
-    <div class="word-stage"><div class="big-word" id="qWord">…</div></div>
-    <div class="feedback" id="qFb">&nbsp;</div>
-    <div class="bins">
-      <button class="bin sun" data-k="sun">☀️ شمسيّة</button>
-      <button class="bin moon" data-k="moon">🌙 قمريّة</button>
-    </div>
-    <div id="qEnd"></div>
-  </section>
+<div id="compare-tab" class="tab-content">
+<h3>جدول المقارنة</h3>
+<table class="compare-table">
+<tr><th class="sun-h">☀️ شمسية</th><th class="moon-h">🌙 قمرية</th></tr>
+<tr><td class="sun-txt">الشَّمْس ← أَشْ شَمْس</td><td class="moon-txt">القَمَر ← أَلْ قَمَر</td></tr>
+<tr><td class="sun-txt">النَّجْم ← أَنْ نَجْم</td><td class="moon-txt">الكَوْكَب ← أَلْ كَوْكَب</td></tr>
+<tr><td class="sun-txt">التُّفَّاح ← أَتْ تُفَّاح</td><td class="moon-txt">المَسْجِد ← أَلْ مَسْجِد</td></tr>
+<tr><td class="sun-txt">الرَّجُل ← أَرْ رَجُل</td><td class="moon-txt">المَرْأَة ← أَلْ مَرْأَة</td></tr>
+<tr><td class="sun-txt">اللَّيْل ← أَلْ لَيْل</td><td class="moon-txt">الفَجْر ← أَلْ فَجْر</td></tr>
+</table>
+<div class="rule-box">
+⚠️ انتبه! كلمة <strong>التَّمْر</strong> تبدأ بتاء، والتاء حرف شمسي، لذا ننطقها <span class="highlight">أَتْ تَمْر</span> وليس أَلْ تَمْر!
+</div>
+<div class="rule-box moon">
+💡 حرف <strong>الألف</strong> دائمًا قمري: الأرْنَب، الإنسان، الأَسَد
+</div>
+</div>
+</div>
 
-  <footer>يصلحُ هذا الموقعُ لدرسِ الإملاءِ والقواعدِ معًا ✦ اضغطْ 🔊 لتسمعَ الفرق</footer>
+<div class="box" style="margin-top:14px">
+<h2>📋 ملخص سريع</h2>
+<div class="rule-box">
+<strong>الشمسية:</strong> لام أل تختفي في النطق ← الحرف التالي يُشدَّد<br>
+<strong>القمرية:</strong> لام أل تُنطق بوضوح ← الحرف التالي ساكن عادي
+</div>
+<div class="tip">
+🌟 طريقة سهلة للتذكر: الحروف الشمسية هي التي تخرج من <strong>نفس مخرج اللام تقريبًا</strong> فتندمج معها، أما القمرية فتخرج من مخارج بعيدة عن اللام فتبقى واضحة.
+</div>
+</div>
+</section>
+
+<!-- ===== شاشة الألعاب ===== -->
+<section id="game" class="screen">
+<button class="back" onclick="goHome()">→</button>
+<div class="box">
+<div class="score" id="score"></div>
+<div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+<div class="q" id="q"></div>
+<div id="answers" class="choices"></div>
+<div id="wrong-list" class="wrong-list" style="display:none"></div>
+</div>
+</section>
+
+<!-- ===== شاشة السحب والإفلات ===== -->
+<section id="drag-screen" class="screen">
+<button class="back" onclick="goHome()">→</button>
+<div class="box">
+<div class="score" id="drag-score"></div>
+<p class="zone-label">☀️ الشمسية</p>
+<div class="drag-zone" id="sun-zone" ondragover="allowDrop(event)" ondrop="drop(event,'sun')"></div>
+<p class="zone-label">🌙 القمرية</p>
+<div class="drag-zone" id="moon-zone" ondragover="allowDrop(event)" ondrop="drop(event,'moon')"></div>
+<hr style="border:none;border-top:2px dashed rgba(0,0,0,.08);margin:16px 0">
+<p class="zone-label" style="color:#888">📌 اسحب الكلمات إلى المكان الصحيح</p>
+<div id="drag-words" style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:12px 0"></div>
+</div>
+</section>
+
+<!-- ===== شاشة النتيجة ===== -->
+<section id="result" class="screen">
+<button class="back" onclick="goHome()">→</button>
+<div class="box result-box">
+<div id="result-stars"></div>
+<div class="big-score" id="final-score"></div>
+<div class="msg" id="result-msg"></div>
+<div id="result-wrong" class="wrong-list" style="display:none"></div>
+<button class="btn" onclick="goHome()" style="margin-top:12px">🏠 العودة للقائمة</button>
+</div>
+</section>
+
 </div>
 
 <script>
-/* أصوات */
-let AC;
-function tone(f,d,t='sine',v=.2){try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();
-  const o=AC.createOscillator(),g=AC.createGain();o.type=t;o.frequency.value=f;o.connect(g);g.connect(AC.destination);
-  g.gain.setValueAtTime(v,AC.currentTime);g.gain.exponentialRampToValueAtTime(.001,AC.currentTime+d);o.start();o.stop(AC.currentTime+d);}catch(e){}}
-const okSound=()=>{tone(660,.12,'triangle');setTimeout(()=>tone(880,.18,'triangle'),110);};
-const noSound=()=>tone(200,.22,'sawtooth',.15);
-function say(t){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='ar';u.rate=.82;speechSynthesis.speak(u);}catch(e){}}
+/* ========== أدوات عامة ========== */
+const SUN = ['ت','ث','د','ذ','ر','ز','س','ش','ص','ض','ط','ظ','ل','ن'];
+const MOON = ['أ','ب','ج','ح','خ','ع','غ','ف','ق','ك','م','هـ','و','ي'];
 
-let stars=0;
-function addStar(n=1){stars+=n;document.getElementById('starCount').textContent=stars;
-  const s=document.querySelector('.score .star');s.style.animation='none';void s.offsetWidth;s.style.animation='pop .4s ease';}
+function isSun(word){
+  const w = word.replace(/^ال/,'');
+  return SUN.includes(w[0]);
+}
 
-const tabs=[...document.querySelectorAll('.tab')];
-function go(p){tabs.forEach(t=>t.classList.toggle('active',t.dataset.p===p));
-  document.querySelectorAll('.panel').forEach(s=>s.classList.toggle('show',s.id===p));
-  if(p==='letters')startLetters();if(p==='words')startWords();if(p==='quiz')startQuiz();
-  window.scrollTo({top:0,behavior:'smooth'});}
-tabs.forEach(t=>t.addEventListener('click',()=>go(t.dataset.p)));
-document.querySelectorAll('.speak').forEach(b=>b.addEventListener('click',()=>say(b.dataset.say)));
+function show(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+function goHome(){show('home')}
 
-const shuffle=a=>a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(p=>p[1]);
+function switchTab(tabId,btn){
+  document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(tabId).classList.add('active');
+  btn.classList.add('active');
+}
 
-/* الحروف */
-const SUN=['ت','ث','د','ذ','ر','ز','س','ش','ص','ض','ط','ظ','ل','ن'];
-const MOON=['ء','ب','ج','ح','خ','ع','غ','ف','ق','ك','م','ه','و','ي'];
-document.getElementById('sunLetters').innerHTML=SUN.map(l=>'<span class="lt">'+l+'</span>').join('');
-document.getElementById('moonLetters').innerHTML=MOON.map(l=>'<span class="lt">'+l+'</span>').join('');
+/* ========== بناء حروف التعلم ========== */
+(function buildLetters(){
+  const sg = document.getElementById('sun-letters');
+  SUN.forEach(l=>{const d=document.createElement('div');d.className='letter-chip sun-chip';d.innerText=l;sg.appendChild(d)});
+  const mg = document.getElementById('moon-letters');
+  MOON.forEach(l=>{const d=document.createElement('div');d.className='letter-chip moon-chip';d.innerText=l;mg.appendChild(d)});
+})();
 
-/* كلمات من كتاب الطالب + إضافات */
-const WORDS=[
-  {w:'الشَّمس',k:'sun',say:'أَشّْمس'},{w:'التِّلفزيون',k:'sun',say:'أَتّلفزيون'},
-  {w:'الدّجاجة',k:'sun',say:'أَدّجاجة'},{w:'النّهاية',k:'sun',say:'أَنّهاية'},
-  {w:'الرّفاق',k:'sun',say:'أَرّفاق'},{w:'الذّكيّة',k:'sun',say:'أَذّكيّة'},
-  {w:'اللّوحة',k:'sun',say:'أَلّوحة'},{w:'الصّمت',k:'sun',say:'أَصّمت'},
-  {w:'القَمَر',k:'moon',say:'أَلْقَمَر'},{w:'الكِتاب',k:'moon',say:'أَلْكِتاب'},
-  {w:'البَيت',k:'moon',say:'أَلْبَيت'},{w:'المَطبخ',k:'moon',say:'أَلْمَطبخ'},
-  {w:'الجَدّ',k:'moon',say:'أَلْجَدّ'},{w:'القالَب',k:'moon',say:'أَلْقالَب'},
-  {w:'الوَلَد',k:'moon',say:'أَلْوَلَد'},{w:'الغَسيل',k:'moon',say:'أَلْغَسيل'}
+/* ========== محرك الاختيارات ========== */
+let gScore=0, gData=[], gIndex=0, gWrong=[];
+
+function renderQ(){
+  show('game');
+  if(gIndex >= gData.length){showResult();return}
+  const x = gData[gIndex];
+  document.getElementById('score').innerText = '⭐ ' + gScore;
+  document.getElementById('progress').style.width = ((gIndex/gData.length)*100)+'%';
+  document.getElementById('q').innerHTML = x.q;
+  const a = document.getElementById('answers');
+  a.innerHTML = '';
+  document.getElementById('wrong-list').style.display = 'none';
+  x.a.forEach(v=>{
+    const b = document.createElement('button');
+    b.innerText = v;
+    b.onclick = ()=> checkAns(b, v, x.c, x.explain);
+    a.appendChild(b);
+  });
+}
+
+function checkAns(btn, picked, correct, explain){
+  const btns = document.querySelectorAll('.choices button');
+  btns.forEach(b=> b.style.pointerEvents='none');
+  if(picked === correct){
+    btn.classList.add('correct');
+    gScore += 10;
+    document.getElementById('score').innerText = '⭐ ' + gScore;
+  } else {
+    btn.classList.add('wrong');
+    btns.forEach(b=>{ if(b.innerText===correct) b.classList.add('correct') });
+    gWrong.push({q: gData[gIndex].q, yours: picked, correct: correct});
+  }
+  setTimeout(()=>{ gIndex++; renderQ(); }, 900);
+}
+
+function showResult(){
+  show('result');
+  const total = gData.length * 10;
+  const pct = gScore / total;
+  let stars = '';
+  if(pct >= 0.9) stars = '⭐⭐⭐';
+  else if(pct >= 0.6) stars = '⭐⭐';
+  else if(pct >= 0.3) stars = '⭐';
+  else stars = '💪';
+  document.getElementById('result-stars').innerHTML = '<span class="star">'+stars+'</span>';
+  document.getElementById('final-score').innerText = gScore + ' / ' + total;
+  let msg = pct >= 0.9 ? 'ممتاز! أنت نجم 🌟' : pct >= 0.6 ? 'جيد جدًا! استمر 🚀' : pct >= 0.3 ? 'لا بأس، حاول مرة أخرى' : 'تحتاج مراجعة الدرس';
+  document.getElementById('result-msg').innerText = msg;
+  const wBox = document.getElementById('result-wrong');
+  if(gWrong.length){
+    wBox.style.display='block';
+    wBox.innerHTML = '<strong>الإجابات الخاطئة:</strong><br>' + gWrong.map(w=> '❌ '+w.q+' — أجبت: '+w.yours+' | الصحيح: '+w.correct).join('<br>');
+  } else wBox.style.display='none';
+}
+
+/* ========== لعبة ١: صنّف الكلمات ========== */
+function startClassify(){
+  gScore=0; gIndex=0; gWrong=[];
+  const words = [
+    {w:'الشَّمْس',t:'شمسية'},{w:'القَمَر',t:'قمرية'},
+    {w:'التُّفَّاح',t:'شمسية'},{w:'الكِتَاب',t:'قمرية'},
+    {w:'النَّجْم',t:'شمسية'},{w:'البَيْت',t:'قمرية'},
+    {w:'الرَّجُل',t:'شمسية'},{w:'الهِلال',t:'قمرية'},
+    {w:'السَّمَاء',t:'شمسية'},{w:'العِلْم',t:'قمرية'},
+    {w:'اللَّيْل',t:'شمسية'},{w:'الفَجْر',t:'قمرية'},
+    {w:'الطَّائِر',t:'شمسية'},{w:'الوَرْدَة',t:'قمرية'},
+    {w:'الذَّهَب',t:'شمسية'},{w:'الجَمَل',t:'قمرية'},
+    {w:'الصَّبَاح',t:'شمسية'},{w:'الأَسَد',t:'قمرية'},
+  ];
+  gData = words.map(x=>({
+    q: 'صنّف الكلمة: <strong>'+x.w+'</strong>',
+    a: ['شمسية ☀️','قمرية 🌙'],
+    c: x.t === 'شمسية' ? 'شمسية ☀️' : 'قمرية 🌙'
+  }));
+  renderQ();
+}
+
+/* ========== لعبة ٢: شمسية أم قمرية (اختيار الحرف) ========== */
+function startType(){
+  gScore=0; gIndex=0; gWrong=[];
+  const items = [
+    {w:'الـشَّمس',first:'ش'},{w:'الـقَمَر',first:'ق'},
+    {w:'الـتُّفَّاح',first:'ت'},{w:'الـكِتَاب',first:'ك'},
+    {w:'الـنَّار',first:'ن'},{w:'الـبَحْر',first:'ب'},
+    {w:'الـرَّجُل',first:'ر'},{w:'الـمَدْرَسَة',first:'م'},
+    {w:'الـسَّيَّارَة',first:'س'},{w:'الـحَدِيقَة',first:'ح'},
+    {w:'الـلَّيْل',first:'ل'},{w:'الـيَوْم',first:'ي'},
+    {w:'الـطَّرِيق',first:'ط'},{w:'الـعِنَب',first:'ع'},
+    {w:'الـدِّيك',first:'د'},{w:'الـهَدِيَّة',first:'هـ'},
+  ];
+  gData = items.map(x=>({
+    q: 'حرف <strong>'+x.first+'</strong> في كلمة <strong>'+x.w+'</strong> هو:',
+    a: ['حرف شمسي ☀️','حرف قمري 🌙'],
+    c: SUN.includes(x.first) ? 'حرف شمسي ☀️' : 'حرف قمري 🌙'
+  }));
+  renderQ();
+}
+
+/* ========== لعبة ٣: النطق الصحيح ========== */
+function startPronounce(){
+  gScore=0; gIndex=0; gWrong=[];
+  gData = [
+    {q:'كيف تُنطق <strong>الشَّمْس</strong> بشكل صحيح؟',a:['أَشْ شَمْس','أَلْ شَمْس','أَلْ شَّمْس'],c:'أَشْ شَمْس'},
+    {q:'كيف تُنطق <strong>القَمَر</strong> بشكل صحيح؟',a:['أَقْ قَمَر','أَلْ قَمَر','أَلْ لَمَر'],c:'أَلْ قَمَر'},
+    {q:'كيف تُنطق <strong>التُّفَّاح</strong>؟',a:['أَلْ تُفَّاح','أَتْ تُفَّاح','أَلْ تُفَّاح'],c:'أَتْ تُفَّاح'},
+    {q:'كيف تُنطق <strong>الكِتَاب</strong>؟',a:['أَكْ كِتَاب','أَلْ كِتَاب','أَلْ لِتَاب'],c:'أَلْ كِتَاب'},
+    {q:'كيف تُنطق <strong>النَّجْم</strong>؟',a:['أَنْ نَجْم','أَلْ نَجْم','أَلْ لَجْم'],c:'أَنْ نَجْم'},
+    {q:'كيف تُنطق <strong>البَيْت</strong>؟',a:['أَبْ بَيْت','أَلْ بَيْت','أَلْ لَيْت'],c:'أَلْ بَيْت'},
+    {q:'كيف تُنطق <strong>اللَّيْل</strong>؟',a:['أَلْ لَيْل','أَلْ يَيْل','أَللْ لَيْل'],c:'أَلْ لَيْل'},
+    {q:'كيف تُنطق <strong>الهِلال</strong>؟',a:['أَهْ هِلال','أَلْ هِلال','أَلْ لِلال'],c:'أَلْ هِلال'},
+    {q:'كيف تُنطق <strong>الرَّجُل</strong>؟',a:['أَرْ رَجُل','أَلْ رَجُل','أَلْ لَجُل'],c:'أَرْ رَجُل'},
+    {q:'كيف تُنطق <strong>الجَمَل</strong>؟',a:['أَجْ جَمَل','أَلْ جَمَل','أَلْ لَمَل'],c:'أَلْ جَمَل'},
+    {q:'كيف تُنطق <strong>السَّمَاء</strong>؟',a:['أَسْ سَمَاء','أَلْ سَمَاء','أَلْ لَمَاء'],c:'أَسْ سَمَاء'},
+    {q:'كيف تُنطق <strong>العِنَب</strong>؟',a:['أَعْ عِنَب','أَلْ عِنَب','أَلْ لِنَب'],c:'أَلْ عِنَب'},
+  ];
+  renderQ();
+}
+
+/* ========== لعبة ٤: أكمِل بالناقص ========== */
+function startFill(){
+  gScore=0; gIndex=0; gWrong=[];
+  gData = [
+    {q:'أكمِل: أَلـ <strong>___</strong> شَمْس (الشمس)',a:['ش','ل','س'],c:'ش'},
+    {q:'أكمِل: أَلـ <strong>___</strong> مَر (القمر)',a:['ق','ل','م'],c:'ق'},
+    {q:'أكمِل: أَلـ <strong>___</strong> فَّاح (التفاح)',a:['ت','ف','ل'],c:'ت'},
+    {q:'أكمِل: أَلـ <strong>___</strong> تَاب (الكتاب)',a:['ك','ت','ب'],c:'ك'},
+    {q:'أكمِل: أَلـ <strong>___</strong> جْم (النجم)',a:['ن','ج','م'],c:'ن'},
+    {q:'أكمِل: أَلـ <strong>___</strong> يْت (البيت)',a:['ي','ب','ت'],c:'ب'},
+    {q:'أكمِل: أَلـ <strong>___</strong> جُل (الرجل)',a:['ل','ر','ج'],c:'ر'},
+    {q:'أكمِل: أَلـ <strong>___</strong> لَال (الهلال)',a:['هـ','ل','ا'],c:'هـ'},
+    {q:'أكمِل: أَلـ <strong>___</strong> مَاء (السماء)',a:['س','م','ا'],c:'س'},
+    {q:'أكمِل: أَلـ <strong>___</strong> مَل (الجمل)',a:['م','ل','ج'],c:'ج'},
+    {q:'أكمِل: أَلـ <strong>___</strong> طِير (الطائر)',a:['ط','ا','ئ'],c:'ط'},
+    {q:'أكمِل: أَلـ <strong>___</strong> دِيقَة (الحديقة)',a:['ح','د','ي'],c:'ح'},
+  ];
+  renderQ();
+}
+
+/* ========== لعبة ٥: السحب والإفلات ========== */
+let dragScore=0, dragTotal=0, dragPlaced=0;
+const dragWords = [
+  {w:'الشَّمْس',t:'sun'},{w:'القَمَر',t:'moon'},
+  {w:'التُّفَّاح',t:'sun'},{w:'الكِتَاب',t:'moon'},
+  {w:'النَّار',t:'sun'},{w:'البَحْر',t:'moon'},
+  {w:'الرَّجُل',t:'sun'},{w:'الهِلال',t:'moon'},
+  {w:'السَّيَّارَة',t:'sun'},{w:'العِلْم',t:'moon'},
+  {w:'الطَّرِيق',t:'sun'},{w:'الأَسَد',t:'moon'},
+  {w:'الذَّهَب',t:'sun'},{w:'الوَرْدَة',t:'moon'},
+  {w:'الصَّبَاح',t:'sun'},{w:'الجَبَل',t:'moon'},
 ];
 
-/* ===== فرز الحروف ===== */
-let lList=[],lIdx=0,lLock=false;
-function pickLetterWord(letter,kind){
-  // نعرض «ال» + الحرف داخل كلمة بسيطة لتوضيح النطق
-  return 'الـ'+letter+' …';
+function startDrag(){
+  dragScore=0; dragPlaced=0; dragTotal=dragWords.length;
+  document.getElementById('sun-zone').innerHTML='';
+  document.getElementById('moon-zone').innerHTML='';
+  document.getElementById('drag-score').innerText='⭐ 0';
+  const container = document.getElementById('drag-words');
+  container.innerHTML='';
+  const shuffled = [...dragWords].sort(()=>Math.random()-0.5);
+  shuffled.forEach((item,i)=>{
+    const d=document.createElement('div');
+    d.className='drag-word';
+    d.draggable=true;
+    d.id='dw-'+i;
+    d.dataset.type=item.t;
+    d.dataset.word=item.w;
+    d.innerText=item.w;
+    d.ondragstart=dragStart;
+    container.appendChild(d);
+  });
+  show('drag-screen');
 }
-function startLetters(){
-  const setL=shuffle(SUN.map(l=>({l,k:'sun'})).concat(MOON.map(l=>({l,k:'moon'})))).slice(0,8);
-  lList=setL;lIdx=0;lLock=false;
-  const d=document.getElementById('lDots');d.innerHTML='';lList.forEach(()=>d.insertAdjacentHTML('beforeend','<span class="dot"></span>'));
-  document.getElementById('lFb').innerHTML='&nbsp;';showLetter();
-}
-function showLetter(){
-  if(lIdx>=lList.length)return finishLetters();
-  const el=document.getElementById('lWord');el.style.animation='none';void el.offsetWidth;el.style.animation='drop .4s ease';
-  const it=lList[lIdx];
-  el.innerHTML='الـ '+it.l;
-}
-document.querySelectorAll('#letters .bin').forEach(b=>b.addEventListener('click',()=>{
-  if(lLock||lIdx>=lList.length)return;lLock=true;
-  const it=lList[lIdx],dot=document.getElementById('lDots').children[lIdx],fb=document.getElementById('lFb');
-  if(b.dataset.k===it.k){okSound();b.classList.add('flash-ok');dot.classList.add('done');addStar(1);
-    fb.innerHTML='<span style="color:var(--sun-d)">✓ صحيح! «'+it.l+'» حرفٌ '+(it.k==='sun'?'شمسيّ ☀️':'قمريّ 🌙')+'.</span>';}
-  else{noSound();b.classList.add('flash-no');dot.classList.add('miss');
-    fb.innerHTML='<span style="color:#d65a8a">«'+it.l+'» في الحقيقة حرفٌ '+(it.k==='sun'?'شمسيّ ☀️':'قمريّ 🌙')+'.</span>';}
-  lIdx++;setTimeout(()=>{b.classList.remove('flash-ok','flash-no');lLock=false;showLetter();},1150);
-}));
-function finishLetters(){document.getElementById('lWord').textContent='🎉';
-  document.getElementById('lFb').innerHTML='<span style="color:var(--sun-d)">أحسنت! انتقلْ إلى لُعبة الكلمات.</span>';burst();addStar(2);}
 
-/* ===== هل تُلفظ اللام ===== */
-let wList=[],wIdx=0,wLock=false;
-function startWords(){
-  wList=shuffle(WORDS).slice(0,8);wIdx=0;wLock=false;
-  const d=document.getElementById('wDots');d.innerHTML='';wList.forEach(()=>d.insertAdjacentHTML('beforeend','<span class="dot"></span>'));
-  document.getElementById('wFb').innerHTML='&nbsp;';showW();
+function dragStart(e){
+  e.dataTransfer.setData('text/plain', e.target.id);
 }
-function showW(){if(wIdx>=wList.length)return finishW();
-  const el=document.getElementById('wWord');el.style.animation='none';void el.offsetWidth;el.style.animation='drop .4s ease';el.textContent=wList[wIdx].w;}
-document.getElementById('wPlay').addEventListener('click',()=>{const it=wList[wIdx];if(it)say(it.say);});
-document.querySelectorAll('#words .bin').forEach(b=>b.addEventListener('click',()=>{
-  if(wLock||wIdx>=wList.length)return;wLock=true;
-  const it=wList[wIdx],dot=document.getElementById('wDots').children[wIdx],fb=document.getElementById('wFb');
-  say(it.say);
-  if(b.dataset.k===it.k){okSound();b.classList.add('flash-ok');dot.classList.add('done');addStar(1);
-    fb.innerHTML='<span style="color:var(--sun-d)">✓ نُطِقَتْ: '+it.say+'</span>';}
-  else{noSound();b.classList.add('flash-no');dot.classList.add('miss');
-    fb.innerHTML='<span style="color:#d65a8a">إنّها '+(it.k==='sun'?'شمسيّة ☀️':'قمريّة 🌙')+' — تُنطَقُ: '+it.say+'</span>';}
-  wIdx++;setTimeout(()=>{b.classList.remove('flash-ok','flash-no');wLock=false;showW();},1500);
-}));
-function finishW(){document.getElementById('wWord').textContent='🎉';
-  document.getElementById('wFb').innerHTML='<span style="color:var(--sun-d)">أذنُك مدرّبة! جرّبِ التّحدّي.</span>';burst();addStar(2);}
 
-/* ===== التحدّي ===== */
-let quiz=[],qIdx=0,qScore=0,qLock=false;
+function allowDrop(e){
+  e.preventDefault();
+  e.currentTarget.classList.add('over');
+  setTimeout(()=>e.currentTarget.classList.remove('over'),200);
+}
+
+function drop(e, zone){
+  e.preventDefault();
+  const id = e.dataTransfer.getData('text/plain');
+  const el = document.getElementById(id);
+  if(!el || el.classList.contains('placed')) return;
+  const correctType = el.dataset.type;
+  if(correctType === zone){
+    const clone = el.cloneNode(true);
+    clone.draggable=false;
+    clone.classList.remove('placed');
+    clone.style.cursor='default';
+    document.getElementById(zone+'-zone').appendChild(clone);
+    el.classList.add('placed');
+    dragPlaced++;
+    dragScore+=10;
+    document.getElementById('drag-score').innerText='⭐ '+dragScore;
+    if(dragPlaced >= dragTotal){
+      setTimeout(()=>{
+        show('result');
+        gScore=dragScore;
+        gData=dragWords.map(x=>({q:x.w,c:x.t==='sun'?'شمسية':'قمرية'}));
+        gWrong=[];
+        const total = dragTotal*10;
+        document.getElementById('result-stars').innerHTML='<span class="star">⭐⭐⭐</span>';
+        document.getElementById('final-score').innerText=dragScore+' / '+total;
+        document.getElementById('result-msg').innerText='أحسنت! صنّفت جميع الكلمات بشكل صحيح 🌟';
+        document.getElementById('result-wrong').style.display='none';
+      },500);
+    }
+  } else {
+    el.style.animation='shake 0.4s';
+    setTimeout(()=>el.style.animation='',400);
+  }
+}
+
+/* ========== لعبة ٦: التحدي الكبير ========== */
 function startQuiz(){
-  quiz=shuffle(WORDS).slice(0,10);qIdx=0;qScore=0;qLock=false;
-  document.getElementById('qEnd').innerHTML='';document.getElementById('qFb').innerHTML='&nbsp;';
-  document.querySelectorAll('#quiz .bin').forEach(b=>b.style.display='');
-  const d=document.getElementById('qDots');d.innerHTML='';quiz.forEach(()=>d.insertAdjacentHTML('beforeend','<span class="dot"></span>'));
-  showQ();
-}
-function showQ(){if(qIdx>=quiz.length)return endQuiz();
-  const el=document.getElementById('qWord');el.style.animation='none';void el.offsetWidth;el.style.animation='drop .4s ease';el.textContent=quiz[qIdx].w;}
-document.querySelectorAll('#quiz .bin').forEach(b=>b.addEventListener('click',()=>{
-  if(qLock||qIdx>=quiz.length)return;qLock=true;
-  const it=quiz[qIdx],dot=document.getElementById('qDots').children[qIdx],fb=document.getElementById('qFb');
-  if(b.dataset.k===it.k){okSound();qScore++;dot.classList.add('done');addStar(1);fb.innerHTML='<span style="color:var(--sun-d)">✓ صحيح!</span>';}
-  else{noSound();dot.classList.add('miss');fb.innerHTML='<span style="color:#d65a8a">إنّها '+(it.k==='sun'?'شمسيّة ☀️':'قمريّة 🌙')+'</span>';}
-  qIdx++;setTimeout(()=>{qLock=false;showQ();},900);
-}));
-function endQuiz(){
-  document.querySelectorAll('#quiz .bin').forEach(b=>b.style.display='none');
-  document.getElementById('qWord').textContent='🏁';document.getElementById('qFb').innerHTML='&nbsp;';
-  let msg=qScore>=9?'بطلُ الشّمسِ والقمر! 🥇':qScore>=6?'عملٌ رائع! 🌟':'أعِدِ المحاولةَ وستلمعُ كالنّجم! 💪';
-  if(qScore>=9)burst();
-  document.getElementById('qEnd').innerHTML='<div class="result"><div class="big">'+(qScore>=9?'🏆':qScore>=6?'🎉':'🙂')+'</div>'+
-    '<h2>نتيجتُك: '+qScore+' / '+quiz.length+'</h2><p style="color:#7a7290;font-weight:600">'+msg+'</p>'+
-    '<button class="btn" onclick="startQuiz()">إعادة 🔁</button> <button class="btn alt" onclick="go(\'learn\')">أراجِعُ 📚</button></div>';
+  gScore=0; gIndex=0; gWrong=[];
+  gData = [
+    {q:'كم عدد الحروف الشمسية؟',a:['١١ حرفًا','١٤ حرفًا','١٦ حرفًا','١٢ حرفًا'],c:'١٤ حرفًا'},
+    {q:'كم عدد الحروف القمرية؟',a:['١٤ حرفًا','١٢ حرفًا','١٠ حروف','١٦ حرفًا'],c:'١٤ حرفًا'},
+    {q:'ماذا يحدث للام أل في الكلمة الشمسية؟',a:['تُنطق مشدّدة','تختفي في النطق','تُنطق ساكنة','تتحرك بالفتح'],c:'تختفي في النطق'},
+    {q:'ماذا يحدث للام أل في الكلمة القمرية؟',a:['تختفي','تُنطق بوضوح','تُقلب ميماً','تُحذف كتابةً'],c:'تُنطق بوضوح'},
+    {q:'أي من هذه الكلمات شمسية؟',a:['القَمَر','الكِتَاب','النَّار','البَيْت'],c:'النَّار'},
+    {q:'أي من هذه الكلمات قمرية؟',a:['الشَّمْس','التُّفَّاح','الرَّجُل','العِلْم'],c:'العِلْم'},
+    {q:'حرف (ب) من أي مجموعة؟',a:['شمسية','قمريّة'],c:'قمريّة'},
+    {q:'حرف (ط) من أي مجموعة؟',a:['شمسية','قمريّة'],c:'شمسية'},
+    {q:'حرف (ل) نفسه — شمسي أم قمري؟',a:['شمسي','قمري'],c:'شمسي'},
+    {q:'كلمة الأَرْنَب — ما نوع أل فيها؟',a:['شمسية','قمرية'],c:'قمرية'},
+    {q:'كلمة اللَّيْل — ما نوع أل فيها؟',a:['شمسية لأن اللام تلي أل','قمرية لأن اللام حرف شمسي'],c:'شمسية لأن اللام تلي أل'},
+    {q:'أي جملة ذاكرة صحيحة للحروف الشمسية؟',a:['طَبَثَ صِمَ دَقْ رَزْ سَلَ نَ','عَغْ خَ حَ جْ بَ أَ كْ فَ قْ مَ هـ وَ يَ'],c:'طَبَثَ صِمَ دَقْ رَزْ سَلَ نَ'},
+    {q:'كلمة المَسْجِد — ما نوع أل فيها؟',a:['شمسية','قمرية'],c:'قمرية'},
+    {q:'كلمة الدِّين — ما نوع أل فيها؟',a:['شمسية','قمرية'],c:'شمسية'},
+    {q:'كلمة اليَمَام — ما نوع أل فيها؟',a:['شمسية','قمرية'],c:'قمرية'},
+    {q:'كلمة الشَّارِع — ننطقها:',a:['أَشْ شَارِع','أَلْ شَارِع','أَلْ شَّارِع'],c:'أَشْ شَارِع'},
+    {q:'كلمة الحَدِيقَة — ننطقها:',a:['أَحْ حَدِيقَة','أَلْ حَدِيقَة','أَحْ لَدِيقَة'],c:'أَلْ حَدِيقَة'},
+    {q:'أي كلمة فيها أل شمسية؟',a:['المَكْتَبَة','الصُّوف','القِلَادَة','الفَرَاشَة'],c:'الصُّوف'},
+    {q:'أي كلمة فيها أل قمرية؟',a:['الظَّرْف','الزَّهْرَة','الغُرْفَة','الثَّعْلَب'],c:'الغُرْفَة'},
+    {q:'هل حرف الألف دائمًا قمري؟',a:['نعم','لا'],c:'نعم'},
+  ];
+  renderQ();
 }
 
-function burst(){const colors=['#ff9d2e','#5b6bd6','#ffc94d','#ffd27a','#8a97ee'];
-  for(let i=0;i<70;i++){const c=document.createElement('div');c.className='confetti';c.style.left=Math.random()*100+'vw';
-    c.style.background=colors[i%colors.length];c.style.transform='rotate('+Math.random()*360+'deg)';document.body.appendChild(c);
-    const dur=1600+Math.random()*1400;c.animate([{top:'-14px',opacity:1},{top:'100vh',opacity:.9}],{duration:dur,easing:'cubic-bezier(.3,.7,.5,1)'});
-    setTimeout(()=>c.remove(),dur);}}
+/* ========== حركة الاهتزاز ========== */
+const style = document.createElement('style');
+style.innerText = '@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-6px)}80%{transform:translateX(6px)}}';
+document.head.appendChild(style);
 </script>
-</body>
-</html>
+</body></html>

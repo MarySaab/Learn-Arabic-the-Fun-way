@@ -44,7 +44,6 @@ export default function Timeline({ highlightStageId = null }) {
             <li
               key={stage.id}
               className={`${styles.stage} ${isActive ? styles.active : ""} ${isOpen ? styles.open : ""}`}
-              data-reveal
               aria-current={isActive ? "step" : undefined}
             >
               <button

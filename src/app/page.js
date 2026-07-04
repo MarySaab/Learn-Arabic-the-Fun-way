@@ -40,14 +40,14 @@ const STEPS = [
   { icon: "💻", ar: "تعلّم وتدرّب أسبوعياً", en: "Learn weekly", desc: "حصّة أسبوعية عبر Google Meet، وتدريبات ممتعة على الموقع.", descEn: "A weekly lesson on Google Meet, plus fun practice on the site." },
 ];
 
-// What the platform itself offers (features grid).
+// What the platform itself offers (clean feature grid — icon + title only).
 const FEATURES = [
-  { icon: "🧭", ar: "اختبار مستوى بأربع مهارات", en: "4-skill placement test", desc: "ستة عشر سؤالاً في القراءة والكتابة والإملاء والقواعد — مستوى عامّ ومستوى لكلّ مهارة (A B C D).", descEn: "Sixteen questions across reading, writing, dictation and grammar — an overall level plus a level per skill (A, B, C, D)." },
-  { icon: "📚", ar: "دروس تفاعلية", en: "Interactive lessons", desc: "ثمانية عشر درساً بشرحٍ وأمثلةٍ وتمارين تصحَّح فوراً.", descEn: "Eighteen lessons with explanations, examples and instantly-corrected exercises." },
-  { icon: "🎮", ar: "ألعاب تعليمية ممتعة", en: "Learning games", desc: "القواعد والإملاء على شكل ألعابٍ بالنجوم والتحدّيات، من موادّ مريانا الحقيقية.", descEn: "Grammar and spelling as games with stars and challenges, built from Mariana's real teaching material." },
-  { icon: "🎧", ar: "استماع وإملاء تفاعلي", en: "Listening & dictation", desc: "استمع إلى الجمل واختر ما سمعته تماماً — بصوت مريانا حيث توفّر.", descEn: "Listen to sentences and pick exactly what you heard — in Mariana's own voice where available." },
-  { icon: "🏅", ar: "تتبّع تقدّمك ونجومك", en: "Progress & rewards", desc: "علامات إكمال على كلّ درس، ونجوم واحتفالات، وزرّ «تابع من حيث توقّفت».", descEn: "Completion marks, stars and celebrations, and a 'continue where you left off' button." },
-  { icon: "🇬🇧", ar: "زرّ الإنجليزية للطلاب الأجانب", en: "English toggle", desc: "زرّ واحد في الأعلى يعرض الترجمة الإنجليزية للعناوين والشروح.", descEn: "One button at the top shows English translations of titles and explanations." },
+  { icon: "🧭", ar: "اختبار مستوى بأربع مهارات", en: "4-skill placement test" },
+  { icon: "📚", ar: "دروس تفاعلية", en: "Interactive lessons" },
+  { icon: "🎮", ar: "ألعاب تعليمية", en: "Learning games" },
+  { icon: "🎧", ar: "استماع وإملاء", en: "Listening & dictation" },
+  { icon: "🏅", ar: "تتبّع التقدّم والنجوم", en: "Progress & rewards" },
+  { icon: "🇬🇧", ar: "زرّ اللغة الإنجليزية", en: "English toggle" },
 ];
 
 // Why parents and students choose Mariana (appeals to mothers especially).
@@ -207,35 +207,6 @@ export default function HomePage({ searchParams }) {
         </div>
       </section>
 
-      {/* ---------- STATS BAND ---------- */}
-      <section className="container" data-reveal>
-        <header className={styles.sectionHead}>
-          <h2><Bilingual ar="المنصّة بالأرقام" en="At a glance" /></h2>
-          <BiText
-            ar="لمحة سريعة عمّا ينتظرك داخل «تعلّم مع مريانا»."
-            en="A quick look at what's waiting for you inside."
-          />
-        </header>
-        <div className={styles.statsBand}>
-          <div className={styles.stat}>
-            <span className={styles.statNum}>{toArabicDigits(18)}+</span>
-            <span className={styles.statLabel}><Bilingual ar="درساً تفاعلياً" en="Interactive lessons" /></span>
-          </div>
-          <div className={styles.stat}>
-            <span className={styles.statNum}>{toArabicDigits(4)}</span>
-            <span className={styles.statLabel}><Bilingual ar="مهارات لغوية" en="Language skills" /></span>
-          </div>
-          <div className={styles.stat}>
-            <span className={styles.statNum}>{toArabicDigits(8)}</span>
-            <span className={styles.statLabel}><Bilingual ar="محطات في الرحلة" en="Journey stages" /></span>
-          </div>
-          <div className={styles.stat}>
-            <span className={styles.statNum}>{toArabicDigits(10)}+</span>
-            <span className={styles.statLabel}><Bilingual ar="ألعاب وقصص تفاعلية" en="Games & stories" /></span>
-          </div>
-        </div>
-      </section>
-
       {/* ---------- LEARNING JOURNEY (timeline) ---------- */}
       {/* Custom requirement: Timeline section using CSS Grid/Flexbox */}
       <section className={styles.journey}>
@@ -255,20 +226,13 @@ export default function HomePage({ searchParams }) {
       <section className="container">
         <header className={styles.sectionHead}>
           <h2><Bilingual ar="ماذا تجد في المنصّة؟" en="Platform features" /></h2>
-          <BiText
-            ar="كلّ ما تحتاجه لتراجع وتتدرّب وتتقدّم بين حصّةٍ وأخرى."
-            en="Everything you need to review, practise and progress between lessons."
-          />
         </header>
         <div className={styles.features}>
           {FEATURES.map((f) => (
             <div key={f.ar} className={styles.feature} data-reveal>
               <span className={styles.featureIcon} aria-hidden="true">{f.icon}</span>
-              <span className={styles.featureBody}>
-                <span className={styles.featureText}>
-                  <Bilingual ar={f.ar} en={f.en} />
-                </span>
-                <BiText className={styles.featureDesc} ar={f.desc} en={f.descEn} />
+              <span className={styles.featureText}>
+                <Bilingual ar={f.ar} en={f.en} />
               </span>
             </div>
           ))}

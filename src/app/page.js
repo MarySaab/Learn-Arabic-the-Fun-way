@@ -46,7 +46,6 @@ const FEATURES = [
   { icon: "📚", ar: "دروس تفاعلية", en: "Interactive lessons" },
   { icon: "🎮", ar: "ألعاب تعليمية", en: "Learning games" },
   { icon: "🏅", ar: "تتبّع التقدّم والنجوم", en: "Progress & rewards" },
-  { icon: "🇬🇧", ar: "زرّ اللغة الإنجليزية", en: "English toggle" },
 ];
 
 // Why parents and students choose Mariana (appeals to mothers especially).

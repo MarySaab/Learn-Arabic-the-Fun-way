@@ -203,16 +203,12 @@ export default function BookingForm({ initialLevel = "" }) {
         </div>
 
         <div className={styles.field}>
-          <label htmlFor="level"><Bilingual ar="المستوى" en="Level" /></label>
-          <select
-            id="level" value={values.level}
-            onChange={(e) => update("level", e.target.value)}
-          >
-            <option value="">— اختر —</option>
-            {levels.map((l) => (
-              <option key={l.id} value={l.id}>{l.ar}</option>
-            ))}
-          </select>
+          <label><Bilingual ar="المستوى (من الاختبار)" en="Level (from the test)" /></label>
+          <div className={styles.levelReadonly} aria-readonly="true">
+            {values.level
+              ? levels.find((l) => l.id === values.level)?.ar
+              : "يُحدَّد تلقائياً بعد الاختبار"}
+          </div>
         </div>
       </div>
 

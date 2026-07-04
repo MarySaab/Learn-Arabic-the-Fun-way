@@ -4,7 +4,7 @@ import BiText from "@/components/BiText";
 import Avatar from "@/components/Avatar";
 import Timeline from "@/components/Timeline";
 import QuoteOfDay from "@/components/QuoteOfDay";
-import FactCard from "@/components/FactCard";
+import FactsExplorer from "@/components/FactsExplorer";
 import HeroArt from "@/components/HeroArt";
 import ScrollRevealClient from "@/components/ScrollRevealClient";
 import { stageIdForLevel } from "@/lib/data/journey";
@@ -258,19 +258,23 @@ export default function HomePage({ searchParams }) {
         </ol>
       </section>
 
-      {/* ---------- DAILY: Quote (Arabic) + Fact (API Ninjas) ---------- */}
+      {/* ---------- DAILY: Arabic quote (curated local content) ---------- */}
       <section className={`container ${styles.dailySection}`} data-reveal>
         <header className={styles.sectionHead}>
-          <h2><Bilingual ar="جرعتك اليومية" en="Your daily dose" /></h2>
+          <h2><Bilingual ar="اقتباس اليوم" en="Quote of the Day" /></h2>
           <BiText
-            ar="اقتباس عربيّ عن العلم يلهمك، ومعلومة طريفة بالإنجليزية — يتجدّدان مع كلّ زيارة."
-            en="An Arabic quote about learning, and a fun fact in English — fresh on every visit."
+            ar="اقتباس عربيّ عن العلم يلهمك — يتجدّد مع كلّ زيارة."
+            en="An inspiring Arabic quote about learning — fresh on every visit."
           />
         </header>
-        <div className={styles.dailyGrid}>
+        <div style={{ maxWidth: "560px", margin: "0 auto" }}>
           <QuoteOfDay />
-          <FactCard />
         </div>
+      </section>
+
+      {/* ---------- DID YOU KNOW? — external API (API Ninjas) + client-side search ---------- */}
+      <section className={`container ${styles.dailySection}`} data-reveal>
+        <FactsExplorer />
       </section>
 
       {/* ---------- TESTIMONIALS ---------- */}

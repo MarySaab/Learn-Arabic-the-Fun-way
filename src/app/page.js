@@ -45,7 +45,6 @@ const FEATURES = [
   { icon: "🧭", ar: "اختبار مستوى بأربع مهارات", en: "4-skill placement test" },
   { icon: "📚", ar: "دروس تفاعلية", en: "Interactive lessons" },
   { icon: "🎮", ar: "ألعاب تعليمية", en: "Learning games" },
-  { icon: "🎧", ar: "استماع وإملاء", en: "Listening & dictation" },
   { icon: "🏅", ar: "تتبّع التقدّم والنجوم", en: "Progress & rewards" },
   { icon: "🇬🇧", ar: "زرّ اللغة الإنجليزية", en: "English toggle" },
 ];
@@ -171,7 +170,7 @@ export default function HomePage({ searchParams }) {
 
       {/* ---------- MEET MARIANA ---------- */}
       <section className={`container ${styles.meet}`} data-reveal>
-        <Avatar src="/images/mariana.jpg" alt="صورة المعلّمة مريانا" initials="م" />
+        <Avatar alt="المعلّمة مريانا" initials="م" />
         <div className={styles.meetBody}>
           <h2><Bilingual ar="تعرّف على مريانا" en="Meet Mariana" /></h2>
           <BiText

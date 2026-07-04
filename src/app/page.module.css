@@ -231,7 +231,14 @@
   background: var(--gold-soft);
   font-size: 1.4rem;
 }
-.featureText { font-weight: 700; font-size: 1rem; line-height: 1.4; }
+.featureText {
+  flex: 1;
+  min-width: 0; /* allow the text to shrink and wrap inside the card */
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
 
 /* ---- Contact ---- */
 .contactRow {

@@ -92,7 +92,7 @@ a:hover { color: var(--teal-bright); }
   font-weight: 400;
   color: var(--teal);
   font-size: 0.86em;
-  white-space: nowrap;
+  overflow-wrap: anywhere; /* long glosses wrap instead of spilling out of boxes */
 }
 
 /* Layout helper */

@@ -4,8 +4,12 @@
   display: grid;
   place-items: center;
   background: radial-gradient(circle at 30% 30%, var(--teal-bright), var(--teal-deep));
-  /* parchment ring + soft gold halo, echoing the manuscript theme */
-  box-shadow: var(--shadow), 0 0 0 6px var(--parchment), 0 0 0 8px var(--gold-soft);
+  /* parchment ring + soft gold halo + thin inner ring, manuscript theme */
+  box-shadow:
+    var(--shadow),
+    0 0 0 6px var(--parchment),
+    0 0 0 8px var(--gold-soft),
+    inset 0 0 0 3px rgba(239, 220, 160, 0.35);
   flex: 0 0 auto;
 }
 
@@ -22,4 +26,13 @@
   font-size: clamp(3rem, 10vw, 5rem);
   color: var(--gold-soft);
   line-height: 1;
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+}
+.initials::after {
+  content: "✦";
+  display: block;
+  font-size: 0.28em;
+  color: var(--gold-bright);
+  margin-top: 0.35em;
+  opacity: 0.9;
 }

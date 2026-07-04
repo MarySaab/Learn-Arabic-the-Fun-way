@@ -75,20 +75,20 @@ export default class PlacementTest {
     return map;
   }
 
-  // Level letters (A = beginner … D = advanced) with their Arabic names.
+  // Level letters (A = advanced … D = beginner) with their Arabic names.
   static LETTER_LEVELS = {
-    A: { ar: "مبتدئ", en: "Beginner", levelId: "beginner" },
-    B: { ar: "أساسي", en: "Elementary", levelId: "elementary" },
-    C: { ar: "متوسّط", en: "Intermediate", levelId: "intermediate" },
-    D: { ar: "متقدّم", en: "Advanced", levelId: "advanced" },
+    A: { ar: "متقدّم", en: "Advanced", levelId: "advanced" },
+    B: { ar: "متوسّط", en: "Intermediate", levelId: "intermediate" },
+    C: { ar: "أساسي", en: "Elementary", levelId: "elementary" },
+    D: { ar: "مبتدئ", en: "Beginner", levelId: "beginner" },
   };
 
-  // Letter for ONE skill from its weighted ratio.
+  // Letter for ONE skill from its weighted ratio (A = best, D = lowest).
   static letterFor(ratio) {
-    if (ratio < 0.25) return "A";
-    if (ratio < 0.5) return "B";
-    if (ratio < 0.8) return "C";
-    return "D";
+    if (ratio < 0.25) return "D";
+    if (ratio < 0.5) return "C";
+    if (ratio < 0.8) return "B";
+    return "A";
   }
 
   // Overall letter across the whole test (same scale as the group level).

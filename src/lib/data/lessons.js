@@ -11,11 +11,11 @@ export const lessons = [
   { id: 2,  slug: "sun-moon-letters",       icon: "☀️", title_ar: "الحروف الشمسية والقمرية",     title_en: "Sun & Moon Letters",         level: "beginner",     desc: "متى تُلفظ لام «الـ» ومتى تختفي.", game: "sun-moon-letters" },
   { id: 3,  slug: "masculine-feminine",     icon: "⚥",  title_ar: "المذكّر والمؤنّث",           title_en: "Masculine & Feminine",       level: "beginner",     desc: "هذا للمذكّر وهذه للمؤنّث — بالألعاب.", game: "masculine-feminine" },
   { id: 4,  slug: "singular-dual-plural",   icon: "👥", title_ar: "المفرد والمثنّى والجمع",     title_en: "Singular, Dual, Plural",     level: "beginner",     desc: "الواحد والاثنان وأكثر — بالألعاب.", game: "singular-dual" },
-  { id: 5,  slug: "greetings",              icon: "👋", title_ar: "التحية والتعريف",            title_en: "Greetings & Introductions",  level: "beginner",     desc: "عبارات التحية وتقديم النفس." },
   { id: 6,  slug: "numbers-1-10",           icon: "🔢", title_ar: "الأرقام ١–١٠",               title_en: "Numbers 1–10",               level: "beginner",     desc: "العدّ من واحد إلى عشرة." },
   { id: 7,  slug: "family-members",         icon: "👨‍👩‍👧", title_ar: "أفراد العائلة",            title_en: "Family Members",             level: "beginner",     desc: "أسماء أفراد الأسرة." },
   { id: 8,  slug: "parts-of-speech",        icon: "🧩", title_ar: "أقسام الكلام",               title_en: "Parts of Speech",            level: "beginner",     desc: "الاسم والفعل والحرف.", game: "parts-of-speech" },
   // ---- Elementary ----
+  { id: 19, slug: "dual-cases",             icon: "2️⃣", title_ar: "المثنى وحالاته",             title_en: "The Dual & Its Cases",       level: "elementary",   desc: "حالاتُ المثنى (رفع/نصب/جر)، أسماءُ الإشارة، وإضافةُ ال والياء — بالألعاب.", game: "dual-cases" },
   { id: 9,  slug: "word-types",             icon: "🏙️", title_ar: "أنواع الكلمة",               title_en: "Word Types",                 level: "elementary",   desc: "تمييز الاسم والفعل والحرف في الجملة.", game: "word-types" },
   { id: 10, slug: "tanween",                icon: "✨", title_ar: "التنوين",                    title_en: "Tanween",                    level: "elementary",   desc: "نون ساكنة نسمعها ولا نكتبها (ـً ـٌ ـٍ).", game: "tanween" },
   { id: 11, slug: "taa-marbuta",            icon: "🔤", title_ar: "التاء المربوطة والمبسوطة",    title_en: "Taa Marbuta vs Open Taa",    level: "elementary",   desc: "متى ة ومتى ت في آخر الاسم." },

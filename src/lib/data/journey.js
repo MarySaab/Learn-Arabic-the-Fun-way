@@ -21,9 +21,9 @@ export const journeyStages = [
 // timeline: clicking a stage shows its lessons. Slugs match lessons.js.
 export const stageLessons = {
   letters:            ["arabic-alphabet", "sun-moon-letters", "similar-letters"],
-  words:              ["greetings", "numbers-1-10", "family-members"],
+  words:              ["numbers-1-10", "family-members"],
   sentences:          ["nominal-verbal", "verb-tenses", "prepositions"],
-  "basic-grammar":    ["parts-of-speech", "word-types", "masculine-feminine", "singular-dual-plural"],
+  "basic-grammar":    ["parts-of-speech", "word-types", "masculine-feminine", "singular-dual-plural", "dual-cases"],
   writing:            ["tanween", "taa-marbuta"],
   reading:            ["reading-comprehension"],
   "advanced-grammar": ["irab-cases", "subject-object"],

@@ -23,16 +23,14 @@ with a glowing gold "أنت هنا (You are here)" marker. Marked in the code wi
 
 ## Tech
 - **Next.js (App Router)** + React — deploys on Vercel
-- **Hand-written CSS3** (CSS Modules + design tokens in `globals.css`) for the
-  whole site; **Bootstrap 5** (CDN) is used for the layout, cards, forms and
-  pagination on the **`/facts`** page
+- **Hand-written CSS3** (CSS Modules + design tokens in `globals.css`) — no CSS
+  framework
 - Core logic in **ES6 classes**: `PlacementTest`, `LessonCatalog`, `ApiClient`,
   `AudioPlayer`, `Speaker`, `FormValidator`, plus `ScrollReveal`
 - **Prisma + Neon (PostgreSQL)** for placement results and bookings
 - **API used:** [API Ninjas](https://api-ninjas.com) **Facts** endpoint, called
   **server-side** so the key never reaches the browser — powering the home
-  "هل تعلم؟" card and the `/facts` explorer; the daily Arabic quote is a curated
-  local list
+  "هل تعلم؟" card; the daily Arabic quote is a curated local list
 
 ## Pages
 | Route | What it does |
@@ -41,16 +39,13 @@ with a glowing gold "أنت هنا (You are here)" marker. Marked in the code wi
 | `/test` | 16-question placement test in 4 sections (reading, writing, **dictation with audio**, grammar) → overall + per-skill levels (A/B/C/D) highlighted on the timeline |
 | `/lessons` | 34 lessons (incl. full 28-letter alphabet chart), live search + level filter, 25 practice games, browser-saved progress |
 | `/skills` | Skills Lab: 4 real story suites (listening/dictation, reading, writing) |
-| `/facts` | **API showcase (Bootstrap 5):** API Ninjas facts with **search + filter + pagination** — all with loading/error/empty states |
 | `/book` | Booking form with real-time validation (incl. country) + WhatsApp/email handoff |
 | `/teacher` | Passcode-protected dashboard: level distribution, bookings, results |
 
 Rubric features: **external key-based API** (API Ninjas Facts) with **client-side
-search, filtering AND pagination over the fetched data** and
-**loading/error/empty states** (the `/facts` page; the home "هل تعلم؟" card also
-pages through fetched facts) · **Bootstrap 5** on `/facts` · additional
-**search + level filter** over the 34 lessons · **15+ real items** (34 lessons) ·
-consistent navbar · fully responsive · ES6-class logic.
+pagination over the fetched data** and **loading/error/empty states** (the home
+"هل تعلم؟" card) · **search + level filter** over the 34 lessons · **15+ real
+items** (34 lessons) · consistent navbar · fully responsive · ES6-class logic.
 
 ## Run locally
 ```bash

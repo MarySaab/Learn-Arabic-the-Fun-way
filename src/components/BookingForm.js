@@ -75,7 +75,7 @@ export default function BookingForm({ initialLevel = "" }) {
     const time = TIME_OPTIONS.find((t) => t.id === values.preferredTime)?.label || "—";
     return (
       `مرحباً، أنا ${values.name}.\n` +
-      `أودّ حجز حصّة لتعلّم العربية.\n` +
+      `أودّ حجز حصّة لتعلّم اللّغة العربية.\n` +
       `الدولة: ${values.country || "—"}\n` +
       `المستوى: ${levelLabel(values.level)}\n` +
       `الوقت المفضّل: ${time}\n` +

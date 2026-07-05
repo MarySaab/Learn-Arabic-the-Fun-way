@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Bilingual from "./Bilingual";
 import { journeyStages, stageLessons } from "@/lib/data/journey";
@@ -33,6 +33,18 @@ export default function Timeline({ highlightStageId = null }) {
     : [];
 
   const toggle = (id) => setOpenStageId((cur) => (cur === id ? null : id));
+
+  // On mobile the timeline is a tall vertical road and the lessons panel renders
+  // below the whole track — so tapping a top stage could open a panel far off
+  // screen. Bring it into view whenever a stage is opened.
+  const panelRef = useRef(null);
+  useEffect(() => {
+    if (openStageId && panelRef.current) {
+      // "nearest" only scrolls if the panel is off-screen, so desktop (where the
+      // panel is already visible below the track) is left undisturbed.
+      panelRef.current.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+  }, [openStageId]);
 
   return (
     <div>
@@ -75,7 +87,7 @@ export default function Timeline({ highlightStageId = null }) {
 
       {/* the open stage's lessons */}
       {openStage && (
-        <div className={styles.panel}>
+        <div className={styles.panel} ref={panelRef}>
           <h3 className={styles.panelTitle}>
             {openStage.icon} دروس مرحلة «{openStage.ar}»
           </h3>

@@ -1,0 +1,331 @@
+<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>السُّنونوة نونو</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&family=Lalezar&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet"><style>:root{--one:#1f95a8;--two:#ef7d3b;--bg:#fff7ea;--ok:#27ae60;--no:#e74c3c;--raise:#8e44ad;--acc:#2980b9;--one-deep:#137384;--two-deep:#cf5f1f;--sun:#ffc84b;--leaf:#7bc47f;--line:#efe7d8;--hard:0 10px 0 rgba(0,0,0,.08)}*{box-sizing:border-box}body{font-family:'Baloo Bhaijaan 2',Tajawal,sans-serif;background:radial-gradient(circle at 12% 8%,#fff6dd 0 14%,transparent 14.2%),radial-gradient(circle at 88% 6%,#ffe3d4 0 12%,transparent 12.2%),linear-gradient(180deg,#fef6e9 0%,#f3fbfb 60%,#fff4ec 100%);margin:0;color:#2b2440}.wrap{max-width:940px;margin:auto;padding:20px}.screen{display:none}.active{display:block;animation:pop .4s ease both}@keyframes pop{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}.hero,.box{background:white;border-radius:28px;padding:20px;box-shadow:0 8px 20px rgba(0,0,0,.08);margin:15px 0}.hero{text-align:center}.menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}.btn{border:none;background:linear-gradient(145deg,var(--one),var(--one-deep));color:#fff;padding:16px;border-radius:22px;font-size:20px;cursor:pointer;font-family:'Baloo Bhaijaan 2',Tajawal,sans-serif;transition:transform .15s,box-shadow .15s;box-shadow:var(--hard)}.btn:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(31,149,168,.3)}.btn:active{transform:translateY(4px);box-shadow:0 4px 0 rgba(0,0,0,.12)}.btn2{background:linear-gradient(145deg,var(--two),var(--two-deep))}.btn2:hover{box-shadow:0 6px 16px rgba(239,125,59,.3)}.btn3{background:linear-gradient(145deg,var(--raise),#6c3483)}.btn3:hover{box-shadow:0 6px 16px rgba(142,68,173,.3)}.btn4{background:linear-gradient(145deg,var(--acc),#1a5276)}.btn4:hover{box-shadow:0 6px 16px rgba(41,128,185,.3)}h1{font-family:Lalezar;font-size:clamp(2rem,7vw,3rem);line-height:1.1;margin:0;color:var(--one)}.h2{font-family:Lalezar;font-size:32px;color:var(--one);margin:10px 0}.p{font-size:22px;line-height:2;color:#2b2440;margin:8px 0}.q{font-size:28px;text-align:center;margin:15px 0;line-height:1.8}.choices button{width:100%;margin:8px 0;padding:14px;border:none;border-radius:16px;background:var(--two);color:#fff;font-size:22px;font-family:'Baloo Bhaijaan 2',Tajawal,sans-serif;cursor:pointer;transition:all .25s}.choices button:hover:not(.locked){transform:scale(1.02);opacity:.92}.choices button.correct-pick,.choices button.correct-show{background:var(--ok)!important;animation:goodshake .5s}.choices button.wrong-pick{background:var(--no)!important;opacity:.7;animation:badshake .4s}.choices button.locked{pointer-events:none;opacity:.5}.home{position:fixed;left:10px;top:10px;z-index:9}.score{text-align:center;font-size:24px;color:var(--one);margin-bottom:8px}.rule-box{background:linear-gradient(135deg,#f0fafb,#fff9f0);border-radius:20px;padding:18px;margin:12px 0;border-right:5px solid var(--one)}.rule-box.orange{border-right-color:var(--two);background:linear-gradient(135deg,#fff9f0,#fef6e9)}.rule-box.yellow{border-right-color:#f39c12;background:linear-gradient(135deg,#fef9e7,#fff8e1)}.rule-box.blue{border-right-color:#2980b9;background:linear-gradient(135deg,#ebf5fb,#eaf2f8)}.rule-box.purple{border-right-color:#8e44ad;background:linear-gradient(135deg,#f5eef8,#f4ecf7)}.rule-box.green{border-right-color:#27ae60;background:linear-gradient(135deg,#eafaf1,#f0fff4)}.rule-box h3{font-family:Lalezar;font-size:22px;margin:0 0 8px 0;color:var(--one)}.rule-box.orange h3{color:var(--two)}.rule-box.yellow h3{color:#f39c12}.rule-box.blue h3{color:#2980b9}.rule-box.purple h3{color:#8e44ad}.rule-box.green h3{color:#27ae60}.examples{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:12px 0}.ex-tag{background:linear-gradient(145deg,var(--one),var(--one-deep));color:#fff;padding:8px 20px;border-radius:14px;font-size:20px;font-weight:700}.ex-tag.orange{background:linear-gradient(145deg,var(--two),var(--two-deep))}.ex-tag.blue{background:linear-gradient(145deg,#2980b9,#1a5276)}.ex-tag.purple{background:linear-gradient(145deg,#8e44ad,#6c3483)}.ex-tag.green{background:linear-gradient(145deg,#27ae60,#1e8449)}.ex-tag.red{background:linear-gradient(145deg,#e74c3c,#c0392b)}.ex-tag.gold{background:linear-gradient(145deg,#f39c12,#d68910)}.back-btn{display:inline-block;margin-top:15px;background:var(--one);color:#fff;border:none;padding:12px 28px;border-radius:16px;font-size:18px;cursor:pointer;font-family:'Baloo Bhaijaan 2',Tajawal,sans-serif}.back-btn:hover{opacity:.9}.highlight{color:var(--two);font-weight:700}.highlight2{color:var(--one);font-weight:700}.highlight-p{color:#8e44ad;font-weight:700}.feedback{font-size:22px;text-align:center;padding:10px;border-radius:14px;margin:10px 0;opacity:0;transform:translateY(-8px);transition:all .3s}.feedback.show{opacity:1;transform:translateY(0)}.feedback.ok{background:#eafaf1;color:var(--ok);border:2px solid var(--ok)}.feedback.no{background:#fdedec;color:var(--no);border:2px solid var(--no)}.end-screen{text-align:center;padding:30px 20px}.end-screen .trophy{font-size:90px;animation:bounce .6s ease}.end-screen h2{font-size:36px;margin:10px 0}.end-score-num{font-size:52px;font-weight:800;color:var(--one);margin:15px 0}.end-score-num span{font-size:28px;color:#6b5e7b}.end-btns{display:flex;gap:14px;justify-content:center;margin-top:25px;flex-wrap:wrap}.end-btns button{min-width:180px}@keyframes bounce{0%{transform:scale(0)}50%{transform:scale(1.2)}100%{transform:scale(1)}}@keyframes bob{50%{transform:translateY(-10px)}}@keyframes goodshake{0%,100%{transform:none}30%{transform:scale(1.08)}60%{transform:scale(.96)}}@keyframes badshake{0%,100%{transform:none}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}.topbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}.topbar .brand{font-family:'Lalezar',cursive;font-size:1.5rem;color:var(--two-deep)}.topbar .brand b{color:var(--one-deep)}.topbar .badge{font-family:'Tajawal';font-weight:800;font-size:.85rem;background:var(--leaf);color:#fff;padding:3px 12px;border-radius:999px}.hero{background:linear-gradient(160deg,#ffffff,#fffaf0);border:4px solid #fff;border-radius:34px;box-shadow:0 18px 0 rgba(0,0,0,.06),inset 0 0 0 3px var(--line);padding:26px 22px 30px}.hero h1{-webkit-text-fill-color:initial;background:none;color:var(--one)}.mascots{font-size:clamp(2.4rem,10vw,4rem);margin-top:6px}.mascots span{display:inline-block;animation:bob 2.4s ease-in-out infinite}.mascots .d{animation-delay:.4s}.mascots .dd{animation-delay:.8s}.pill{display:inline-block;font-family:'Baloo Bhaijaan 2';font-weight:800;padding:4px 16px;border-radius:999px;font-size:1.1rem;margin:2px}.pill.one{background:#dff3f5;color:var(--one-deep)}.pill.two{background:#ffe9da;color:var(--two-deep)}.pill.three{background:#f5eef8;color:var(--raise)}.story-box{background:linear-gradient(160deg,#fffdf7,#fff8ee);border:3px solid var(--line);border-radius:24px;padding:24px;margin:16px 0;line-height:2.4;font-size:21px;box-shadow:inset 0 0 0 4px #fff,0 8px 0 rgba(0,0,0,.05);position:relative;overflow:hidden}.story-box::before{content:'📖';position:absolute;top:10px;left:14px;font-size:28px;opacity:.3}.story-box .speaker{color:var(--raise);font-weight:800}.story-box .mom{color:var(--one-deep);font-weight:800}.story-box .hot{color:var(--two-deep);font-weight:700}.story-box .cold{color:var(--acc);font-weight:700}.story-box .leaf{color:var(--leaf);font-weight:700}.shadda{font-size:1.3em;color:var(--raise);font-weight:800}.concept-row{display:flex;align-items:center;gap:8px;background:#fafafa;border-radius:12px;padding:10px 14px;margin:6px 0;font-size:20px}.concept-row .c-label{background:linear-gradient(145deg,var(--two),var(--two-deep));color:#fff;padding:3px 12px;border-radius:10px;font-size:16px;font-weight:800;white-space:nowrap}.concept-row .c-arrow{color:var(--one);font-size:20px;font-weight:800}@media (prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;transition-duration:.05ms!important}}</style></head><body>
+<button class="btn home" onclick="show('home')">🏠</button>
+
+<div class="wrap">
+
+<section id="home" class="screen active">
+  <div class="topbar">
+    <div class="brand"><b>السُّنونوة نونو</b> - نصّ قرائي</div>
+  </div>
+  <div class="hero">
+    <div class="mascots"><span>🌅</span> <span class="d">🐦</span> <span class="dd">🍃</span></div>
+    <h1>السُّنونوة نونو</h1>
+    <p style="font-size:22px;color:#6b5e7b;margin-top:5px">نصّ قرائي - فصل الخريف</p>
+    <div style="margin-top:8px">
+      <span class="pill one">📖 نصّ قرائي</span>
+      <span class="pill two">✏️ تمارين</span>
+      <span class="pill three">✨ الشدّة</span>
+    </div>
+  </div>
+  <div class="menu">
+    <button class="btn" onclick="show('learn')">📚 أقرأ النصّ</button>
+    <button class="btn btn2" onclick="startFahm()">🔍 أسئلة الفهم</button>
+    <button class="btn" onclick="startBuild()">🧩 أركب جملة</button>
+    <button class="btn btn2" onclick="startConn()">🔧 قبل أن / بعد أن</button>
+    <button class="btn btn3" onclick="startShadda()">✨ أين الشدّة؟</button>
+    <button class="btn btn2" onclick="startIdentify()">🏷️ ماذا يُحدَّد؟</button>
+    <button class="btn" onclick="startQuiz()">🏆 التحدي الكبير</button>
+  </div>
+</section>
+
+<section id="learn" class="screen">
+  <div class="box">
+    <h2 class="h2">النصّ القرائي: السُّنونوة نونو</h2>
+    <div class="story-box">
+      سألت السُّنونوة الصغيرة <span class="speaker">نونو</span> أمّها بلطف:
+    </div>
+    <div class="story-box">
+      <span class="speaker">نونو:</span> لماذا <span class="hot">ضعفت حرارة الشمس</span> هذا الصباح، يا أمّي؟
+    </div>
+    <div class="story-box">
+      <span class="mom">الأمّ:</span> هذا اليوم هو <span class="highlight">الثاني والعشرون من شهر أيلول</span>، أوّل أيام <span class="leaf">فصل الخريف</span>. وعمّا قريب تصفرّ <span class="leaf">أوراق الأشجار وتتساقط</span>، ويتوجّه الصّغار إلى المدارس.
+    </div>
+    <div class="story-box">
+      <span class="speaker">نونو:</span> وأنا؟ هل سأذهب إلى المدرسة أيضًا؟
+    </div>
+    <div class="story-box">
+      <span class="mom">الأمّ:</span> لا، يا عزيزتي. نحن سنرحل عن <span class="highlight2">لبنان</span> إلى <span class="cold">بلاد دافئة</span>.
+    </div>
+  </div>
+
+  <div class="box">
+    <h2 class="h2">أفكار النصّ الرئيسية</h2>
+    <div class="rule-box orange">
+      <h3>🍂 فصل الخريف</h3>
+      <p class="p">يبدأ في <span class="highlight">الثاني والعشرون من شهر أيلول</span>. تضعف حرارة الشمس، وتصفرّ الأوراق وتتساقط.</p>
+    </div>
+    <div class="rule-box blue">
+      <h3>🏫 المدارس</h3>
+      <p class="p">يتوجّه الصغار إلى المدارس مع بداية فصل الخريف.</p>
+    </div>
+    <div class="rule-box purple">
+      <h3>🐦 هجرة السنونوات</h3>
+      <p class="p">السنونوات ترحل عن لبنان إلى بلاد دافئة لأنّها تشعر بالبرد في الخريف.</p>
+    </div>
+  </div>
+
+  <div class="box">
+    <h2 class="h2">قاعدة الشدّة ( ـّ ) </h2>
+    <div class="rule-box" style="border-right-color:var(--raise)">
+      <h3 style="color:var(--raise)">الشدّة توضع فوق الحرف الذي يُنطق مشدَّدًا</h3>
+      <div class="concept-row">
+        <span class="c-label">مثال</span>
+        <span>أ<span class="shadda">تَعَلَّمُ</span> في الصفّ</span>
+        <span class="c-arrow">→</span>
+        <span>اللام مشدّدة: تَعَلْـلَـمُ</span>
+      </div>
+      <div class="concept-row">
+        <span class="c-label">مثال</span>
+        <span><span class="shadda">السّ</span>ُنونوة</span>
+        <span class="c-arrow">→</span>
+        <span>السين مشدّدة (حرف شمسيّ): الـسْـسُنونوة</span>
+      </div>
+      <div class="concept-row">
+        <span class="c-label">مثال</span>
+        <span>تُحِبُّ <span class="shadda">الشُّبّاكَ</span></span>
+        <span class="c-arrow">→</span>
+        <span>الباء مشدّدة: شُبْـبَاكَ</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="box">
+    <h2 class="h2">المفردات المهمّة</h2>
+    <div class="rule-box green">
+      <h3>كلمات الخريف</h3>
+      <div class="examples">
+        <span class="ex-tag gold">أيلول</span>
+        <span class="ex-tag green">تصفرّ</span>
+        <span class="ex-tag green">تتساقط</span>
+        <span class="ex-tag gold">الخريف</span>
+        <span class="ex-tag green">الأشجار</span>
+      </div>
+    </div>
+    <div class="rule-box blue">
+      <h3>كلمات الهجرة</h3>
+      <div class="examples">
+        <span class="ex-tag blue">ترحل</span>
+        <span class="ex-tag blue">بلاد دافئة</span>
+        <span class="ex-tag blue">لبنان</span>
+        <span class="ex-tag blue">السنونوات</span>
+      </div>
+    </div>
+    <div class="rule-box orange">
+      <h3>كلمات أخرى</h3>
+      <div class="examples">
+        <span class="ex-tag orange">ضعفت</span>
+        <span class="ex-tag orange">حرارة</span>
+        <span class="ex-tag orange">الباكر</span>
+        <span class="ex-tag orange">عزيزتي</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center">
+    <button class="back-btn" onclick="show('home')">← العودة للقائمة</button>
+  </div>
+</section>
+
+<section id="game" class="screen">
+  <div class="box">
+    <div class="score" id="score"></div>
+    <div id="gTitle" style="text-align:center;font-size:18px;color:#6b5e7b;margin-bottom:5px"></div>
+    <div class="q" id="q"></div>
+    <div class="feedback" id="fb"></div>
+    <div id="answers" class="choices"></div>
+  </div>
+</section>
+
+<section id="endScreen" class="screen">
+  <div class="box end-screen">
+    <div class="trophy">🏆</div>
+    <h2>انتهت اللعبة!</h2>
+    <div class="end-score-num"><span id="endScore">0</span> <span>/ <span id="endTotal">0</span></span></div>
+    <div id="endMsg" style="font-size:22px;color:#6b5e7b;margin:10px 0"></div>
+    <div class="end-btns">
+      <button class="btn" onclick="restartGame()">🔄 أعد اللعب</button>
+      <button class="btn btn2" onclick="show('home')">🏠 القائمة الرئيسية</button>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<script>
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active')}
+
+let score=0,data=[],i=0,gameTitle='',busy=false,currentGame=null;
+
+function shuffle(arr){
+  for(let j=arr.length-1;j>0;j--){
+    let k=Math.floor(Math.random()*(j+1));
+    [arr[j],arr[k]]=[arr[k],arr[j]];
+  }
+  return arr;
+}
+
+function endGame(){
+  let total=data.length*10;
+  document.getElementById('endScore').innerText=score;
+  document.getElementById('endTotal').innerText=total;
+  let pct=Math.round(score/total*100);
+  let msg='';
+  if(pct===100)msg='🌟 ممتاز! نتيجة كاملة!';
+  else if(pct>=80)msg='👏 أحسنت! نتيجة رائعة!';
+  else if(pct>=50)msg='💪 جيد! حاول تحسين نتيجتك';
+  else msg='📚 راجع النصّ وحاول مرة أخرى';
+  document.getElementById('endMsg').innerText=msg;
+  show('endScreen');
+}
+function restartGame(){if(currentGame)currentGame()}
+
+function render(){
+  show('game');busy=false;
+  document.getElementById('score').innerText='⭐ '+score+' / '+(data.length*10);
+  document.getElementById('gTitle').innerText=gameTitle;
+  let fb=document.getElementById('fb');fb.className='feedback';fb.innerText='';
+  let x=data[i];
+  document.getElementById('q').innerHTML=x.q;
+  let a=document.getElementById('answers');a.innerHTML='';
+  let shuffled=[...x.a].sort(()=>Math.random()-.5);
+  shuffled.forEach(v=>{
+    let b=document.createElement('button');b.innerText=v;
+    b.onclick=()=>pick(v,b,x.c);
+    a.appendChild(b);
+  });
+}
+
+function pick(v,btn,correct){
+  if(busy)return;busy=true;
+  let fb=document.getElementById('fb');
+  let allBtns=document.querySelectorAll('.choices button');
+  if(v===correct){
+    score+=10;btn.classList.add('correct-pick');
+    fb.innerText='🌟 أحسنت!';fb.className='feedback ok show';
+    allBtns.forEach(b=>{if(b!==btn)b.classList.add('locked')});
+    setTimeout(next,1000);
+  }else{
+    btn.classList.add('wrong-pick');
+    fb.innerText='❌ الصحيح: '+correct;fb.className='feedback no show';
+    allBtns.forEach(b=>{
+      if(b.innerText===correct)b.classList.add('correct-show');
+      else if(b!==btn)b.classList.add('locked');
+    });
+    setTimeout(next,1800);
+  }
+}
+
+function next(){
+  i++;if(i>=data.length)endGame();else render();
+}
+
+/* 1 - أسئلة الفهم */
+function startFahm(){
+  currentGame=startFahm;score=0;i=0;gameTitle='🔍 أسئلة فهم النصّ';
+  data=shuffle([
+    {q:'متى فتحت السنونوات عيونها؟',a:['في الصباح الباكر','في المساء','عند الظهر'],c:'في الصباح الباكر'},
+    {q:'ماذا يحدث لأوراق الأشجار في فصل الخريف؟',a:['تصفرّ وتتساقط','تصبح خضراء','تكبر وتنمو'],c:'تصفرّ وتتساقط'},
+    {q:'إلى أين يتوجّه الصغار في فصل الخريف؟',a:['إلى الحديقة','إلى المدارس','إلى البحر'],c:'إلى المدارس'},
+    {q:'ماذا سألت نونو أمّها؟',a:['عن حرارة الشمس','عن المدرسة','عن الطعام'],c:'عن حرارة الشمس'},
+    {q:'لماذا ضعفت حرارة الشمس؟',a:['لأنّه أوّل أيام الخريف','لأنّه فصل الصيف','لأنّها غربت'],c:'لأنّه أوّل أيام الخريف'},
+    {q:'ما هو التاريخ الذي يبدأ فيه الخريف؟',a:['الأوّل من أيلول','الثاني والعشرون من أيلول','الخامس عشر من أيلول'],c:'الثاني والعشرون من أيلول'},
+    {q:'هل ستذهب نونو إلى المدرسة؟',a:['نعم','لا، لأنّها ستسافر','لا تعرف'],c:'لا، لأنّها ستسافر'},
+    {q:'إلى أين سترحل نونو؟',a:['إلى بلاد باردة','إلى بلاد دافئة','ستبقى في لبنان'],c:'إلى بلاد دافئة'},
+    {q:'من الذي سأل عن حرارة الشمس؟',a:['الأمّ','نونو','المعلِّمة'],c:'نونو'},
+    {q:'لماذا ترحل السنونوات عن لبنان؟',a:['لأنّها تشعر بالبرد','لأنّها تبحث عن الطعام','لأنّها تريد اللعب'],c:'لأنّها تشعر بالبرد'}
+  ]);render();
+}
+
+/* 2 - أركب جملة */
+function startBuild(){
+  currentGame=startBuild;score=0;i=0;gameTitle='🧩 اختر الجملة الصحيحة';
+  data=shuffle([
+    {q:'أرتّب: عيونها / السنونوات / في الصباح / فتحت',a:['في الصباح عيونها فتحت السنونوات','السنونوات عيونها في الصباح فتحت','فتحت السنونوات عيونها في الصباح'],c:'فتحت السنونوات عيونها في الصباح'},
+    {q:'أرتّب: التلاميذ / إلى / يعود / مدارسهم',a:['إلى التلاميذ مدارسهم يعود','مدارسهم يعود التلاميذ إلى','يعود التلاميذ إلى مدارسهم'],c:'يعود التلاميذ إلى مدارسهم'},
+    {q:'أرتّب: سنرحل / دافئة / إلى / عن لبنان / بلاد',a:['عن لبنان بلاد دافئة سنرحل إلى','سنرحل عن لبنان إلى بلاد دافئة','إلى بلاد دافئة عن لبنان سنرحل'],c:'سنرحل عن لبنان إلى بلاد دافئة'},
+    {q:'أرتّب: تصفرّ / الأشجار / أوراق / وتتساقط',a:['وتتساقط أوراق الأشجار تصفرّ','أوراق الأشجار تصفرّ وتتساقط','تصفرّ وتتساقط أوراق الأشجار'],c:'أوراق الأشجار تصفرّ وتتساقط'},
+    {q:'أرتّب: الشمس / هذا / ضعفت / الصباح / حرارة',a:['حرارة الشمس هذا الصباح ضعفت','ضعفت حرارة الشمس هذا الصباح','هذا الصباح ضعفت حرارة الشمس'],c:'ضعفت حرارة الشمس هذا الصباح'},
+    {q:'أرتّب: الخريف / أيلول / من / أوّل / أيام / الثاني والعشرون',a:['أوّل أيام الخريف الثاني والعشرون من أيلول','من أيلول أوّل أيام الخريف الثاني والعشرون','الثاني والعشرون من أيلول أوّل أيام الخريف'],c:'الثاني والعشرون من أيلول أوّل أيام الخريف'},
+    {q:'أرتّب: إلى / الصغار / المدارس / يتوجّه',a:['المدارس إلى الصغار يتوجّه','يتوجّه الصغار إلى المدارس','إلى يتوجّه الصغار المدارس'],c:'يتوجّه الصغار إلى المدارس'},
+    {q:'أرتّب: أمّها / لماذا / سألت / نونو',a:['نونو لماذا سألت أمّها','سألت نونو أمّها لماذا','لماذا أمّها نونو سألت'],c:'سألت نونو أمّها لماذا'},
+    {q:'أرتّب: بلاد دافئة / سنرحل / لا / يا عزيزتي / إلى',a:['لا يا عزيزتي بلاد دافئة سنرحل إلى','سنرحل لا يا عزيزتي بلاد دافئة إلى','لا يا عزيزتي سنرحل إلى بلاد دافئة'],c:'لا يا عزيزتي سنرحل إلى بلاد دافئة'},
+    {q:'أرتّب: قريبًا / وعمّا / تتساقط / تصفرّ / الأوراق',a:['وعمّا قريبًا تصفرّ الأوراق وتتساقط','تصفرّ الأوراق وعمّا قريبًا تتساقط','وتتساقط وعمّا قريبًا تصفرّ الأوراق'],c:'وعمّا قريبًا تصفرّ الأوراق وتتساقط'}
+  ]);render();
+}
+
+/* 3 - قبل أن / بعد أن */
+function startConn(){
+  currentGame=startConn;score=0;i=0;gameTitle='🔧 اختر الرابطة الصحيحة';
+  data=shuffle([
+    {q:'______ ننام نُنظِّف أسناننا جيدًا',a:['قبل أن','بعد أن'],c:'قبل أن'},
+    {q:'دخلت المعلِّمة الغرفة ______ وقف التلاميذ احترامًا لها',a:['قبل أن','بعد أن'],c:'بعد أن'},
+    {q:'______ نخرج نُطفئ النور',a:['قبل أن','بعد أن'],c:'قبل أن'},
+    {q:'أكل الطعام ______ شرب الماء',a:['قبل أن','بعد أن'],c:'بعد أن'},
+    {q:'______ أذهب إلى المدرسة أرتدي ملابسي',a:['قبل أن','بعد أن'],c:'قبل أن'},
+    {q:'كتب الطالب الدرس ______ قرأه',a:['قبل أن','بعد أن'],c:'بعد أن'},
+    {q:'______ نبدأ الامتحان نراجع الدروس',a:['قبل أن','بعد أن'],c:'قبل أن'},
+    {q:'غسلت ثيابي ______ جفّتها',a:['قبل أن','بعد أن'],c:'بعد أن'},
+    {q:'فتحت نونو عيونها ______ سألت أمّها',a:['قبل أن','بعد أن'],c:'بعد أن'},
+    {q:'______ تتساقط الأوراق يأتي فصل الخريف',a:['قبل أن','بعد أن'],c:'قبل أن'}
+  ]);render();
+}
+
+/* 4 - أين الشدّة؟ */
+function startShadda(){
+  currentGame=startShadda;score=0;i=0;gameTitle='✨ أين توضع الشدّة؟';
+  data=shuffle([
+    {q:'أين الشدّة في: أَتَعَلَّمُ ؟',a:['التاء','اللام','العين'],c:'اللام'},
+    {q:'أين الشدّة في: جيّدًا ؟',a:['الجيم','الياء','الدال'],c:'الياء'},
+    {q:'أين الشدّة في: أوّل ؟',a:['الهمزة','الواو','اللام'],c:'الواو'},
+    {q:'أين الشدّة في: تَصْفَرُّ ؟',a:['الصاد','الفاء','الراء'],c:'الراء'},
+    {q:'أين الشدّة في: أُمّها ؟',a:['الهمزة','الميم','الهاء'],c:'الميم'},
+    {q:'أين الشدّة في: لأنّها ؟',a:['اللام','الهمزة','النون'],c:'النون'},
+    {q:'أين الشدّة في: عَمّا ؟',a:['العين','الميم','الألف'],c:'الميم'},
+    {q:'أين الشدّة في: مُعلِّمة ؟',a:['الميم','العين','اللام'],c:'اللام'},
+    {q:'أين الشدّة في: نُنظِّف ؟',a:['النون','الظاء','الفاء'],c:'الظاء'},
+    {q:'أين الشدّة في: السُّنونوة ؟ (حرف شمسيّ)',a:['السين','النون','الواو'],c:'السين'}
+  ]);render();
+}
+
+/* 5 - ماذا يُحدَّد؟ */
+function startIdentify(){
+  currentGame=startIdentify;score=0;i=0;gameTitle='🏷️ ماذا يُحدَّد السؤال؟';
+  data=shuffle([
+    {q:'متى فتحت السنونوات عيونها؟',a:['يُحدِّد الزمن','يُحدِّد الحدث','يُحدِّد المكان'],c:'يُحدِّد الزمن'},
+    {q:'ماذا حدث لحرارة الشمس؟',a:['يُحدِّد الزمن','يُحدِّد الحدث','يُحدِّد السبب'],c:'يُحدِّد الحدث'},
+    {q:'عن أيّ شيء سألت السنونوة نونو أمّها؟',a:['يفهم معنى الاستفهام','يُحدِّد الزمن','يُحدِّد المكان'],c:'يفهم معنى الاستفهام'},
+    {q:'متى يبدأ فصل الخريف؟',a:['يُحدِّد الزمن','يُحدِّد الحدث','يُحدِّد السبب'],c:'يُحدِّد الزمن'},
+    {q:'ماذا يحدث للطقس في فصل الخريف؟',a:['يُحدِّد المكان','يُحدِّد الحدث','يُحدِّد السبب'],c:'يُحدِّد الحدث'},
+    {q:'ماذا يحدث لأوراق الأشجار في الخريف؟',a:['يُحدِّد الزمن','يُحدِّد الحدث','يُحدِّد المكان'],c:'يُحدِّد الحدث'},
+    {q:'ماذا يفعل الفلّاح في فصل الخريف؟',a:['يُحدِّد الحدث','يُحدِّد المكان','يُحدِّد الزمن'],c:'يُحدِّد الحدث'},
+    {q:'إلى أين يتوجّه الصغار في فصل الخريف؟',a:['يُحدِّد المكان','يُحدِّد الزمن','يُحدِّد السبب'],c:'يُحدِّد المكان'},
+    {q:'لماذا لا تذهب السنونوات إلى المدارس؟',a:['يُحدِّد السبب','يُحدِّد المكان','يُحدِّد الحدث'],c:'يُحدِّد السبب'},
+    {q:'لماذا ترحل السنونوات عن لبنان؟',a:['يُحدِّد السبب','يُحدِّد الزمن','يُحدِّد المكان'],c:'يُحدِّد السبب'},
+    {q:'إلى أين تذهب السنونوات في الخريف؟',a:['يُحدِّد المكان','يُحدِّد السبب','يُحدِّد الزمن'],c:'يُحدِّد المكان'},
+    {q:'أُحبُّ فصل الصيف أم فصل الخريف؟ لماذا؟',a:['يُحدِّد السبب','يبدي رأيًا','يُحدِّد المكان'],c:'يبدي رأيًا'}
+  ]);render();
+}
+
+/* 6 - التحدي الكبير */
+function startQuiz(){
+  currentGame=startQuiz;score=0;i=0;gameTitle='🏆 التحدي الكبير - السنونوة نونو';
+  data=shuffle([
+    {q:'متى فتحت السنونوات عيونها؟',a:['في المساء','في الصباح الباكر','عند الظهر'],c:'في الصباح الباكر'},
+    {q:'ماذا يحدث لأوراق الأشجار في الخريف؟',a:['تصفرّ وتتساقط','تصبح خضراء','تسقط فورًا'],c:'تصفرّ وتتساقط'},
+    {q:'إلى أين يتوجّه الصغار في الخريف؟',a:['إلى البحر','إلى المدارس','إلى الحديقة'],c:'إلى المدارس'},
+    {q:'ما التاريخ الذي يبدأ فيه الخريف؟',a:['الأوّل من أيلول','15 أيلول','الثاني والعشرون من أيلول'],c:'الثاني والعشرون من أيلول'},
+    {q:'لماذا ترحل السنونوات؟',a:['لأنّها تشعر بالبرد','لأنّها تبحث عن طعام','لأنّها تلعب'],c:'لأنّها تشعر بالبرد'},
+    {q:'أين توضع الشدّة في: أَتَعَلَّمُ؟',a:['على التاء','على اللام','على الصاد'],c:'على اللام'},
+    {q:'______ ننام نُنظِّف أسناننا جيدًا',a:['بعد أن','قبل أن'],c:'قبل أن'},
+    {q:'ماذا يُحدِّد سؤال: "متى يبدأ الخريف؟"',a:['يُحدِّد الزمن','يُحدِّد الحدث','يُحدِّد المكان'],c:'يُحدِّد الزمن'},
+    {q:'ماذا يُحدِّد سؤال: "إلى أين تتوجّه الصغار؟"',a:['يُحدِّد الحدث','يُحدِّد المكان','يُحدِّد السبب'],c:'يُحدِّد المكان'},
+    {q:'أيّ جملة صحيحة؟',a:['لماذا ضعفت حرارة الشمس','ضعفت لماذا حرارة الشمس','حرارة الشمس لماذا ضعفت'],c:'لماذا ضعفت حرارة الشمس'},
+    {q:'أيّ جملة صحيحة؟',a:['التلاميذ مدارسهم إلى يعود','يعود التلاميذ إلى مدارسهم','إلى مدارسهم يعود التلاميذ'],c:'يعود التلاميذ إلى مدارسهم'},
+    {q:'الشدّة في "أُمّها" على:',a:['الهمزة','الميم','الهاء'],c:'الميم'},
+    {q:'دخلت المعلِّمة الغرفة ______ وقف التلاميذ',a:['قبل أن','بعد أن'],c:'بعد أن'},
+    {q:'ماذا يُحدِّد سؤال: "لماذا ترحل السنونوات؟"',a:['يُحدِّد المكان','يُحدِّد السبب','يُحدِّد الزمن'],c:'يُحدِّد السبب'},
+    {q:'إلى أين سترحل نونو وعائلتها؟',a:['إلى بلاد باردة','تبقى في لبنان','إلى بلاد دافئة'],c:'إلى بلاد دافئة'}
+  ]);render();
+}
+</script>
+</body></html>

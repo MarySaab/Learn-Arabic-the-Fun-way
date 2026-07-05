@@ -1,0 +1,411 @@
+<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>الفعل الماضي</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&family=Lalezar&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet"><style>:root{--one:#1f95a8;--two:#ef7d3b;--bg:#fff7ea;--ok:#27ae60;--no:#e74c3c;--raise:#8e44ad;--acc:#2980b9;--one-deep:#137384;--two-deep:#cf5f1f;--sun:#ffc84b;--leaf:#7bc47f;--line:#efe7d8;--hard:0 10px 0 rgba(0,0,0,.08)}*{box-sizing:border-box}body{font-family:'Baloo Bhaijaan 2',Tajawal,sans-serif;background:radial-gradient(circle at 12% 8%,#fff6dd 0 14%,transparent 14.2%),radial-gradient(circle at 88% 6%,#ffe3d4 0 12%,transparent 12.2%),linear-gradient(180deg,#fef6e9 0%,#f3fbfb 60%,#fff4ec 100%);margin:0;color:#2b2440}.wrap{max-width:940px;margin:auto;padding:20px}.screen{display:none}.active{display:block;animation:pop .4s ease both}@keyframes pop{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}.hero,.box{background:white;border-radius:28px;padding:20px;box-shadow:0 8px 20px rgba(0,0,0,.08);margin:15px 0}.hero{text-align:center}.menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}.btn{border:none;background:linear-gradient(145deg,var(--one),var(--one-deep));color:#fff;padding:16px;border-radius:22px;font-size:20px;cursor:pointer;font-family:'Baloo Bhaijaan 2',Tajawal,sans-serif;transition:transform .15s,box-shadow .15s;box-shadow:var(--hard)}.btn:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(31,149,168,.3)}.btn:active{transform:translateY(4px);box-shadow:0 4px 0 rgba(0,0,0,.12)}.btn2{background:linear-gradient(145deg,var(--two),var(--two-deep))}.btn2:hover{box-shadow:0 6px 16px rgba(239,125,59,.3)}.btn3{background:linear-gradient(145deg,var(--raise),#6c3483)}.btn3:hover{box-shadow:0 6px 16px rgba(142,68,173,.3)}.btn4{background:linear-gradient(145deg,var(--acc),#1a5276)}.btn4:hover{box-shadow:0 6px 16px rgba(41,128,185,.3)}h1{font-family:Lalezar;font-size:clamp(2rem,7vw,3rem);line-height:1.1;margin:0;color:var(--one)}.h2{font-family:Lalezar;font-size:32px;color:var(--one);margin:10px 0}.p{font-size:22px;line-height:2;color:#2b2440;margin:8px 0}.q{font-size:28px;text-align:center;margin:15px 0;line-height:1.8}.choices button{width:100%;margin:8px 0;padding:14px;border:none;border-radius:16px;background:var(--two);color:#fff;font-size:22px;font-family:'Baloo Bhaijaan 2',Tajawal,sans-serif;cursor:pointer;transition:all .25s}.choices button:hover:not(.locked){transform:scale(1.02);opacity:.92}.choices button.correct-pick,.choices button.correct-show{background:var(--ok)!important;animation:goodshake .5s}.choices button.wrong-pick{background:var(--no)!important;opacity:.7;animation:badshake .4s}.choices button.locked{pointer-events:none;opacity:.5}.home{position:fixed;left:10px;top:10px;z-index:9}.score{text-align:center;font-size:24px;color:var(--one);margin-bottom:8px}.rule-box{background:linear-gradient(135deg,#f0fafb,#fff9f0);border-radius:20px;padding:18px;margin:12px 0;border-right:5px solid var(--one)}.rule-box.orange{border-right-color:var(--two);background:linear-gradient(135deg,#fff9f0,#fef6e9)}.rule-box.yellow{border-right-color:#f39c12;background:linear-gradient(135deg,#fef9e7,#fff8e1)}.rule-box.blue{border-right-color:#2980b9;background:linear-gradient(135deg,#ebf5fb,#eaf2f8)}.rule-box.purple{border-right-color:#8e44ad;background:linear-gradient(135deg,#f5eef8,#f4ecf7)}.rule-box.green{border-right-color:#27ae60;background:linear-gradient(135deg,#eafaf1,#f0fff4)}.rule-box h3{font-family:Lalezar;font-size:22px;margin:0 0 8px 0;color:var(--one)}.rule-box.orange h3{color:var(--two)}.rule-box.yellow h3{color:#f39c12}.rule-box.blue h3{color:#2980b9}.rule-box.purple h3{color:#8e44ad}.rule-box.green h3{color:#27ae60}.examples{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:12px 0}.ex-tag{background:linear-gradient(145deg,var(--one),var(--one-deep));color:#fff;padding:8px 20px;border-radius:14px;font-size:20px;font-weight:700}.ex-tag.orange{background:linear-gradient(145deg,var(--two),var(--two-deep))}.ex-tag.blue{background:linear-gradient(145deg,#2980b9,#1a5276)}.ex-tag.purple{background:linear-gradient(145deg,#8e44ad,#6c3483)}.ex-tag.green{background:linear-gradient(145deg,#27ae60,#1e8449)}.ex-tag.gold{background:linear-gradient(145deg,#f39c12,#d68910)}.ex-tag.red{background:linear-gradient(145deg,#e74c3c,#c0392b)}.back-btn{display:inline-block;margin-top:15px;background:var(--one);color:#fff;border:none;padding:12px 28px;border-radius:16px;font-size:18px;cursor:pointer;font-family:'Baloo Bhaijaan 2',Tajawal,sans-serif}.back-btn:hover{opacity:.9}.highlight{color:var(--two);font-weight:700}.highlight2{color:var(--one);font-weight:700}.highlight-p{color:#8e44ad;font-weight:700}.feedback{font-size:22px;text-align:center;padding:10px;border-radius:14px;margin:10px 0;opacity:0;transform:translateY(-8px);transition:all .3s}.feedback.show{opacity:1;transform:translateY(0)}.feedback.ok{background:#eafaf1;color:var(--ok);border:2px solid var(--ok)}.feedback.no{background:#fdedec;color:var(--no);border:2px solid var(--no)}.end-screen{text-align:center;padding:30px 20px}.end-screen .trophy{font-size:90px;animation:bounce .6s ease}.end-screen h2{font-size:36px;margin:10px 0}.end-score-num{font-size:52px;font-weight:800;color:var(--one);margin:15px 0}.end-score-num span{font-size:28px;color:#6b5e7b}.end-btns{display:flex;gap:14px;justify-content:center;margin-top:25px;flex-wrap:wrap}.end-btns button{min-width:180px}@keyframes bounce{0%{transform:scale(0)}50%{transform:scale(1.2)}100%{transform:scale(1)}}@keyframes bob{50%{transform:translateY(-10px)}}@keyframes goodshake{0%,100%{transform:none}30%{transform:scale(1.08)}60%{transform:scale(.96)}}@keyframes badshake{0%,100%{transform:none}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}.topbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}.topbar .brand{font-family:'Lalezar',cursive;font-size:1.5rem;color:var(--two-deep)}.topbar .brand b{color:var(--one-deep)}.topbar .badge{font-family:'Tajawal';font-weight:800;font-size:.85rem;background:var(--leaf);color:#fff;padding:3px 12px;border-radius:999px}.hero{background:linear-gradient(160deg,#ffffff,#fffaf0);border:4px solid #fff;border-radius:34px;box-shadow:0 18px 0 rgba(0,0,0,.06),inset 0 0 0 3px var(--line);padding:26px 22px 30px}.hero h1{-webkit-text-fill-color:initial;background:none;color:var(--one)}.mascots{font-size:clamp(2.4rem,10vw,4rem);margin-top:6px}.mascots span{display:inline-block;animation:bob 2.4s ease-in-out infinite}.mascots .d{animation-delay:.4s}.mascots .dd{animation-delay:.8s}.pill{display:inline-block;font-family:'Baloo Bhaijaan 2';font-weight:800;padding:4px 16px;border-radius:999px;font-size:1.1rem;margin:2px}.pill.one{background:#dff3f5;color:var(--one-deep)}.pill.two{background:#ffe9da;color:var(--two-deep)}.pill.three{background:#f5eef8;color:var(--raise)}.conj-table{width:100%;border-collapse:separate;border-spacing:0;margin:15px 0;font-size:20px;border-radius:16px;overflow:hidden}.conj-table th{background:linear-gradient(145deg,var(--one),var(--one-deep));color:#fff;padding:12px 10px;font-family:Lalezar;font-size:18px}.conj-table td{padding:10px;text-align:center;border-bottom:1px solid #f0f0f0}.conj-table tr:nth-child(even) td{background:#f9f9f9}.conj-table .pron{color:var(--raise);font-weight:800;white-space:nowrap}.conj-table .verb{font-size:24px;font-weight:700;color:var(--one-deep)}.conj-table .col-mut{background:linear-gradient(135deg,#f5eef8,#f4ecf7)!important}.conj-table .col-mut th{background:linear-gradient(145deg,var(--raise),#6c3483)}.conj-table .col-mukh{background:linear-gradient(135deg,#fff9f0,#fef6e9)!important}.conj-table .col-mukh th{background:linear-gradient(145deg,var(--two),var(--two-deep))}.conj-table .col-ghaib{background:linear-gradient(135deg,#f0fafb,#e8f6f8)!important}.conj-table .col-ghaib th{background:linear-gradient(145deg,var(--acc),#1a5276)}.arrow-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;margin:12px 0;font-size:20px;text-align:center}@media (prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;transition-duration:.05ms!important}}</style></head><body>
+<button class="btn home" onclick="show('home')">🏠</button>
+
+<div class="wrap">
+
+<section id="home" class="screen active">
+  <div class="topbar">
+    <div class="brand"><b>الفعل الماضي</b> - قواعد نحوية</div>
+  </div>
+  <div class="hero">
+    <div class="mascots"><span>⏳</span> <span class="d">📝</span> <span class="dd">✅</span></div>
+    <h1>الفعل الماضي</h1>
+    <p style="font-size:22px;color:#6b5e7b;margin-top:5px">قواعد نحوية</p>
+    <div style="margin-top:8px">
+      <span class="pill one">⏳ الزمن الماضي</span>
+      <span class="pill two">📝 التصريف</span>
+      <span class="pill three">✅ تمارين</span>
+    </div>
+  </div>
+  <div class="menu">
+    <button class="btn" onclick="show('learn')">📚 أتعلّم</button>
+    <button class="btn btn2" onclick="startDef()">🔍 ما هو الماضي؟</button>
+    <button class="btn" onclick="startTime()">⏳ علامات الزمن</button>
+    <button class="btn btn2" onclick="startConj()">📝 صرّف الفعل</button>
+    <button class="btn btn3" onclick="startPronoun()">🔘 الضمير والفعل</button>
+    <button class="btn btn2" onclick="startPick()">✅ اختر الصحيح</button>
+    <button class="btn" onclick="startQuiz()">🏆 التحدي الكبير</button>
+  </div>
+</section>
+
+<section id="learn" class="screen">
+  <div class="box">
+    <h2 class="h2">ما هو الفعل الماضي؟</h2>
+    <div class="rule-box">
+      <h3>التعريف</h3>
+      <p class="p">الفعل الماضي هو فعل يدل على <span class="highlight">حدث أو حالة</span> وقعت في <span class="highlight2">زمن مضى</span>.</p>
+    </div>
+    <div class="rule-box orange">
+      <h3>علامات الزمن الماضي</h3>
+      <p class="p">نتعرّف على الفعل الماضي من خلال كلمات تدلّ على الماضي مثل:</p>
+      <div class="examples">
+        <span class="ex-tag gold">أمسِ</span>
+        <span class="ex-tag gold">البارحةَ</span>
+        <span class="ex-tag gold">في الشهر الماضي</span>
+        <span class="ex-tag gold">منذُ عام</span>
+        <span class="ex-tag gold">سابقًا</span>
+        <span class="ex-tag gold">في الماضي</span>
+      </div>
+    </div>
+    <div class="rule-box green">
+      <h3>أمثلة على أفعال ماضية</h3>
+      <div class="examples">
+        <span class="ex-tag green">ذَهَبَ</span>
+        <span class="ex-tag green">كَتَبَ</span>
+        <span class="ex-tag green">أَكَلَ</span>
+        <span class="ex-tag green">شَرِبَ</span>
+        <span class="ex-tag green">لَعِبَ</span>
+        <span class="ex-tag green">قَرَأَ</span>
+        <span class="ex-tag green">فَتَحَ</span>
+        <span class="ex-tag green">جَلَسَ</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="box">
+    <h2 class="h2">تصريف الفعل الماضي: ذَهَبَ</h2>
+    <div style="overflow-x:auto">
+    <table class="conj-table">
+      <thead>
+        <tr>
+          <th class="col-mut">المتكلّم والمتكلّمة</th>
+          <th class="col-mukh">المخاطب والمخاطبة</th>
+          <th class="col-ghaib">الغائب والغائبة</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="col-mut"><span class="pron">أنا</span> <span class="verb">ذَهَبْتُ</span></td>
+          <td class="col-mukh"><span class="pron">أنتَ</span> <span class="verb">ذَهَبْتَ</span></td>
+          <td class="col-ghaib"><span class="pron">هوَ</span> <span class="verb">ذَهَبَ</span></td>
+        </tr>
+        <tr>
+          <td class="col-mut"><span class="pron">نحنُ</span> <span class="verb">ذَهَبْنا</span></td>
+          <td class="col-mukh"><span class="pron">أنتِ</span> <span class="verb">ذَهَبْتِ</span></td>
+          <td class="col-ghaib"><span class="pron">هيَ</span> <span class="verb">ذَهَبَتْ</span></td>
+        </tr>
+        <tr>
+          <td class="col-mut"></td>
+          <td class="col-mukh"><span class="pron">أنتُما</span> <span class="verb">ذَهَبْتُما</span></td>
+          <td class="col-ghaib"><span class="pron">هما</span> (مذكّر) <span class="verb">ذَهَبا</span></td>
+        </tr>
+        <tr>
+          <td class="col-mut"></td>
+          <td class="col-mukh"><span class="pron">أنتُم</span> <span class="verb">ذَهَبْتُم</span></td>
+          <td class="col-ghaib"><span class="pron">هما</span> (مؤنّث) <span class="verb">ذَهَبَتا</span></td>
+        </tr>
+        <tr>
+          <td class="col-mut"></td>
+          <td class="col-mukh"><span class="pron">أنتُنَّ</span> <span class="verb">ذَهَبْتُنَّ</span></td>
+          <td class="col-ghaib"><span class="pron">هُم</span> <span class="verb">ذَهَبُوا</span></td>
+        </tr>
+        <tr>
+          <td class="col-mut"></td>
+          <td class="col-mukh"></td>
+          <td class="col-ghaib"><span class="pron">هُنَّ</span> <span class="verb">ذَهَبْنَ</span></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <div class="box">
+    <h2 class="h2">تصريف الفعل الماضي: كَتَبَ</h2>
+    <div style="overflow-x:auto">
+    <table class="conj-table">
+      <thead>
+        <tr>
+          <th class="col-mut">المتكلّم والمتكلّمة</th>
+          <th class="col-mukh">المخاطب والمخاطبة</th>
+          <th class="col-ghaib">الغائب والغائبة</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="col-mut"><span class="pron">أنا</span> <span class="verb">كَتَبْتُ</span></td>
+          <td class="col-mukh"><span class="pron">أنتَ</span> <span class="verb">كَتَبْتَ</span></td>
+          <td class="col-ghaib"><span class="pron">هوَ</span> <span class="verb">كَتَبَ</span></td>
+        </tr>
+        <tr>
+          <td class="col-mut"><span class="pron">نحنُ</span> <span class="verb">كَتَبْنا</span></td>
+          <td class="col-mukh"><span class="pron">أنتِ</span> <span class="verb">كَتَبْتِ</span></td>
+          <td class="col-ghaib"><span class="pron">هيَ</span> <span class="verb">كَتَبَتْ</span></td>
+        </tr>
+        <tr>
+          <td class="col-mut"></td>
+          <td class="col-mukh"><span class="pron">أنتُما</span> <span class="verb">كَتَبْتُما</span></td>
+          <td class="col-ghaib"><span class="pron">هما</span> (مذكّر) <span class="verb">كَتَبا</span></td>
+        </tr>
+        <tr>
+          <td class="col-mut"></td>
+          <td class="col-mukh"><span class="pron">أنتُم</span> <span class="verb">كَتَبْتُم</span></td>
+          <td class="col-ghaib"><span class="pron">هما</span> (مؤنّث) <span class="verb">كَتَبَتا</span></td>
+        </tr>
+        <tr>
+          <td class="col-mut"></td>
+          <td class="col-mukh"><span class="pron">أنتُنَّ</span> <span class="verb">كَتَبْتُنَّ</span></td>
+          <td class="col-ghaib"><span class="pron">هُم</span> <span class="verb">كَتَبُوا</span></td>
+        </tr>
+        <tr>
+          <td class="col-mut"></td>
+          <td class="col-mukh"></td>
+          <td class="col-ghaib"><span class="pron">هُنَّ</span> <span class="verb">كَتَبْنَ</span></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <div class="box">
+    <h2 class="h2">ملاحظة مهمّة</h2>
+    <div class="rule-box purple">
+      <h3>تغيّرات الفعل الماضي</h3>
+      <div class="arrow-grid">
+        <div class="ex-tag" style="justify-self:center">ذَهَبَ (هوَ)</div>
+        <div style="font-size:28px;color:var(--one)">←</div>
+        <div class="ex-tag purple" style="justify-self:center">ذَهَبْتُ (أنا)</div>
+        <div class="ex-tag" style="justify-self:center;margin-top:8px">ذَهَبَ (هوَ)</div>
+        <div style="font-size:28px;color:var(--one);margin-top:8px">←</div>
+        <div class="ex-tag purple" style="justify-self:center;margin-top:8px">ذَهَبَتْ (هيَ)</div>
+        <div class="ex-tag" style="justify-self:center;margin-top:8px">ذَهَبَ (هوَ)</div>
+        <div style="font-size:28px;color:var(--one);margin-top:8px">←</div>
+        <div class="ex-tag purple" style="justify-self:center;margin-top:8px">ذَهَبا (هما مذكّر)</div>
+      </div>
+      <p class="p" style="margin-top:12px">نلاحظ: الفعل الماضي يتغيّر حسب <span class="highlight-p">الضمير</span> — نضيف تاءً في آخره مع ضمائر المتكلّم والمخاطب والمؤنّث، ونضيف ألفًا مع المثنى المذكّر، وواوًا مع جمع المذكّر.</p>
+    </div>
+  </div>
+
+  <div style="text-align:center">
+    <button class="back-btn" onclick="show('home')">← العودة للقائمة</button>
+  </div>
+</section>
+
+<section id="game" class="screen">
+  <div class="box">
+    <div class="score" id="score"></div>
+    <div id="gTitle" style="text-align:center;font-size:18px;color:#6b5e7b;margin-bottom:5px"></div>
+    <div class="q" id="q"></div>
+    <div class="feedback" id="fb"></div>
+    <div id="answers" class="choices"></div>
+  </div>
+</section>
+
+<section id="endScreen" class="screen">
+  <div class="box end-screen">
+    <div class="trophy">🏆</div>
+    <h2>انتهت اللعبة!</h2>
+    <div class="end-score-num"><span id="endScore">0</span> <span>/ <span id="endTotal">0</span></span></div>
+    <div id="endMsg" style="font-size:22px;color:#6b5e7b;margin:10px 0"></div>
+    <div class="end-btns">
+      <button class="btn" onclick="restartGame()">🔄 أعد اللعب</button>
+      <button class="btn btn2" onclick="show('home')">🏠 القائمة الرئيسية</button>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<script>
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active')}
+
+let score=0,data=[],i=0,gameTitle='',busy=false,currentGame=null;
+
+function shuffle(arr){
+  for(let j=arr.length-1;j>0;j--){
+    let k=Math.floor(Math.random()*(j+1));
+    [arr[j],arr[k]]=[arr[k],arr[j]];
+  }
+  return arr;
+}
+
+function endGame(){
+  let total=data.length*10;
+  document.getElementById('endScore').innerText=score;
+  document.getElementById('endTotal').innerText=total;
+  let pct=Math.round(score/total*100);
+  let msg='';
+  if(pct===100)msg='🌟 ممتاز! نتيجة كاملة!';
+  else if(pct>=80)msg='👏 أحسنت! نتيجة رائعة!';
+  else if(pct>=50)msg='💪 جيد! حاول تحسين نتيجتك';
+  else msg='📚 راجع الدرس وحاول مرة أخرى';
+  document.getElementById('endMsg').innerText=msg;
+  show('endScreen');
+}
+function restartGame(){if(currentGame)currentGame()}
+
+function render(){
+  show('game');busy=false;
+  document.getElementById('score').innerText='⭐ '+score+' / '+(data.length*10);
+  document.getElementById('gTitle').innerText=gameTitle;
+  let fb=document.getElementById('fb');fb.className='feedback';fb.innerText='';
+  let x=data[i];
+  document.getElementById('q').innerHTML=x.q;
+  let a=document.getElementById('answers');a.innerHTML='';
+  let shuffled=[...x.a].sort(()=>Math.random()-.5);
+  shuffled.forEach(v=>{
+    let b=document.createElement('button');b.innerText=v;
+    b.onclick=()=>pick(v,b,x.c);
+    a.appendChild(b);
+  });
+}
+
+function pick(v,btn,correct){
+  if(busy)return;busy=true;
+  let fb=document.getElementById('fb');
+  let allBtns=document.querySelectorAll('.choices button');
+  if(v===correct){
+    score+=10;btn.classList.add('correct-pick');
+    fb.innerText='🌟 أحسنت!';fb.className='feedback ok show';
+    allBtns.forEach(b=>{if(b!==btn)b.classList.add('locked')});
+    setTimeout(next,1000);
+  }else{
+    btn.classList.add('wrong-pick');
+    fb.innerText='❌ الصحيح: '+correct;fb.className='feedback no show';
+    allBtns.forEach(b=>{
+      if(b.innerText===correct)b.classList.add('correct-show');
+      else if(b!==btn)b.classList.add('locked');
+    });
+    setTimeout(next,1800);
+  }
+}
+
+function next(){
+  i++;if(i>=data.length)endGame();else render();
+}
+
+/* 1 - ما هو الماضي؟ */
+function startDef(){
+  currentGame=startDef;score=0;i=0;gameTitle='🔍 ما هو الفعل الماضي؟';
+  data=shuffle([
+    {q:'الفعل الماضي يدل على:',a:['حدث سيحدث','حدث في زمن مضى','حدث دائم'],c:'حدث في زمن مضى'},
+    {q:'أيّ من الأفعال التالية فعل ماضٍ؟',a:['يَذْهَبُ','ذَهَبَ','يَذْهَبانِ'],c:'ذَهَبَ'},
+    {q:'أيّ من الأفعال التالية فعل ماضٍ؟',a:['يَكْتُبُ','كَتَبَ','يَكْتُبانِ'],c:'كَتَبَ'},
+    {q:'أيّ من الأفعال التالية فعل ماضٍ؟',a:['يَأْكُلُ','أَكَلَ','يَأْكُلانِ'],c:'أَكَلَ'},
+    {q:'أيّ من الأفعال التالية فعل ماضٍ؟',a:['يَلْعَبُ','لَعِبَ','يَلْعَبانِ'],c:'لَعِبَ'},
+    {q:'أيّ من الأفعال التالية فعل ماضٍ؟',a:['يَشْرَبُ','شَرِبَ','يَشْرَبانِ'],c:'شَرِبَ'},
+    {q:'ما عكس الفعل الماضي؟',a:['الفعل المضارع','الاسم','الحرف'],c:'الفعل المضارع'},
+    {q:'"فَتَحَ" فعل:',a:['مضارع','ماضٍ','أمر'],c:'ماضٍ'},
+    {q:'"جَلَسَ" فعل:',a:['مضارع','ماضٍ','أمر'],c:'ماضٍ'},
+    {q:'"قَرَأَ" فعل:',a:['ماضٍ','مضارع','أمر'],c:'ماضٍ'},
+    {q:'"يَكْتُبُ" فعل:',a:['ماضٍ','مضارع','أمر'],c:'مضارع'},
+    {q:'"يَذْهَبُ" فعل:',a:['ماضٍ','مضارع','أمر'],c:'مضارع'}
+  ]);render();
+}
+
+/* 2 - علامات الزمن */
+function startTime(){
+  currentGame=startTime;score=0;i=0;gameTitle='⏳ علامات الزمن الماضي';
+  data=shuffle([
+    {q:'ذهبتُ إلى المدرسة ____',a:['غدًا','أمسِ','الآن'],c:'أمسِ'},
+    {q:'كتبَ الولدُ رسالةً ____',a:['غدًا','في الشهر الماضي','الآن'],c:'في الشهر الماضي'},
+    {q:'لعِبَ الأولادُ في الحديقة ____',a:['البارحةَ','غدًا','كلّ يوم'],c:'البارحةَ'},
+    {q:'شَرِبَ الطفلُ الحليبَ ____',a:['أمسِ','غدًا','كلّ صباح'],c:'أمسِ'},
+    {q:'جَلَسَ الجدّ تحت الشجرة ____',a:['غدًا','منذُ عام','الآن'],c:'منذُ عام'},
+    {q:'قرأَتِ البنتُ القصةَ ____',a:['البارحةَ','غدًا','كلّ يوم'],c:'البارحةَ'},
+    {q:'فتحَ المعلمُ البابَ ____',a:['أمسِ','غدًا','الآن'],c:'أمسِ'},
+    {q:'أكلَ العصفورُ الحبّةَ ____',a:['في الشهر الماضي','غدًا','كلّ يوم'],c:'في الشهر الماضي'},
+    {q:'ذهبَ والدي إلى العمل ____',a:['غدًا','أمسِ','الآن'],c:'أمسِ'},
+    {q:'كتبتُ الواجبَ ____',a:['غدًا','البارحةَ','الآن'],c:'البارحةَ'},
+    {q:'أيّ كلمة تدلّ على الزمن الماضي؟',a:['غدًا','ساعتها','منذُ عام'],c:'منذُ عام'},
+    {q:'أيّ كلمة تدلّ على الزمن الماضي؟',a:['غدًا','سابقًا','الآن'],c:'سابقًا'}
+  ]);render();
+}
+
+/* 3 - صرّف الفعل */
+function startConj(){
+  currentGame=startConj;score=0;i=0;gameTitle='📝 صرّف الفعل الماضي';
+  data=shuffle([
+    {q:'صرِّف "ذَهَبَ" مع: أنا',a:['ذَهَبَ','ذَهَبْتُ','ذَهَبا'],c:'ذَهَبْتُ'},
+    {q:'صرِّف "ذَهَبَ" مع: هوَ',a:['ذَهَبْتُ','ذَهَبَ','ذَهَبُوا'],c:'ذَهَبَ'},
+    {q:'صرِّف "ذَهَبَ" مع: هيَ',a:['ذَهَبَ','ذَهَبَتْ','ذَهَبْنَ'],c:'ذَهَبَتْ'},
+    {q:'صرِّف "ذَهَبَ" مع: هُم',a:['ذَهَبَتا','ذَهَبُوا','ذَهَبْنَ'],c:'ذَهَبُوا'},
+    {q:'صرِّف "ذَهَبَ" مع: هُنَّ',a:['ذَهَبُوا','ذَهَبَتا','ذَهَبْنَ'],c:'ذَهَبْنَ'},
+    {q:'صرِّف "ذَهَبَ" مع: أنتَ',a:['ذَهَبْتُ','ذَهَبَ','ذَهَبْتَ'],c:'ذَهَبْتَ'},
+    {q:'صرِّف "كَتَبَ" مع: أنا',a:['كَتَبَ','كَتَبْتُ','كَتَبا'],c:'كَتَبْتُ'},
+    {q:'صرِّف "كَتَبَ" مع: هوَ',a:['كَتَبْتُ','كَتَبَ','كَتَبُوا'],c:'كَتَبَ'},
+    {q:'صرِّف "كَتَبَ" مع: هيَ',a:['كَتَبَ','كَتَبَتْ','كَتَبْنَ'],c:'كَتَبَتْ'},
+    {q:'صرِّف "كَتَبَ" مع: هُم',a:['كَتَبَتا','كَتَبُوا','كَتَبْنَ'],c:'كَتَبُوا'},
+    {q:'صرِّف "أَكَلَ" مع: أنا',a:['أَكَلَ','أَكَلْتُ','أَكَلا'],c:'أَكَلْتُ'},
+    {q:'صرِّف "أَكَلَ" مع: هوَ',a:['أَكَلْتُ','أَكَلَ','أَكَلُوا'],c:'أَكَلَ'},
+    {q:'صرِّف "أَكَلَ" مع: هيَ',a:['أَكَلَ','أَكَلَتْ','أَكَلْنَ'],c:'أَكَلَتْ'},
+    {q:'صرِّف "لَعِبَ" مع: أنا',a:['لَعِبَ','لَعِبْتُ','لَعِبا'],c:'لَعِبْتُ'},
+    {q:'صرِّف "لَعِبَ" مع: هُم',a:['لَعِبَتا','لَعِبُوا','لَعِبْنَ'],c:'لَعِبُوا'},
+    {q:'صرِّف "شَرِبَ" مع: أنتِ',a:['شَرِبَ','شَرِبْتِ','شَرِبْتُ'],c:'شَرِبْتِ'},
+    {q:'صرِّف "فَتَحَ" مع: نحنُ',a:['فَتَحَ','فَتَحْنا','فَتَحُوا'],c:'فَتَحْنا'},
+    {q:'صرِّف "جَلَسَ" مع: أنتُم',a:['جَلَسَ','جَلَسْتُم','جَلَسُوا'],c:'جَلَسْتُم'}
+  ]);render();
+}
+
+/* 4 - الضمير والفعل */
+function startPronoun(){
+  currentGame=startPronoun;score=0;i=0;gameTitle='🔘 ماذا يقول كلّ ضمير؟';
+  data=shuffle([
+    {q:'"ذَهَبْتُ" — من يقولها؟',a:['هوَ','أنا','أنتَ'],c:'أنا'},
+    {q:'"ذَهَبْتَ" — من يقولها؟',a:['أنا','أنتَ','هوَ'],c:'أنتَ'},
+    {q:'"ذَهَبْتِ" — من يقولها؟',a:['أنتَ','أنتِ','هيَ'],c:'أنتِ'},
+    {q:'"ذَهَبَ" — من يقولها؟',a:['أنا','هوَ','أنتَ'],c:'هوَ'},
+    {q:'"ذَهَبَتْ" — من يقولها؟',a:['أنتِ','هيَ','أنا'],c:'هيَ'},
+    {q:'"ذَهَبا" — من يقولها؟',a:['هوَ','هما (مذكّر)','هُم'],c:'هما (مذكّر)'},
+    {q:'"ذَهَبَتا" — من يقولها؟',a:['هما (مذكّر)','هما (مؤنّث)','هُنَّ'],c:'هما (مؤنّث)'},
+    {q:'"ذَهَبُوا" — من يقولها؟',a:['هما (مذكّر)','هُم','هُنَّ'],c:'هُم'},
+    {q:'"ذَهَبْنَ" — من يقولها؟',a:['هُم','هما (مؤنّث)','هُنَّ'],c:'هُنَّ'},
+    {q:'"كَتَبْتُ" — من يقولها؟',a:['هوَ','أنا','أنتَ'],c:'أنا'},
+    {q:'"كَتَبَ" — من يقولها؟',a:['أنا','هوَ','أنتَ'],c:'هوَ'},
+    {q:'"كَتَبَتْ" — من يقولها؟',a:['أنتِ','هيَ','أنا'],c:'هيَ'},
+    {q:'"كَتَبُوا" — من يقولها؟',a:['هما','هُم','هُنَّ'],c:'هُم'},
+    {q:'"كَتَبْنَ" — من يقولها؟',a:['هُم','هُنَّ','هما'],c:'هُنَّ'},
+    {q:'"أَكَلْتُ" — من يقولها؟',a:['هوَ','أنا','أنتِ'],c:'أنا'},
+    {q:'"أَكَلُوا" — من يقولها؟',a:['هما','هُم','هُنَّ'],c:'هُم'}
+  ]);render();
+}
+
+/* 5 - اختر الصحيح */
+function startPick(){
+  currentGame=startPick;score=0;i=0;gameTitle='✅ اختر الإجابة الصحيحة';
+  data=shuffle([
+    {q:'ماذا نضيف لفعل الماضي مع "أنا"؟',a:['تاء متّصلة','ألف','واو'],c:'تاء متّصلة'},
+    {q:'ماذا نضيف لفعل الماضي مع "هما" المذكّر؟',a:['تاء متّصلة','ألف','واو'],c:'ألف'},
+    {q:'ماذا نضيف لفعل الماضي مع "هُم"؟',a:['ألف','واو','تاء متّصلة'],c:'واو'},
+    {q:'ماذا نضيف لفعل الماضي مع "هُنَّ"؟',a:['واو','ألف','نون مشدّدة'],c:'نون مشدّدة'},
+    {q:'"كَتَبَ" مع "أنتِ" تصبح:',a:['كَتَبْتِ','كَتَبْتُ','كَتَبَتْ'],c:'كَتَبْتِ'},
+    {q:'"لَعِبَ" مع "أنتم" تصبح:',a:['لَعِبْتُم','لَعِبُوا','لَعِبْنَ'],c:'لَعِبْتُم'},
+    {q:'"شَرِبَ" مع "هنَّ" تصبح:',a:['شَرِبُوا','شَرِبْنَ','شَرِبَتا'],c:'شَرِبْنَ'},
+    {q:'"فَتَحَ" مع "هما" المذكّر تصبح:',a:['فَتَحَتا','فَتَحا','فَتَحُوا'],c:'فَتَحا'},
+    {q:'"جَلَسَ" مع "نحنُ" تصبح:',a:['جَلَسُوا','جَلَسْنا','جَلَسْنَ'],c:'جَلَسْنا'},
+    {q:'"أَكَلَ" مع "هيَ" تصبح:',a:['أَكَلْتُ','أَكَلَ','أَكَلَتْ'],c:'أَكَلَتْ'},
+    {q:'الفعل الماضي مع "هوَ" يبقى كما هو أم يتغيّر؟',a:['يبقى كما هو','يتغيّر دائمًا','يُحذف'],c:'يبقى كما هو'},
+    {q:'"ذَهَبْتُما" يقولها:',a:['أنا','أنتُما','نحنُ'],c:'أنتُما'},
+    {q:'"ذَهَبْتُنَّ" يقولها:',a:['أنتُم','أنتُنَّ','هُنَّ'],c:'أنتُنَّ'},
+    {q:'"كَتَبْنا" يقولها:',a:['أنتُما','نحنُ','هُم'],c:'نحنُ'},
+    {q:'"أَكَلْتِ" يقولها:',a:['أنا','أنتِ','هيَ'],c:'أنتِ'}
+  ]);render();
+}
+
+/* 6 - التحدي الكبير */
+function startQuiz(){
+  currentGame=startQuiz;score=0;i=0;gameTitle='🏆 التحدي الكبير - الفعل الماضي';
+  data=shuffle([
+    {q:'الفعل الماضي يدل على:',a:['حدث سيحدث','حدث في زمن مضى','حدث دائم'],c:'حدث في زمن مضى'},
+    {q:'صرِّف "ذَهَبَ" مع: أنا',a:['ذَهَبَ','ذَهَبْتُ','ذَهَبا'],c:'ذَهَبْتُ'},
+    {q:'صرِّف "كَتَبَ" مع: هُم',a:['كَتَبَتا','كَتَبُوا','كَتَبْنَ'],c:'كَتَبُوا'},
+    {q:'"ذَهَبْتُ" — من يقولها؟',a:['هوَ','أنا','أنتَ'],c:'أنا'},
+    {q:'"كَتَبَ" — من يقولها؟',a:['أنا','هوَ','أنتَ'],c:'هوَ'},
+    {q:'ذهبَ الولدُ ____',a:['غدًا','أمسِ','الآن'],c:'أمسِ'},
+    {q:'كتبَ الطالبُ الرسالةَ ____',a:['غدًا','في الشهر الماضي','الآن'],c:'في الشهر الماضي'},
+    {q:'ماذا نضيف لفعل الماضي مع "هُم"؟',a:['ألف','واو','تاء متّصلة'],c:'واو'},
+    {q:'ماذا نضيف لفعل الماضي مع "هما" المذكّر؟',a:['تاء متّصلة','ألف','واو'],c:'ألف'},
+    {q:'"كَتَبْتِ" — من يقولها؟',a:['أنتَ','أنتِ','هيَ'],c:'أنتِ'},
+    {q:'"أَكَلُوا" — من يقولها؟',a:['هما','هُم','هُنَّ'],c:'هُم'},
+    {q:'صرِّف "لَعِبَ" مع: أنتَ',a:['لَعِبْتُ','لَعِبَ','لَعِبْتَ'],c:'لَعِبْتَ'},
+    {q:'صرِّف "شَرِبَ" مع: هُنَّ',a:['شَرِبُوا','شَرِبْنَ','شَرِبَتا'],c:'شَرِبْنَ'},
+    {q:'"يَكْتُبُ" فعل:',a:['ماضٍ','مضارع','أمر'],c:'مضارع'},
+    {q:'"جَلَسَ" فعل:',a:['ماضٍ','مضارع','أمر'],c:'ماضٍ'},
+    {q:'"فَتَحَ" مع "نحنُ" تصبح:',a:['فَتَحُوا','فَتَحْنا','فَتَحْنَ'],c:'فَتَحْنا'},
+    {q:'"ذَهَبْتُنَّ" يقولها:',a:['أنتُم','أنتُنَّ','هُنَّ'],c:'أنتُنَّ'},
+    {q:'"كَتَبْتُما" يقولها:',a:['أنا','أنتُما','نحنُ'],c:'أنتُما'},
+    {q:'"ذَهَبَتْ" — من يقولها؟',a:['أنتِ','هيَ','أنا'],c:'هيَ'},
+    {q:'لعِبَ الأولادُ في الحديقة ____',a:['البارحةَ','غدًا','كلّ يوم'],c:'البارحةَ'}
+  ]);render();
+}
+</script>
+</body></html>

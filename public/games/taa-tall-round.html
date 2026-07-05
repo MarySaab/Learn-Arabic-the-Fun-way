@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التاء المربوطة والتاء الطويلة - المستوى 2-3 | قسم اللغة العربية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --primary:#0C7B5F;--primary-dark:#085D47;--primary-light:#E6F4F0;--primary-50:#F0FAF6;
+            --secondary:#E8912D;--secondary-light:#FEF3E2;
+            --bg:#F8FAFB;--card:#FFFFFF;--text:#1A2332;--text-muted:#64748B;
+            --border:#E2E8F0;--success:#16A34A;--success-light:#DCFCE7;
+            --error:#DC2626;--error-light:#FEE2E2;
+            --shadow:0 1px 3px rgba(0,0,0,0.08),0 1px 2px rgba(0,0,0,0.06);
+            --shadow-md:0 4px 6px rgba(0,0,0,0.07),0 2px 4px rgba(0,0,0,0.06);
+            --shadow-lg:0 10px 15px rgba(0,0,0,0.1),0 4px 6px rgba(0,0,0,0.05);
+            --radius:12px;--radius-lg:20px
+        }
+        html{scroll-behavior:smooth}
+        body{font-family:'Tajawal',sans-serif;background:var(--bg);color:var(--text);line-height:1.8;overflow-x:hidden}
+
+        .header{background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 50%,#10A37F 100%);color:#fff;padding:3rem 1.5rem 4.5rem;text-align:center;position:relative;overflow:hidden}
+        .header::before{content:'';position:absolute;top:-50%;right:-20%;width:400px;height:400px;background:rgba(255,255,255,0.05);border-radius:50%}
+        .header::after{content:'';position:absolute;bottom:-30%;left:-10%;width:300px;height:300px;background:rgba(255,255,255,0.03);border-radius:50%}
+        .header-pattern{position:absolute;inset:0;opacity:.05;background-image:repeating-linear-gradient(0deg,transparent,transparent 40px,rgba(255,255,255,.5) 40px,rgba(255,255,255,.5) 41px),repeating-linear-gradient(90deg,transparent,transparent 40px,rgba(255,255,255,.5) 40px,rgba(255,255,255,.5) 41px)}
+        .level-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.15);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.25);padding:.4rem 1.2rem;border-radius:50px;font-size:.9rem;font-weight:500;margin-bottom:1rem;position:relative;z-index:1}
+        .header h1{font-size:2.8rem;font-weight:900;margin-bottom:.5rem;position:relative;z-index:1}
+        .header .subtitle{font-size:1.15rem;opacity:.85;font-weight:300;position:relative;z-index:1}
+        .header-wave{position:absolute;bottom:-2px;left:0;right:0;z-index:2}
+        .header-wave svg{display:block;width:100%;height:auto}
+
+        .container{max-width:920px;margin:0 auto;padding:0 1.5rem}
+        .content-section{margin-top:-1rem;position:relative;z-index:3}
+
+        .section-card{background:var(--card);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);padding:2.5rem;margin-bottom:2rem;border:1px solid var(--border);transition:transform .3s ease}
+        .section-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+        .section-title{display:flex;align-items:center;gap:.75rem;font-size:1.5rem;font-weight:800;color:var(--primary-dark);margin-bottom:1.5rem}
+        .icon-circle{width:44px;height:44px;background:var(--primary-light);color:var(--primary);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+
+        .definition-box{background:var(--primary-light);border-right:4px solid var(--primary);border-radius:var(--radius);padding:1.5rem 2rem;font-size:1.2rem;font-weight:500;line-height:2.2;margin-bottom:1.5rem}
+        .definition-box .hl{color:var(--primary);font-weight:700}
+        .definition-box.orange{background:var(--secondary-light);border-right-color:var(--secondary)}
+        .definition-box.orange .hl{color:var(--secondary)}
+
+        .examples-row{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1rem}
+        .pill{background:var(--primary-light);color:var(--primary);padding:.5rem 1.2rem;border-radius:50px;font-size:1.15rem;font-weight:700;border:2px solid transparent;transition:all .3s ease;cursor:default}
+        .pill:hover{border-color:var(--primary);transform:scale(1.05)}
+        .pill.orange{background:var(--secondary-light);color:var(--secondary)}
+        .pill.orange:hover{border-color:var(--secondary)}
+
+        .sub-heading{font-size:1.15rem;font-weight:700;color:var(--text);margin:1.5rem 0 .75rem;display:flex;align-items:center;gap:.5rem}
+        .sub-heading i{color:var(--primary);font-size:.9rem}
+
+        .rule-box{background:var(--primary-50);border-radius:var(--radius);padding:1.25rem 1.5rem;border:1px solid var(--primary-light);margin-bottom:1rem;line-height:2.2;font-size:1.05rem}
+        .rule-box .kw{color:var(--primary);font-weight:700}
+        .rule-box.orange{background:var(--secondary-light);border-color:var(--secondary-light)}
+        .rule-box.orange .kw{color:var(--secondary)}
+
+        /* Comparison */
+        .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.5rem}
+        .compare-col{border-radius:var(--radius-lg);padding:2rem;text-align:center;border:2px solid var(--border);transition:all .3s ease}
+        .compare-col:hover{box-shadow:var(--shadow-md)}
+        .compare-col.green{background:var(--primary-50);border-color:var(--primary-light)}
+        .compare-col.orange{background:var(--secondary-light);border-color:var(--secondary-light)}
+        .compare-letter{font-size:4rem;font-weight:900;line-height:1.2;margin-bottom:.5rem}
+        .compare-col.green .compare-letter{color:var(--primary)}
+        .compare-col.orange .compare-letter{color:var(--secondary)}
+        .compare-name{font-size:1.1rem;font-weight:700;margin-bottom:1rem}
+        .compare-col.green .compare-name{color:var(--primary-dark)}
+        .compare-col.orange .compare-name{color:var(--secondary)}
+        .compare-list{text-align:right;font-size:.95rem;line-height:2.2}
+        .compare-list li{list-style:none;padding:.25rem 0}
+        .compare-list li::before{content:'• ';font-weight:900}
+        .compare-col.green .compare-list li::before{color:var(--primary)}
+        .compare-col.orange .compare-list li::before{color:var(--secondary)}
+
+        /* Transform cards */
+        .transform-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1.25rem;margin-top:1.5rem}
+        .transform-card{background:var(--bg);border-radius:var(--radius);padding:1.25rem;text-align:center;border:2px solid var(--border);transition:all .3s ease}
+        .transform-card:hover{border-color:var(--primary);box-shadow:var(--shadow)}
+        .transform-card .from{font-size:1.3rem;font-weight:700;color:var(--text-muted)}
+        .transform-card .arrow{font-size:1.4rem;color:var(--primary);margin:.4rem 0}
+        .transform-card .to{font-size:1.4rem;font-weight:800;color:var(--primary)}
+        .transform-card.orange-card:hover{border-color:var(--secondary)}
+        .transform-card.orange-card .arrow{color:var(--secondary)}
+        .transform-card.orange-card .to{color:var(--secondary)}
+
+        /* Note box */
+        .note-box{display:flex;align-items:flex-start;gap:.75rem;background:var(--secondary-light);border-right:4px solid var(--secondary);border-radius:var(--radius);padding:1rem 1.5rem;margin-top:1.25rem;font-size:1rem}
+        .note-box.green-note{background:var(--primary-light);border-right-color:var(--primary)}
+        .note-box i{margin-top:4px;flex-shrink:0}
+        .note-box.green-note i{color:var(--primary)}
+        .note-box:not(.green-note) i{color:var(--secondary)}
+
+        /* Original word exercise */
+        .orig-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:1.5rem}
+        .orig-card{display:flex;align-items:center;gap:1rem;background:var(--bg);border-radius:var(--radius);padding:1rem 1.25rem;border:1px solid var(--border)}
+        .orig-card .arrow-orig{color:var(--secondary);font-size:1.2rem;flex-shrink:0}
+        .orig-card .w-to{font-size:1.2rem;font-weight:700;color:var(--secondary)}
+        .orig-card .w-from{font-size:1.2rem;font-weight:700;color:var(--primary)}
+
+        /* ===== GAMES ===== */
+        .games-section{margin-bottom:3rem}
+        .games-header{text-align:center;margin-bottom:2rem}
+        .games-header h2{font-size:2rem;font-weight:900;color:var(--primary-dark);margin-bottom:.5rem}
+        .games-header p{color:var(--text-muted);font-size:1.05rem}
+        .game-tabs{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem}
+        .game-tab{padding:.75rem 1.5rem;border:2px solid var(--border);border-radius:50px;background:var(--card);font-family:'Tajawal',sans-serif;font-size:1rem;font-weight:700;color:var(--text-muted);cursor:pointer;transition:all .3s ease;display:flex;align-items:center;gap:.5rem}
+        .game-tab:hover{border-color:var(--primary);color:var(--primary)}
+        .game-tab.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+        .game-panel{display:none}
+        .game-panel.active{display:block;animation:fadeInUp .4s ease}
+        @keyframes fadeInUp{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+
+        .game-intro{text-align:center;padding:2rem}
+        .game-intro i{font-size:3rem;color:var(--primary);margin-bottom:1rem}
+        .game-intro h3{font-size:1.5rem;font-weight:800;color:var(--text);margin-bottom:.75rem}
+        .game-intro p{color:var(--text-muted);font-size:1.05rem;max-width:420px;margin:0 auto}
+        .start-btn{display:block;margin:2rem auto 0;padding:1rem 3rem;background:linear-gradient(135deg,var(--primary),#10A37F);color:#fff;border:none;border-radius:50px;font-family:'Tajawal',sans-serif;font-size:1.2rem;font-weight:800;cursor:pointer;transition:all .3s ease;box-shadow:0 4px 15px rgba(12,123,95,.3)}
+        .start-btn:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(12,123,95,.4)}
+
+        /* Quiz */
+        .quiz-box{background:var(--card);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);border:1px solid var(--border);overflow:hidden}
+        .quiz-progress{height:6px;background:var(--bg)}
+        .quiz-progress-bar{height:100%;background:linear-gradient(90deg,var(--primary),#10A37F);transition:width .4s ease;border-radius:0 3px 3px 0}
+        .quiz-body{padding:2.5rem}
+        .quiz-qnum{font-size:.9rem;color:var(--text-muted);margin-bottom:.75rem}
+        .quiz-q{font-size:1.3rem;font-weight:700;margin-bottom:2rem;line-height:2}
+        .quiz-q .taa-hl{display:inline-block;background:var(--primary-light);color:var(--primary);padding:0 .3rem;border-radius:4px;font-weight:800}
+        .quiz-q .taa-hl-o{display:inline-block;background:var(--secondary-light);color:var(--secondary);padding:0 .3rem;border-radius:4px;font-weight:800}
+        .quiz-opts{display:flex;flex-direction:column;gap:.75rem}
+        .quiz-opt{padding:1rem 1.5rem;border:2px solid var(--border);border-radius:var(--radius);font-family:'Tajawal',sans-serif;font-size:1.1rem;font-weight:500;color:var(--text);background:var(--bg);cursor:pointer;transition:all .3s ease;text-align:right}
+        .quiz-opt:hover:not(.disabled){border-color:var(--primary);background:var(--primary-light)}
+        .quiz-opt.correct{border-color:var(--success);background:var(--success-light);color:var(--success);font-weight:700}
+        .quiz-opt.wrong{border-color:var(--error);background:var(--error-light);color:var(--error)}
+        .quiz-opt.disabled{cursor:default;opacity:.7}
+        .quiz-opt.correct.disabled,.quiz-opt.wrong.disabled{opacity:1}
+        .quiz-fb{margin-top:1.5rem;padding:1rem 1.5rem;border-radius:var(--radius);font-weight:600;display:none;align-items:center;gap:.75rem}
+        .quiz-fb.show{display:flex}
+        .quiz-fb.correct{background:var(--success-light);color:var(--success)}
+        .quiz-fb.wrong{background:var(--error-light);color:var(--error)}
+        .quiz-next{margin-top:1.5rem;padding:.75rem 2rem;background:var(--primary);color:#fff;border:none;border-radius:50px;font-family:'Tajawal',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all .3s ease;display:none}
+        .quiz-next.show{display:inline-flex;align-items:center;gap:.5rem}
+        .quiz-next:hover{background:var(--primary-dark);transform:translateY(-1px)}
+
+        .quiz-result{text-align:center;padding:3rem 2rem;display:none}
+        .quiz-result.show{display:block;animation:fadeInUp .5s ease}
+        .result-icon{font-size:4rem;margin-bottom:1rem}
+        .result-score{font-size:2.5rem;font-weight:900;color:var(--primary)}
+        .result-text{font-size:1.2rem;color:var(--text-muted);margin:1rem 0 2rem}
+        .retry-btn{padding:.85rem 2.5rem;background:var(--primary);color:#fff;border:none;border-radius:50px;font-family:'Tajawal',sans-serif;font-size:1.1rem;font-weight:700;cursor:pointer;transition:all .3s ease}
+        .retry-btn:hover{background:var(--primary-dark);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+
+        /* Classification game */
+        .class-box{background:var(--card);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);border:1px solid var(--border);padding:2.5rem}
+        .class-score{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:.5rem}
+        .sc-item{display:flex;align-items:center;gap:.5rem;font-weight:700}
+        .sc-item i{color:var(--secondary)}
+        .class-word{text-align:center;margin-bottom:2rem;padding:2rem;background:var(--bg);border-radius:var(--radius)}
+        .class-label{font-size:.95rem;color:var(--text-muted);margin-bottom:.5rem}
+        .class-word-display{font-size:3rem;font-weight:900;color:var(--text)}
+        .class-word-display .taa-hl-big{background:var(--primary-light);color:var(--primary);padding:0 .2rem;border-radius:4px}
+        .class-word-display .taa-hl-big-o{background:var(--secondary-light);color:var(--secondary);padding:0 .2rem;border-radius:4px}
+        .class-btns{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+        .class-btn{padding:1.2rem;border:3px solid var(--border);border-radius:var(--radius);font-family:'Tajawal',sans-serif;font-size:1.15rem;font-weight:700;color:var(--text);background:var(--card);cursor:pointer;transition:all .3s ease;display:flex;flex-direction:column;align-items:center;gap:.5rem}
+        .class-btn .btn-letter{font-size:2.5rem;font-weight:900;line-height:1}
+        .class-btn .btn-label{font-size:.9rem;font-weight:500;color:var(--text-muted)}
+        .class-btn.green-btn:hover{border-color:var(--primary);background:var(--primary-light)}
+        .class-btn.green-btn .btn-letter{color:var(--primary)}
+        .class-btn.orange-btn:hover{border-color:var(--secondary);background:var(--secondary-light)}
+        .class-btn.orange-btn .btn-letter{color:var(--secondary)}
+        .class-btn.correct{border-color:var(--success)!important;background:var(--success-light)!important}
+        .class-btn.wrong{border-color:var(--error)!important;background:var(--error-light)!important}
+        .class-btn.disabled{cursor:default;pointer-events:none}
+        .class-result{text-align:center;padding:2.5rem;display:none}
+        .class-result.show{display:block;animation:fadeInUp .5s ease}
+
+        /* Memory game */
+        .mem-box{background:var(--card);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);border:1px solid var(--border);padding:2rem}
+        .mem-stats{display:flex;justify-content:center;gap:2rem;margin-bottom:1.5rem;flex-wrap:wrap}
+        .mem-stat{display:flex;align-items:center;gap:.5rem;font-weight:700;color:var(--text-muted)}
+        .mem-stat i{color:var(--primary)}
+        .mem-stat .sv{color:var(--primary)}
+        .mem-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;max-width:520px;margin:0 auto}
+        .mem-card{aspect-ratio:1;perspective:600px;cursor:pointer}
+        .mem-card-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .5s ease;border-radius:var(--radius)}
+        .mem-card.flipped .mem-card-inner,.mem-card.matched .mem-card-inner{transform:rotateY(180deg)}
+        .mem-card-front,.mem-card-back{position:absolute;inset:0;backface-visibility:hidden;border-radius:var(--radius);display:flex;align-items:center;justify-content:center;font-weight:800;padding:.5rem}
+        .mem-card-front{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;font-size:1.5rem}
+        .mem-card-back{background:var(--primary-light);color:var(--primary-dark);font-size:1rem;transform:rotateY(180deg);border:2px solid var(--primary);text-align:center;line-height:1.5}
+        .mem-card.matched .mem-card-back{background:var(--success-light);border-color:var(--success);color:var(--success)}
+        .mem-result{text-align:center;padding:2rem;display:none}
+        .mem-result.show{display:block;animation:fadeInUp .5s ease}
+        .mem-reset{margin-top:1.5rem;padding:.75rem 2rem;background:var(--primary);color:#fff;border:none;border-radius:50px;font-family:'Tajawal',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all .3s ease}
+        .mem-reset:hover{background:var(--primary-dark)}
+
+        /* Toast */
+        .toast-wrap{position:fixed;top:1.5rem;left:50%;transform:translateX(-50%);z-index:9999;display:flex;flex-direction:column;gap:.5rem;align-items:center;pointer-events:none}
+        .toast{padding:.85rem 1.5rem;border-radius:50px;font-family:'Tajawal',sans-serif;font-weight:600;font-size:1rem;box-shadow:var(--shadow-lg);animation:toastIn .4s ease,toastOut .4s ease 2.5s forwards;display:flex;align-items:center;gap:.5rem}
+        .toast.success{background:var(--success);color:#fff}
+        .toast.error{background:var(--error);color:#fff}
+        .toast.info{background:var(--primary);color:#fff}
+        @keyframes toastIn{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes toastOut{from{opacity:1}to{opacity:0;transform:translateY(-20px)}}
+
+        /* Footer */
+        .footer{background:var(--primary-dark);color:rgba(255,255,255,.7);text-align:center;padding:2rem 1.5rem;margin-top:3rem}
+        .footer p{font-size:.95rem}
+        .footer .fb{color:#fff;font-weight:700}
+
+        /* Floating shapes */
+        .floating-shapes{position:fixed;inset:0;pointer-events:none;z-index:-1;overflow:hidden}
+        .fs{position:absolute;border-radius:50%;opacity:.04;background:var(--primary)}
+        .fs:nth-child(1){width:300px;height:300px;top:20%;left:-100px;animation:fl1 20s ease-in-out infinite}
+        .fs:nth-child(2){width:200px;height:200px;top:60%;right:-80px;animation:fl2 25s ease-in-out infinite}
+        .fs:nth-child(3){width:150px;height:150px;top:80%;left:30%;animation:fl3 18s ease-in-out infinite}
+        @keyframes fl1{0%,100%{transform:translate(0,0)}50%{transform:translate(50px,-50px)}}
+        @keyframes fl2{0%,100%{transform:translate(0,0)}50%{transform:translate(-40px,30px)}}
+        @keyframes fl3{0%,100%{transform:translate(0,0)}50%{transform:translate(30px,-40px)}}
+
+        /* Scroll anim */
+        .aos{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+        .aos.vis{opacity:1;transform:translateY(0)}
+
+        /* Confetti */
+        .confetti{position:fixed;width:10px;height:10px;border-radius:2px;z-index:9998;pointer-events:none;animation:confFall 3s ease-in forwards}
+        @keyframes confFall{0%{opacity:1;transform:translateY(0) rotate(0deg)}100%{opacity:0;transform:translateY(100vh) rotate(720deg)}}
+
+        /* Visual Taa comparison hero */
+        .taa-hero{display:flex;justify-content:center;align-items:center;gap:3rem;margin:1.5rem 0 0;flex-wrap:wrap}
+        .taa-showcase{display:flex;flex-direction:column;align-items:center;gap:.5rem}
+        .taa-char{font-size:5rem;font-weight:900;line-height:1}
+        .taa-char.green{color:var(--primary)}
+        .taa-char.orange{color:var(--secondary)}
+        .taa-vs{font-size:1.5rem;font-weight:800;color:var(--text-muted)}
+
+        @media(max-width:640px){
+            .header h1{font-size:2rem}
+            .section-card{padding:1.5rem}
+            .quiz-body{padding:1.5rem}
+            .class-box{padding:1.5rem}
+            .class-word-display{font-size:2.2rem}
+            .mem-grid{grid-template-columns:repeat(3,1fr);gap:.5rem}
+            .mem-card-back{font-size:.85rem}
+            .compare-grid{grid-template-columns:1fr}
+            .transform-grid{grid-template-columns:1fr 1fr}
+            .game-tab{padding:.6rem 1rem;font-size:.9rem}
+            .quiz-q{font-size:1.1rem}
+            .taa-char{font-size:3.5rem}
+            .taa-hero{gap:1.5rem}
+            .class-btns{grid-template-columns:1fr}
+            .orig-grid{grid-template-columns:1fr}
+        }
+    </style>
+</head>
+<body>
+
+<div class="floating-shapes"><div class="fs"></div><div class="fs"></div><div class="fs"></div></div>
+<div class="toast-wrap" id="toastWrap"></div>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="header-pattern"></div>
+    <div class="level-badge">
+        <i class="fas fa-layer-group"></i>
+        المستوى 2-3
+    </div>
+    <h1>التاء المربوطة والتاء الطويلة</h1>
+    <p class="subtitle">قسم اللغة العربية — تعرّف على أنواع التاء ومواضعها</p>
+    <div class="header-wave">
+        <svg viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 50L48 45C96 40 192 30 288 28C384 26 480 32 576 42C672 52 768 66 864 65C960 64 1056 48 1152 40C1248 32 1344 32 1392 32L1440 32V100H1392C1344 100 1248 100 1152 100C1056 100 960 100 864 100C768 100 672 100 576 100C480 100 384 100 288 100C192 100 96 100 48 100H0V50Z" fill="#F8FAFB"/>
+        </svg>
+    </div>
+</header>
+
+<main class="content-section">
+<div class="container">
+
+    <!-- ===== COMPARISON HERO ===== -->
+    <div class="section-card aos">
+        <div class="section-title">
+            <div class="icon-circle"><i class="fas fa-balance-scale"></i></div>
+            التاء المربوطة أم التاء الطويلة؟
+        </div>
+        <div class="taa-hero">
+            <div class="taa-showcase">
+                <div class="taa-char green">ة</div>
+                <span style="font-weight:700;color:var(--primary-dark)">التاء المربوطة (القصيرة)</span>
+            </div>
+            <div class="taa-vs">ضدّ</div>
+            <div class="taa-showcase">
+                <div class="taa-char orange">ت</div>
+                <span style="font-weight:700;color:var(--secondary)">التاء الطويلة (المفتوحة)</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 1: التاء المربوطة ===== -->
+    <div class="section-card aos" id="marbutaSection">
+        <div class="section-title">
+            <div class="icon-circle"><i class="fas fa-circle-dot"></i></div>
+            أوّلاً: التاء المربوطة (القصيرة)
+        </div>
+        <div class="definition-box">
+            تكون التاءُ <span class="hl">مربوطةً (ة)</span> في آخر:
+        </div>
+
+        <div class="sub-heading"><i class="fas fa-caret-left"></i> الاسم المفرد المؤنّث</div>
+        <div class="rule-box">
+            كلّ اسمٍ مفردٍ يدلُّ على مؤنّث يُكتَبُ بالتاء المربوطة.
+        </div>
+        <div class="examples-row">
+            <span class="pill">مَدْرَسَةٌ</span>
+            <span class="pill">سَمَكَةٌ</span>
+            <span class="pill">وَرْدَةٌ</span>
+            <span class="pill">بَقَرَةٌ</span>
+            <span class="pill">فَتَاةٌ</span>
+            <span class="pill">سَاعَةٌ</span>
+            <span class="pill">حَقِيبَةٌ</span>
+            <span class="pill">خَيْمَةٌ</span>
+            <span class="pill">شَجَرَةٌ</span>
+            <span class="pill">سَيَّارَةٌ</span>
+        </div>
+
+        <div class="sub-heading"><i class="fas fa-caret-left"></i> الصفة المفردة المؤنّثة</div>
+        <div class="rule-box">
+            كلّ صفةٍ مفردةٍ مؤنّثةٍ تُكتَبُ بالتاء المربوطة.
+        </div>
+        <div class="examples-row">
+            <span class="pill">صَغِيرَةٌ</span>
+            <span class="pill">مُهَذَّبَةٌ</span>
+            <span class="pill">مُجْتَهِدَةٌ</span>
+            <span class="pill">طَوِيلَةٌ</span>
+            <span class="pill">نَشِيطَةٌ</span>
+            <span class="pill">كَبِيرَةٌ</span>
+            <span class="pill">جَمِيلَةٌ</span>
+        </div>
+
+        <div class="note-box green-note">
+            <i class="fas fa-lightbulb"></i>
+            <span>التاء المربوطة تُكتَب هكذا <strong>(ة)</strong> وتُنطَق هاءً عند الوَقف وتاءً عند الوَصْل.</span>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 2: التاء الطويلة ===== -->
+    <div class="section-card aos" id="tawilaSection">
+        <div class="section-title">
+            <div class="icon-circle" style="background:var(--secondary-light);color:var(--secondary)"><i class="fas fa-arrows-left-right"></i></div>
+            ثانيًا: التاء الطويلة (المفتوحة)
+        </div>
+        <div class="definition-box orange">
+            تكون التاءُ <span class="hl">طويلةً (ت)</span> في ثلاثة مواضع:
+        </div>
+
+        <!-- Case 1: Verb -->
+        <div class="sub-heading"><i class="fas fa-caret-left" style="color:var(--secondary)"></i> ١. آخر الفعل</div>
+        <div class="rule-box orange">
+            التاء الطويلة تظهر في آخر الفعل مع الضمائر: <span class="kw">أنا، أنتَ، هي</span>.
+        </div>
+        <div class="examples-row">
+            <span class="pill orange">دَرَسْتُ</span>
+            <span class="pill orange">كَتَبْتُ</span>
+            <span class="pill orange">لَعِبْتُ</span>
+            <span class="pill orange">رَكَضْتُ</span>
+            <span class="pill orange">رَأَتْ</span>
+        </div>
+
+        <!-- Case 2: Three-letter noun -->
+        <div class="sub-heading"><i class="fas fa-caret-left" style="color:var(--secondary)"></i> ٢. آخر الاسم الثلاثي الساكن الوسط</div>
+        <div class="rule-box orange">
+            إذا كان الاسم ثلاثيًّا والحرف الأوسط <span class="kw">ساكنًا</span>، تكتب تاؤه طويلة.
+        </div>
+        <div class="examples-row">
+            <span class="pill orange">بَيْتٌ</span>
+            <span class="pill orange">أُخْتٌ</span>
+            <span class="pill orange">زَيْتٌ</span>
+            <span class="pill orange">بِنْتٌ</span>
+            <span class="pill orange">تُوتٌ</span>
+            <span class="pill orange">صَوْتٌ</span>
+        </div>
+
+        <!-- Case 3: Sound feminine plural -->
+        <div class="sub-heading"><i class="fas fa-caret-left" style="color:var(--secondary)"></i> ٣. آخر جمع المؤنّث السالم</div>
+        <div class="rule-box orange">
+            التاء في آخر جمع المؤنّث السالم تكون دائمًا <span class="kw">طويلةً (ات)</span>.
+        </div>
+        <div class="examples-row">
+            <span class="pill orange">وَرْدَاتٌ</span>
+            <span class="pill orange">تِلْمِيذَاتٌ</span>
+            <span class="pill orange">فَرَاشَاتٌ</span>
+            <span class="pill orange">سَيَّارَاتٌ</span>
+            <span class="pill orange">مُعَلِّمَاتٌ</span>
+            <span class="pill orange">نَحْلَاتٌ</span>
+        </div>
+
+        <div class="note-box">
+            <i class="fas fa-lightbulb"></i>
+            <span>التاء الطويلة تُكتَب هكذا <strong>(ت)</strong> وتُنطَق تاءً دائمًا سواء في الوَقف أو الوَصْل.</span>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 3: Comparison Table ===== -->
+    <div class="section-card aos">
+        <div class="section-title">
+            <div class="icon-circle"><i class="fas fa-table-columns"></i></div>
+            ملخّص المقارنة
+        </div>
+        <div class="compare-grid">
+            <div class="compare-col green">
+                <div class="compare-letter">ة</div>
+                <div class="compare-name">التاء المربوطة</div>
+                <ul class="compare-list">
+                    <li>آخر الاسم المفرد المؤنّث</li>
+                    <li>آخر الصفة المفردة المؤنّثة</li>
+                    <li>تُنطَق هاءً عند الوقف</li>
+                    <li>مثال: مَدْرَسَةٌ، جَمِيلَةٌ</li>
+                </ul>
+            </div>
+            <div class="compare-col orange">
+                <div class="compare-letter">ت</div>
+                <div class="compare-name">التاء الطويلة</div>
+                <ul class="compare-list">
+                    <li>آخر الفعل (أنا، أنتَ، هي)</li>
+                    <li>آخر الاسم الثلاثي الساكن الوسط</li>
+                    <li>آخر جمع المؤنّث السالم</li>
+                    <li>مثال: كَتَبْتُ، بَيْتٌ، فَرَاشَاتٌ</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 4: Finding Original Words ===== -->
+    <div class="section-card aos">
+        <div class="section-title">
+            <div class="icon-circle"><i class="fas fa-magnifying-glass-arrow-left"></i></div>
+            أصل الكلمة المنتهية بتاء مربوطة
+        </div>
+        <p style="font-size:1.05rem;line-height:2.2;margin-bottom:.5rem">
+            عندما تنتهي الكلمة بـ <strong style="color:var(--primary)">تاءٍ مربوطة (ة)</strong> أصلها تاءٌ طويلة (ت)، نعرف ذلك بالرجوع إلى أصل الكلمة (المصدر أو الفعل):
+        </p>
+        <div class="orig-grid">
+            <div class="orig-card">
+                <span class="w-to">كَتَبْتُ</span>
+                <span class="arrow-orig"><i class="fas fa-arrow-left"></i></span>
+                <span class="w-from">كَتَبَ</span>
+            </div>
+            <div class="orig-card">
+                <span class="w-to">دَرَسْتُ</span>
+                <span class="arrow-orig"><i class="fas fa-arrow-left"></i></span>
+                <span class="w-from">دَرَسَ</span>
+            </div>
+            <div class="orig-card">
+                <span class="w-to">رَكَضْتُ</span>
+                <span class="arrow-orig"><i class="fas fa-arrow-left"></i></span>
+                <span class="w-from">رَكَضَ</span>
+            </div>
+            <div class="orig-card">
+                <span class="w-to">لَعِبْتُ</span>
+                <span class="arrow-orig"><i class="fas fa-arrow-left"></i></span>
+                <span class="w-from">لَعِبَ</span>
+            </div>
+        </div>
+        <div class="note-box green-note">
+            <i class="fas fa-info-circle"></i>
+            <span>الفعل الماضي مع تاء الضمير يُكتَب بتاءٍ طويلة (ت)، أمّا مصدره فَيُكتَب بتاءٍ مربوطة: كِتَابَةٌ، دِرَاسَةٌ، رَكْضٌ، لَعِبٌ.</span>
+        </div>
+    </div>
+
+    <!-- ===== GAMES SECTION ===== -->
+    <section class="games-section aos" id="gamesSection">
+        <div class="games-header">
+            <h2><i class="fas fa-gamepad" style="margin-left:.5rem"></i>جرّب معلوماتك!</h2>
+            <p>ثلاث ألعاب تفاعليّة لتثبيت ما تعلّمته</p>
+        </div>
+
+        <div class="game-tabs">
+            <button class="game-tab active" data-tab="quiz"><i class="fas fa-question-circle"></i> اختبار سريع</button>
+            <button class="game-tab" data-tab="classify"><i class="fas fa-layer-group"></i> صنّف الكلمات</button>
+            <button class="game-tab" data-tab="memory"><i class="fas fa-brain"></i> لعبة الذاكرة</button>
+        </div>
+
+        <!-- QUIZ -->
+        <div class="game-panel active" id="panel-quiz">
+            <div class="game-intro" id="quizIntro">
+                <i class="fas fa-question-circle"></i>
+                <h3>اختبار سريع</h3>
+                <p>أجب عن 10 أسئلة تغطّي التاء المربوطة والطويلة ومواضعهما</p>
+                <button class="start-btn" onclick="startQuiz()">ابدأ الاختبار</button>
+            </div>
+            <div class="quiz-box" id="quizBox" style="display:none">
+                <div class="quiz-progress"><div class="quiz-progress-bar" id="quizBar" style="width:0%"></div></div>
+                <div class="quiz-body" id="quizBody"></div>
+                <div class="quiz-result" id="quizResult"></div>
+            </div>
+        </div>
+
+        <!-- CLASSIFY -->
+        <div class="game-panel" id="panel-classify">
+            <div class="game-intro" id="classIntro">
+                <i class="fas fa-layer-group"></i>
+                <h3>صنّف الكلمات</h3>
+                <p>هل تنتهي الكلمة بتاءٍ مربوطة أم طويلة؟ اختر الإجابة الصحيحة</p>
+                <button class="start-btn" onclick="startClassify()">ابدأ اللعبة</button>
+            </div>
+            <div class="class-box" id="classBox" style="display:none"></div>
+        </div>
+
+        <!-- MEMORY -->
+        <div class="game-panel" id="panel-memory">
+            <div class="game-intro" id="memIntro">
+                <i class="fas fa-brain"></i>
+                <h3>لعبة الذاكرة</h3>
+                <p>اقلب البطاقات واطابق بين الفعل مع تاء الضمير وأصله، وبين المفرد وجمعه</p>
+                <button class="start-btn" onclick="startMemory()">ابدأ اللعبة</button>
+            </div>
+            <div class="mem-box" id="memBox" style="display:none"></div>
+        </div>
+    </section>
+
+</div>
+</main>
+
+<footer class="footer">
+    <p><span class="fb">قسم اللغة العربية</span> — التاء المربوطة والتاء الطويلة — المستوى 2-3</p>
+</footer>
+
+<script>
+// =============================================
+//  بيانات الألعاب
+// =============================================
+
+// أسئلة الاختبار
+const quizQuestions = [
+    {
+        q: 'تكون التاء مربوطةً (ة) في آخر:',
+        opts: ['الاسم المفرد المؤنّث والصفة المفردة المؤنّثة','الفعل والاسم الثلاثي الساكن الوسط','جمع المؤنّث السالم فقط','كلّ ما سبق'],
+        correct: 0,
+        explain: 'التاء المربوطة تظهر في آخر الاسم المفرد المؤنّث مثل مدرسة، والصفة المفردة المؤنّثة مثل جميلة.'
+    },
+    {
+        q: 'أيّ كلمةٍ مما يلي تنتهي بتاءٍ مربوطة؟',
+        opts: ['كَتَبْتُ','بَيْتٌ','وَرْدَةٌ','تِلْمِيذَاتٌ'],
+        correct: 2,
+        explain: '"وَرْدَةٌ" اسم مفرد مؤنّث فتنتهي بتاءٍ مربوطة (ة).'
+    },
+    {
+        q: 'أيّ كلمةٍ مما يلي تنتهي بتاءٍ طويلة؟',
+        opts: ['مَدْرَسَةٌ','جَمِيلَةٌ','فَرَاشَاتٌ','كَبِيرَةٌ'],
+        correct: 2,
+        explain: '"فَرَاشَاتٌ" جمع مؤنّث سالم فتنتهي بتاءٍ طويلة (ت).'
+    },
+    {
+        q: 'تكون التاء طويلةً في آخر الفعل مع الضمائر:',
+        opts: ['هو وهم','أنا وأنتَ وهي','نحن وأنتُم','هو وهي فقط'],
+        correct: 1,
+        explain: 'التاء الطويلة تظهر مع: أنا (كتبتُ)، أنتَ (كتبتَ)، هي (كتبتْ).'
+    },
+    {
+        q: 'كلمة "بَيْتٌ" تنتهي بتاءٍ طويلة لأنّها:',
+        opts: ['فعل ماضٍ','اسم ثلاثي ساكن الوسط','جمع مؤنّث سالم','صفة مؤنّثة'],
+        correct: 1,
+        explain: '"بَيْتٌ" اسم ثلاثي والحرف الأوسط (ي) ساكن، فتكون تاؤه طويلة.'
+    },
+    {
+        q: 'ما نوع التاء في كلمة "سَيَّارَاتٌ"؟',
+        opts: ['مربوطة لأنّها مفرد','طويلة لأنّها جمع مؤنّث سالم','مربوطة لأنّها صفة','طويلة لأنّها فعل'],
+        correct: 1,
+        explain: '"سَيَّارَاتٌ" جمع مؤنّث سالم، والجمع المؤنّث السالم تنتهي بتاءٍ طويلة.'
+    },
+    {
+        q: 'ما نوع التاء في كلمة "نَشِيطَةٌ"؟',
+        opts: ['طويلة لأنّها فعل','مربوطة لأنّها صفة مفردة مؤنّثة','طويلة لأنّها اسم ثلاثي','مربوطة لأنّها جمع'],
+        correct: 1,
+        explain: '"نَشِيطَةٌ" صفة مفردة مؤنّثة، فتنتهي بتاءٍ مربوطة (ة).'
+    },
+    {
+        q: 'ما أصل كلمة "كَتَبْتُ"؟',
+        opts: ['كِتَابَةٌ','كَاتِبٌ','كَتَبَ','مَكْتُوبٌ'],
+        correct: 2,
+        explain: 'أصل "كَتَبْتُ" هو الفعل الماضي "كَتَبَ"، والتاء هنا تاء ضمير طويلة.'
+    },
+    {
+        q: 'أيّ كلمةٍ فيها تاءٌ مربوطة؟',
+        opts: ['صَوْتٌ','أُخْتٌ','حَقِيبَةٌ','تُوتٌ'],
+        correct: 2,
+        explain: '"حَقِيبَةٌ" اسم مفرد مؤنّث ففيها تاءٌ مربوطة. أمّا البقيّة فأسماء ثلاثيّة ساكنة الوسط ففيها تاءٌ طويلة.'
+    },
+    {
+        q: 'كلمة "مُعَلِّمَاتٌ" تنتهي بتاءٍ طويلة لأنّها:',
+        opts: ['اسم مفرد مؤنّث','صفة مفردة مؤنّثة','فعل ماضٍ','جمع مؤنّث سالم'],
+        correct: 3,
+        explain: '"مُعَلِّمَاتٌ" جمع مؤنّث سالم لـ "مُعَلِّمَة"، وجمع المؤنّث السالم تنتهي بتاءٍ طويلة (ات).'
+    }
+];
+
+// كلمات لعبة التصنيف
+const classifyWords = [
+    { word: 'مَدْرَسَةٌ', type: 'marbuta', highlight: 'ة' },
+    { word: 'كَتَبْتُ', type: 'tawila', highlight: 'تُ' },
+    { word: 'جَمِيلَةٌ', type: 'marbuta', highlight: 'ةٌ' },
+    { word: 'بَيْتٌ', type: 'tawila', highlight: 'تٌ' },
+    { word: 'فَرَاشَاتٌ', type: 'tawila', highlight: 'اتٌ' },
+    { word: 'سَاعَةٌ', type: 'marbuta', highlight: 'ةٌ' },
+    { word: 'دَرَسْتُ', type: 'tawila', highlight: 'تُ' },
+    { word: 'نَشِيطَةٌ', type: 'marbuta', highlight: 'ةٌ' },
+    { word: 'صَوْتٌ', type: 'tawila', highlight: 'تٌ' },
+    { word: 'وَرْدَةٌ', type: 'marbuta', highlight: 'ةٌ' },
+    { word: 'تِلْمِيذَاتٌ', type: 'tawila', highlight: 'اتٌ' },
+    { word: 'طَوِيلَةٌ', type: 'marbuta', highlight: 'ةٌ' }
+];
+
+// أزواج لعبة الذاكرة
+const memoryPairs = [
+    // فعل مع تاء الضمير ↔ أصله
+    { a: 'كَتَبْتُ', b: 'كَتَبَ', group: 'verb' },
+    { a: 'دَرَسْتُ', b: 'دَرَسَ', group: 'verb' },
+    { a: 'رَكَضْتُ', b: 'رَكَضَ', group: 'verb' },
+    // مفرد ↔ جمع
+    { a: 'وَرْدَةٌ', b: 'وَرْدَاتٌ', group: 'plural' },
+    { a: 'فَرَاشَةٌ', b: 'فَرَاشَاتٌ', group: 'plural' },
+    { a: 'سَيَّارَةٌ', b: 'سَيَّارَاتٌ', group: 'plural' }
+];
+
+// =============================================
+//  Toast
+// =============================================
+function showToast(msg, type) {
+    type = type || 'info';
+    var wrap = document.getElementById('toastWrap');
+    var t = document.createElement('div');
+    t.className = 'toast ' + type;
+    var icons = { success: 'fa-check-circle', error: 'fa-times-circle', info: 'fa-info-circle' };
+    t.innerHTML = '<i class="fas ' + (icons[type] || icons.info) + '"></i> ' + msg;
+    wrap.appendChild(t);
+    setTimeout(function() { t.remove(); }, 3000);
+}
+
+// =============================================
+//  Confetti
+// =============================================
+function fireConfetti() {
+    var colors = ['#0C7B5F','#E8912D','#16A34A','#DC2626','#F59E0B','#8B5CF6','#EC4899'];
+    for (var i = 0; i < 50; i++) {
+        var c = document.createElement('div');
+        c.className = 'confetti';
+        c.style.left = Math.random() * 100 + 'vw';
+        c.style.top = '-10px';
+        c.style.background = colors[Math.floor(Math.random() * colors.length)];
+        c.style.animationDelay = Math.random() * 0.8 + 's';
+        c.style.width = (Math.random() * 8 + 6) + 'px';
+        c.style.height = (Math.random() * 8 + 6) + 'px';
+        document.body.appendChild(c);
+        setTimeout(function(el) { el.remove(); }, 4000, c);
+    }
+}
+
+// =============================================
+//  Tabs
+// =============================================
+document.querySelectorAll('.game-tab').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+        document.querySelectorAll('.game-tab').forEach(function(t) { t.classList.remove('active'); });
+        document.querySelectorAll('.game-panel').forEach(function(p) { p.classList.remove('active'); });
+        tab.classList.add('active');
+        document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
+    });
+});
+
+// =============================================
+//  Scroll Animation
+// =============================================
+var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('vis'); });
+}, { threshold: 0.15 });
+document.querySelectorAll('.aos').forEach(function(el) { observer.observe(el); });
+
+// =============================================
+//  اختر عشوائيًّا
+// =============================================
+function shuffle(arr) {
+    var a = arr.slice();
+    for (var i = a.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+    }
+    return a;
+}
+
+// =============================================
+//  لعبة 1: الاختبار السريع
+// =============================================
+var quizIndex = 0, quizScore = 0, quizAnswered = false;
+
+function startQuiz() {
+    document.getElementById('quizIntro').style.display = 'none';
+    document.getElementById('quizBox').style.display = 'block';
+    quizIndex = 0; quizScore = 0;
+    document.getElementById('quizResult').classList.remove('show');
+    document.getElementById('quizResult').style.display = 'none';
+    renderQuizQ();
+}
+
+function renderQuizQ() {
+    quizAnswered = false;
+    var q = quizQuestions[quizIndex];
+    document.getElementById('quizBar').style.width = (quizIndex / quizQuestions.length * 100) + '%';
+
+    var html = '<div class="quiz-qnum">السؤال ' + (quizIndex + 1) + ' من ' + quizQuestions.length + '</div>';
+    html += '<div class="quiz-q">' + q.q + '</div>';
+    html += '<div class="quiz-opts">';
+    q.opts.forEach(function(opt, i) {
+        html += '<button class="quiz-opt" data-idx="' + i + '" onclick="answerQuiz(' + i + ')">' + opt + '</button>';
+    });
+    html += '</div>';
+    html += '<div class="quiz-fb" id="quizFb"></div>';
+    html += '<button class="quiz-next" id="quizNext" onclick="nextQuiz()"><span>التالي</span> <i class="fas fa-arrow-left"></i></button>';
+    document.getElementById('quizBody').innerHTML = html;
+}
+
+function answerQuiz(idx) {
+    if (quizAnswered) return;
+    quizAnswered = true;
+    var q = quizQuestions[quizIndex];
+    var opts = document.querySelectorAll('.quiz-opt');
+    var fb = document.getElementById('quizFb');
+    var next = document.getElementById('quizNext');
+
+    opts.forEach(function(o, i) {
+        o.classList.add('disabled');
+        if (i === q.correct) o.classList.add('correct');
+        if (i === idx && idx !== q.correct) o.classList.add('wrong');
+    });
+
+    if (idx === q.correct) {
+        quizScore++;
+        fb.className = 'quiz-fb show correct';
+        fb.innerHTML = '<i class="fas fa-check-circle"></i> أحسنت! ' + q.explain;
+        showToast('إجابة صحيحة!', 'success');
+    } else {
+        fb.className = 'quiz-fb show wrong';
+        fb.innerHTML = '<i class="fas fa-times-circle"></i> إجابة خاطئة. ' + q.explain;
+        showToast('حاول في السؤال القادم', 'error');
+    }
+    next.classList.add('show');
+}
+
+function nextQuiz() {
+    quizIndex++;
+    if (quizIndex >= quizQuestions.length) {
+        showQuizResult();
+    } else {
+        renderQuizQ();
+    }
+}
+
+function showQuizResult() {
+    document.getElementById('quizBody').innerHTML = '';
+    document.getElementById('quizBar').style.width = '100%';
+    var res = document.getElementById('quizResult');
+    var pct = Math.round(quizScore / quizQuestions.length * 100);
+    var icon, text;
+    if (pct >= 80) { icon = '🌟'; text = 'ممتاز! أنت متميّز في التعرّف على أنواع التاء'; fireConfetti(); }
+    else if (pct >= 50) { icon = '👍'; text = 'جيّد! راجع القواعد لتتحسّن أكثر'; }
+    else { icon = '💪'; text = 'لا بأس! عد إلى الدرس وتدرّب مجدّدًا'; }
+
+    res.innerHTML = '<div class="result-icon">' + icon + '</div>' +
+        '<div class="result-score">' + quizScore + ' / ' + quizQuestions.length + '</div>' +
+        '<div class="result-text">' + text + '</div>' +
+        '<button class="retry-btn" onclick="startQuiz()"><i class="fas fa-redo" style="margin-left:.5rem"></i>حاول مجدّدًا</button>';
+    res.style.display = 'block';
+    res.classList.add('show');
+}
+
+// =============================================
+//  لعبة 2: صنّف الكلمات
+// =============================================
+var classOrder = [], classIndex = 0, classScore = 0, classAnswered = false;
+
+function startClassify() {
+    document.getElementById('classIntro').style.display = 'none';
+    document.getElementById('classBox').style.display = 'block';
+    classIndex = 0; classScore = 0;
+    classOrder = shuffle(classifyWords);
+    renderClassQ();
+}
+
+function renderClassQ() {
+    classAnswered = false;
+    var item = classOrder[classIndex];
+    var box = document.getElementById('classBox');
+
+    // نُبرِز التاء في الكلمة
+    var displayWord = item.word;
+    var hlClass = item.type === 'marbuta' ? 'taa-hl-big' : 'taa-hl-big-o';
+
+    var html = '<div class="class-score">' +
+        '<div class="sc-item"><i class="fas fa-star"></i> النتيجة: <span id="classSc">' + classScore + '</span> / ' + classOrder.length + '</div>' +
+        '<div class="sc-item"><i class="fas fa-list-ol"></i> ' + (classIndex + 1) + ' من ' + classOrder.length + '</div>' +
+        '</div>';
+
+    html += '<div class="class-word">' +
+        '<div class="class-label">ما نوع التاء في هذه الكلمة؟</div>' +
+        '<div class="class-word-display">' + displayWord + '</div>' +
+        '</div>';
+
+    html += '<div class="class-btns">';
+    html += '<button class="class-btn green-btn" id="btnMarbuta" onclick="answerClass(\'marbuta\')">' +
+        '<span class="btn-letter">ة</span><span class="btn-label">مربوطة</span></button>';
+    html += '<button class="class-btn orange-btn" id="btnTawila" onclick="answerClass(\'tawila\')">' +
+        '<span class="btn-letter">ت</span><span class="btn-label">طويلة</span></button>';
+    html += '</div>';
+
+    html += '<div class="class-result" id="classResult"></div>';
+
+    box.innerHTML = html;
+}
+
+function answerClass(chosen) {
+    if (classAnswered) return;
+    classAnswered = true;
+    var item = classOrder[classIndex];
+    var btnM = document.getElementById('btnMarbuta');
+    var btnT = document.getElementById('btnTawila');
+    btnM.classList.add('disabled');
+    btnT.classList.add('disabled');
+
+    var correct = item.type === 'marbuta';
+    if (chosen === 'marbuta') {
+        btnM.classList.add(correct ? 'correct' : 'wrong');
+    } else {
+        btnT.classList.add(!correct ? 'correct' : 'wrong');
+    }
+
+    // نُظهر الزرّ الصحيح
+    if (correct) {
+        btnM.classList.add('correct');
+    } else {
+        btnT.classList.add('correct');
+    }
+
+    if (chosen === item.type) {
+        classScore++;
+        document.getElementById('classSc').textContent = classScore;
+        showToast('صحيح!', 'success');
+    } else {
+        var typeName = item.type === 'marbuta' ? 'مربوطة (ة)' : 'طويلة (ت)';
+        showToast('خطأ! التاء هنا ' + typeName, 'error');
+    }
+
+    setTimeout(function() {
+        classIndex++;
+        if (classIndex >= classOrder.length) {
+            showClassResult();
+        } else {
+            renderClassQ();
+        }
+    }, 1200);
+}
+
+function showClassResult() {
+    var box = document.getElementById('classBox');
+    var pct = Math.round(classScore / classOrder.length * 100);
+    var icon, text;
+    if (pct >= 80) { icon = '🌟'; text = 'رائع! أنت متمكّن من التفريق بين التاءين'; fireConfetti(); }
+    else if (pct >= 50) { icon = '👍'; text = 'جيّد! راجع المواضع وحاول مرّة أخرى'; }
+    else { icon = '💪'; text = 'لا بأس! عد إلى الدرس وتدرّب أكثر'; }
+
+    box.innerHTML = '<div class="class-result show">' +
+        '<div class="result-icon">' + icon + '</div>' +
+        '<div class="result-score">' + classScore + ' / ' + classOrder.length + '</div>' +
+        '<div class="result-text">' + text + '</div>' +
+        '<button class="retry-btn" onclick="startClassify()"><i class="fas fa-redo" style="margin-left:.5rem"></i>حاول مجدّدًا</button>' +
+        '</div>';
+}
+
+// =============================================
+//  لعبة 3: لعبة الذاكرة
+// =============================================
+var memCards = [], memFlipped = [], memMatched = 0, memMoves = 0, memLocked = false;
+
+function startMemory() {
+    document.getElementById('memIntro').style.display = 'none';
+    document.getElementById('memBox').style.display = 'block';
+    memMatched = 0; memMoves = 0; memLocked = false; memFlipped = [];
+
+    memCards = [];
+    memoryPairs.forEach(function(p, i) {
+        memCards.push({ id: i, text: p.a, type: 'a', group: p.group });
+        memCards.push({ id: i, text: p.b, type: 'b', group: p.group });
+    });
+    memCards = shuffle(memCards);
+    renderMemory();
+}
+
+function renderMemory() {
+    var box = document.getElementById('memBox');
+    var html = '<div class="mem-stats">' +
+        '<div class="mem-stat"><i class="fas fa-mouse-pointer"></i> المحاولات: <span class="sv" id="memMoves">0</span></div>' +
+        '<div class="mem-stat"><i class="fas fa-check-double"></i> المطابقات: <span class="sv" id="memMatched">0</span> / 6</div>' +
+        '</div>';
+
+    html += '<div class="mem-grid">';
+    memCards.forEach(function(card, i) {
+        var backColor = card.group === 'verb' ? '' : '';
+        html += '<div class="mem-card" data-idx="' + i + '" onclick="flipCard(this,' + i + ')">' +
+            '<div class="mem-card-inner">' +
+            '<div class="mem-card-front"><i class="fas fa-question"></i></div>' +
+            '<div class="mem-card-back">' + card.text + '</div>' +
+            '</div></div>';
+    });
+    html += '</div>';
+    html += '<div class="mem-result" id="memResult"></div>';
+    box.innerHTML = html;
+}
+
+function flipCard(el, idx) {
+    if (memLocked) return;
+    if (el.classList.contains('flipped') || el.classList.contains('matched')) return;
+    if (memFlipped.length >= 2) return;
+
+    el.classList.add('flipped');
+    memFlipped.push({ el: el, idx: idx, card: memCards[idx] });
+
+    if (memFlipped.length === 2) {
+        memMoves++;
+        document.getElementById('memMoves').textContent = memMoves;
+        memLocked = true;
+
+        var a = memFlipped[0], b = memFlipped[1];
+        if (a.card.id === b.card.id && a.card.type !== b.card.type) {
+            setTimeout(function() {
+                a.el.classList.add('matched');
+                b.el.classList.add('matched');
+                memMatched++;
+                document.getElementById('memMatched').textContent = memMatched;
+                memFlipped = [];
+                memLocked = false;
+                if (memMatched === 6) {
+                    setTimeout(showMemResult, 500);
+                }
+            }, 500);
+        } else {
+            setTimeout(function() {
+                a.el.classList.remove('flipped');
+                b.el.classList.remove('flipped');
+                memFlipped = [];
+                memLocked = false;
+            }, 900);
+        }
+    }
+}
+
+function showMemResult() {
+    fireConfetti();
+    var res = document.getElementById('memResult');
+    var msg = memMoves <= 10 ? 'ذاكرة خارقة!' : memMoves <= 16 ? 'أداء رائع!' : 'جيّد! حاول تقليل المحاولات';
+    res.innerHTML = '<div class="result-icon">🎉</div>' +
+        '<div class="result-score">' + memMoves + ' محاولة</div>' +
+        '<div class="result-text">' + msg + '</div>' +
+        '<button class="mem-reset" onclick="startMemory()"><i class="fas fa-redo" style="margin-left:.5rem"></i>العب مرّة أخرى</button>';
+    res.classList.add('show');
+}
+</script>
+
+</body>
+</html>

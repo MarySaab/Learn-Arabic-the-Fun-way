@@ -1,0 +1,318 @@
+<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>فهم المقروء - يومٌ على الثَّلجِ</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;700;800&family=Lalezar&family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{--one:#0e7c86;--two:#d45a1f;--accent:#2ba89e;--bg:#f9f4ec;--card:#fff;--text:#2b2440;--muted:#7a7490;--border:#e8dfd0;--ok:#27ae60;--no:#c0392b;--gold:#f0a830}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Baloo Bhaijaan 2',Tajawal,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;font-size:18px}
+body::before,body::after{content:'';position:fixed;border-radius:50%;pointer-events:none;z-index:0}
+body::before{top:-120px;right:-120px;width:400px;height:400px;background:radial-gradient(circle,rgba(14,124,134,.08),transparent 70%)}
+body::after{bottom:-100px;left:-100px;width:350px;height:350px;background:radial-gradient(circle,rgba(212,90,31,.06),transparent 70%)}
+.wrap{max-width:880px;margin:auto;padding:20px 16px 50px;position:relative;z-index:1}
+.screen{display:none;animation:fadeUp .45s ease both}.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pop{0%{transform:scale(.85);opacity:0}60%{transform:scale(1.04)}100%{transform:scale(1);opacity:1}}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes snow{0%{transform:translateY(-10px) rotate(0deg);opacity:1}100%{transform:translateY(50px) rotate(180deg);opacity:0}}
+@keyframes confetti{0%{transform:translateY(0) rotate(0);opacity:1}100%{transform:translateY(-80px) rotate(400deg);opacity:0}}
+.hero,.box{background:var(--card);border-radius:24px;padding:28px;box-shadow:0 6px 24px rgba(0,0,0,.06);margin:14px 0;border:1px solid var(--border);transition:box-shadow .3s}
+.hero:hover,.box:hover{box-shadow:0 10px 32px rgba(0,0,0,.09)}
+.hero{text-align:center;padding:40px 28px 34px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:-2px;border-radius:26px;background:linear-gradient(135deg,var(--one),var(--two),var(--accent));z-index:-1;opacity:.15}
+.hero h1{font-family:Lalezar;font-size:56px;background:linear-gradient(135deg,var(--one),var(--two));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.3}
+.hero p{font-size:24px;color:var(--muted);margin-top:8px}
+.hero-icon{font-size:46px;animation:float 3s ease-in-out infinite;display:inline-block;margin-bottom:10px;color:var(--two)}
+.menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:10px}
+.btn{border:none;background:linear-gradient(145deg,var(--one),#0a5f66);color:#fff;padding:20px 18px;border-radius:20px;font-size:21px;cursor:pointer;font-family:inherit;font-weight:700;transition:all .25s;position:relative;overflow:hidden;display:flex;align-items:center;gap:10px;justify-content:center}
+.btn::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.12),transparent);pointer-events:none}
+.btn:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(14,124,134,.25)}
+.btn:active{transform:translateY(0) scale(.97)}
+.btn2{background:linear-gradient(145deg,var(--two),#b84a15)}.btn2:hover{box-shadow:0 8px 22px rgba(212,90,31,.25)}
+.btn i{font-size:22px}
+.home{position:fixed;left:12px;top:12px;z-index:100;width:48px;height:48px;border-radius:50%;padding:0;display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.q{font-size:26px;text-align:center;line-height:1.9;margin:10px 0;min-height:40px}
+.choices button{width:100%;margin:10px 0;padding:16px 20px;border:2px solid var(--border);border-radius:16px;background:#fff;color:var(--text);font-size:22px;font-family:inherit;font-weight:700;cursor:pointer;transition:all .25s;text-align:right;position:relative;overflow:hidden;line-height:1.8}
+.choices button:hover{border-color:var(--one);background:rgba(14,124,134,.04);transform:translateX(-4px)}
+.choices button.correct{border-color:var(--ok);background:rgba(39,174,96,.08);color:var(--ok);animation:pop .4s ease}
+.choices button.wrong{border-color:var(--no);background:rgba(192,57,43,.06);color:var(--no);animation:shake .4s ease}
+.choices button:disabled{cursor:default;opacity:.7}.choices button:disabled:hover{transform:none}
+.score-bar{display:flex;justify-content:space-between;align-items:center;padding:10px 4px;margin-bottom:6px}
+.score{font-size:26px;color:var(--one);font-weight:800;display:flex;align-items:center;gap:6px}.score i{color:var(--gold)}
+.progress{font-size:18px;color:var(--muted);font-weight:700}
+.progress-bar{width:100%;height:7px;background:var(--border);border-radius:10px;overflow:hidden;margin-bottom:14px}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--one),var(--accent));border-radius:10px;transition:width .5s ease}
+.result-screen{text-align:center;padding:40px 20px}
+.result-screen .big-icon{font-size:80px;animation:float 2s ease-in-out infinite;display:inline-block;margin-bottom:16px}
+.result-screen h2{font-family:Lalezar;font-size:46px;margin-bottom:8px}
+.result-screen .final-score{font-size:68px;font-weight:800;color:var(--one);margin:12px 0}
+.result-screen .final-score span{font-size:28px;color:var(--muted)}
+.result-screen .msg{font-size:24px;color:var(--muted);margin-bottom:24px}
+.result-screen .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.confetti-piece{position:fixed;border-radius:50%;pointer-events:none;z-index:999;animation:confetti .9s ease-out forwards}
+.nav-row{display:flex;gap:10px;justify-content:center;margin-top:18px;flex-wrap:wrap}.nav-row .btn{padding:14px 28px;font-size:18px}
+.feedback{min-height:36px;font-size:20px;font-weight:700;text-align:center;margin:6px 0;transition:all .3s;line-height:1.6}
+.feedback.ok{color:var(--ok)}.feedback.no{color:var(--no)}
+.section-title{font-family:Lalezar;font-size:32px;color:var(--one);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.text-box{background:linear-gradient(135deg,#f7fbfb,#fef9f2);border:1px solid var(--border);border-radius:20px;padding:24px 20px;margin:10px 0;line-height:2.4;font-size:22px;text-align:justify;position:relative;overflow:hidden;direction:rtl}
+.text-box::before{content:'';position:absolute;top:0;right:0;width:50px;height:100%;background:linear-gradient(90deg,transparent,rgba(14,124,134,.03));pointer-events:none}
+.text-box .sf{position:absolute;color:rgba(14,124,134,.1);font-size:14px;animation:snow 5s linear infinite;pointer-events:none}
+.para-num{display:inline-block;background:var(--one);color:#fff;width:28px;height:28px;border-radius:50%;text-align:center;line-height:28px;font-size:15px;font-weight:800;margin-left:6px;vertical-align:middle}
+@media(max-width:600px){
+.hero h1{font-size:40px}.menu{grid-template-columns:1fr}.q{font-size:22px}
+.choices button{font-size:19px;padding:14px 16px}.text-box{font-size:19px;padding:16px 14px;line-height:2.1}
+.result-screen .final-score{font-size:52px}
+}
+</style>
+</head>
+<body>
+<button class="btn home" onclick="goHome()" title="الرئيسية"><i class="fas fa-home"></i></button>
+<div class="wrap">
+
+<section id="home" class="screen active">
+<div class="hero">
+<div class="hero-icon"><i class="fas fa-snowflake"></i></div>
+<h1>يومٌ على الثَّلجِ</h1>
+<p>تدريب فهم المقروء</p>
+</div>
+<div class="menu">
+<button class="btn" onclick="showText()"><i class="fas fa-book-open"></i> اقرأ النص</button>
+<button class="btn btn2" onclick="startSynAnt()"><i class="fas fa-exchange-alt"></i> المرادفات والأضداد</button>
+<button class="btn" onclick="startComprehension()"><i class="fas fa-question-circle"></i> أسئلة الفهم</button>
+<button class="btn btn2" onclick="startActivities()"><i class="fas fa-pencil-alt"></i> أنشطة على الثلج</button>
+<button class="btn" onclick="startOpinion()"><i class="fas fa-comment-dots"></i> رأيك الشخصي</button>
+</div>
+</section>
+
+<section id="textScreen" class="screen">
+<div class="box">
+<div class="section-title"><i class="fas fa-book-open"></i> يومٌ على الثَّلجِ</div>
+<div class="text-box">
+<span class="sf" style="top:5%;right:10%;animation-delay:0s">❄</span>
+<span class="sf" style="top:20%;right:70%;animation-delay:1.5s">❄</span>
+<span class="sf" style="top:45%;right:35%;animation-delay:3s">❄</span>
+<span class="sf" style="top:70%;right:80%;animation-delay:0.8s">❄</span>
+<span class="sf" style="top:85%;right:50%;animation-delay:2.2s">❄</span>
+
+<span class="para-num">١</span>
+اسْتَيْقَظَ رامي وَناي باكِرًا جدًّا وانْطَلَقا مَعَ والِدَيْهِما إلى الأَرْزِ. بَعْدَ ساعاتٍ، وَصَلَتِ العائِلَةُ. صَرَخَ رامي: "يَومٌ على الثَّلجِ!" المَنْظَرُ رائِعٌ! فَالثَّلجُ يُغَطِّي كُلَّ الجِبالِ بِبِساطٍ أَبيضَ ناصِعٍ. قالَ الأَبُ: "سَنُمارِسُ رِياضَةَ المَشي على الثَّلجِ".
+
+<br><br>
+<span class="para-num">٢</span>
+بَدَأوا يَسيرونَ وَهُمْ يَتَمَتَّعونَ بِأَشِعَّةِ الشَّمسِ الدّافِئَةِ. فَجْأَةً صَرَخَتْ ناي: "أُنْظُروا!" الْتَفَتَ الجَميعُ فَرَأَوْا آثارَ أَقدامٍ على الثَّلجِ. تَحَمَّسَ رامي وَناي وراحا يَتَبَعانِ الآثارَ فَوَجَدا كَلْبًا يَرْكُضُ بَيْنَ الأَشجارِ في أَعْلى الجَبَلِ.
+
+<br><br>
+<span class="para-num">٣</span>
+حَلَّ اللَّيْلُ فَتَوَجَّهَ الجَميعُ إلى بَيْتٍ اسْتَأْجَرَهُ الأَبُ كَثِيرًا، وَعِنْدَما حانَ العَشاءِ وَضَعَ الأَبُ مائِدَةً وَاجْتَمَعوا حَوْلَها فَتَناوَلوا حَساءً ساخِنًا وَطَعاماً لَذِيذاً وَتَبادَلوا الأَحاديثَ العائِلِيَّةَ.
+</div>
+<div class="nav-row">
+<button class="btn" onclick="goHome()"><i class="fas fa-arrow-right"></i> رجوع</button>
+<button class="btn btn2" onclick="startSynAnt()"><i class="fas fa-play"></i> ابدأ الأسئلة</button>
+</div>
+</div>
+</section>
+
+<section id="game" class="screen">
+<div class="box">
+<div class="score-bar">
+<div class="score"><i class="fas fa-star"></i> <span id="scoreVal">0</span></div>
+<div class="progress" id="progressVal">1/9</div>
+</div>
+<div class="progress-bar"><div class="progress-fill" id="progressBar" style="width:11%"></div></div>
+<div class="q" id="q"></div>
+<div id="answers" class="choices"></div>
+<div class="feedback" id="feedback"></div>
+</div>
+</section>
+
+<section id="result" class="screen">
+<div class="box result-screen">
+<div class="big-icon" id="resultIcon"></div>
+<h2 id="resultTitle"></h2>
+<div class="final-score"><span id="resultScore">0</span> <span>/ <span id="resultTotal">0</span></span></div>
+<div class="msg" id="resultMsg"></div>
+<div class="btns">
+<button class="btn" onclick="goHome()"><i class="fas fa-home"></i> الرئيسية</button>
+<button class="btn btn2" id="retryBtn" onclick="retryGame()"><i class="fas fa-redo"></i> أعد المحاولة</button>
+</div>
+</div>
+</section>
+
+</div>
+
+<script>
+function show(id) {
+    var screens = document.querySelectorAll('.screen');
+    for (var i = 0; i < screens.length; i++) screens[i].classList.remove('active');
+    document.getElementById(id).classList.add('active');
+}
+function goHome() { show('home'); }
+function showText() { show('textScreen'); }
+
+var score = 0, data = [], idx = 0, totalQ = 0, mode = '', done = false;
+
+function updUI() {
+    document.getElementById('scoreVal').textContent = score;
+    document.getElementById('progressVal').textContent = (idx + 1) + ' / ' + totalQ;
+    document.getElementById('progressBar').style.width = ((idx + 1) / totalQ * 100) + '%';
+    document.getElementById('feedback').textContent = '';
+    document.getElementById('feedback').className = 'feedback';
+    done = false;
+}
+
+function setFB(t, ok) {
+    var f = document.getElementById('feedback');
+    f.textContent = t; f.className = 'feedback ' + (ok ? 'ok' : 'no');
+    f.style.animation = 'none'; f.offsetHeight; f.style.animation = 'pop .35s ease';
+}
+
+function confetti() {
+    var c = ['#f0a830','#0e7c86','#d45a1f','#27ae60','#e74c3c','#9b59b6'];
+    for (var i = 0; i < 30; i++) {
+        var e = document.createElement('div'); e.className = 'confetti-piece';
+        e.style.left = Math.random()*100+'vw'; e.style.top = (50+Math.random()*40)+'vh';
+        e.style.background = c[Math.floor(Math.random()*c.length)];
+        e.style.animationDelay = Math.random()*0.5+'s';
+        e.style.animationDuration = (0.6+Math.random()*0.6)+'s';
+        var s = 6+Math.random()*6; e.style.width = s+'px'; e.style.height = s+'px';
+        document.body.appendChild(e);
+        (function(el){ setTimeout(function(){ el.remove(); }, 1500); })(e);
+    }
+}
+
+function showResult() {
+    show('result');
+    var mx = totalQ * 10, pct = Math.round(score / mx * 100);
+    var ic = document.getElementById('resultIcon'), ti = document.getElementById('resultTitle'), ms = document.getElementById('resultMsg');
+    document.getElementById('resultScore').textContent = score;
+    document.getElementById('resultTotal').textContent = mx;
+    if (pct >= 90) { ic.innerHTML = '<i class="fas fa-trophy" style="color:var(--gold)"></i>'; ti.textContent = 'ممتاز!'; ms.textContent = 'أداء رائع، أنت متميز!'; confetti(); }
+    else if (pct >= 70) { ic.innerHTML = '<i class="fas fa-medal" style="color:var(--one)"></i>'; ti.textContent = 'جيد جدًا'; ms.textContent = 'أحسنت! استمر في التقدم.'; }
+    else if (pct >= 50) { ic.innerHTML = '<i class="fas fa-thumbs-up" style="color:var(--two)"></i>'; ti.textContent = 'جيد'; ms.textContent = 'حاول مرة أخرى لتحصل على نتيجة أفضل.'; }
+    else { ic.innerHTML = '<i class="fas fa-book-reader" style="color:var(--muted)"></i>'; ti.textContent = 'تحتاج مراجعة'; ms.textContent = 'عد إلى النص وحاول مرة أخرى.'; }
+}
+
+function retryGame() {
+    if (mode === 'synant') startSynAnt();
+    else if (mode === 'comp') startComprehension();
+    else if (mode === 'act') startActivities();
+    else if (mode === 'opin') startOpinion();
+}
+
+function nextQ() {
+    idx++;
+    if (idx >= totalQ) { showResult(); return; }
+    if (mode === 'synant') renderMCQ();
+    else if (mode === 'comp') renderMCQ();
+    else if (mode === 'act') renderMCQ();
+    else if (mode === 'opin') renderMCQ();
+}
+
+function shuffle(arr) {
+    var a = arr.slice();
+    for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random()*(i+1)); var tmp = a[i]; a[i] = a[j]; a[j] = tmp; }
+    return a;
+}
+
+function disableAll(container) {
+    var btns = container.querySelectorAll('button');
+    for (var i = 0; i < btns.length; i++) btns[i].disabled = true;
+}
+
+function showCorrect(container, correctText) {
+    var btns = container.querySelectorAll('button');
+    for (var i = 0; i < btns.length; i++) { if (btns[i].textContent === correctText) btns[i].classList.add('correct'); }
+}
+
+function renderMCQ() {
+    updUI();
+    var x = data[idx];
+    document.getElementById('q').innerHTML = x.q;
+    var a = document.getElementById('answers'); a.innerHTML = '';
+    var sh = shuffle(x.a);
+    for (var i = 0; i < sh.length; i++) {
+        (function(v) {
+            var b = document.createElement('button'); b.textContent = v;
+            b.onclick = function() {
+                if (done) return; done = true;
+                if (v === x.c) { score += 10; b.classList.add('correct'); setFB('أحسنت! إجابة صحيحة', true); }
+                else { b.classList.add('wrong'); setFB('الإجابة الصحيحة مُظهرة باللون الأخضر', false); showCorrect(a, x.c); }
+                disableAll(a); document.getElementById('scoreVal').textContent = score; setTimeout(nextQ, 1600);
+            };
+            a.appendChild(b);
+        })(sh[i]);
+    }
+}
+
+/* ========================================
+   1) المرادفات والأضداد
+   ======================================== */
+var synAntData = [
+    {q:'ما مُرادِفُ كلمة "منزل" في الفقرة الأولى؟', a:['بيت','سيّارة','طريق','مدرسة'], c:'بيت'},
+    {q:'ما مُرادِفُ كلمة "الأسرة" في الفقرة الأولى؟', a:['المدرسة','القرية','العائلة','الجيران'], c:'العائلة'},
+    {q:'ما مُرادِفُ كلمة "السير" في الفقرة الأولى؟', a:['الركض','المَشي','القفز','النوم'], c:'المَشي'},
+    {q:'ما ضِدُّ كلمة "فرَّ" في الفقرة الأخيرة؟', a:['رَكَضَ','نامَ','اجْتَمَعوا','سافَروا'], c:'اجْتَمَعوا'},
+    {q:'ما ضِدُّ كلمة "باردًا" في الفقرة الأخيرة؟', a:['ساخِنًا','جميلاً','كبيراً','صغيراً'], c:'ساخِنًا'},
+    {q:'ما ضِدُّ كلمة "النهار" في الفقرة الأخيرة؟', a:['الصباح','المساء','اللَّيلُ','العصر'], c:'اللَّيلُ'}
+];
+
+function startSynAnt() {
+    mode = 'synant'; score = 0; idx = 0;
+    data = shuffle(synAntData); totalQ = data.length; show('game'); renderMCQ();
+}
+
+/* ========================================
+   2) أسئلة الفهم
+   ======================================== */
+var compData = [
+    {q:'ما عنوانُ هذا النصّ؟', a:['يومٌ على الشاطئ','يومٌ على الثَّلجِ','رحلة إلى الغابة','يوم في المدرسة'], c:'يومٌ على الثَّلجِ'},
+    {q:'إلى أين انطلَق رامي وناي مع والديهما؟', a:['إلى البحر','إلى المدينة','إلى الأَرْزِ','إلى الحديقة'], c:'إلى الأَرْزِ'},
+    {q:'ولماذا ذهبوا إلى هناك؟', a:['لشراء الهدايا','لممارسة رياضة المشي على الثَّلجِ','لزيارة الأقارب','للدراسة'], c:'لممارسة رياضة المشي على الثَّلجِ'},
+    {q:'ماذا رأَوْا على الثَّلجِ؟', a:['حيتاناً','طيوراً','آثارَ أقدامٍ','أزهاراً'], c:'آثارَ أقدامٍ'},
+    {q:'ماذا وَجَدَ رامي وناي حين تبعا الآثار؟', a:['قطةً نائمة','كلبًا يركض بين الأشجار','طفلاً ضائعاً','طائراً صغيراً'], c:'كلبًا يركض بين الأشجار'},
+    {q:'أين كان الكلب يركض؟', a:['في الوادي','عند النهر','بين الأشجار في أعلى الجبل','في البيت'], c:'بين الأشجار في أعلى الجبل'},
+    {q:'ماذا تناولت العائلة عند العشاء؟', a:['فواكه فقط','حساءً ساخناً وطعاماً لذيذاً','ساندويتشات','آيس كريم'], c:'حساءً ساخناً وطعاماً لذيذاً'},
+    {q:'بماذا وصف رامي المنظر عندما وصلوا؟', a:['المنظر حزين','المنظر رائع','المنظر مخيف','المنظر عادي'], c:'المنظر رائع'}
+];
+
+function startComprehension() {
+    mode = 'comp'; score = 0; idx = 0;
+    data = shuffle(compData); totalQ = data.length; show('game'); renderMCQ();
+}
+
+/* ========================================
+   3) أنشطة على الثلج
+   ======================================== */
+var actData = [
+    {q:'أيّ من التالي يُعَدُّ نشاطًا يمكن القيام به على الثلج؟', a:['السباحة في البحر','ركوب الأمواج','التزلّج على الثلج','صيد الأسماك'], c:'التزلّج على الثلج'},
+    {q:'أيّ نشاط ذكره النصّ بشكل مباشر؟', a:['ركوب الخيل','المشي على الثلج','القفز بالحبل','ركوب الدراجة'], c:'المشي على الثلج'},
+    {q:'أيّ من هذه الأنشطة يمكن ممارستها على الثلج؟', a:['السباحة','بناء رجل ثلج','اللعب بالرمل','صيد السمك'], c:'بناء رجل ثلج'},
+    {q:'ما النشاط الذي مارسه رامي وناي في النص؟', a:['التزلّج السريع','اتباع آثار الأقدام في الثلج','بناء قلعة ثلج','رمي كرات الثلج'], c:'اتباع آثار الأقدام في الثلج'},
+    {q:'أيّ نشاط لا يمكن ممارسته على الثلج؟', a:['التزلّج','رمي كرات الثلج','السباحة','المشي'], c:'السباحة'},
+    {q:'أيّ مما يلي يُمثّل نشاطًا عائليًا يمكن ممارسته في الشتاء؟', a:['النزهة على الثلج والتدفئة بحساء ساخن','الذهاب إلى المسبح','اللعب في الرمال','التنزه في الحديقة وقت الظهيرة'], c:'النزهة على الثلج والتدفّئ بحساء ساخن'}
+];
+
+function startActivities() {
+    mode = 'act'; score = 0; idx = 0;
+    data = shuffle(actData); totalQ = data.length; show('game'); renderMCQ();
+}
+
+/* ========================================
+   4) رأيك الشخصي
+   ======================================== */
+var opinData = [
+    {q:'في رأيك، لماذا اختار الوالدان اصطحاب الأولاد إلى الأرز في الشتاء بدلاً من البقاء في البيت؟', a:['لأن البيت بارد','لكي يستمتعوا بالطبيعة والثلج ويقضوا وقتاً عائلياً ممتعاً','لأن عليهما واجب عمل هناك','لأن المدرسة طلبت ذلك'], c:'لكي يستمتعوا بالطبيعة والثلج ويقضوا وقتاً عائلياً ممتعاً'},
+    {q:'ما الذي يدلّ على أنّ هذه الرحلة كانت ممتعة للعائلة؟', a:['عادوا سريعاً إلى البيت','تبادلوا الأحاديث العائلية وتناولوا الطعام معاً بنشاط','ناموا طوال الوقت','لم يتكلّموا مع بعضهم'], c:'تبادلوا الأحاديث العائلية وتناولوا الطعام معاً بنشاط'},
+    {q:'إذا كنت مكان رامي وناي، ما أوّل شيء تفعله عندما ترى الثلج؟', a:['أعود إلى البيت فوراً','أبدأ باللعب والتزلّج والمشي على الثلج','أنام في السيارة','أتصل بأصدقائي'], c:'أبدأ باللعب والتزلّج والمشي على الثلج'},
+    {q:'ما أجمل ما في فصل الشتاء حسب رأيك؟', a:['البرد الشديد فقط','الثَّلجُ الأبيضُ والأنشطةُ الممتعةُ مع العائلةِ','البقاء في البيت دائماً','عدم الخروج أبداً'], c:'الثَّلجُ الأبيضُ والأنشطةُ الممتعةُ مع العائلةِ'},
+    {q:'لماذا وصف رامي المنظر بأنّه "رائع"؟', a:['لأنه رأى سيارات كثيرة','لأن الثلج يغطي الجبال ببساط أبيض ناصع وهو منظر خلّاب','لأنه رأى حيوانات غريبة','لأن الجبال صغيرة'], c:'لأن الثلج يغطي الجبال ببساط أبيض ناصع وهو منظر خلّاب'},
+    {q:'ماذا يعلّمنا هذا النصّ عن العائلة؟', a:['أنّ السفر مضرّ','أنّ قضاء الوقت مع العائلة في الطبيعة يجلب السعادة والتقارب','أنّ الثلج خطير دائماً','أنّ الأطفال لا يحبّون الخروج'], c:'أنّ قضاء الوقت مع العائلة في الطبيعة يجلب السعادة والتقارب'}
+];
+
+function startOpinion() {
+    mode = 'opin'; score = 0; idx = 0;
+    data = shuffle(opinData); totalQ = data.length; show('game'); renderMCQ();
+}
+</script>
+</body>
+</html>

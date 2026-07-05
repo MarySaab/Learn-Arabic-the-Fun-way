@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>وصف إنسان - الصف الثالث | قسم اللغة العربية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --primary:#0C7B5F;--primary-dark:#085D47;--primary-light:#E6F4F0;--primary-50:#F0FAF6;
+            --secondary:#E8912D;--secondary-light:#FEF3E2;
+            --tertiary:#7C3AED;--tertiary-light:#EDE9FE;
+            --bg:#F8FAFB;--card:#FFFFFF;--text:#1A2332;--text-muted:#64748B;
+            --border:#E2E8F0;--success:#16A34A;--success-light:#DCFCE7;
+            --error:#DC2626;--error-light:#FEE2E2;
+            --shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06);
+            --shadow-md:0 4px 6px rgba(0,0,0,.07),0 2px 4px rgba(0,0,0,.06);
+            --shadow-lg:0 10px 15px rgba(0,0,0,.1),0 4px 6px rgba(0,0,0,.05);
+            --radius:12px;--radius-lg:20px
+        }
+        html{scroll-behavior:smooth}
+        body{font-family:'Tajawal',sans-serif;background:var(--bg);color:var(--text);line-height:1.8;overflow-x:hidden}
+
+        .header{background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 50%,#10A37F 100%);color:#fff;padding:3rem 1.5rem 4.5rem;text-align:center;position:relative;overflow:hidden}
+        .header::before{content:'';position:absolute;top:-50%;right:-20%;width:400px;height:400px;background:rgba(255,255,255,.05);border-radius:50%}
+        .header::after{content:'';position:absolute;bottom:-30%;left:-10%;width:300px;height:300px;background:rgba(255,255,255,.03);border-radius:50%}
+        .header-pattern{position:absolute;inset:0;opacity:.05;background-image:repeating-linear-gradient(0deg,transparent,transparent 40px,rgba(255,255,255,.5) 40px,rgba(255,255,255,.5) 41px),repeating-linear-gradient(90deg,transparent,transparent 40px,rgba(255,255,255,.5) 40px,rgba(255,255,255,.5) 41px)}
+        .level-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.15);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.25);padding:.4rem 1.2rem;border-radius:50px;font-size:.9rem;font-weight:500;margin-bottom:1rem;position:relative;z-index:1}
+        .header h1{font-size:2.8rem;font-weight:900;margin-bottom:.5rem;position:relative;z-index:1}
+        .header .subtitle{font-size:1.15rem;opacity:.85;font-weight:300;position:relative;z-index:1}
+        .header-wave{position:absolute;bottom:-2px;left:0;right:0;z-index:2}
+        .header-wave svg{display:block;width:100%;height:auto}
+
+        .container{max-width:940px;margin:0 auto;padding:0 1.5rem}
+        .content-section{margin-top:-1rem;position:relative;z-index:3}
+
+        .section-card{background:var(--card);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);padding:2.5rem;margin-bottom:2rem;border:1px solid var(--border);transition:transform .3s ease}
+        .section-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+        .section-title{display:flex;align-items:center;gap:.75rem;font-size:1.5rem;font-weight:800;color:var(--primary-dark);margin-bottom:1.5rem}
+        .icon-circle{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+        .ic-green{background:var(--primary-light);color:var(--primary)}
+        .ic-orange{background:var(--secondary-light);color:var(--secondary)}
+        .ic-purple{background:var(--tertiary-light);color:var(--tertiary)}
+
+        .definition-box{border-radius:var(--radius);padding:1.5rem 2rem;font-size:1.15rem;font-weight:500;line-height:2.4;margin-bottom:1.5rem}
+        .def-green{background:var(--primary-light);border-right:4px solid var(--primary)}
+        .def-orange{background:var(--secondary-light);border-right:4px solid var(--secondary)}
+        .def-purple{background:var(--tertiary-light);border-right:4px solid var(--tertiary)}
+        .definition-box .hl{font-weight:700}
+        .def-green .hl{color:var(--primary)}
+        .def-orange .hl{color:var(--secondary)}
+        .def-purple .hl{color:var(--tertiary)}
+
+        .tip-box{display:flex;align-items:flex-start;gap:.75rem;border-radius:var(--radius);padding:1rem 1.5rem;margin-top:1.25rem;font-size:1rem}
+        .tip-green{background:var(--primary-light);border-right:4px solid var(--primary)}
+        .tip-green i{color:var(--primary)}
+        .tip-orange{background:var(--secondary-light);border-right:4px solid var(--secondary)}
+        .tip-orange i{color:var(--secondary)}
+        .tip-purple{background:var(--tertiary-light);border-right:4px solid var(--tertiary)}
+        .tip-purple i{color:var(--tertiary)}
+
+        .sub-heading{font-size:1.1rem;font-weight:700;color:var(--text);margin:1.5rem 0 .75rem;display:flex;align-items:center;gap:.5rem}
+        .sub-heading i{font-size:.85rem}
+
+        /* Word Banks */
+        .word-bank{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}
+        .wb{padding:.45rem 1.1rem;border-radius:50px;font-size:1.05rem;font-weight:700;cursor:default;transition:all .3s ease;border:2px solid transparent}
+        .wb:hover{transform:scale(1.06)}
+        .wb-green{background:var(--primary-light);color:var(--primary)}
+        .wb-green:hover{border-color:var(--primary)}
+        .wb-orange{background:var(--secondary-light);color:var(--secondary)}
+        .wb-orange:hover{border-color:var(--secondary)}
+        .wb-purple{background:var(--tertiary-light);color:var(--tertiary)}
+        .wb-purple:hover{border-color:var(--tertiary)}
+
+        /* Example sentences */
+        .example-sentence{background:var(--bg);border-radius:var(--radius);padding:1rem 1.5rem;margin-top:.75rem;border:1px solid var(--border);font-size:1.1rem;line-height:2.2}
+        .example-sentence .sim{color:var(--secondary);font-weight:700;background:var(--secondary-light);padding:0 .3rem;border-radius:4px}
+
+        /* Three columns for the 3 sections */
+        .three-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:1.5rem}
+        .col-card{border-radius:var(--radius);padding:1.5rem;text-align:center;border:2px solid var(--border);transition:all .3s ease}
+        .col-card:hover{box-shadow:var(--shadow)}
+        .col-card .col-num{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1rem;color:#fff;margin:0 auto .75rem}
+        .col-card .col-title{font-size:1.05rem;font-weight:800;margin-bottom:.5rem}
+        .col-card .col-desc{font-size:.9rem;color:var(--text-muted);line-height:1.8}
+        .col-green .col-num{background:var(--primary)}
+        .col-green .col-title{color:var(--primary-dark)}
+        .col-green:hover{border-color:var(--primary)}
+        .col-orange .col-num{background:var(--secondary)}
+        .col-orange .col-title{color:var(--secondary)}
+        .col-orange:hover{border-color:var(--secondary)}
+        .col-purple .col-num{background:var(--tertiary)}
+        .col-purple .col-title{color:var(--tertiary)}
+        .col-purple:hover{border-color:var(--tertiary)}
+
+        /* === GAMES === */
+        .games-section{margin-bottom:3rem}
+        .games-header{text-align:center;margin-bottom:2rem}
+        .games-header h2{font-size:2rem;font-weight:900;color:var(--primary-dark);margin-bottom:.5rem}
+        .games-header p{color:var(--text-muted);font-size:1.05rem}
+        .game-tabs{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem}
+        .game-tab{padding:.75rem 1.5rem;border:2px solid var(--border);border-radius:50px;background:var(--card);font-family:'Tajawal',sans-serif;font-size:1rem;font-weight:700;color:var(--text-muted);cursor:pointer;transition:all .3s ease;display:flex;align-items:center;gap:.5rem}
+        .game-tab:hover{border-color:var(--primary);color:var(--primary)}
+        .game-tab.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+        .game-panel{display:none}
+        .game-panel.active{display:block;animation:fadeInUp .4s ease}
+        @keyframes fadeInUp{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+
+        .game-intro{text-align:center;padding:2rem}
+        .game-intro i{font-size:3rem;color:var(--primary);margin-bottom:1rem}
+        .game-intro h3{font-size:1.5rem;font-weight:800;color:var(--text);margin-bottom:.75rem}
+        .game-intro p{color:var(--text-muted);font-size:1.05rem;max-width:420px;margin:0 auto}
+        .start-btn{display:block;margin:2rem auto 0;padding:1rem 3rem;background:linear-gradient(135deg,var(--primary),#10A37F);color:#fff;border:none;border-radius:50px;font-family:'Tajawal',sans-serif;font-size:1.2rem;font-weight:800;cursor:pointer;transition:all .3s ease;box-shadow:0 4px 15px rgba(12,123,95,.3)}
+        .start-btn:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(12,123,95,.4)}
+
+        /* Quiz */
+        .quiz-box{background:var(--card);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);border:1px solid var(--border);overflow:hidden}
+        .quiz-progress{height:6px;background:var(--bg)}
+        .quiz-progress-bar{height:100%;background:linear-gradient(90deg,var(--primary),#10A37F);transition:width .4s ease;border-radius:0 3px 3px 0}
+        .quiz-body{padding:2.5rem}
+        .quiz-qnum{font-size:.9rem;color:var(--text-muted);margin-bottom:.75rem}
+        .quiz-q{font-size:1.3rem;font-weight:700;margin-bottom:2rem;line-height:2}
+        .quiz-opts{display:flex;flex-direction:column;gap:.75rem}
+        .quiz-opt{padding:1rem 1.5rem;border:2px solid var(--border);border-radius:var(--radius);font-family:'Tajawal',sans-serif;font-size:1.1rem;font-weight:500;color:var(--text);background:var(--bg);cursor:pointer;transition:all .3s ease;text-align:right}
+        .quiz-opt:hover:not(.disabled){border-color:var(--primary);background:var(--primary-light)}
+        .quiz-opt.correct{border-color:var(--success);background:var(--success-light);color:var(--success);font-weight:700}
+        .quiz-opt.wrong{border-color:var(--error);background:var(--error-light);color:var(--error)}
+        .quiz-opt.disabled{cursor:default;opacity:.7}
+        .quiz-opt.correct.disabled,.quiz-opt.wrong.disabled{opacity:1}
+        .quiz-fb{margin-top:1.5rem;padding:1rem 1.5rem;border-radius:var(--radius);font-weight:600;display:none;align-items:center;gap:.75rem}
+        .quiz-fb.show{display:flex}
+        .quiz-fb.correct{background:var(--success-light);color:var(--success)}
+        .quiz-fb.wrong{background:var(--error-light);color:var(--error)}
+        .quiz-next{margin-top:1.5rem;padding:.75rem 2rem;background:var(--primary);color:#fff;border:none;border-radius:50px;font-family:'Tajawal',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all .3s ease;display:none}
+        .quiz-next.show{display:inline-flex;align-items:center;gap:.5rem}
+        .quiz-next:hover{background:var(--primary-dark);transform:translateY(-1px)}
+        .quiz-result{text-align:center;padding:3rem 2rem;display:none}
+        .quiz-result.show{display:block;animation:fadeInUp .5s ease}
+        .result-icon{font-size:4rem;margin-bottom:1rem}
+        .result-score{font-size:2.5rem;font-weight:900;color:var(--primary)}
+        .result-text{font-size:1.2rem;color:var(--text-muted);margin:1rem 0 2rem}
+        .retry-btn{padding:.85rem 2.5rem;background:var(--primary);color:#fff;border:none;border-radius:50px;font-family:'Tajawal',sans-serif;font-size:1.1rem;font-weight:700;cursor:pointer;transition:all .3s ease}
+        .retry-btn:hover{background:var(--primary-dark);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+
+        /* Classification game */
+        .class-box{background:var(--card);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);border:1px solid var(--border);padding:2.5rem}
+        .class-score{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:.5rem}
+        .sc-item{display:flex;align-items:center;gap:.5rem;font-weight:700}
+        .sc-item i{color:var(--secondary)}
+        .class-word{text-align:center;margin-bottom:2rem;padding:2rem;background:var(--bg);border-radius:var(--radius)}
+        .class-label{font-size:.95rem;color:var(--text-muted);margin-bottom:.5rem}
+        .class-word-display{font-size:1.6rem;font-weight:800;color:var(--text);line-height:2}
+        .class-btns{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem}
+        .class-btn{padding:1rem .5rem;border:2px solid var(--border);border-radius:var(--radius);font-family:'Tajawal',sans-serif;font-size:.95rem;font-weight:700;color:var(--text);background:var(--card);cursor:pointer;transition:all .3s ease;display:flex;flex-direction:column;align-items:center;gap:.4rem}
+        .class-btn .btn-icon{font-size:1.3rem}
+        .class-btn .btn-label{font-size:.8rem;font-weight:500;color:var(--text-muted)}
+        .class-btn.c-green:hover{border-color:var(--primary);background:var(--primary-light)}
+        .class-btn.c-green .btn-icon{color:var(--primary)}
+        .class-btn.c-orange:hover{border-color:var(--secondary);background:var(--secondary-light)}
+        .class-btn.c-orange .btn-icon{color:var(--secondary)}
+        .class-btn.c-purple:hover{border-color:var(--tertiary);background:var(--tertiary-light)}
+        .class-btn.c-purple .btn-icon{color:var(--tertiary)}
+        .class-btn.correct{border-color:var(--success)!important;background:var(--success-light)!important}
+        .class-btn.wrong{border-color:var(--error)!important;background:var(--error-light)!important}
+        .class-btn.disabled{cursor:default;pointer-events:none}
+        .class-result{text-align:center;padding:2.5rem;display:none}
+        .class-result.show{display:block;animation:fadeInUp .5s ease}
+
+        /* Builder game */
+        .build-box{background:var(--card);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);border:1px solid var(--border);padding:2.5rem}
+        .build-score{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:.5rem}
+        .build-prompt{text-align:center;margin-bottom:1.5rem}
+        .build-prompt .bp-label{font-size:.95rem;color:var(--text-muted);margin-bottom:.5rem}
+        .build-prompt .bp-text{font-size:1.2rem;font-weight:700;color:var(--primary-dark)}
+        .build-words{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin-bottom:1.5rem;min-height:50px}
+        .build-word{padding:.6rem 1.2rem;border:2px solid var(--border);border-radius:var(--radius);font-size:1.05rem;font-weight:600;cursor:pointer;transition:all .3s ease;background:var(--card);user-select:none}
+        .build-word:hover:not(.used):not(.locked){border-color:var(--primary);background:var(--primary-light)}
+        .build-word.used{opacity:.35;cursor:default;border-color:var(--border)}
+        .build-word.locked{cursor:default}
+        .build-sentence{background:var(--bg);border:2px dashed var(--border);border-radius:var(--radius);padding:1.25rem;min-height:60px;display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;align-items:center;margin-bottom:1rem;transition:border-color .3s}
+        .build-sentence.correct-border{border-color:var(--success);background:var(--success-light)}
+        .build-sentence.wrong-border{border-color:var(--error);background:var(--error-light)}
+        .build-sentence .placed-word{padding:.5rem 1rem;background:var(--primary);color:#fff;border-radius:8px;font-size:1.05rem;font-weight:600;cursor:pointer;transition:all .2s}
+        .build-sentence .placed-word:hover{background:var(--primary-dark);transform:scale(1.03)}
+        .build-sentence .placeholder-text{color:var(--text-muted);font-size:.95rem}
+        .build-actions{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap}
+        .build-actions button{padding:.7rem 1.5rem;border:none;border-radius:50px;font-family:'Tajawal',sans-serif;font-size:.95rem;font-weight:700;cursor:pointer;transition:all .3s ease}
+        .btn-check{background:var(--primary);color:#fff}
+        .btn-check:hover{background:var(--primary-dark)}
+        .btn-clear{background:var(--bg);color:var(--text-muted);border:2px solid var(--border)!important}
+        .btn-clear:hover{border-color:var(--error)!important;color:var(--error)}
+        .btn-skip{background:var(--bg);color:var(--text-muted);border:2px solid var(--border)!important}
+        .btn-skip:hover{border-color:var(--secondary)!important;color:var(--secondary)}
+        .build-result{text-align:center;padding:2.5rem;display:none}
+        .build-result.show{display:block;animation:fadeInUp .5s ease}
+
+        /* Memory */
+        .mem-box{background:var(--card);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);border:1px solid var(--border);padding:2rem}
+        .mem-stats{display:flex;justify-content:center;gap:2rem;margin-bottom:1.5rem;flex-wrap:wrap}
+        .mem-stat{display:flex;align-items:center;gap:.5rem;font-weight:700;color:var(--text-muted)}
+        .mem-stat i{color:var(--primary)}
+        .mem-stat .sv{color:var(--primary)}
+        .mem-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;max-width:520px;margin:0 auto}
+        .mem-card{aspect-ratio:1;perspective:600px;cursor:pointer}
+        .mem-card-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .5s ease;border-radius:var(--radius)}
+        .mem-card.flipped .mem-card-inner,.mem-card.matched .mem-card-inner{transform:rotateY(180deg)}
+        .mem-card-front,.mem-card-back{position:absolute;inset:0;backface-visibility:hidden;border-radius:var(--radius);display:flex;align-items:center;justify-content:center;font-weight:700;padding:.4rem;text-align:center}
+        .mem-card-front{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;font-size:1.5rem}
+        .mem-card-back{background:var(--primary-light);color:var(--primary-dark);font-size:.95rem;transform:rotateY(180deg);border:2px solid var(--primary);line-height:1.6}
+        .mem-card.matched .mem-card-back{background:var(--success-light);border-color:var(--success);color:var(--success)}
+        .mem-result{text-align:center;padding:2rem;display:none}
+        .mem-result.show{display:block;animation:fadeInUp .5s ease}
+        .mem-reset{margin-top:1.5rem;padding:.75rem 2rem;background:var(--primary);color:#fff;border:none;border-radius:50px;font-family:'Tajawal',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all .3s ease}
+        .mem-reset:hover{background:var(--primary-dark)}
+
+        /* Toast */
+        .toast-wrap{position:fixed;top:1.5rem;left:50%;transform:translateX(-50%);z-index:9999;display:flex;flex-direction:column;gap:.5rem;align-items:center;pointer-events:none}
+        .toast{padding:.85rem 1.5rem;border-radius:50px;font-family:'Tajawal',sans-serif;font-weight:600;font-size:1rem;box-shadow:var(--shadow-lg);animation:toastIn .4s ease,toastOut .4s ease 2.5s forwards;display:flex;align-items:center;gap:.5rem}
+        .toast.success{background:var(--success);color:#fff}
+        .toast.error{background:var(--error);color:#fff}
+        .toast.info{background:var(--primary);color:#fff}
+        @keyframes toastIn{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes toastOut{from{opacity:1}to{opacity:0;transform:translateY(-20px)}}
+
+        .footer{background:var(--primary-dark);color:rgba(255,255,255,.7);text-align:center;padding:2rem 1.5rem;margin-top:3rem}
+        .footer p{font-size:.95rem}
+        .footer .fb{color:#fff;font-weight:700}
+
+        .floating-shapes{position:fixed;inset:0;pointer-events:none;z-index:-1;overflow:hidden}
+        .fs{position:absolute;border-radius:50%;opacity:.04;background:var(--primary)}
+        .fs:nth-child(1){width:300px;height:300px;top:20%;left:-100px;animation:fl1 20s ease-in-out infinite}
+        .fs:nth-child(2){width:200px;height:200px;top:60%;right:-80px;animation:fl2 25s ease-in-out infinite}
+        .fs:nth-child(3){width:150px;height:150px;top:80%;left:30%;animation:fl3 18s ease-in-out infinite}
+        @keyframes fl1{0%,100%{transform:translate(0,0)}50%{transform:translate(50px,-50px)}}
+        @keyframes fl2{0%,100%{transform:translate(0,0)}50%{transform:translate(-40px,30px)}}
+        @keyframes fl3{0%,100%{transform:translate,0)}50%{transform:translate(30px,-40px)}}
+
+        .aos{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+        .aos.vis{opacity:1;transform:translateY(0)}
+
+        .confetti{position:fixed;width:10px;height:10px;border-radius:2px;z-index:9998;pointer-events:none;animation:confFall 3s ease-in forwards}
+        @keyframes confFall{0%{opacity:1;transform:translateY(0) rotate(0deg)}100%{opacity:0;transform:translateY(100vh) rotate(720deg)}}
+
+        @media(max-width:768px){
+            .three-cols{grid-template-columns:1fr}
+            .class-btns{grid-template-columns:1fr}
+        }
+        @media(max-width:640px){
+            .header h1{font-size:2rem}
+            .section-card{padding:1.5rem}
+            .quiz-body{padding:1.5rem}
+            .class-box,.build-box{padding:1.5rem}
+            .mem-grid{grid-template-columns:repeat(3,1fr);gap:.5rem}
+            .mem-card-back{font-size:.8rem}
+            .game-tab{padding:.6rem 1rem;font-size:.9rem}
+            .quiz-q{font-size:1.1rem}
+            .build-word{font-size:.95rem;padding:.5rem .9rem}
+        }
+    </style>
+</head>
+<body>
+
+<div class="floating-shapes"><div class="fs"></div><div class="fs"></div><div class="fs"></div></div>
+<div class="toast-wrap" id="toastWrap"></div>
+
+<header class="header">
+    <div class="header-pattern"></div>
+    <div class="level-badge"><i class="fas fa-layer-group"></i> الصف الثالث</div>
+    <h1>دليل مساعد لوصف إنسان</h1>
+    <p class="subtitle">قسم اللغة العربية — تعلّم كيف تصف شخصًا بأسلوب جميل</p>
+    <div class="header-wave">
+        <svg viewBox="0 0 1440 100" fill="none"><path d="M0 50L48 45C96 40 192 30 288 28C384 26 480 32 576 42C672 52 768 66 864 65C960 64 1056 48 1152 40C1248 32 1344 32 1392 32L1440 32V100H1392C1344 100 1248 100 1152 100C1056 100 960 100 864 100C768 100 672 100 576 100C480 100 384 100 288 100C192 100 96 100 48 100H0V50Z" fill="#F8FAFB"/></svg>
+    </div>
+</header>
+
+<main class="content-section">
+<div class="container">
+
+    <!-- ===== Structure Overview ===== -->
+    <div class="section-card aos">
+        <div class="section-title">
+            <div class="icon-circle ic-green"><i class="fas fa-sitemap"></i></div>
+            بناء الوصف: ثلاثة أقسام
+        </div>
+        <div class="definition-box def-green">
+            أُقسِمُ وصفي إلى <span class="hl">ثلاثة أقسام</span>. أترُكُ فراغًا في بداية كلّ فقرة.
+        </div>
+        <div class="three-cols">
+            <div class="col-card col-green">
+                <div class="col-num">١</div>
+                <div class="col-title">التعريف بالموصوف</div>
+                <div class="col-desc">اسمه، عُمره، صلته بي</div>
+            </div>
+            <div class="col-card col-orange">
+                <div class="col-num">٢</div>
+                <div class="col-title">الوصف الخارجي والداخلي</div>
+                <div class="col-desc">قامته، وجهه، شَعره، صفاته وأخلاقه</div>
+            </div>
+            <div class="col-card col-purple">
+                <div class="col-num">٣</div>
+                <div class="col-title">المشاعر والعواطف</div>
+                <div class="col-desc">التعبير عن الشعور تجاه الموصوف</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Tips ===== -->
+    <div class="section-card aos">
+        <div class="section-title">
+            <div class="icon-circle ic-green"><i class="fas fa-wand-magic-sparkles"></i></div>
+            أسرار الوصف الجميل
+        </div>
+        <div class="tip-box tip-green">
+            <i class="fas fa-lightbulb"></i>
+            <span>نُكثِرُ من استخدام <strong>الجُمَل الاسميّة</strong> في وصف الإنسان، مثل: أبي رجلٌ بهيُّ الطَّلَّة، شَعرُهُ أشقر.</span>
+        </div>
+        <div class="tip-box tip-orange">
+            <i class="fas fa-lightbulb"></i>
+            <span>نَستَعمِلُ <strong>التَّشبيه</strong> لنُجمِّل الوصف، مثل: شعر أشقر كَخُيوط الشَّمس، القامة كالنَّخلة.</span>
+        </div>
+        <div class="tip-box tip-green">
+            <i class="fas fa-lightbulb"></i>
+            <span>نُكثِرُ من استخدام <strong>الصِّفات النَّعتيّة</strong> في الوصف الخارجي، مثل: قامته ممشوقة.</span>
+        </div>
+    </div>
+
+    <!-- ===== External Description ===== -->
+    <div class="section-card aos">
+        <div class="section-title">
+            <div class="icon-circle ic-orange"><i class="fas fa-user"></i></div>
+            أوّلاً: الوصف الخارجي
+        </div>
+
+        <div class="sub-heading"><i class="fas fa-caret-left" style="color:var(--secondary)"></i> العمر</div>
+        <div class="word-bank">
+            <span class="wb wb-orange">فَتًى</span>
+            <span class="wb wb-orange">شابٌّ</span>
+            <span class="wb wb-orange">صَبيٌّ</span>
+            <span class="wb wb-orange">عَجوز</span>
+            <span class="wb wb-orange">هو في العقد الرابع</span>
+            <span class="wb wb-orange">إنَّهُ في عُمر الزُّهور</span>
+        </div>
+
+        <div class="sub-heading"><i class="fas fa-caret-left" style="color:var(--secondary)"></i> القامة</div>
+        <div class="word-bank">
+            <span class="wb wb-orange">طويلُ القامة</span>
+            <span class="wb wb-orange">قصيرُ القامة</span>
+            <span class="wb wb-orange">مُتَوسِّطُ القامة</span>
+            <span class="wb wb-orange">ممشوقة</span>
+        </div>
+        <div class="example-sentence">القامة كالنَّخلة الطَّويلة</div>
+
+        <div class="sub-heading"><i class="fas fa-caret-left" style="color:var(--secondary)"></i> الجِسم</div>
+        <div class="word-bank">
+            <span class="wb wb-orange">نَحيل</span>
+            <span class="wb wb-orange">نَحيف</span>
+            <span class="wb wb-orange">مُمتَلئ</span>
+            <span class="wb wb-orange">بَدين</span>
+            <span class="wb wb-orange">سَمين</span>
+            <span class="wb wb-orange">ضَخم</span>
+        </div>
+        <div class="example-sentence">جِسمُهُ مُمتَلئ كالرُّمّان</div>
+
+        <div class="sub-heading"><i class="fas fa-caret-left" style="color:var(--secondary)"></i> الشَّعر</div>
+        <div class="word-bank">
+            <span class="wb wb-orange">أَسوَدُ كاللَّيل</span>
+            <span class="wb wb-orange">أَشقَرُ كَخُيوط الشَّمس</span>
+            <span class="wb wb-orange">بُنَيٌّ</span>
+            <span class="wb wb-orange">سَمراءُ</span>
+            <span class="wb wb-orange">أَشيب</span>
+        </div>
+        <div class="word-bank" style="margin-top:.5rem">
+            <span class="wb wb-orange" style="font-size:.95rem">طويل</span>
+            <span class="wb wb-orange" style="font-size:.95rem">قصير</span>
+            <span class="wb wb-orange" style="font-size:.95rem">أَملَس</span>
+            <span class="wb wb-orange" style="font-size:.95rem">أَجعَد</span>
+            <span class="wb wb-orange" style="font-size:.95rem">مَجدول</span>
+            <span class="wb wb-orange" style="font-size:.95rem">كَثيف</span>
+        </div>
+
+        <div class="sub-heading"><i class="fas fa-caret-left" style="color:var(--secondary)"></i> البَشَرة</div>
+        <div class="word-bank">
+            <span class="wb wb-orange">بَيضاءُ</span>
+            <span class="wb wb-orange">قَمحِيَّة كَسَنابِل القَمح</span>
+            <span class="wb wb-orange">سَمْراءُ زاهيَة</span>
+            <span class="wb wb-orange">حَنْطيّة</span>
+        </div>
+        <div class="example-sentence">بَشَرَتُها حَريريَّة المَلْمَس</div>
+
+        <div class="sub-heading"><i class="fas fa-caret-left" style="color:var(--secondary)"></i> العَينان</div>
+        <div class="word-bank">
+            <span class="wb wb-orange">زَرقاوان</span>
+            <span class="wb wb-orange">سَوداوان كَدُقَتَين</span>
+            <span class="wb wb-orange">بُنَيَّتان</span>
+            <span class="wb wb-orange">خَضراوان</span>
+            <span class="wb wb-orange">عَسَليَّتان</span>
+            <span class="wb wb-orange">وَردِيَّتان</span>
+        </div>
+        <div class="word-bank" style="margin-top:.5rem">
+            <span class="wb wb-orange" style="font-size:.95rem">كَبِيرَتان</span>
+            <span class="wb wb-orange" style="font-size:.95rem">صَغِيرَتان</span>
+            <span class="wb wb-orange" style="font-size:.95rem">تَلْمعان</span>
+            <span class="wb wb-orange" style="font-size:.95rem">واسِعتان</span>
+            <span class="wb wb-orange" style="font-size:.95rem">كَثِيفَتا الأَهداب</span>
+        </div>
+
+        <div class="sub-heading"><i class="fas fa-caret-left" style="color:var(--secondary)"></i> الأَنف</div>
+        <div class="word-bank">
+            <span class="wb wb-orange">أَفطَس</span>
+            <span class="wb wb-orange">طَويل</span>
+            <span class="wb wb-orange">صَغير كَمِنقار النَّمَش</span>
+            <span class="wb wb-orange">ضَخم</span>
+            <span class="wb wb-orange">كَبير</span>
+            <span class="wb wb-orange">يُغَطِّي نَصف الوَجه</span>
+        </div>
+
+        <div class="sub-heading"><i class="fas fa-caret-left" style="color:var(--secondary)"></i> الفَم</div>
+        <div class="word-bank">
+            <span class="wb wb-orange">وَرديٌّ</span>
+            <span class="wb wb-orange">كَبير كَحَبَّة الكَرَز</span>
+            <span class="wb wb-orange">صَغير</span>
+            <span class="wb wb-orange">مُبتَسِم</span>
+        </div>
+
+        <div class="sub-heading"><i class="fas fa-caret-left" style="color:var(--secondary)"></i> لون الشَّفتين</div>
+        <div class="word-bank">
+            <span class="wb wb-orange">أَحمران كَالتُّفّاح</span>
+            <span class="wb wb-orange">وَردِيَّان</span>
+            <span class="wb wb-orange">أَحمران كَالشَّاحِب</span>
+        </div>
+
+        <div class="sub-heading"><i class="fas fa-caret-left" style="color:var(--secondary)"></i> طريقة المَشي</div>
+        <div class="word-bank">
+            <span class="wb wb-orange">يَعدو كالغُزال</span>
+            <span class="wb wb-orange">مُتَسارِعُ الخُطى</span>
+            <span class="wb wb-orange">يَمشي شامِخًا</span>
+            <span class="wb wb-orange">مُتَأنّي</span>
+        </div>
+    </div>
+
+    <!-- ===== Internal Description ===== -->
+    <div class="section-card aos">
+        <div class="section-title">
+            <div class="icon-circle ic-orange"><i class="fas fa-heart"></i></div>
+            ثانيًا: الوصف الداخلي
+        </div>
+        <div class="definition-box def-orange">
+            نَصِفُ <span class="hl">صفاته</span> و<span class="hl">أَخلاقه</span> و<span class="hl">مُعامَلَتَهُ لنا</span>.
+        </div>
+        <div class="word-bank">
+            <span class="wb wb-orange">مُتَفَوِّق في دروسه</span>
+            <span class="wb wb-orange">مُتَفَوِّق في العَمَل</span>
+            <span class="wb wb-orange">حَنون</span>
+            <span class="wb wb-orange">لا يَغُشُّ</span>
+            <span class="wb wb-orange">ثَرثار</span>
+            <span class="wb wb-orange">خَجول</span>
+            <span class="wb wb-orange">عَصَبيٌّ</span>
+            <span class="wb wb-orange">دائِمُ التَّرتِيب</span>
+            <span class="wb wb-orange">مُرَتَّب</span>
+            <span class="wb wb-orange">يُمازِح</span>
+            <span class="wb wb-orange">مُحِبٌّ</span>
+            <span class="wb wb-orange">قَويُّ الشَّخصِيَّة</span>
+            <span class="wb wb-orange">لَطيف</span>
+            <span class="wb wb-orange">بَشوش</span>
+            <span class="wb wb-orange">عابِس</span>
+            <span class="wb wb-orange">يَسبُّ الآخرين ويَنتَقِدُهم</span>
+            <span class="wb wb-orange">يَسُبُّ الآخَرين</span>
+            <span class="wb wb-orange">يُنجِزُ أَحلى الرُّسوم</span>
+            <span class="wb wb-orange">مُجتَهِد</span>
+            <span class="wb wb-orange">يُنجِزُ دروسَهُ بإتقان</span>
+            <span class="wb wb-orange">يُشارِكُ في أعمال الصَّف بِحَماس</span>
+            <span class="wb wb-orange">يَستَقبِلُ الضُّيوف بِالتَّرحاب</span>
+            <span class="wb wb-orange">يَسعى دائمًا لإسعاد الآخرين</span>
+            <span class="wb wb-orange">لَطيف اللَّعب مع الآخرين</span>
+            <span class="wb wb-orange">حَنون</span>
+            <span class="wb wb-orange">يَرفُضُ الظُّلم</span>
+            <span class="wb wb-orange">يُفكِّرُ بِعُمق</span>
+            <span class="wb wb-orange">يُسرِعُ في تقديم المُساعَدة عند الحاجَة</span>
+            <span class="wb wb-orange">يُخبِرُنا حِكايات طَريفة نَستمتِعُ بها</span>
+            <span class="wb wb-orange">خَفيفُ الدَّم</span>
+            <span class="wb wb-orange">طَموح</span>
+            <span class="wb wb-orange">يَحلُمُ بِأن يَكون طبيبًا</span>
+        </div>
+    </div>
+
+    <!-- ===== Feelings ===== -->
+    <div class="section-card aos">
+        <div class="section-title">
+            <div class="icon-circle ic-purple"><i class="fas fa-face-smile-beam"></i></div>
+            ثالثًا: الشعور والعواطف
+        </div>
+        <div class="definition-box def-purple">
+            أُعَبِّر عن <span class="hl">المَشاعر</span> التي أشعُر بها تجاه <span class="hl">المَوصوف</span>.
+        </div>
+        <div class="example-sentence">أُحِبُّهُ كثيرًا وأَحتَرِمُهُ لأنَّ قَلبَهُ يَفيض بالحُبِّ والحنان.</div>
+        <div class="example-sentence">لِذلكَ أَعتَبِرُهُ أَعَزَّ صَديق.</div>
+        <div class="example-sentence">أُحِبُّ أَخي كثيرًا وأَقِفُ إلى جانِبِهِ وأَدعَمُهُ طَوالَ حَياتي. وأَعتبِرُهُ صَديقي المُفَضَّل.</div>
+        <div class="example-sentence">أُحِبُّ جَدّي كثيرًا وأَتَمَنَّى لَهُ طُولَ العُمر لِيَبقى بَرَكَةً في بَيتِنا.</div>
+        <div class="example-sentence">أُحِبُّ مُعَلِّمتي وأَكنُّ لَها كُلَّ الاحترام والتَّقدير وأَعتَزُّ بِصَداقَتِها.</div>
+        <div class="tip-box tip-purple" style="margin-top:1.5rem">
+            <i class="fas fa-star"></i>
+            <span>في قسم المشاعر نُعبِّر عن حُبِّنا واحترامنا وتَقديرنا للموصوف بكلمات صادقة من القلب.</span>
+        </div>
+    </div>
+
+    <!-- ===== GAMES ===== -->
+    <section class="games-section aos" id="gamesSection">
+        <div class="games-header">
+            <h2><i class="fas fa-gamepad" style="margin-left:.5rem"></i>جرّب معلوماتك!</h2>
+            <p>ثلاث ألعاب تفاعليّة لتثبيت ما تعلّمته</p>
+        </div>
+        <div class="game-tabs">
+            <button class="game-tab active" data-tab="quiz"><i class="fas fa-question-circle"></i> اختبار سريع</button>
+            <button class="game-tab" data-tab="classify"><i class="fas fa-layer-group"></i> صُنّف الصِّفات</button>
+            <button class="game-tab" data-tab="build"><i class="fas fa-puzzle-piece"></i> رتّب الجُمَلة</button>
+            <button class="game-tab" data-tab="memory"><i class="fas fa-brain"></i> لعبة الذاكرة</button>
+        </div>
+
+        <!-- QUIZ -->
+        <div class="game-panel active" id="panel-quiz">
+            <div class="game-intro" id="quizIntro">
+                <i class="fas fa-question-circle"></i>
+                <h3>اختبار سريع</h3>
+                <p>أجب عن 10 أسئلة تغطّي أقسام الوصف وأسراره</p>
+                <button class="start-btn" onclick="startQuiz()">ابدأ الاختبار</button>
+            </div>
+            <div class="quiz-box" id="quizBox" style="display:none">
+                <div class="quiz-progress"><div class="quiz-progress-bar" id="quizBar" style="width:0%"></div></div>
+                <div class="quiz-body" id="quizBody"></div>
+                <div class="quiz-result" id="quizResult"></div>
+            </div>
+        </div>
+
+        <!-- CLASSIFY -->
+        <div class="game-panel" id="panel-classify">
+            <div class="game-intro" id="classIntro">
+                <i class="fas fa-layer-group"></i>
+                <h3>صُنّف الصِّفات</h3>
+                <p>هل الصفة من الوصف الخارجي أم الداخلي أم المشاعر؟</p>
+                <button class="start-btn" onclick="startClassify()">ابدأ اللعبة</button>
+            </div>
+            <div class="class-box" id="classBox" style="display:none"></div>
+        </div>
+
+        <!-- BUILD -->
+        <div class="game-panel" id="panel-build">
+            <div class="game-intro" id="buildIntro">
+                <i class="fas fa-puzzle-piece"></i>
+                <h3>رتّب الجُمَلة</h3>
+                <p>اختَر الكلمات بالترتيب الصحيح لتكوين جُملة وصفية جميلة</p>
+                <button class="start-btn" onclick="startBuild()">ابدأ اللعبة</button>
+            </div>
+            <div class="build-box" id="buildBox" style="display:none"></div>
+        </div>
+
+        <!-- MEMORY -->
+        <div class="game-panel" id="panel-memory">
+            <div class="game-intro" id="memIntro">
+                <i class="fas fa-brain"></i>
+                <h3>لعبة الذاكرة</h3>
+                <p>اقلب البطاقات واطابق بين الصِّفة والتشبيه المناسب لها</p>
+                <button class="start-btn" onclick="startMemory()">ابدأ اللعبة</button>
+            </div>
+            <div class="mem-box" id="memBox" style="display:none"></div>
+        </div>
+    </section>
+
+</div>
+</main>
+
+<footer class="footer">
+    <p><span class="fb">قسم اللغة العربية</span> — دليل مساعد لوصف إنسان — الصف الثالث</p>
+</footer>
+
+<script>
+// =============================================
+//  بيانات الألعاب
+// =============================================
+
+var quizQuestions = [
+    {
+        q: 'كم قسماً يتكوّن منه وصف الإنسان؟',
+        opts: ['قسمان','ثلاثة أقسام','أربعة أقسام','قسم واحد'],
+        correct: 1,
+        explain: 'يتكوّن وصف الإنسان من ثلاثة أقسام: التعريف، الوصف الخارجي والداخلي، والمشاعر.'
+    },
+    {
+        q: 'ما الذي نتضمّنه في القسم الأوّل من الوصف؟',
+        opts: ['الشَّعر والعَينان','اسمه وعُمره وصلته بي','المشاعر والعواطف','الأخلاق والصفات'],
+        correct: 1,
+        explain: 'القسم الأوّل هو التعريف بالموصوف: اسمه، عُمره، صلته بنا.'
+    },
+    {
+        q: 'من أسرار الوصف الجميل:',
+        opts: ['كثرة استخدام الأفعال','نُكثِر من الجُمَل الاسميّة','استخدام الكلمات الطويلة فقط','عدم استخدام الصفات'],
+        correct: 1,
+        explain: 'من أسرار الوصف الجميل نُكثِر من استخدام الجُمَل الاسميّة مثل: أبي رجلٌ بهيُّ الطَّلَّة.'
+    },
+    {
+        q: 'ما نوع التشبيه في: "شَعر أشقر كَخُيوط الشَّمس"؟',
+        opts: ['تشبيه مَجازي','ليس تشبيهاً','تشبيه تَمثيلي','تشبيه بليغ'],
+        correct: 0,
+        explain: 'هو تشبيه بسيط: شَعر (مشبَّه) أشقر (صفة) كَخُيوط الشَّمس (مشبَّه به).'
+    },
+    {
+        q: 'أيٌّ مما يلي من الوصف الخارجي؟',
+        opts: ['حَنون','لا يَغُشُّ','أَسوَدُ كاللَّيل (الشَّعر)','يُفكِّرُ بِعُمق'],
+        correct: 2,
+        explain: '"أَسوَدُ كاللَّيل" صفة خارجية تخصُّ الشَّعر. أمّا البقيّة فصفات داخلية.'
+    },
+    {
+        q: 'أيٌّ مما يلي من الوصف الداخلي؟',
+        opts: ['زَرقاوان العَينان','مَمشوقة القامَة','مُتَفَوِّق في العَمَل','بَشَرَتُها حَريريَّة'],
+        correct: 2,
+        explain: '"مُتَفَوِّق في العَمَل" صفة داخلية. أمّا البقيّة فصفات خارجية.'
+    },
+    {
+        q: 'ماذا نُعبِّر عنه في القسم الثالث من الوصف؟',
+        opts: ['الشَّكل الخارجي','الأخلاق والصفات','المشاعر والعواطف تجاه الموصوف','اسمه وعُمره'],
+        correct: 2,
+        explain: 'القسم الثالث مخصَّص للتعبير عن المشاعر والعواطف تجاه الموصوف.'
+    },
+    {
+        q: 'أكمل: القامة كالـ______',
+        opts: ['شمس','رُمّان','نَخلة','غُزال'],
+        correct: 2,
+        explain: 'القامة كالنَّخلة — تشبيه يُستخدم لوصف الطول والامتلاء.'
+    },
+    {
+        q: 'أيُّ جُملة تُعبِّر عن مشاعر؟',
+        opts: ['شَعرُهُ أَشقَرُ','يَعدو كالغُزال','أُحِبُّهُ كثيرًا لأنَّ قَلبَهُ يَفيض بالحُبّ','جِسمُهُ مُمتَلئ'],
+        correct: 2,
+        explain: '"أُحِبُّهُ كثيرًا..." تعبير عن المشاعر والعواطف تجاه الموصوف.'
+    },
+    {
+        q: 'من الصفات الداخلية:',
+        opts: ['وَرديٌّ الفَم','خَفيفُ الدَّم','بُنَيَّتان العَينان','طويل الأنف'],
+        correct: 1,
+        explain: '"خَفيفُ الدَّم" صفة داخلية (أخلاقية/شخصيّة). أمّا البقيّة فصفات خارجية.'
+    }
+];
+
+// كلمات التصنيف
+var classifyWords = [
+    { word: 'زَرقاوان العَينان', type: 'external' },
+    { word: 'حَنون', type: 'internal' },
+    { word: 'أُحِبُّهُ كثيرًا', type: 'feelings' },
+    { word: 'مُتَفَوِّق في العَمَل', type: 'internal' },
+    { word: 'أَشقَرُ كَخُيوط الشَّمس', type: 'external' },
+    { word: 'أَعتبِرُهُ أَعَزَّ صَديق', type: 'feelings' },
+    { word: 'ممشوقة القامَة', type: 'external' },
+    { word: 'يَرفُضُ الظُّلم', type: 'internal' },
+    { word: 'أَحتَرِمُهُ لأنَّ قَلبَهُ يَفيض بالحُبّ', type: 'feelings' },
+    { word: 'وَرديٌّ الفَم', type: 'external' },
+    { word: 'خَفيفُ الدَّم', type: 'internal' },
+    { word: 'أَكنُّ لَهُ كُلَّ الاحترام', type: 'feelings' },
+    { word: 'نَحيل الجِسم', type: 'external' },
+    { word: 'طَموح', type: 'internal' },
+    { word: 'أَتَمَنَّى لَهُ طُولَ العُمر', type: 'feelings' }
+];
+
+// جُمل لعبة الترتيب
+var buildSentences = [
+    { words: ['أبي', 'رجلٌ', 'بهيُّ', 'الطَّلَّة'], correct: 'أبي رجلٌ بهيُّ الطَّلَّة' },
+    { words: ['شَعرُهُ', 'أَشقَرُ', 'كَخُيوط', 'الشَّمس'], correct: 'شَعرُهُ أَشقَرُ كَخُيوط الشَّمس' },
+    { words: ['قامَتُهُ', 'مَمشوقةٌ', 'كَالنَّخلة'], correct: 'قامَتُهُ مَمشوقةٌ كَالنَّخلة' },
+    { words: ['جِسمُهُ', 'مُمتَلئٌ', 'كَالرُّمّان'], correct: 'جِسمُهُ مُمتَلئٌ كَالرُّمّان' },
+    { words: ['عَيناهُ', 'سَوداوان', 'كَدُقَتَين'], correct: 'عَيناهُ سَوداوان كَدُقَتَين' },
+    { words: ['يَعدو', 'كَالغُزالِ', 'في', 'سُرعَة'], correct: 'يَعدو كَالغُزالِ في سُرعَة' },
+    { words: ['أُحِبُّ', 'أَخي', 'كثيرًا', 'وأَدعَمُهُ'], correct: 'أُحِبُّ أَخي كثيرًا وأَدعَمُهُ' },
+    { words: ['بَشَرَتُها', 'حَريريَّةُ', 'المَلْمَس'], correct: 'بَشَرَتُها حَريريَّةُ المَلْمَس' },
+    { words: ['يُنجِزُ', 'دروسَهُ', 'بِإتقان', 'وَحِماس'], correct: 'يُنجِزُ دروسَهُ بِإتقان وَحِماس' },
+    { words: ['يَستَقبِلُ', 'الضُّيوف', 'بِالتَّرحاب', 'وَالبِشاشَة'], correct: 'يَستَقبِلُ الضُّيوف بِالتَّرحاب وَالبِشاشَة' }
+];
+
+// أزواج الذاكرة: صفة ↔ تشبيه
+var memoryPairs = [
+    { a: 'شَعر أَشقَر', b: 'كَخُيوط الشَّمس' },
+    { a: 'القامَة مَمشوقة', b: 'كَالنَّخلة' },
+    { a: 'جِسمٌ مُمتَلئ', b: 'كَالرُّمّان' },
+    { a: 'العَينان سَوداوان', b: 'كَدُقَتَين' },
+    { a: 'يَعدو بِسُرعَة', b: 'كَالغُزال' },
+    { a: 'البَشَرة قَمحِيَّة', b: 'كَسَنابِل القَمح' }
+];
+
+// =============================================
+//  أدوات مساعدة
+// =============================================
+function showToast(msg, type) {
+    type = type || 'info';
+    var wrap = document.getElementById('toastWrap');
+    var t = document.createElement('div');
+    t.className = 'toast ' + type;
+    var icons = { success: 'fa-check-circle', error: 'fa-times-circle', info: 'fa-info-circle' };
+    t.innerHTML = '<i class="fas ' + (icons[type] || icons.info) + '"></i> ' + msg;
+    wrap.appendChild(t);
+    setTimeout(function() { t.remove(); }, 3000);
+}
+
+function fireConfetti() {
+    var colors = ['#0C7B5F','#E8912D','#16A34A','#DC2626','#F59E0B','#7C3AED','#EC4899'];
+    for (var i = 0; i < 50; i++) {
+        var c = document.createElement('div');
+        c.className = 'confetti';
+        c.style.left = Math.random()*100+'vw';
+        c.style.top = '-10px';
+        c.style.background = colors[Math.floor(Math.random()*colors.length)];
+        c.style.animationDelay = Math.random()*0.8+'s';
+        c.style.width = (Math.random()*8+6)+'px';
+        c.style.height = (Math.random()*8+6)+'px';
+        document.body.appendChild(c);
+        (function(el){ setTimeout(function(){ el.remove(); }, 4000); })(c);
+    }
+}
+
+function shuffle(arr) {
+    var a = arr.slice();
+    for (var i = a.length-1; i > 0; i--) {
+        var j = Math.floor(Math.random()*(i+1));
+        var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+    }
+    return a;
+}
+
+// Tabs
+document.querySelectorAll('.game-tab').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+        document.querySelectorAll('.game-tab').forEach(function(t){t.classList.remove('active')});
+        document.querySelectorAll('.game-panel').forEach(function(p){p.classList.remove('active')});
+        tab.classList.add('active');
+        document.getElementById('panel-'+tab.dataset.tab).classList.add('active');
+    });
+});
+
+// Scroll anim
+var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('vis'); });
+}, {threshold:0.12});
+document.querySelectorAll('.aos').forEach(function(el){ observer.observe(el); });
+
+// =============================================
+//  لعبة 1: الاختبار
+// =============================================
+var quizIndex=0, quizScore=0, quizAnswered=false;
+
+function startQuiz(){
+    document.getElementById('quizIntro').style.display='none';
+    document.getElementById('quizBox').style.display='block';
+    quizIndex=0; quizScore=0;
+    var r=document.getElementById('quizResult'); r.classList.remove('show'); r.style.display='none';
+    renderQuizQ();
+}
+function renderQuizQ(){
+    quizAnswered=false;
+    var q=quizQuestions[quizIndex];
+    document.getElementById('quizBar').style.width=(quizIndex/quizQuestions.length*100)+'%';
+    var h='<div class="quiz-qnum">السؤال '+(quizIndex+1)+' من '+quizQuestions.length+'</div>';
+    h+='<div class="quiz-q">'+q.q+'</div><div class="quiz-opts">';
+    q.opts.forEach(function(o,i){
+        h+='<button class="quiz-opt" data-idx="'+i+'" onclick="answerQuiz('+i+')">'+o+'</button>';
+    });
+    h+='</div><div class="quiz-fb" id="quizFb"></div>';
+    h+='<button class="quiz-next" id="quizNext" onclick="nextQuiz()"><span>التالي</span> <i class="fas fa-arrow-left"></i></button>';
+    document.getElementById('quizBody').innerHTML=h;
+}
+function answerQuiz(idx){
+    if(quizAnswered)return; quizAnswered=true;
+    var q=quizQuestions[quizIndex];
+    document.querySelectorAll('.quiz-opt').forEach(function(o,i){
+        o.classList.add('disabled');
+        if(i===q.correct) o.classList.add('correct');
+        if(i===idx&&idx!==q.correct) o.classList.add('wrong');
+    });
+    var fb=document.getElementById('quizFb');
+    if(idx===q.correct){
+        quizScore++;
+        fb.className='quiz-fb show correct';
+        fb.innerHTML='<i class="fas fa-check-circle"></i> أحسنت! '+q.explain;
+        showToast('إجابة صحيحة!','success');
+    } else {
+        fb.className='quiz-fb show wrong';
+        fb.innerHTML='<i class="fas fa-times-circle"></i> إجابة خاطئة. '+q.explain;
+        showToast('حاول في السؤال القادم','error');
+    }
+    document.getElementById('quizNext').classList.add('show');
+}
+function nextQuiz(){
+    quizIndex++;
+    if(quizIndex>=quizQuestions.length) showQuizResult();
+    else renderQuizQ();
+}
+function showQuizResult(){
+    document.getElementById('quizBody').innerHTML='';
+    document.getElementById('quizBar').style.width='100%';
+    var r=document.getElementById('quizResult');
+    var pct=Math.round(quizScore/quizQuestions.length*100);
+    var icon,text;
+    if(pct>=80){icon='🌟';text='ممتاز! أنت كاتب وصف متميّز';fireConfetti();}
+    else if(pct>=50){icon='👍';text='جيّد! راجع الدليل لتتحسّن أكثر';}
+    else{icon='💪';text='لا بأس! عد إلى الدليل وتدرّب مجدّدًا';}
+    r.innerHTML='<div class="result-icon">'+icon+'</div><div class="result-score">'+quizScore+' / '+quizQuestions.length+'</div><div class="result-text">'+text+'</div><button class="retry-btn" onclick="startQuiz()"><i class="fas fa-redo" style="margin-left:.5rem"></i>حاول مجدّدًا</button>';
+    r.style.display='block'; r.classList.add('show');
+}
+
+// =============================================
+//  لعبة 2: صنّف الصِّفات
+// =============================================
+var classOrder=[], classIdx=0, classScore=0, classAnswered=false;
+
+function startClassify(){
+    document.getElementById('classIntro').style.display='none';
+    document.getElementById('classBox').style.display='block';
+    classIdx=0; classScore=0;
+    classOrder=shuffle(classifyWords);
+    renderClassQ();
+}
+function renderClassQ(){
+    classAnswered=false;
+    var item=classOrder[classIdx];
+    var h='<div class="class-score"><div class="sc-item"><i class="fas fa-star"></i> النتيجة: <span id="classSc">'+classScore+'</span> / '+classOrder.length+'</div><div class="sc-item"><i class="fas fa-list-ol"></i> '+(classIdx+1)+' من '+classOrder.length+'</div></div>';
+    h+='<div class="class-word"><div class="class-label">إلى أيِّ قسم تنتمي هذه العبارة؟</div><div class="class-word-display">'+item.word+'</div></div>';
+    h+='<div class="class-btns">';
+    h+='<button class="class-btn c-green" id="btnE" onclick="answerClass(\'external\')"><span class="btn-icon"><i class="fas fa-user"></i></span><span>وصف خارجي</span><span class="btn-label">القسم الثاني (جسدي)</span></button>';
+    h+='<button class="class-btn c-orange" id="btnI" onclick="answerClass(\'internal\')"><span class="btn-icon"><i class="fas fa-heart"></i></span><span>وصف داخلي</span><span class="btn-label">القسم الثاني (أخلاقي)</span></button>';
+    h+='<button class="class-btn c-purple" id="btnF" onclick="answerClass(\'feelings\')"><span class="btn-icon"><i class="fas fa-face-smile-beam"></i></span><span>مشاعر وعواطف</span><span class="btn-label">القسم الثالث</span></button>';
+    h+='</div><div class="class-result" id="classResult"></div>';
+    document.getElementById('classBox').innerHTML=h;
+}
+function answerClass(chosen){
+    if(classAnswered)return; classAnswered=true;
+    var item=classOrder[classIdx];
+    var btnE=document.getElementById('btnE'),btnI=document.getElementById('btnI'),btnF=document.getElementById('btnF');
+    btnE.classList.add('disabled'); btnI.classList.add('disabled'); btnF.classList.add('disabled');
+
+    var correctBtn = item.type==='external'?btnE : item.type==='internal'?btnI : btnF;
+    var chosenBtn = chosen==='external'?btnE : chosen==='internal'?btnI : btnF;
+
+    if(chosen===item.type){
+        chosenBtn.classList.add('correct');
+        classScore++;
+        document.getElementById('classSc').textContent=classScore;
+        showToast('صحيح!','success');
+    } else {
+        chosenBtn.classList.add('wrong');
+        correctBtn.classList.add('correct');
+        var names={external:'وصف خارجي',internal:'وصف داخلي',feelings:'مشاعر وعواطف'};
+        showToast('خطأ! الإجابة: '+names[item.type],'error');
+    }
+    setTimeout(function(){
+        classIdx++;
+        if(classIdx>=classOrder.length) showClassResult();
+        else renderClassQ();
+    },1200);
+}
+function showClassResult(){
+    var box=document.getElementById('classBox');
+    var pct=Math.round(classScore/classOrder.length*100);
+    var icon,text;
+    if(pct>=80){icon='🌟';text='رائع! أنت متمكّن من أقسام الوصف';fireConfetti();}
+    else if(pct>=50){icon='👍';text='جيّد! راجع الأقسام الثلاثة وحاول مرّة أخرى';}
+    else{icon='💪';text='لا بأس! عد إلى الدليل وتدرّب أكثر';}
+    box.innerHTML='<div class="class-result show"><div class="result-icon">'+icon+'</div><div class="result-score">'+classScore+' / '+classOrder.length+'</div><div class="result-text">'+text+'</div><button class="retry-btn" onclick="startClassify()"><i class="fas fa-redo" style="margin-left:.5rem"></i>حاول مجدّدًا</button></div>';
+}
+
+// =============================================
+//  لعبة 3: رتّب الجُمَلة
+// =============================================
+var buildOrder=[], buildIdx=0, buildScore=0, buildPlaced=[], buildLocked=false;
+
+function startBuild(){
+    document.getElementById('buildIntro').style.display='none';
+    document.getElementById('buildBox').style.display='block';
+    buildIdx=0; buildScore=0;
+    buildOrder=shuffle(buildSentences);
+    renderBuildQ();
+}
+function renderBuildQ(){
+    buildLocked=false; buildPlaced=[];
+    var item=buildOrder[buildIdx];
+    var words=shuffle(item.words.slice());
+    var h='<div class="build-score"><div class="sc-item"><i class="fas fa-star"></i> النتيجة: <span id="buildSc">'+buildScore+'</span> / '+buildOrder.length+'</div><div class="sc-item"><i class="fas fa-list-ol"></i> '+(buildIdx+1)+' من '+buildOrder.length+'</div></div>';
+    h+='<div class="build-prompt"><div class="bp-label">رتّب الكلمات لتكوين جُملة صحيحة:</div></div>';
+    h+='<div class="build-sentence" id="buildArea"><span class="placeholder-text">اضغط على الكلمات بالترتيب الصحيح</span></div>';
+    h+='<div class="build-words" id="buildWords">';
+    words.forEach(function(w,i){
+        h+='<span class="build-word" data-word="'+w+'" data-idx="'+i+'" onclick="placeWord(this)">'+w+'</span>';
+    });
+    h+='</div>';
+    h+='<div class="build-actions"><button class="btn-check" onclick="checkBuild()"><i class="fas fa-check" style="margin-left:.4rem"></i>تحقَّق</button><button class="btn-clear" onclick="clearBuild()"><i class="fas fa-eraser" style="margin-left:.4rem"></i>امسح</button><button class="btn-skip" onclick="skipBuild()"><i class="fas fa-forward" style="margin-left:.4rem"></i>تخطَّى</button></div>';
+    h+='<div class="build-result" id="buildResult"></div>';
+    document.getElementById('buildBox').innerHTML=h;
+}
+function placeWord(el){
+    if(buildLocked||el.classList.contains('used'))return;
+    el.classList.add('used');
+    buildPlaced.push({word:el.dataset.word, el:el});
+    var area=document.getElementById('buildArea');
+    if(buildPlaced.length===1) area.innerHTML='';
+    var span=document.createElement('span');
+    span.className='placed-word';
+    span.textContent=el.dataset.word;
+    span.onclick=function(){ removePlaced(span,el); };
+    area.appendChild(span);
+}
+function removePlaced(span,srcEl){
+    if(buildLocked)return;
+    srcEl.classList.remove('used');
+    for(var i=0;i<buildPlaced.length;i++){
+        if(buildPlaced[i].el===srcEl){ buildPlaced.splice(i,1); break; }
+    }
+    span.remove();
+    var area=document.getElementById('buildArea');
+    if(buildPlaced.length===0) area.innerHTML='<span class="placeholder-text">اضغط على الكلمات بالترتيب الصحيح</span>';
+}
+function clearBuild(){
+    if(buildLocked)return;
+    buildPlaced.forEach(function(p){ p.el.classList.remove('used'); });
+    buildPlaced=[];
+    document.getElementById('buildArea').innerHTML='<span class="placeholder-text">اضغط على الكلمات بالترتيب الصحيح</span>';
+}
+function checkBuild(){
+    if(buildLocked||buildPlaced.length===0)return;
+    buildLocked=true;
+    var item=buildOrder[buildIdx];
+    var userStr=buildPlaced.map(function(p){return p.word}).join(' ');
+    var area=document.getElementById('buildArea');
+    document.querySelectorAll('.build-word').forEach(function(w){w.classList.add('locked')});
+
+    if(userStr===item.correct){
+        area.classList.add('correct-border');
+        buildScore++;
+        document.getElementById('buildSc').textContent=buildScore;
+        showToast('ممتاز! جُملة صحيحة','success');
+    } else {
+        area.classList.add('wrong-border');
+        showToast('خطأ! الجواب الصحيح: '+item.correct,'error');
+    }
+    setTimeout(function(){
+        buildIdx++;
+        if(buildIdx>=buildOrder.length) showBuildResult();
+        else renderBuildQ();
+    },2000);
+}
+function skipBuild(){
+    buildIdx++;
+    if(buildIdx>=buildOrder.length) showBuildResult();
+    else renderBuildQ();
+}
+function showBuildResult(){
+    var box=document.getElementById('buildBox');
+    var pct=Math.round(buildScore/buildOrder.length*100);
+    var icon,text;
+    if(pct>=80){icon='🌟';text='رائع! أنت متمكّن من بناء الجُمَل الوصفية';fireConfetti();}
+    else if(pct>=50){icon='👍';text='جيّد! تدرّب أكثر على ترتيب الكلمات';}
+    else{icon='💪';text='لا بأس! راجع أمثلة الوصف وحاول مجدّدًا';}
+    box.innerHTML='<div class="build-result show"><div class="result-icon">'+icon+'</div><div class="result-score">'+buildScore+' / '+buildOrder.length+'</div><div class="result-text">'+text+'</div><button class="retry-btn" onclick="startBuild()"><i class="fas fa-redo" style="margin-left:.5rem"></i>حاول مجدّدًا</button></div>';
+}
+
+// =============================================
+//  لعبة 4: لعبة الذاكرة
+// =============================================
+var memCards=[], memFlipped=[], memMatched=0, memMoves=0, memLocked=false;
+
+function startMemory(){
+    document.getElementById('memIntro').style.display='none';
+    document.getElementById('memBox').style.display='block';
+    memMatched=0; memMoves=0; memLocked=false; memFlipped=[];
+    memCards=[];
+    memoryPairs.forEach(function(p,i){
+        memCards.push({id:i,text:p.a,type:'a'});
+        memCards.push({id:i,text:p.b,type:'b'});
+    });
+    memCards=shuffle(memCards);
+    renderMemory();
+}
+function renderMemory(){
+    var box=document.getElementById('memBox');
+    var h='<div class="mem-stats"><div class="mem-stat"><i class="fas fa-mouse-pointer"></i> المحاولات: <span class="sv" id="memMoves">0</span></div><div class="mem-stat"><i class="fas fa-check-double"></i> المطابقات: <span class="sv" id="memMatched">0</span> / 6</div></div>';
+    h+='<div class="mem-grid">';
+    memCards.forEach(function(c,i){
+        h+='<div class="mem-card" data-idx="'+i+'" onclick="flipCard(this,'+i+')"><div class="mem-card-inner"><div class="mem-card-front"><i class="fas fa-question"></i></div><div class="mem-card-back">'+c.text+'</div></div></div>';
+    });
+    h+='</div><div class="mem-result" id="memResult"></div>';
+    box.innerHTML=h;
+}
+function flipCard(el,idx){
+    if(memLocked||el.classList.contains('flipped')||el.classList.contains('matched')||memFlipped.length>=2)return;
+    el.classList.add('flipped');
+    memFlipped.push({el:el,idx:idx,card:memCards[idx]});
+    if(memFlipped.length===2){
+        memMoves++;
+        document.getElementById('memMoves').textContent=memMoves;
+        memLocked=true;
+        var a=memFlipped[0],b=memFlipped[1];
+        if(a.card.id===b.card.id&&a.card.type!==b.card.type){
+            setTimeout(function(){
+                a.el.classList.add('matched');b.el.classList.add('matched');
+                memMatched++;document.getElementById('memMatched').textContent=memMatched;
+                memFlipped=[];memLocked=false;
+                if(memMatched===6) setTimeout(showMemResult,500);
+            },500);
+        } else {
+            setTimeout(function(){
+                a.el.classList.remove('flipped');b.el.classList.remove('flipped');
+                memFlipped=[];memLocked=false;
+            },900);
+        }
+    }
+}
+function showMemResult(){
+    fireConfetti();
+    var r=document.getElementById('memResult');
+    var msg=memMoves<=10?'ذاكرة خارقة!':memMoves<=16?'أداء رائع!':'جيّد! حاول تقليل المحاولات';
+    r.innerHTML='<div class="result-icon">🎉</div><div class="result-score">'+memMoves+' محاولة</div><div class="result-text">'+msg+'</div><button class="mem-reset" onclick="startMemory()"><i class="fas fa-redo" style="margin-left:.5rem"></i>العب مرّة أخرى</button>';
+    r.classList.add('show');
+}
+</script>
+
+</body>
+</html>

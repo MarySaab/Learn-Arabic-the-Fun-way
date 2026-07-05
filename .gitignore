@@ -21,3 +21,6 @@
 .DS_Store
 *.log
 .vercel
+
+# raw lesson source files — the live copies live in public/games/
+/files/

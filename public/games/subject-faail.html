@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الفاعل - إعراب الفعل | قسم اللغة العربية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --primary:#0C7B5F;--primary-dark:#085D47;--primary-light:#E6F4F0;--primary-50:#F0FAF6;
+            --secondary:#E8912D;--secondary-light:#FEF3E2;
+            --tertiary:#7C3AED;--tertiary-light:#EDE9FE;
+            --bg:#F8FAFB;--card:#FFFFFF;--text:#1A2332;--text-muted:#64748B;
+            --border:#E2E8F0;--success:#16A34A;--success-light:#DCFCE7;
+            --error:#DC2626;--error-light:#FEE2E2;
+            --shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06);
+            --shadow-md:0 4px 6px rgba(0,0,0,.07),0 2px 4px rgba(0,0,0,.06);
+            --shadow-lg:0 10px 15px rgba(0,0,0,.1),0 4px 6px rgba(0,0,0,.05);
+            --radius:12px;--radius-lg:20px
+        }
+        html{scroll-behavior:smooth}
+        body{font-family:'Tajawal',sans-serif;background:var(--bg);color:var(--text);line-height:1.8;overflow-x:hidden}
+
+        .header{background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 50%,#10A37F 100%);color:#fff;padding:3rem 1.5rem 4.5rem;text-align:center;position:relative;overflow:hidden}
+        .header::before{content:'';position:absolute;top:-50%;right:-20%;width:400px;height:400px;background:rgba(255,255,255,.05);border-radius:50%}
+        .header::after{content:'';position:absolute;bottom:-30%;left:-10%;width:300px;height:300px;background:rgba(255,255,255,.03);border-radius:50%}
+        .header-pattern{position:absolute;inset:0;opacity:.05;background-image:repeating-linear-gradient(0deg,transparent,transparent 40px,rgba(255,255,255,.5) 40px,rgba(255,255,255,.5) 41px),repeating-linear-gradient(90deg,transparent,transparent 40px,rgba(255,255,255,.5) 40px,rgba(255,255,255,.5) 41px)}
+        .level-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.15);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.25);padding:.4rem 1.2rem;border-radius:50px;font-size:.9rem;font-weight:500;margin-bottom:1rem;position:relative;z-index:1}
+        .header h1{font-size:2.8rem;font-weight:900;margin-bottom:.5rem;position:relative;z-index:1}
+        .header .subtitle{font-size:1.15rem;opacity:.85;font-weight:300;position:relative;z-index:1}
+        .header-wave{position:absolute;bottom:-2px;left:0;right:0;z-index:2}
+        .header-wave svg{display:block;width:100%;height:auto}
+
+        .container{max-width:940px;margin:0 auto;padding:0 1.5rem}
+        .content-section{margin-top:-1rem;position:relative;z-index:3}
+
+        .section-card{background:var(--card);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);padding:2.5rem;margin-bottom:2rem;border:1px solid var(--border);transition:transform .3s ease}
+        .section-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+        .section-title{display:flex;align-items:center;gap:.75rem;font-size:1.5rem;font-weight:800;color:var(--primary-dark);margin-bottom:1.5rem}
+        .icon-circle{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+        .ic-green{background:var(--primary-light);color:var(--primary)}
+        .ic-orange{background:var(--secondary-light);color:var(--secondary)}
+        .ic-purple{background:var(--tertiary-light);color:var(--tertiary)}
+
+        .definition-box{border-radius:var(--radius);padding:1.5rem 2rem;font-size:1.15rem;font-weight:500;line-height:2.4;margin-bottom:1.5rem}
+        .def-green{background:var(--primary-light);border-right:4px solid var(--primary)}
+        .def-orange{background:var(--secondary-light);border-right:4px solid var(--secondary)}
+        .def-purple{background:var(--tertiary-light);border-right:4px solid var(--tertiary)}
+        .definition-box .hl{font-weight:700}
+        .def-green .hl{color:var(--primary)}
+        .def-orange .hl{color:var(--secondary)}
+        .def-purple .hl{color:var(--tertiary)}
+
+        .tip-box{display:flex;align-items:flex-start;gap:.75rem;border-radius:var(--radius);padding:1rem 1.5rem;margin-top:1.25rem;font-size:1rem}
+        .tip-green{background:var(--primary-light);border-right:4px solid var(--primary)}
+        .tip-green i{color:var(--primary)}
+        .tip-orange{background:var(--secondary-light);border-right:4px solid var(--secondary)}
+        .tip-orange i{color:var(--secondary)}
+        .tip-purple{background:var(--tertiary-light);border-right:4px solid var(--tertiary)}
+        .tip-purple i{color:var(--tertiary)}
+
+        .sub-heading{font-size:1.1rem;font-weight:700;color:var(--text);margin:1.5rem 0 .75rem;display:flex;align-items:center;gap:.5rem}
+        .sub-heading i{font-size:.85rem}
+
+        .word-bank{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}
+        .wb{padding:.45rem 1.1rem;border-radius:50px;font-size:1.05rem;font-weight:700;cursor:default;transition:all .3s ease;border:2px solid transparent}
+        .wb:hover{transform:scale(1.06)}
+        .wb-green{background:var(--primary-light);color:var(--primary)}
+        .wb-green:hover{border-color:var(--primary)}
+        .wb-orange{background:var(--secondary-light);color:var(--secondary)}
+        .wb-orange:hover{border-color:var(--secondary)}
+        .wb-purple{background:var(--tertiary-light);color:var(--tertiary)}
+        .wb-purple:hover{border-color:var(--tertiary)}
+
+        /* Parsing boxes */
+        .parse-box{background:var(--bg);border-radius:var(--radius);padding:1.5rem 2rem;margin-top:1rem;border:1px solid var(--border)}
+        .parse-sentence{font-size:1.3rem;font-weight:700;text-align:center;margin-bottom:1.25rem;padding:.75rem;background:var(--card);border-radius:var(--radius);border:2px solid var(--border)}
+        .parse-sentence .verb{color:var(--primary);font-weight:800}
+        .parse-sentence .fael{color:var(--secondary);font-weight:800;border-bottom:3px solid var(--secondary);padding-bottom:2px}
+        .parse-lines{display:flex;flex-direction:column;gap:.5rem}
+        .parse-line{display:flex;align-items:flex-start;gap:.75rem;font-size:1.05rem;line-height:2}
+        .parse-arrow{color:var(--primary);font-weight:900;flex-shrink:0;min-width:20px}
+        .parse-line .label{font-weight:800;color:var(--primary-dark)}
+        .parse-line .detail{color:var(--text-muted)}
+        .parse-line .mark{color:var(--secondary);font-weight:700}
+
+        /* 3 mark cards */
+        .marks-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:1.5rem}
+        .mark-card{background:var(--bg);border-radius:var(--radius);padding:1.5rem;text-align:center;border:2px solid var(--border);transition:all .3s ease}
+        .mark-card:hover{border-color:var(--primary);box-shadow:var(--shadow)}
+        .mark-symbol{font-size:3rem;font-weight:900;color:var(--primary);line-height:1.2;margin-bottom:.5rem}
+        .mark-name{font-size:1rem;font-weight:800;color:var(--primary-dark);margin-bottom:.5rem}
+        .mark-condition{font-size:.9rem;color:var(--text-muted);line-height:1.7}
+
+        /* 3 type cards */
+        .types-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:1.5rem}
+        .type-card{border-radius:var(--radius-lg);padding:1.75rem 1.25rem;text-align:center;border:2px solid var(--border);transition:all .3s ease}
+        .type-card:hover{box-shadow:var(--shadow-md)}
+        .type-card .type-icon{font-size:2.5rem;margin-bottom:.75rem}
+        .type-card .type-name{font-size:1.1rem;font-weight:800;margin-bottom:.5rem}
+        .type-card .type-desc{font-size:.9rem;color:var(--text-muted);line-height:1.7}
+        .tc-green{background:var(--primary-50);border-color:var(--primary-light)}
+        .tc-green .type-icon,.tc-green .type-name{color:var(--primary-dark)}
+        .tc-orange{background:var(--secondary-light);border-color:var(--secondary-light)}
+        .tc-orange .type-icon,.tc-orange .type-name{color:var(--secondary)}
+        .tc-purple{background:var(--tertiary-light);border-color:var(--tertiary-light)}
+        .tc-purple .type-icon,.tc-purple .type-name{color:var(--tertiary)}
+
+        /* Pronoun table */
+        .pronoun-table{width:100%;border-collapse:separate;border-spacing:0;margin-top:1.5rem;border-radius:var(--radius);overflow:hidden;border:2px solid var(--border)}
+        .pronoun-table th{background:var(--primary);color:#fff;padding:.85rem 1rem;font-weight:700;text-align:center}
+        .pronoun-table td{padding:.75rem 1rem;text-align:center;border-bottom:1px solid var(--border);font-size:1.05rem}
+        .pronoun-table tr:last-child td{border-bottom:none}
+        .pronoun-table tr:nth-child(even) td{background:var(--primary-50)}
+        .pronoun-table .pronoun-text{font-weight:800;color:var(--primary);font-size:1.15rem}
+        .pronoun-table .example-text{color:var(--secondary);font-weight:700}
+
+        /* Hidden pronoun table */
+        .hidden-table{width:100%;border-collapse:separate;border-spacing:0;margin-top:1.5rem;border-radius:var(--radius);overflow:hidden;border:2px solid var(--border)}
+        .hidden-table th{background:var(--tertiary);color:#fff;padding:.85rem 1rem;font-weight:700;text-align:center}
+        .hidden-table td{padding:.75rem 1rem;text-align:center;border-bottom:1px solid var(--border);font-size:1.05rem}
+        .hidden-table tr:last-child td{border-bottom:none}
+        .hidden-table tr:nth-child(even) td{background:var(--tertiary-light)}
+        .hidden-table .type-wajib{color:var(--error);font-weight:700}
+        .hidden-table .type-jawaz{color:var(--secondary);font-weight:700}
+
+        /* === GAMES === */
+        .games-section{margin-bottom:3rem}
+        .games-header{text-align:center;margin-bottom:2rem}
+        .games-header h2{font-size:2rem;font-weight:900;color:var(--primary-dark);margin-bottom:.5rem}
+        .games-header p{color:var(--text-muted);font-size:1.05rem}
+        .game-tabs{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem}
+        .game-tab{padding:.75rem 1.5rem;border:2px solid var(--border);border-radius:50px;background:var(--card);font-family:'Tajawal',sans-serif;font-size:1rem;font-weight:700;color:var(--text-muted);cursor:pointer;transition:all .3s ease;display:flex;align-items:center;gap:.5rem}
+        .game-tab:hover{border-color:var(--primary);color:var(--primary)}
+        .game-tab.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+        .game-panel{display:none}
+        .game-panel.active{display:block;animation:fadeInUp .4s ease}
+        @keyframes fadeInUp{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+
+        .game-intro{text-align:center;padding:2rem}
+        .game-intro i{font-size:3rem;color:var(--primary);margin-bottom:1rem}
+        .game-intro h3{font-size:1.5rem;font-weight:800;color:var(--text);margin-bottom:.75rem}
+        .game-intro p{color:var(--text-muted);font-size:1.05rem;max-width:420px;margin:0 auto}
+        .start-btn{display:block;margin:2rem auto 0;padding:1rem 3rem;background:linear-gradient(135deg,var(--primary),#10A37F);color:#fff;border:none;border-radius:50px;font-family:'Tajawal',sans-serif;font-size:1.2rem;font-weight:800;cursor:pointer;transition:all .3s ease;box-shadow:0 4px 15px rgba(12,123,95,.3)}
+        .start-btn:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(12,123,95,.4)}
+
+        .quiz-box{background:var(--card);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);border:1px solid var(--border);overflow:hidden}
+        .quiz-progress{height:6px;background:var(--bg)}
+        .quiz-progress-bar{height:100%;background:linear-gradient(90deg,var(--primary),#10A37F);transition:width .4s ease;border-radius:0 3px 3px 0}
+        .quiz-body{padding:2.5rem}
+        .quiz-qnum{font-size:.9rem;color:var(--text-muted);margin-bottom:.75rem}
+        .quiz-q{font-size:1.3rem;font-weight:700;margin-bottom:2rem;line-height:2}
+        .quiz-opts{display:flex;flex-direction:column;gap:.75rem}
+        .quiz-opt{padding:1rem 1.5rem;border:2px solid var(--border);border-radius:var(--radius);font-family:'Tajawal',sans-serif;font-size:1.1rem;font-weight:500;color:var(--text);background:var(--bg);cursor:pointer;transition:all .3s ease;text-align:right}
+        .quiz-opt:hover:not(.disabled){border-color:var(--primary);background:var(--primary-light)}
+        .quiz-opt.correct{border-color:var(--success);background:var(--success-light);color:var(--success);font-weight:700}
+        .quiz-opt.wrong{border-color:var(--error);background:var(--error-light);color:var(--error)}
+        .quiz-opt.disabled{cursor:default;opacity:.7}
+        .quiz-opt.correct.disabled,.quiz-opt.wrong.disabled{opacity:1}
+        .quiz-fb{margin-top:1.5rem;padding:1rem 1.5rem;border-radius:var(--radius);font-weight:600;display:none;align-items:center;gap:.75rem}
+        .quiz-fb.show{display:flex}
+        .quiz-fb.correct{background:var(--success-light);color:var(--success)}
+        .quiz-fb.wrong{background:var(--error-light);color:var(--error)}
+        .quiz-next{margin-top:1.5rem;padding:.75rem 2rem;background:var(--primary);color:#fff;border:none;border-radius:50px;font-family:'Tajawal',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all .3s ease;display:none}
+        .quiz-next.show{display:inline-flex;align-items:center;gap:.5rem}
+        .quiz-next:hover{background:var(--primary-dark);transform:translateY(-1px)}
+        .quiz-result{text-align:center;padding:3rem 2rem;display:none}
+        .quiz-result.show{display:block;animation:fadeInUp .5s ease}
+        .result-icon{font-size:4rem;margin-bottom:1rem}
+        .result-score{font-size:2.5rem;font-weight:900;color:var(--primary)}
+        .result-text{font-size:1.2rem;color:var(--text-muted);margin:1rem 0 2rem}
+        .retry-btn{padding:.85rem 2.5rem;background:var(--primary);color:#fff;border:none;border-radius:50px;font-family:'Tajawal',sans-serif;font-size:1.1rem;font-weight:700;cursor:pointer;transition:all .3s ease}
+        .retry-btn:hover{background:var(--primary-dark);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+
+        /* Classify game */
+        .class-box{background:var(--card);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);border:1px solid var(--border);padding:2.5rem}
+        .class-score{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:.5rem}
+        .sc-item{display:flex;align-items:center;gap:.5rem;font-weight:700}
+        .sc-item i{color:var(--secondary)}
+        .class-word{text-align:center;margin-bottom:2rem;padding:2rem;background:var(--bg);border-radius:var(--radius)}
+        .class-label{font-size:.95rem;color:var(--text-muted);margin-bottom:.5rem}
+        .class-word-display{font-size:1.6rem;font-weight:800;color:var(--text);line-height:2}
+        .class-btns{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem}
+        .class-btn{padding:1rem .5rem;border:2px solid var(--border);border-radius:var(--radius);font-family:'Tajawal',sans-serif;font-size:.9rem;font-weight:700;color:var(--text);background:var(--card);cursor:pointer;transition:all .3s ease;display:flex;flex-direction:column;align-items:center;gap:.4rem}
+        .class-btn .btn-icon{font-size:1.2rem}
+        .class-btn .btn-label{font-size:.8rem;font-weight:500;color:var(--text-muted)}
+        .class-btn.c-green:hover{border-color:var(--primary);background:var(--primary-light)}
+        .class-btn.c-green .btn-icon{color:var(--primary)}
+        .class-btn.c-orange:hover{border-color:var(--secondary);background:var(--secondary-light)}
+        .class-btn.c-orange .btn-icon{color:var(--secondary)}
+        .class-btn.c-purple:hover{border-color:var(--tertiary);background:var(--tertiary-light)}
+        .class-btn.c-purple .btn-icon{color:var(--tertiary)}
+        .class-btn.correct{border-color:var(--success)!important;background:var(--success-light)!important}
+        .class-btn.wrong{border-color:var(--error)!important;background:var(--error-light)!important}
+        .class-btn.disabled{cursor:default;pointer-events:none}
+        .class-result{text-align:center;padding:2.5rem;display:none}
+        .class-result.show{display:block;animation:fadeInUp .5s ease}
+
+        /* Build parsing game */
+        .build-box{background:var(--card);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);border:1px solid var(--border);padding:2.5rem}
+        .build-score{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:.5rem}
+        .build-prompt{text-align:center;margin-bottom:1rem}
+        .build-prompt .bp-label{font-size:.95rem;color:var(--text-muted);margin-bottom:.5rem}
+        .build-sentence-show{font-size:1.4rem;font-weight:800;text-align:center;margin-bottom:1.5rem;padding:1rem;background:var(--bg);border-radius:var(--radius);border:2px solid var(--border)}
+        .build-sentence-show .verb{color:var(--primary)}
+        .build-sentence-show .target{color:var(--secondary);border-bottom:3px solid var(--secondary);padding-bottom:2px}
+        .build-words{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin-bottom:1.5rem}
+        .build-word{padding:.6rem 1.2rem;border:2px solid var(--border);border-radius:var(--radius);font-size:1.05rem;font-weight:600;cursor:pointer;transition:all .3s ease;background:var(--card);user-select:none}
+        .build-word:hover:not(.used):not(.locked){border-color:var(--primary);background:var(--primary-light)}
+        .build-word.used{opacity:.3;cursor:default}
+        .build-word.locked{cursor:default}
+        .build-sentence{background:var(--bg);border:2px dashed var(--border);border-radius:var(--radius);padding:1.25rem;min-height:60px;display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;align-items:center;margin-bottom:1rem;transition:all .3s}
+        .build-sentence.correct-border{border-color:var(--success);border-style:solid;background:var(--success-light)}
+        .build-sentence.wrong-border{border-color:var(--error);border-style:solid;background:var(--error-light)}
+        .build-sentence .placed-word{padding:.5rem 1rem;background:var(--primary);color:#fff;border-radius:8px;font-size:1.05rem;font-weight:600;cursor:pointer;transition:all .2s}
+        .build-sentence .placed-word:hover{background:var(--primary-dark);transform:scale(1.03)}
+        .build-sentence .placeholder-text{color:var(--text-muted);font-size:.95rem}
+        .build-actions{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap}
+        .build-actions button{padding:.7rem 1.5rem;border:none;border-radius:50px;font-family:'Tajawal',sans-serif;font-size:.95rem;font-weight:700;cursor:pointer;transition:all .3s ease}
+        .btn-check{background:var(--primary);color:#fff}
+        .btn-check:hover{background:var(--primary-dark)}
+        .btn-clear{background:var(--bg);color:var(--text-muted);border:2px solid var(--border)!important}
+        .btn-clear:hover{border-color:var(--error)!important;color:var(--error)}
+        .btn-skip{background:var(--bg);color:var(--text-muted);border:2px solid var(--border)!important}
+        .btn-skip:hover{border-color:var(--secondary)!important;color:var(--secondary)}
+        .build-result{text-align:center;padding:2.5rem;display:none}
+        .build-result.show{display:block;animation:fadeInUp .5s ease}
+
+        /* Memory */
+        .mem-box{background:var(--card);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);border:1px solid var(--border);padding:2rem}
+        .mem-stats{display:flex;justify-content:center;gap:2rem;margin-bottom:1.5rem;flex-wrap:wrap}
+        .mem-stat{display:flex;align-items:center;gap:.5rem;font-weight:700;color:var(--text-muted)}
+        .mem-stat i{color:var(--primary)}
+        .mem-stat .sv{color:var(--primary)}
+        .mem-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;max-width:540px;margin:0 auto}
+        .mem-card{aspect-ratio:1;perspective:600px;cursor:pointer}
+        .mem-card-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .5s ease;border-radius:var(--radius)}
+        .mem-card.flipped .mem-card-inner,.mem-card.matched .mem-card-inner{transform:rotateY(180deg)}
+        .mem-card-front,.mem-card-back{position:absolute;inset:0;backface-visibility:hidden;border-radius:var(--radius);display:flex;align-items:center;justify-content:center;font-weight:700;padding:.4rem;text-align:center}
+        .mem-card-front{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;font-size:1.5rem}
+        .mem-card-back{background:var(--primary-light);color:var(--primary-dark);font-size:.88rem;transform:rotateY(180deg);border:2px solid var(--primary);line-height:1.6}
+        .mem-card.matched .mem-card-back{background:var(--success-light);border-color:var(--success);color:var(--success)}
+        .mem-result{text-align:center;padding:2rem;display:none}
+        .mem-result.show{display:block;animation:fadeInUp .5s ease}
+        .mem-reset{margin-top:1.5rem;padding:.75rem 2rem;background:var(--primary);color:#fff;border:none;border-radius:50px;font-family:'Tajawal',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all .3s ease}
+        .mem-reset:hover{background:var(--primary-dark)}
+
+        .toast-wrap{position:fixed;top:1.5rem;left:50%;transform:translateX(-50%);z-index:9999;display:flex;flex-direction:column;gap:.5rem;align-items:center;pointer-events:none}
+        .toast{padding:.85rem 1.5rem;border-radius:50px;font-family:'Tajawal',sans-serif;font-weight:600;font-size:1rem;box-shadow:var(--shadow-lg);animation:toastIn .4s ease,toastOut .4s ease 2.5s forwards;display:flex;align-items:center;gap:.5rem}
+        .toast.success{background:var(--success);color:#fff}
+        .toast.error{background:var(--error);color:#fff}
+        @keyframes toastIn{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes toastOut{from{opacity:1}to{opacity:0;transform:translateY(-20px)}}
+
+        .footer{background:var(--primary-dark);color:rgba(255,255,255,.7);text-align:center;padding:2rem 1.5rem;margin-top:3rem}
+        .footer p{font-size:.95rem}
+        .footer .fb{color:#fff;font-weight:700}
+
+        .floating-shapes{position:fixed;inset:0;pointer-events:none;z-index:-1;overflow:hidden}
+        .fs{position:absolute;border-radius:50%;opacity:.04;background:var(--primary)}
+        .fs:nth-child(1){width:300px;height:300px;top:20%;left:-100px;animation:fl1 20s ease-in-out infinite}
+        .fs:nth-child(2){width:200px;height:200px;top:60%;right:-80px;animation:fl2 25s ease-in-out infinite}
+        .fs:nth-child(3){width:150px;height:150px;top:80%;left:30%;animation:fl3 18s ease-in-out infinite}
+        @keyframes fl1{0%,100%{transform:translate(0,0)}50%{transform:translate(50px,-50px)}}
+        @keyframes fl2{0%,100%{transform:translate(0,0)}50%{transform:translate(-40px,30px)}}
+        @keyframes fl3{0%,100%{transform:translate(0,0)}50%{transform:translate(30px,-40px)}}
+
+        .aos{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+        .aos.vis{opacity:1;transform:translateY(0)}
+
+        .confetti{position:fixed;width:10px;height:10px;border-radius:2px;z-index:9998;pointer-events:none;animation:confFall 3s ease-in forwards}
+        @keyframes confFall{0%{opacity:1;transform:translateY(0) rotate(0deg)}100%{opacity:0;transform:translateY(100vh) rotate(720deg)}}
+
+        @media(max-width:768px){.marks-grid,.types-grid{grid-template-columns:1fr}.class-btns{grid-template-columns:1fr}}
+        @media(max-width:640px){
+            .header h1{font-size:2rem}
+            .section-card{padding:1.5rem}
+            .quiz-body,.class-box,.build-box{padding:1.5rem}
+            .mem-grid{grid-template-columns:repeat(3,1fr);gap:.5rem}
+            .mem-card-back{font-size:.75rem}
+            .game-tab{padding:.6rem 1rem;font-size:.9rem}
+            .quiz-q{font-size:1.1rem}
+            .build-word{font-size:.95rem;padding:.5rem .9rem}
+            .parse-sentence{font-size:1.1rem}
+        }
+    </style>
+</head>
+<body>
+
+<div class="floating-shapes"><div class="fs"></div><div class="fs"></div><div class="fs"></div></div>
+<div class="toast-wrap" id="toastWrap"></div>
+
+<header class="header">
+    <div class="header-pattern"></div>
+    <div class="level-badge"><i class="fas fa-spell-check"></i> إعراب الفعل</div>
+    <h1>الفاعل</h1>
+    <p class="subtitle">قسم اللغة العربية — تعرّف على الفاعل وأنواعه وعلامات رفعه</p>
+    <div class="header-wave">
+        <svg viewBox="0 0 1440 100" fill="none"><path d="M0 50L48 45C96 40 192 30 288 28C384 26 480 32 576 42C672 52 768 66 864 65C960 64 1056 48 1152 40C1248 32 1344 32 1392 32L1440 32V100H1392C1344 100 1248 100 1152 100C1056 100 960 100 864 100C768 100 672 100 576 100C480 100 384 100 288 100C192 100 96 100 48 100H0V50Z" fill="#F8FAFB"/></svg>
+    </div>
+</header>
+
+<main class="content-section">
+<div class="container">
+
+    <!-- ===== Definition ===== -->
+    <div class="section-card aos">
+        <div class="section-title">
+            <div class="icon-circle ic-green"><i class="fas fa-book-open"></i></div>
+            ما هو الفاعل؟
+        </div>
+        <div class="definition-box def-green">
+            الفاعل: <span class="hl">يأتي دائمًا بعد الفعل</span>، ويكون:
+        </div>
+        <div class="word-bank" style="justify-content:center">
+            <span class="wb wb-green">ضميرًا متّصلاً</span>
+            <span class="wb wb-orange">ضميرًا مستترًا</span>
+            <span class="wb wb-purple">اسمًا ظاهرًا</span>
+        </div>
+    </div>
+
+    <!-- ===== Marks ===== -->
+    <div class="section-card aos">
+        <div class="section-title">
+            <div class="icon-circle ic-green"><i class="fas fa-arrow-up"></i></div>
+            علامات رفع الفاعل
+        </div>
+        <div class="marks-grid">
+            <div class="mark-card">
+                <div class="mark-symbol">ُ</div>
+                <div class="mark-name">الضّمّة الظّاهرة</div>
+                <div class="mark-condition">في الاسم المفرد وجمع التكسير وجمع المؤنّث السالم</div>
+            </div>
+            <div class="mark-card">
+                <div class="mark-symbol">ا</div>
+                <div class="mark-name">الألف</div>
+                <div class="mark-condition">في المثنّى</div>
+            </div>
+            <div class="mark-card">
+                <div class="mark-symbol">و</div>
+                <div class="mark-name">الواو</div>
+                <div class="mark-condition">في جمع المذكّر السالم</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Types Overview ===== -->
+    <div class="section-card aos">
+        <div class="section-title">
+            <div class="icon-circle ic-green"><i class="fas fa-layer-group"></i></div>
+            أنواع الفاعل
+        </div>
+        <div class="types-grid">
+            <div class="type-card tc-green">
+                <div class="type-icon"><i class="fas fa-font"></i></div>
+                <div class="type-name">اسمٌ ظاهرٌ</div>
+                <div class="type-desc">اسم معرّف أو نكرة يأتي بعد الفعل مباشرة</div>
+            </div>
+            <div class="type-card tc-orange">
+                <div class="type-icon"><i class="fas fa-link"></i></div>
+                <div class="type-name">ضميرٌ متّصل</div>
+                <div class="type-desc">ضمير متّصل بالفعل مثل: تاء، نا، ياء، نون، واو، ألف</div>
+            </div>
+            <div class="type-card tc-purple">
+                <div class="type-icon"><i class="fas fa-eye-slash"></i></div>
+                <div class="type-name">ضميرٌ مستتر</div>
+                <div class="type-desc">ضمير محذوف يُقدَّر وجوبًا أو جوازًا</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Type 1: اسم ظاهر ===== -->
+    <div class="section-card aos">
+        <div class="section-title">
+            <div class="icon-circle ic-green"><i class="fas fa-font"></i></div>
+            أوّلاً: اسمٌ ظاهرٌ
+        </div>
+
+        <!-- Example 1 -->
+        <div class="sub-heading"><i class="fas fa-caret-left" style="color:var(--primary)"></i> مثال ١: فرحَ الصَّبيُّ</div>
+        <div class="parse-box">
+            <div class="parse-sentence"><span class="verb">فرحَ</span> <span class="fael">الصَّبيُّ</span></div>
+            <div class="parse-lines">
+                <div class="parse-line"><span class="parse-arrow">←</span> <span class="label">الصَّبيُّ:</span> فاعل مرفوع</div>
+                <div class="parse-line"><span class="parse-arrow">←</span> <span class="detail">وعلامة رفعه <span class="mark">الضّمّة الظّاهرة</span> على آخره</span></div>
+            </div>
+        </div>
+
+        <!-- Example 2 -->
+        <div class="sub-heading"><i class="fas fa-caret-left" style="color:var(--primary)"></i> مثال ٢: قرأتُ الفتاةُ كتابًا</div>
+        <div class="parse-box">
+            <div class="parse-sentence">قرأتُ <span class="fael">الفتاةُ</span> كتابًا</div>
+            <div class="parse-lines">
+                <div class="parse-line"><span class="parse-arrow">←</span> <span class="label">الفتاةُ:</span> فاعل مرفوع</div>
+                <div class="parse-line"><span class="parse-arrow">←</span> <span class="detail">وعلامة رفعه <span class="mark">الضّمّة الظّاهرة</span> على آخره</span></div>
+            </div>
+        </div>
+
+        <!-- Example 3 -->
+        <div class="sub-heading"><i class="fas fa-caret-left" style="color:var(--primary)"></i> مثال ٣: يزورُ السائحانِ المدينةَ</div>
+        <div class="parse-box">
+            <div class="parse-sentence">يزورُ <span class="fael">السائحانِ</span> المدينةَ</div>
+            <div class="parse-lines">
+                <div class="parse-line"><span class="parse-arrow">←</span> <span class="label">السائحانِ:</span> فاعل مرفوع</div>
+                <div class="parse-line"><span class="parse-arrow">←</span> <span class="detail">وعلامة رفعه <span class="mark">الألف</span> لأنّه مثنّى</span></div>
+            </div>
+        </div>
+
+        <!-- Example 4 -->
+        <div class="sub-heading"><i class="fas fa-caret-left" style="color:var(--primary)"></i> مثال ٤: كافأَ المعلِّمونَ التلاميذَ</div>
+        <div class="parse-box">
+            <div class="parse-sentence">كافأَ <span class="fael">المعلِّمونَ</span> التلاميذَ</div>
+            <div class="parse-lines">
+                <div class="parse-line"><span class="parse-arrow">←</span> <span class="label">المعلِّمونَ:</span> فاعل مرفوع</div>
+                <div class="parse-line"><span class="parse-arrow">←</span> <span class="detail">وعلامة رفعه <span class="mark">الواو</span> لأنّه جمع مذكّر سالم</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Type 2: ضمير متصل ===== -->
+    <div class="section-card aos">
+        <div class="section-title">
+            <div class="icon-circle ic-orange"><i class="fas fa-link"></i></div>
+            ثانيًا: ضميرٌ متّصل
+        </div>
+        <div class="definition-box def-orange">
+            الضمير المتّصل بالفعل يكون <span class="hl">في محلّ رفع فاعل</span>.
+        </div>
+
+        <table class="pronoun-table">
+            <thead>
+                <tr><th>نوع الضمير</th><th>الضمير</th><th>مثال</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>تاء المتكلّم</td><td class="pronoun-text">تُ</td><td class="example-text">ذهبتُ</td></tr>
+                <tr><td>نا المتكلّمين</td><td class="pronoun-text">نا</td><td class="example-text">لعبنا</td></tr>
+                <tr><td>ياء المخاطبة</td><td class="pronoun-text">ـيـ</td><td class="example-text">تلعبينَ</td></tr>
+                <tr><td>نون النّسوة</td><td class="pronoun-text">نَ</td><td class="example-text">هتفنَ</td></tr>
+                <tr><td>واو الجماعة</td><td class="pronoun-text">وَا</td><td class="example-text">خرجوا</td></tr>
+                <tr><td>ألف الاثنين</td><td class="pronoun-text">ا</td><td class="example-text">ناما</td></tr>
+                <tr><td>التاء المتحرّكة</td><td class="pronoun-text">تَ</td><td class="example-text">بَنَيْتَ</td></tr>
+            </tbody>
+        </table>
+
+        <!-- Parsing examples -->
+        <div class="sub-heading" style="margin-top:2rem"><i class="fas fa-caret-left" style="color:var(--secondary)"></i> إعراب: حاولتُ أن أعزفَ على البيانو</div>
+        <div class="parse-box">
+            <div class="parse-sentence"><span class="verb">حاولتُ</span> أن أعزفَ على البيانو</div>
+            <div class="parse-lines">
+                <div class="parse-line"><span class="parse-arrow">←</span> <span class="label">التاء:</span> تاء ضمير متّصل</div>
+                <div class="parse-line"><span class="parse-arrow">←</span> <span class="detail">في محلّ رفع فاعل</span></div>
+                <div class="parse-line"><span class="parse-arrow">←</span> <span class="detail"><span class="mark">مبنية على الضّمّ</span> في محلّ رفع (فعل ماضٍ)</span></div>
+            </div>
+        </div>
+
+        <div class="sub-heading"><i class="fas fa-caret-left" style="color:var(--secondary)"></i> إعراب: خرجوا إلى البستان</div>
+        <div class="parse-box">
+            <div class="parse-sentence"><span class="verb">خرجوا</span> إلى البستان</div>
+            <div class="parse-lines">
+                <div class="parse-line"><span class="parse-arrow">←</span> <span class="label">الواو:</span> واو ضمير متّصل</div>
+                <div class="parse-line"><span class="parse-arrow">←</span> <span class="detail">في محلّ رفع فاعل</span></div>
+                <div class="parse-line"><span class="parse-arrow">←</span> <span class="detail"><span class="mark">مبنية على السّكون</span> (فعل ماضٍ)</span></div>
+                <div class="parse-line"><span class="parse-arrow">←</span> <span class="detail">والألف هي <span class="mark">الألف الفارقة</span></span></div>
+            </div>
+        </div>
+
+        <div class="tip-box tip-orange">
+            <i class="fas fa-lightbulb"></i>
+            <span>التاء المتحرّكة (مثل: كَتَبْتَ) تختلف عن تاء التأنيث الساكنة (مثل: كَتَبَتْ) — الأولى ضمير في محلّ رفع فاعل، والثانية حرف لا محلّ له من الإعراب.</span>
+        </div>
+    </div>
+
+    <!-- ===== Type 3: ضمير مستتر ===== -->
+    <div class="section-card aos">
+        <div class="section-title">
+            <div class="icon-circle ic-purple"><i class="fas fa-eye-slash"></i></div>
+            ثالثًا: ضميرٌ مستتر
+        </div>
+        <div class="definition-box def-purple">
+            ضمير محذوف يُقدَّر <span class="hl">وجوبًا</span> أو <span class="hl">جوازًا</span>، ويكون في محلّ رفع فاعل.
+        </div>
+
+        <table class="hidden-table">
+            <thead>
+                <tr><th>النوع</th><th>متى؟</th><th>تقديره</th></tr>
+            </thead>
+            <tbody>
+                <tr><td class="type-wajib">وجوبًا</td><td>إذا كان الفعل ماضيًا مبدوءًا بتاء التأنيث الساكنة (درسَتْ)</td><td>هي</td></tr>
+                <tr><td class="type-wajib">وجوبًا</td><td>إذا كان الفعل مضارعًا مبدوءًا بنون المتكلّمين (ندرسُ)</td><td>نحن</td></tr>
+                <tr><td class="type-jawaz">جوازًا</td><td>إذا كان الفعل ماضيًا لا ضمير متّصل به (قصدَ الزارعُ)</td><td>هو</td></tr>
+                <tr><td class="type-jawaz">جوازًا</td><td>إذا كان الفعل مضارعًا لا ضمير متّصل به (يتعلَّمُ)</td><td>هو</td></tr>
+            </tbody>
+        </table>
+
+        <!-- Example: جوازًا -->
+        <div class="sub-heading" style="margin-top:2rem"><i class="fas fa-caret-left" style="color:var(--tertiary)"></i> مثال: جوازًا — قصدَ الزارعُ حقلَهُ</div>
+        <div class="parse-box">
+            <div class="parse-sentence"><span class="verb">قصدَ</span> الزارعُ حقلَهُ</div>
+            <div class="parse-lines">
+                <div class="parse-line"><span class="parse-arrow">←</span> <span class="detail">فعلٌ ماضٍ مبنى على الفتحة، والزارعُ: فاعل (بدل من الضمير المستتر)</span></div>
+            </div>
+        </div>
+
+        <!-- Example: وجوبًا -->
+        <div class="sub-heading"><i class="fas fa-caret-left" style="color:var(--tertiary)"></i> مثال: وجوبًا — نتعلمُ متى نعود</div>
+        <div class="parse-box">
+            <div class="parse-sentence"><span class="verb">نتعلَّمُ</span> متى نعود</div>
+            <div class="parse-lines">
+                <div class="parse-line"><span class="parse-arrow">←</span> <span class="label">فاعلهُ ضمير مستتر:</span> تقديره <span class="mark">"نحن"</span></div>
+                <div class="parse-line"><span class="parse-arrow">←</span> <span class="detail"><span class="mark">وجوبًا</span> فيهِ</span></div>
+                <div class="parse-line"><span class="parse-arrow">←</span> <span class="detail">فعلٌ مضارع مرفوع وعلامة رفعه الضّمّة الظاهرة على آخره</span></div>
+            </div>
+        </div>
+
+        <!-- Visible vs Hidden table -->
+        <div class="sub-heading" style="margin-top:2rem"><i class="fas fa-caret-left" style="color:var(--tertiary)"></i> ضمائر تظهر وضمائر تُستتر</div>
+        <table class="hidden-table">
+            <thead>
+                <tr><th>الفعل</th><th>الضمير</th><th>الحالة</th></tr>
+            </thead>
+            <tbody>
+                <tr><td class="example-text">درسَ</td><td>هو</td><td class="type-jawaz">مستتر جوازًا</td></tr>
+                <tr><td class="example-text">تدرسُ</td><td>أنتَ</td><td class="type-wajib">مستتر وجوبًا</td></tr>
+                <tr><td class="example-text">يدرسُ</td><td>هو</td><td class="type-jawaz">مستتر جوازًا</td></tr>
+                <tr><td class="example-text">تدرسُ</td><td>هي</td><td class="type-jawaz">مستتر جوازًا</td></tr>
+                <tr><td class="example-text">درستْ</td><td>هي</td><td class="type-jawaz">مستتر جوازًا</td></tr>
+                <tr><td class="example-text">أدرسُ</td><td>أنا</td><td class="type-wajib">مستتر وجوبًا</td></tr>
+                <tr><td class="example-text">ندرسُ</td><td>نحن</td><td class="type-wajib">مستتر وجوبًا</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== GAMES ===== -->
+    <section class="games-section aos" id="gamesSection">
+        <div class="games-header">
+            <h2><i class="fas fa-gamepad" style="margin-left:.5rem"></i>جرّب معلوماتك!</h2>
+            <p>أربع ألعاب تفاعليّة لتثبيت ما تعلّمته</p>
+        </div>
+        <div class="game-tabs">
+            <button class="game-tab active" data-tab="quiz"><i class="fas fa-question-circle"></i> اختبار سريع</button>
+            <button class="game-tab" data-tab="classify"><i class="fas fa-layer-group"></i> صُنّف الفاعل</button>
+            <button class="game-tab" data-tab="build"><i class="fas fa-puzzle-piece"></i> رتّب الإعراب</button>
+            <button class="game-tab" data-tab="memory"><i class="fas fa-brain"></i> لعبة الذاكرة</button>
+        </div>
+
+        <div class="game-panel active" id="panel-quiz">
+            <div class="game-intro" id="quizIntro"><i class="fas fa-question-circle"></i><h3>اختبار سريع</h3><p>أجب عن 10 أسئلة عن الفاعل وأنواعه وعلامات رفعه</p><button class="start-btn" onclick="startQuiz()">ابدأ الاختبار</button></div>
+            <div class="quiz-box" id="quizBox" style="display:none"><div class="quiz-progress"><div class="quiz-progress-bar" id="quizBar" style="width:0%"></div></div><div class="quiz-body" id="quizBody"></div><div class="quiz-result" id="quizResult"></div></div>
+        </div>
+        <div class="game-panel" id="panel-classify">
+            <div class="game-intro" id="classIntro"><i class="fas fa-layer-group"></i><h3>صُنّف الفاعل</h3><p>ما نوع الفاعل في كلّ جملة؟ اسم ظاهر أم ضمير متّصل أم ضمير مستتر؟</p><button class="start-btn" onclick="startClassify()">ابدأ اللعبة</button></div>
+            <div class="class-box" id="classBox" style="display:none"></div>
+        </div>
+        <div class="game-panel" id="panel-build">
+            <div class="game-intro" id="buildIntro"><i class="fas fa-puzzle-piece"></i><h3>رتّب الإعراب</h3><p>اختَر الكلمات بالترتيب الصحيح لتكوين إعراب الفاعل</p><button class="start-btn" onclick="startBuild()">ابدأ اللعبة</button></div>
+            <div class="build-box" id="buildBox" style="display:none"></div>
+        </div>
+        <div class="game-panel" id="panel-memory">
+            <div class="game-intro" id="memIntro"><i class="fas fa-brain"></i><h3>لعبة الذاكرة</h3><p>اقلب البطاقات واطابق بين الجملة ونوع فاعلها</p><button class="start-btn" onclick="startMemory()">ابدأ اللعبة</button></div>
+            <div class="mem-box" id="memBox" style="display:none"></div>
+        </div>
+    </section>
+
+</div>
+</main>
+
+<footer class="footer">
+    <p><span class="fb">قسم اللغة العربية</span> — الفاعل — إعراب الفعل</p>
+</footer>
+
+<script>
+var quizQuestions=[
+    {q:'أين يأتي الفاعل دائمًا؟',opts:['قبل الفعل','بعد الفعل','بين الفعل والمفعول','في آخر الجملة'],correct:1,explain:'الفاعل يأتي دائمًا بعد الفعل.'},
+    {q:'ما علامة رفع الفاعل في: "فرحَ الصَّبيُّ"؟',opts:['الألف لأنّه مثنّى','الواو لأنّه جمع مذكّر سالم','الضّمّة الظّاهرة على آخره','السّكون'],correct:2,explain:'الصَّبيُّ مفرد فعلامة رفعه الضّمّة الظّاهرة.'},
+    {q:'ما علامة رفع الفاعل في: "يزورُ السائحانِ المدينةَ"؟',opts:['الضّمّة الظّاهرة','الألف لأنّه مثنّى','الواو لأنّه جمع مذكّر سالم','الفتحة'],correct:1,explain:'السائحانِ مثنّى فعلامة رفعه الألف.'},
+    {q:'ما علامة رفع الفاعل في: "كافأَ المعلِّمونَ التلاميذَ"؟',opts:['الضّمّة الظّاهرة','الألف','الواو لأنّه جمع مذكّر سالم','الكسرة'],correct:2,explain:'المعلِّمونَ جمع مذكّر سالم فعلامة رفعه الواو.'},
+    {q:'ما نوع الفاعل في: "قرأتُ الفتاةُ كتابًا"؟',opts:['الفاعل اسم ظاهر: الفتاةُ','الفاعل ضمير متّصل: التاء','الفاعل ضمير مستتر: هو','لا فاعل في الجملة'],correct:1,explain:'التاء ضمير متّصل في محلّ رفع فاعل. أمّا الفتاةُ ففاعل لفعل محذوف تقديره قرأت.'},
+    {q:'"ذهبتُ" — ما نوع التاء؟',opts:['حرف لا محلّ له','تاء المتكلّم: ضمير متّصل في محلّ رفع فاعل','تاء التأنيث الساكنة','حرف جرّ'],correct:1,explain:'التاء هنا تاء ضمير متّصل متكلّم في محلّ رفع فاعل، مبنية على الضمّ.'},
+    {q:'متى يكون الضمير المستتر وجوبًا؟',opts:['دائمًا','في الفعل الماضي بدون تاء','في الفعل الماضي المبدوء بتاء التأنيث الساكنة أو المضارع المبدوء بنون المتكلّمين','في الفعل الأمر فقط'],correct:2,explain:'يستتر وجوبًا في ماضٍ مبدوء بتاء التأنيث الساكنة (درستْ → هي)، أو مضارع مبدوء بنون المتكلّمين (ندرسُ → نحن).'},
+    {q:'"قصدَ الزارعُ حقلَهُ" — ما نوع فاعل "قصدَ"؟',opts:['اسم ظاهر: الزارعُ','ضمير متّصل','ضمير مستتر جوازًا تقديره "هو"','ضمير مستتر وجوبًا تقديره "هو"'],correct:2,explain:'فاعل "قصدَ" ضمير مستتر جوازًا تقديره "هو"، والزارعُ بدل من الضمير المستتر.'},
+    {q:'"ندرسُ" — ما تقدير فاعلها؟',opts:['هو — جوازًا','هي — وجوبًا','نحن — وجوبًا','أنتَ — جوازًا'],correct:2,explain:'"ندرسُ" فعل مضارع مبدوء بنون المتكلّمين، ففاعله ضمير مستتر وجوبًا تقديره "نحن".'},
+    {q:'ما هي "الألف الفارقة" في "خرجوا"؟',opts:['ألف الاثنين','ألف تُفصل بين واو الجماعة وألف غيرها','ألف الاسم المقصور','ليست ألفًا فارقة'],correct:1,explain:'الألف الفارقة هي ألف زائدة بعد واو الجماعة تُفصل بينها وبين الأخرى.'}
+];
+
+var classifyWords=[
+    {sentence:'فرحَ الصَّبيُّ',type:'visible',highlight:'الصَّبيُّ'},
+    {sentence:'ذهبتُ إلى المدرسة',type:'attached',highlight:'تُ'},
+    {sentence:'قصدَ الزارعُ حقلَهُ',type:'hidden',highlight:'(هو)'},
+    {sentence:'كافأَ المعلِّمونَ التلاميذَ',type:'visible',highlight:'المعلِّمونَ'},
+    {sentence:'لعبنا في الحديقة',type:'attached',highlight:'نا'},
+    {sentence:'ندرسُ القراءة',type:'hidden',highlight:'(نحن)'},
+    {sentence:'يزورُ السائحانِ المدينةَ',type:'visible',highlight:'السائحانِ'},
+    {sentence:'خرجوا إلى البستان',type:'attached',highlight:'وَا'},
+    {sentence:'يدرسُ العلمَ',type:'hidden',highlight:'(هو)'},
+    {sentence:'تلعبينَ مع رفيقاتك',type:'attached',highlight:'ـيـ'},
+    {sentence:'قرأتُ الفتاةُ كتابًا',type:'attached',highlight:'تُ'},
+    {sentence:'بنى العمّالُ الجدارَ',type:'hidden',highlight:'(هو)'},
+    {sentence:'هتفنَ الأطفالُ',type:'attached',highlight:'نَ'},
+    {sentence:'ناما الطفلانِ',type:'attached',highlight:'ا'},
+    {sentence:'درستْ الطالبةُ الدرسَ',type:'hidden',highlight:'(هي)'}
+];
+
+var buildSentences=[
+    {words:['الصَّبيُّ:','فاعل','مرفوع','وعلامة','رفعه','الضّمّة الظّاهرة','على آخره'],correct:'الصَّبيُّ: فاعل مرفوع وعلامة رفعه الضّمّة الظّاهرة على آخره',sentence:'فرحَ الصَّبيُّ',target:'الصَّبيُّ'},
+    {words:['السائحانِ:','فاعل','مرفوع','وعلامة','رفعه','الألف','لأنّه مثنّى'],correct:'السائحانِ: فاعل مرفوع وعلامة رفعه الألف لأنّه مثنّى',sentence:'يزورُ السائحانِ المدينةَ',target:'السائحانِ'},
+    {words:['المعلِّمونَ:','فاعل','مرفوع','وعلامة','رفعه','الواو','لأنّه جمع مذكّر سالم'],correct:'المعلِّمونَ: فاعل مرفوع وعلامة رفعه الواو لأنّه جمع مذكّر سالم',sentence:'كافأَ المعلِّمونَ التلاميذَ',target:'المعلِّمونَ'},
+    {words:['التاء:','تاء ضمير','متّصل','في محلّ','رفع فاعل','مبنية على الضمّ'],correct:'التاء: تاء ضمير متّصل في محلّ رفع فاعل مبنية على الضمّ',sentence:'حاولتُ أن أعزفَ',target:'التاء'},
+    {words:['الواو:','واو ضمير','متّصل','في محلّ','رفع فاعل','مبنية على السّكون'],correct:'الواو: واو ضمير متّصل في محلّ رفع فاعل مبنية على السّكون',sentence:'خرجوا إلى البستان',target:'الواو'},
+    {words:['ضمير مستتر','تقديره "هو"','جوازًا فيهِ'],correct:'ضمير مستتر تقديره "هو" جوازًا فيهِ',sentence:'قصدَ الزارعُ حقلَهُ',target:'(هو)'},
+    {words:['ضمير مستتر','تقديره "نحن"','وجوبًا فيهِ'],correct:'ضمير مستتر تقديره "نحن" وجوبًا فيهِ',sentence:'نتعلَّمُ متى نعود',target:'(نحن)'},
+    {words:['الفتاةُ:','فاعل','مرفوع','وعلامة','رفعه','الضّمّة الظّاهرة','على آخره'],correct:'الفتاةُ: فاعل مرفوع وعلامة رفعه الضّمّة الظّاهرة على آخره',sentence:'قرأتُ الفتاةُ كتابًا',target:'الفتاةُ'}
+];
+
+var memoryPairs=[
+    {a:'فرحَ الصَّبيُّ',b:'اسم ظاهر — الضّمّة'},
+    {a:'يزورُ السائحانِ',b:'اسم ظاهر — الألف'},
+    {a:'كافأَ المعلِّمونَ',b:'اسم ظاهر — الواو'},
+    {a:'ذهبتُ إلى المدرسة',b:'ضمير متّصل (تُ)'},
+    {a:'خرجوا إلى البستان',b:'ضمير متّصل (وَا)'},
+    {a:'قصدَ الزارعُ حقلَهُ',b:'مستتر جوازًا (هو)'}
+];
+
+function showToast(m,t){t=t||'info';var w=document.getElementById('toastWrap');var e=document.createElement('div');e.className='toast '+t;e.innerHTML='<i class="fas '+(t==='success'?'fa-check-circle':t==='error'?'fa-times-circle':'fa-info-circle')+'"></i> '+m;w.appendChild(e);setTimeout(function(){e.remove()},3000)}
+function fireConfetti(){var c=['#0C7B5F','#E8912D','#16A34A','#DC2626','#F59E0B','#7C3AED','#EC4899'];for(var i=0;i<50;i++){var e=document.createElement('div');e.className='confetti';e.style.left=Math.random()*100+'vw';e.style.top='-10px';e.style.background=c[Math.floor(Math.random()*c.length)];e.style.animationDelay=Math.random()*0.8+'s';e.style.width=(Math.random()*8+6)+'px';e.style.height=(Math.random()*8+6)+'px';document.body.appendChild(e);(function(el){setTimeout(function(){el.remove()},4000)})(e)}}
+function shuffle(a){var b=a.slice();for(var i=b.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=b[i];b[i]=b[j];b[j]=t}return b}
+
+document.querySelectorAll('.game-tab').forEach(function(tab){tab.addEventListener('click',function(){document.querySelectorAll('.game-tab').forEach(function(t){t.classList.remove('active')});document.querySelectorAll('.game-panel').forEach(function(p){p.classList.remove('active')});tab.classList.add('active');document.getElementById('panel-'+tab.dataset.tab).classList.add('active')})});
+var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('vis')})},{threshold:0.1});
+document.querySelectorAll('.aos').forEach(function(el){obs.observe(el)});
+
+// Quiz
+var qI=0,qS=0,qA=false;
+function startQuiz(){document.getElementById('quizIntro').style.display='none';document.getElementById('quizBox').style.display='block';qI=0;qS=0;var r=document.getElementById('quizResult');r.classList.remove('show');r.style.display='none';rQ()}
+function rQ(){qA=false;var q=quizQuestions[qI];document.getElementById('quizBar').style.width=(qI/quizQuestions.length*100)+'%';var h='<div class="quiz-qnum">السؤال '+(qI+1)+' من '+quizQuestions.length+'</div><div class="quiz-q">'+q.q+'</div><div class="quiz-opts">';q.opts.forEach(function(o,i){h+='<button class="quiz-opt" data-idx="'+i+'" onclick="aQ('+i+')">'+o+'</button>'});h+='</div><div class="quiz-fb" id="quizFb"></div><button class="quiz-next" id="quizNext" onclick="nQ()"><span>التالي</span> <i class="fas fa-arrow-left"></i></button>';document.getElementById('quizBody').innerHTML=h}
+function aQ(i){if(qA)return;qA=true;var q=quizQuestions[qI];document.querySelectorAll('.quiz-opt').forEach(function(o,j){o.classList.add('disabled');if(j===q.correct)o.classList.add('correct');if(j===i&&i!==q.correct)o.classList.add('wrong')});var f=document.getElementById('quizFb');if(i===q.correct){qS++;f.className='quiz-fb show correct';f.innerHTML='<i class="fas fa-check-circle"></i> أحسنت! '+q.explain;showToast('إجابة صحيحة!','success')}else{f.className='quiz-fb show wrong';f.innerHTML='<i class="fas fa-times-circle"></i> إجابة خاطئة. '+q.explain;showToast('حاول في السؤال القادم','error')}document.getElementById('quizNext').classList.add('show')}
+function nQ(){qI++;if(qI>=quizQuestions.length)sQR();else rQ()}
+function sQR(){document.getElementById('quizBody').innerHTML='';document.getElementById('quizBar').style.width='100%';var r=document.getElementById('quizResult');var p=Math.round(qS/quizQuestions.length*100);var ic,tx;if(p>=80){ic='🌟';tx='ممتاز! أنت نحويّ متميّز';fireConfetti()}else if(p>=50){ic='👍';tx='جيّد! راجع أنواع الفاعل'}else{ic='💪';tx='لا بأس! عد إلى الدرس وتدرّب'}r.innerHTML='<div class="result-icon">'+ic+'</div><div class="result-score">'+qS+' / '+quizQuestions.length+'</div><div class="result-text">'+tx+'</div><button class="retry-btn" onclick="startQuiz()"><i class="fas fa-redo" style="margin-left:.5rem"></i>حاول مجدّدًا</button>';r.style.display='block';r.classList.add('show')}
+
+// Classify
+var cO=[],cI=0,cS=0,cA=false;
+function startClassify(){document.getElementById('classIntro').style.display='none';document.getElementById('classBox').style.display='block';cI=0;cS=0;cO=shuffle(classifyWords);rC()}
+function rC(){cA=false;var it=cO[cI];var h='<div class="class-score"><div class="sc-item"><i class="fas fa-star"></i> النتيجة: <span id="cSc">'+cS+'</span> / '+cO.length+'</div><div class="sc-item"><i class="fas fa-list-ol"></i> '+(cI+1)+' من '+cO.length+'</div></div>';h+='<div class="class-word"><div class="class-label">ما نوع الفاعل في هذه الجملة؟</div><div class="class-word-display">'+it.sentence+' <span style="color:var(--secondary);font-size:1.2rem">← '+it.highlight+'</span></div></div>';h+='<div class="class-btns"><button class="class-btn c-green" id="bV" onclick="aC(\'visible\')"><span class="btn-icon"><i class="fas fa-font"></i></span><span>اسم ظاهر</span></button><button class="class-btn c-orange" id="bA" onclick="aC(\'attached\')"><span class="btn-icon"><i class="fas fa-link"></i></span><span>ضمير متّصل</span></button><button class="class-btn c-purple" id="bH" onclick="aC(\'hidden\')"><span class="btn-icon"><i class="fas fa-eye-slash"></i></span><span>ضمير مستتر</span></button></div><div class="class-result" id="cR"></div>';document.getElementById('classBox').innerHTML=h}
+function aC(ch){if(cA)return;cA=true;var it=cO[cI];var bV=document.getElementById('bV'),bA=document.getElementById('bA'),bH=document.getElementById('bH');bV.classList.add('disabled');bA.classList.add('disabled');bH.classList.add('disabled');var cB=ch==='visible'?bV:ch==='attached'?bA:bH;var uB=ch==='visible'?bV:ch==='attached'?bA:bH;if(ch===it.type){cB.classList.add('correct');cS++;document.getElementById('cSc').textContent=cS;showToast('صحيح!','success')}else{uB.classList.add('wrong');cB.classList.add('correct');var n={visible:'اسم ظاهر',attached:'ضمير متّصل',hidden:'ضمير مستتر'};showToast('خطأ! الإجابة: '+n[it.type],'error')}setTimeout(function(){cI++;if(cI>=cO.length)sCR();else rC()},1200)}
+function sCR(){var b=document.getElementById('classBox');var p=Math.round(cS/cO.length*100);var ic,tx;if(p>=80){ic='🌟';tx='رائع! أنت متمكّن من أنواع الفاعل';fireConfetti()}else if(p>=50){ic='👍';tx='جيّد! راجع الأنواع الثلاثة'}else{ic='💪';tx='لا بأس! عد إلى الدرس وتدرّب'}b.innerHTML='<div class="class-result show"><div class="result-icon">'+ic+'</div><div class="result-score">'+cS+' / '+cO.length+'</div><div class="result-text">'+tx+'</div><button class="retry-btn" onclick="startClassify()"><i class="fas fa-redo" style="margin-left:.5rem"></i>حاول مجدّدًا</button></div>'}
+
+// Build
+var bO=[],bI=0,bS=0,bP=[],bL=false;
+function startBuild(){document.getElementById('buildIntro').style.display='none';document.getElementById('buildBox').style.display='block';bI=0;bS=0;bO=shuffle(buildSentences);rB()}
+function rB(){bL=false;bP=[];var it=bO[bI];var w=shuffle(it.words.slice());var h='<div class="build-score"><div class="sc-item"><i class="fas fa-star"></i> النتيجة: <span id="bSc">'+bS+'</span> / '+bO.length+'</div><div class="sc-item"><i class="fas fa-list-ol"></i> '+(bI+1)+' من '+bO.length+'</div></div>';h+='<div class="build-sentence-show">'+it.sentence.replace(it.target,'<span class="target">'+it.target+'</span>')+'</div>';h+='<div class="build-prompt"><div class="bp-label">رتّب إعراب الفاعل:</div></div>';h+='<div class="build-sentence" id="bArea"><span class="placeholder-text">اضغط على الكلمات بالترتيب الصحيح</span></div>';h+='<div class="build-words" id="bWords">';w.forEach(function(x,i){h+='<span class="build-word" data-word="'+x+'" data-idx="'+i+'" onclick="pW(this)">'+x+'</span>'});h+='</div>';h+='<div class="build-actions"><button class="btn-check" onclick="cB()"><i class="fas fa-check" style="margin-left:.4rem"></i>تحقَّق</button><button class="btn-clear" onclick="clB()"><i class="fas fa-eraser" style="margin-left:.4rem"></i>امسح</button><button class="btn-skip" onclick="skB()"><i class="fas fa-forward" style="margin-left:.4rem"></i>تخطَّى</button></div><div class="build-result" id="bR"></div>';document.getElementById('buildBox').innerHTML=h}
+function pW(el){if(bL||el.classList.contains('used'))return;el.classList.add('used');bP.push({word:el.dataset.word,el:el});var a=document.getElementById('bArea');if(bP.length===1)a.innerHTML='';var s=document.createElement('span');s.className='placed-word';s.textContent=el.dataset.word;s.onclick=(function(sp,src){return function(){rP(sp,src)}})(s,el);a.appendChild(s)}
+function rP(sp,src){if(bL)return;src.classList.remove('used');for(var i=0;i<bP.length;i++){if(bP[i].el===src){bP.splice(i,1);break}}sp.remove();var a=document.getElementById('bArea');if(bP.length===0)a.innerHTML='<span class="placeholder-text">اضغط على الكلمات بالترتيب الصحيح</span>'}
+function clB(){if(bL)return;bP.forEach(function(p){p.el.classList.remove('used')});bP=[];document.getElementById('bArea').innerHTML='<span class="placeholder-text">اضغط على الكلمات بالترتيب الصحيح</span>'}
+function cB(){if(bL||bP.length===0)return;bL=true;var it=bO[bI];var u=bP.map(function(p){return p.word}).join(' ');var a=document.getElementById('bArea');document.querySelectorAll('.build-word').forEach(function(w){w.classList.add('locked')});if(u===it.correct){a.classList.add('correct-border');bS++;document.getElementById('bSc').textContent=bS;showToast('ممتاز! إعراب صحيح','success')}else{a.classList.add('wrong-border');showToast('خطأ! الجواب: '+it.correct,'error')}setTimeout(function(){bI++;if(bI>=bO.length)sBR();else rB()},2000)}
+function skB(){bI++;if(bI>=bO.length)sBR();else rB()}
+function sBR(){var b=document.getElementById('buildBox');var p=Math.round(bS/bO.length*100);var ic,tx;if(p>=80){ic='🌟';tx='رائع! أنت متمكّن من الإعراب';fireConfetti()}else if(p>=50){ic='👍';tx='جيّد! تدرّب أكثر على ترتيب الإعراب'}else{ic='💪';tx='لا بأس! راجع الأمثلة وحاول مجدّدًا'}b.innerHTML='<div class="build-result show"><div class="result-icon">'+ic+'</div><div class="result-score">'+bS+' / '+bO.length+'</div><div class="result-text">'+tx+'</div><button class="retry-btn" onclick="startBuild()"><i class="fas fa-redo" style="margin-left:.5rem"></i>حاول مجدّدًا</button></div>'}
+
+// Memory
+var mC=[],mF=[],mM=0,mMv=0,mLk=false;
+function startMemory(){document.getElementById('memIntro').style.display='none';document.getElementById('memBox').style.display='block';mM=0;mMv=0;mLk=false;mF=[];mC=[];memoryPairs.forEach(function(p,i){mC.push({id:i,text:p.a,type:'a'});mC.push({id:i,text:p.b,type:'b'})});mC=shuffle(mC);rM()}
+function rM(){var b=document.getElementById('memBox');var h='<div class="mem-stats"><div class="mem-stat"><i class="fas fa-mouse-pointer"></i> المحاولات: <span class="sv" id="mMv">0</span></div><div class="mem-stat"><i class="fas fa-check-double"></i> المطابقات: <span class="sv" id="mM">0</span> / 6</div></div>';h+='<div class="mem-grid">';mC.forEach(function(c,i){h+='<div class="mem-card" data-idx="'+i+'" onclick="fC(this,'+i+')"><div class="mem-card-inner"><div class="mem-card-front"><i class="fas fa-question"></i></div><div class="mem-card-back">'+c.text+'</div></div></div>'});h+='</div><div class="mem-result" id="mR"></div>';b.innerHTML=h}
+function fC(el,i){if(mLk||el.classList.contains('flipped')||el.classList.contains('matched')||mF.length>=2)return;el.classList.add('flipped');mF.push({el:el,idx:i,card:mC[i]});if(mF.length===2){mMv++;document.getElementById('mMv').textContent=mMv;mLk=true;var a=mF[0],b=mF[1];if(a.card.id===b.card.id&&a.card.type!==b.card.type){setTimeout(function(){a.el.classList.add('matched');b.el.classList.add('matched');mM++;document.getElementById('mM').textContent=mM;mF=[];mLk=false;if(mM===6)setTimeout(sMR,500)},500)}else{setTimeout(function(){a.el.classList.remove('flipped');b.el.classList.remove('flipped');mF=[];mLk=false},900)}}}
+function sMR(){fireConfetti();var r=document.getElementById('mR');var m=mMv<=10?'ذاكرة خارقة!':mMv<=16?'أداء رائع!':'جيّد! حاول تقليل المحاولات';r.innerHTML='<div class="result-icon">🎉</div><div class="result-score">'+mMv+' محاولة</div><div class="result-text">'+m+'</div><button class="mem-reset" onclick="startMemory()"><i class="fas fa-redo" style="margin-left:.5rem"></i>العب مرّة أخرى</button>';r.classList.add('show')}
+</script>
+
+</body>
+</html>

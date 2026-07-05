@@ -36,7 +36,7 @@ with a glowing gold "أنت هنا (You are here)" marker. Marked in the code wi
 |-------|--------------|
 | `/` | Hero, bilingual intro, Meet Mariana, the **timeline**, daily quote + **API fact card** (API Ninjas, paged), FAQ, contact |
 | `/test` | 16-question placement test in 4 sections (reading, writing, **dictation with audio**, grammar) → overall + per-skill levels (A/B/C/D) highlighted on the timeline |
-| `/lessons` | 18 lessons (incl. full 28-letter alphabet chart), live search + level filter, 9 practice games, browser-saved progress |
+| `/lessons` | 34 lessons (incl. full 28-letter alphabet chart), live search + level filter, 25 practice games, browser-saved progress |
 | `/skills` | Skills Lab: 4 real story suites (listening/dictation, reading, writing) |
 | `/book` | Booking form with real-time validation (incl. country) + WhatsApp/email handoff |
 | `/teacher` | Passcode-protected dashboard: level distribution, bookings, results |
@@ -44,7 +44,7 @@ with a glowing gold "أنت هنا (You are here)" marker. Marked in the code wi
 Rubric features: **external key-based API** (API Ninjas facts) with **client-side
 pagination over the fetched data** (the "معلومة أخرى / Another fact" button) and
 **loading/error/empty states** (the "هل تعلم؟" card on the home page) · additional
-**search + level filter** over the 18 lessons · **15+ real items** (18 lessons) ·
+**search + level filter** over the 34 lessons · **15+ real items** (34 lessons) ·
 consistent navbar · fully responsive · ES6-class logic.
 
 ## Run locally
@@ -84,7 +84,7 @@ src/
   lib/
     classes/      # PlacementTest, LessonCatalog, ApiClient, FormValidator, ScrollReveal
     data/         # lessons, journey stages, test questions
-public/games/     # 9 interactive practice pages (from real lesson material)
+public/games/     # 25 interactive practice pages (from real lesson material)
 prisma/           # schema (Student, PlacementResult, Booking, LessonProgress)
 ```
 

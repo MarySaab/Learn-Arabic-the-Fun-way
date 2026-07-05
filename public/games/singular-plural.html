@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المفرد والجمع - المستوى 2-3 | قسم اللغة العربية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --primary:#0C7B5F;--primary-dark:#085D47;--primary-light:#E6F4F0;--primary-50:#F0FAF6;
+            --secondary:#E8912D;--secondary-light:#FEF3E2;
+            --bg:#F8FAFB;--card:#FFFFFF;--text:#1A2332;--text-muted:#64748B;
+            --border:#E2E8F0;--success:#16A34A;--success-light:#DCFCE7;
+            --error:#DC2626;--error-light:#FEE2E2;
+            --shadow:0 1px 3px rgba(0,0,0,0.08),0 1px 2px rgba(0,0,0,0.06);
+            --shadow-md:0 4px 6px rgba(0,0,0,0.07),0 2px 4px rgba(0,0,0,0.06);
+            --shadow-lg:0 10px 15px rgba(0,0,0,0.1),0 4px 6px rgba(0,0,0,0.05);
+            --radius:12px;--radius-lg:20px
+        }
+        html{scroll-behavior:smooth}
+        body{font-family:'Tajawal',sans-serif;background:var(--bg);color:var(--text);line-height:1.8;overflow-x:hidden}
+
+        /* === HEADER === */
+        .header{background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 50%,#10A37F 100%);color:#fff;padding:3rem 1.5rem 4.5rem;text-align:center;position:relative;overflow:hidden}
+        .header::before{content:'';position:absolute;top:-50%;right:-20%;width:400px;height:400px;background:rgba(255,255,255,0.05);border-radius:50%}
+        .header::after{content:'';position:absolute;bottom:-30%;left:-10%;width:300px;height:300px;background:rgba(255,255,255,0.03);border-radius:50%}
+        .header-pattern{position:absolute;inset:0;opacity:.05;background-image:repeating-linear-gradient(0deg,transparent,transparent 40px,rgba(255,255,255,.5) 40px,rgba(255,255,255,.5) 41px),repeating-linear-gradient(90deg,transparent,transparent 40px,rgba(255,255,255,.5) 40px,rgba(255,255,255,.5) 41px)}
+        .level-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.15);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.25);padding:.4rem 1.2rem;border-radius:50px;font-size:.9rem;font-weight:500;margin-bottom:1rem;position:relative;z-index:1}
+        .header h1{font-size:2.8rem;font-weight:900;margin-bottom:.5rem;position:relative;z-index:1}
+        .header .subtitle{font-size:1.15rem;opacity:.85;font-weight:300;position:relative;z-index:1}
+        .header-wave{position:absolute;bottom:-2px;left:0;right:0;z-index:2}
+        .header-wave svg{display:block;width:100%;height:auto}
+
+        /* === CONTAINER === */
+        .container{max-width:900px;margin:0 auto;padding:0 1.5rem}
+        .content-section{margin-top:-1rem;position:relative;z-index:3}
+
+        /* === SECTION CARDS === */
+        .section-card{background:var(--card);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);padding:2.5rem;margin-bottom:2rem;border:1px solid var(--border);transition:transform .3s ease}
+        .section-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+        .section-title{display:flex;align-items:center;gap:.75rem;font-size:1.5rem;font-weight:800;color:var(--primary-dark);margin-bottom:1.5rem}
+        .icon-circle{width:44px;height:44px;background:var(--primary-light);color:var(--primary);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+
+        /* === DEFINITION BOX === */
+        .definition-box{background:var(--primary-light);border-right:4px solid var(--primary);border-radius:var(--radius);padding:1.5rem 2rem;font-size:1.2rem;font-weight:500;line-height:2.2;margin-bottom:1.5rem}
+        .definition-box .hl{color:var(--primary);font-weight:700}
+
+        /* === EXAMPLE PILLS === */
+        .examples-row{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1rem}
+        .pill{background:var(--secondary-light);color:var(--secondary);padding:.5rem 1.2rem;border-radius:50px;font-size:1.15rem;font-weight:700;border:2px solid transparent;transition:all .3s ease;cursor:default}
+        .pill:hover{border-color:var(--secondary);transform:scale(1.05)}
+
+        /* === RULE STEPS === */
+        .rule-steps{display:flex;flex-direction:column;gap:1rem;margin:1.5rem 0}
+        .rule-step{display:flex;align-items:flex-start;gap:1rem;padding:1rem 1.5rem;background:var(--primary-50);border-radius:var(--radius);border:1px solid var(--primary-light)}
+        .step-num{width:32px;height:32px;background:var(--primary);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;flex-shrink:0;margin-top:2px}
+        .step-text{font-size:1.05rem;line-height:1.9}
+        .step-text .del{color:var(--error);font-weight:700;text-decoration:line-through}
+        .step-text .add{color:var(--success);font-weight:700}
+
+        /* === TRANSFORM CARDS === */
+        .transform-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.25rem;margin-top:1.5rem}
+        .transform-card{background:var(--bg);border-radius:var(--radius);padding:1.25rem;text-align:center;border:2px solid var(--border);transition:all .3s ease}
+        .transform-card:hover{border-color:var(--primary);box-shadow:var(--shadow)}
+        .transform-card .from{font-size:1.4rem;font-weight:700;color:var(--text-muted);text-decoration:line-through;text-decoration-color:var(--error);text-decoration-thickness:2px}
+        .transform-card .arrow{font-size:1.5rem;color:var(--primary);margin:.5rem 0}
+        .transform-card .to{font-size:1.5rem;font-weight:800;color:var(--primary)}
+        .transform-card .to .ats{color:var(--secondary)}
+
+        /* === ADJECTIVE EXAMPLES === */
+        .adj-examples{margin-top:1.5rem;display:flex;flex-direction:column;gap:1rem}
+        .adj-ex{display:flex;align-items:center;gap:1rem;padding:1rem 1.5rem;background:var(--bg);border-radius:var(--radius);border:1px solid var(--border);font-size:1.2rem}
+        .adj-ex .w-pl{font-weight:700;color:var(--primary)}
+        .adj-ex .w-adj{font-weight:700;color:var(--secondary);background:var(--secondary-light);padding:.15rem .6rem;border-radius:6px}
+        .adj-note{display:flex;align-items:flex-start;gap:.75rem;background:var(--secondary-light);border-right:4px solid var(--secondary);border-radius:var(--radius);padding:1rem 1.5rem;margin-top:1.25rem;font-size:1rem}
+        .adj-note i{color:var(--secondary);margin-top:4px}
+
+        /* === GAMES === */
+        .games-section{margin-bottom:3rem}
+        .games-header{text-align:center;margin-bottom:2rem}
+        .games-header h2{font-size:2rem;font-weight:900;color:var(--primary-dark);margin-bottom:.5rem}
+        .games-header p{color:var(--text-muted);font-size:1.05rem}
+        .game-tabs{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem}
+        .game-tab{padding:.75rem 1.5rem;border:2px solid var(--border);border-radius:50px;background:var(--card);font-family:'Tajawal',sans-serif;font-size:1rem;font-weight:700;color:var(--text-muted);cursor:pointer;transition:all .3s ease;display:flex;align-items:center;gap:.5rem}
+        .game-tab:hover{border-color:var(--primary);color:var(--primary)}
+        .game-tab.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+        .game-panel{display:none}
+        .game-panel.active{display:block;animation:fadeInUp .4s ease}
+        @keyframes fadeInUp{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+
+        /* === QUIZ === */
+        .quiz-box{background:var(--card);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);border:1px solid var(--border);overflow:hidden}
+        .quiz-progress{height:6px;background:var(--bg)}
+        .quiz-progress-bar{height:100%;background:linear-gradient(90deg,var(--primary),#10A37F);transition:width .4s ease;border-radius:0 3px 3px 0}
+        .quiz-body{padding:2.5rem}
+        .quiz-qnum{font-size:.9rem;color:var(--text-muted);margin-bottom:.75rem}
+        .quiz-q{font-size:1.3rem;font-weight:700;margin-bottom:2rem;line-height:2}
+        .quiz-opts{display:flex;flex-direction:column;gap:.75rem}
+        .quiz-opt{padding:1rem 1.5rem;border:2px solid var(--border);border-radius:var(--radius);font-family:'Tajawal',sans-serif;font-size:1.1rem;font-weight:500;color:var(--text);background:var(--bg);cursor:pointer;transition:all .3s ease;text-align:right}
+        .quiz-opt:hover:not(.disabled){border-color:var(--primary);background:var(--primary-light)}
+        .quiz-opt.correct{border-color:var(--success);background:var(--success-light);color:var(--success)}
+        .quiz-opt.wrong{border-color:var(--error);background:var(--error-light);color:var(--error)}
+        .quiz-opt.disabled{cursor:default;opacity:.7}
+        .quiz-opt.correct.disabled,.quiz-opt.wrong.disabled{opacity:1}
+        .quiz-fb{margin-top:1.5rem;padding:1rem 1.5rem;border-radius:var(--radius);font-weight:600;display:none;align-items:center;gap:.75rem}
+        .quiz-fb.show{display:flex}
+        .quiz-fb.correct{background:var(--success-light);color:var(--success)}
+        .quiz-fb.wrong{background:var(--error-light);color:var(--error)}
+        .quiz-next{margin-top:1.5rem;padding:.75rem 2rem;background:var(--primary);color:#fff;border:none;border-radius:50px;font-family:'Tajawal',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all .3s ease;display:none}
+        .quiz-next.show{display:inline-flex;align-items:center;gap:.5rem}
+        .quiz-next:hover{background:var(--primary-dark);transform:translateY(-1px)}
+
+        /* === RESULT === */
+        .quiz-result{text-align:center;padding:3rem 2rem;display:none}
+        .quiz-result.show{display:block;animation:fadeInUp .5s ease}
+        .result-icon{font-size:4rem;margin-bottom:1rem}
+        .result-score{font-size:2.5rem;font-weight:900;color:var(--primary)}
+        .result-text{font-size:1.2rem;color:var(--text-muted);margin:1rem 0 2rem}
+        .retry-btn{padding:.85rem 2.5rem;background:var(--primary);color:#fff;border:none;border-radius:50px;font-family:'Tajawal',sans-serif;font-size:1.1rem;font-weight:700;cursor:pointer;transition:all .3s ease}
+        .retry-btn:hover{background:var(--primary-dark);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+
+        /* === CONVERSION GAME === */
+        .conv-box{background:var(--card);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);border:1px solid var(--border);padding:2.5rem}
+        .conv-score{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}
+        .sc-item{display:flex;align-items:center;gap:.5rem;font-weight:700}
+        .sc-item i{color:var(--secondary)}
+        .conv-word{text-align:center;margin-bottom:2rem}
+        .conv-label{font-size:.95rem;color:var(--text-muted);margin-bottom:.5rem}
+        .conv-singular{font-size:3rem;font-weight:900;color:var(--primary)}
+        .conv-arrow{font-size:1.5rem;color:var(--text-muted);margin:1rem 0}
+        .conv-opts{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+        .conv-opt{padding:1.1rem;border:2px solid var(--border);border-radius:var(--radius);font-family:'Tajawal',sans-serif;font-size:1.2rem;font-weight:600;color:var(--text);background:var(--bg);cursor:pointer;transition:all .3s ease}
+        .conv-opt:hover:not(.disabled){border-color:var(--primary);background:var(--primary-light)}
+        .conv-opt.correct{border-color:var(--success);background:var(--success-light);color:var(--success);font-weight:800}
+        .conv-opt.wrong{border-color:var(--error);background:var(--error-light);color:var(--error)}
+        .conv-opt.disabled{cursor:default;opacity:.6}
+        .conv-opt.correct.disabled{opacity:1}
+        .conv-result{text-align:center;padding:2.5rem;display:none}
+        .conv-result.show{display:block;animation:fadeInUp .5s ease}
+
+        /* === MEMORY GAME === */
+        .mem-box{background:var(--card);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);border:1px solid var(--border);padding:2rem}
+        .mem-stats{display:flex;justify-content:center;gap:2rem;margin-bottom:1.5rem;flex-wrap:wrap}
+        .mem-stat{display:flex;align-items:center;gap:.5rem;font-weight:700;color:var(--text-muted)}
+        .mem-stat i{color:var(--primary)}
+        .mem-stat .sv{color:var(--primary)}
+        .mem-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;max-width:500px;margin:0 auto}
+        .mem-card{aspect-ratio:1;perspective:600px;cursor:pointer}
+        .mem-card-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .5s ease;border-radius:var(--radius)}
+        .mem-card.flipped .mem-card-inner,.mem-card.matched .mem-card-inner{transform:rotateY(180deg)}
+        .mem-card-front,.mem-card-back{position:absolute;inset:0;backface-visibility:hidden;border-radius:var(--radius);display:flex;align-items:center;justify-content:center;font-weight:800}
+        .mem-card-front{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;font-size:1.5rem}
+        .mem-card-back{background:var(--primary-light);color:var(--primary-dark);font-size:1.1rem;transform:rotateY(180deg);border:2px solid var(--primary)}
+        .mem-card.matched .mem-card-back{background:var(--success-light);border-color:var(--success);color:var(--success)}
+        .mem-result{text-align:center;padding:2rem;display:none}
+        .mem-result.show{display:block;animation:fadeInUp .5s ease}
+        .mem-reset{margin-top:1.5rem;padding:.75rem 2rem;background:var(--primary);color:#fff;border:none;border-radius:50px;font-family:'Tajawal',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all .3s ease}
+        .mem-reset:hover{background:var(--primary-dark)}
+
+        /* === GAME INTRO === */
+        .game-intro{text-align:center;padding:2rem}
+        .game-intro i{font-size:3rem;color:var(--primary);margin-bottom:1rem}
+        .game-intro h3{font-size:1.5rem;font-weight:800;color:var(--text);margin-bottom:.75rem}
+        .game-intro p{color:var(--text-muted);font-size:1.05rem;max-width:400px;margin:0 auto}
+        .start-btn{display:block;margin:2rem auto 0;padding:1rem 3rem;background:linear-gradient(135deg,var(--primary),#10A37F);color:#fff;border:none;border-radius:50px;font-family:'Tajawal',sans-serif;font-size:1.2rem;font-weight:800;cursor:pointer;transition:all .3s ease;box-shadow:0 4px 15px rgba(12,123,95,.3)}
+        .start-btn:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(12,123,95,.4)}
+
+        /* === TOAST === */
+        .toast-wrap{position:fixed;top:1.5rem;left:50%;transform:translateX(-50%);z-index:9999;display:flex;flex-direction:column;gap:.5rem;align-items:center;pointer-events:none}
+        .toast{padding:.85rem 1.5rem;border-radius:50px;font-family:'Tajawal',sans-serif;font-weight:600;font-size:1rem;box-shadow:var(--shadow-lg);animation:toastIn .4s ease,toastOut .4s ease 2.5s forwards;display:flex;align-items:center;gap:.5rem}
+        .toast.success{background:var(--success);color:#fff}
+        .toast.error{background:var(--error);color:#fff}
+        .toast.info{background:var(--primary);color:#fff}
+        @keyframes toastIn{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes toastOut{from{opacity:1}to{opacity:0;transform:translateY(-20px)}}
+
+        /* === FOOTER === */
+        .footer{background:var(--primary-dark);color:rgba(255,255,255,.7);text-align:center;padding:2rem 1.5rem;margin-top:3rem}
+        .footer p{font-size:.95rem}
+        .footer .fb{color:#fff;font-weight:700}
+
+        /* === FLOATING SHAPES === */
+        .floating-shapes{position:fixed;inset:0;pointer-events:none;z-index:-1;overflow:hidden}
+        .fs{position:absolute;border-radius:50%;opacity:.04;background:var(--primary)}
+        .fs:nth-child(1){width:300px;height:300px;top:20%;left:-100px;animation:fl1 20s ease-in-out infinite}
+        .fs:nth-child(2){width:200px;height:200px;top:60%;right:-80px;animation:fl2 25s ease-in-out infinite}
+        .fs:nth-child(3){width:150px;height:150px;top:80%;left:30%;animation:fl3 18s ease-in-out infinite}
+        @keyframes fl1{0%,100%{transform:translate(0,0)}50%{transform:translate(50px,-50px)}}
+        @keyframes fl2{0%,100%{transform:translate(0,0)}50%{transform:translate(-40px,30px)}}
+        @keyframes fl3{0%,100%{transform:translate(0,0)}50%{transform:translate(30px,-40px)}}
+
+        /* === SCROLL ANIM === */
+        .aos{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+        .aos.vis{opacity:1;transform:translateY(0)}
+
+        /* === CONFETTI === */
+        .confetti{position:fixed;width:10px;height:10px;border-radius:2px;z-index:9998;pointer-events:none;animation:confFall 3s ease-in forwards}
+        @keyframes confFall{0%{opacity:1;transform:translateY(0) rotate(0deg)}100%{opacity:0;transform:translateY(100vh) rotate(720deg)}}
+
+        /* === RESPONSIVE === */
+        @media(max-width:640px){
+            .header h1{font-size:2rem}
+            .section-card{padding:1.5rem}
+            .quiz-body{padding:1.5rem}
+            .conv-box{padding:1.5rem}
+            .conv-singular{font-size:2.2rem}
+            .conv-opts{grid-template-columns:1fr}
+            .mem-grid{grid-template-columns:repeat(3,1fr);gap:.5rem}
+            .mem-card-back{font-size:.9rem}
+            .transform-grid{grid-template-columns:1fr 1fr}
+            .game-tab{padding:.6rem 1rem;font-size:.9rem}
+            .quiz-q{font-size:1.1rem}
+        }
+
+        @keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.03)}100%{transform:scale(1)}}
+        .pulse{animation:pulse .4s ease}
+    </style>
+</head>
+<body>
+
+<!-- Floating Background Shapes -->
+<div class="floating-shapes"><div class="fs"></div><div class="fs"></div><div class="fs"></div></div>
+
+<!-- Toast Container -->
+<div class="toast-wrap" id="toastWrap"></div>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="header-pattern"></div>
+    <div class="level-badge">
+        <i class="fas fa-layer-group"></i>
+        المستوى 2-3
+    </div>
+    <h1>المفرد والجمع</h1>
+    <p class="subtitle">قسم اللغة العربية — تعرّف على الجمع وكيفيّة تكوينه</p>
+    <div class="header-wave">
+        <svg viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 50L48 45C96 40 192 30 288 28C384 26 480 32 576 42C672 52 768 66 864 65C960 64 1056 48 1152 40C1248 32 1344 32 1392 32L1440 32V100H1392C1344 100 1248 100 1152 100C1056 100 960 100 864 100C768 100 672 100 576 100C480 100 384 100 288 100C192 100 96 100 48 100H0V50Z" fill="#F8FAFB"/>
+        </svg>
+    </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<main class="content-section">
+    <div class="container">
+
+        <!-- Section 1: Definition -->
+        <div class="section-card aos" id="defSection">
+            <div class="section-title">
+                <div class="icon-circle"><i class="fas fa-book-open"></i></div>
+                ما هو الجمع؟
+            </div>
+            <div class="definition-box">
+                الجمعُ: <span class="hl">اسمٌ يدلُّ على أكثر من اثنين</span> من الأشياء أو من الحيوانات أو من الناس.
+            </div>
+            <p style="color:var(--text-muted);margin-bottom:.5rem;font-weight:600">أمثلة على جموع:</p>
+            <div class="examples-row">
+                <span class="pill">كُتُبٌ</span>
+                <span class="pill">أَقلامٌ</span>
+                <span class="pill">فَراشاتٌ</span>
+                <span class="pill">أَولادٌ</span>
+                <span class="pill">ساعاتٌ</span>
+                <span class="pill">شَجَراتٌ</span>
+                <span class="pill">طَبيباتٌ</span>
+            </div>
+        </div>
+
+        <!-- Section 2: Conversion Rule -->
+        <div class="section-card aos" id="ruleSection">
+            <div class="section-title">
+                <div class="icon-circle"><i class="fas fa-exchange-alt"></i></div>
+                كيف نحوّل المفرد المؤنّث إلى جمع؟
+            </div>
+            <p style="font-size:1.05rem;margin-bottom:1rem;line-height:2">
+                نحوّل الاسمَ المفردَ المؤنّثَ المنتَهيَ <strong>بتاءٍ مربوطَةٍ (ة)</strong> إلى جمع المؤنّث السالم بالخطوتين التاليتين:
+            </p>
+            <div class="rule-steps">
+                <div class="rule-step">
+                    <div class="step-num">1</div>
+                    <div class="step-text">
+                        نحذفُ <span class="del">التاءَ المربوطَةَ (ة)</span> من آخر الكلمة.
+                    </div>
+                </div>
+                <div class="rule-step">
+                    <div class="step-num">2</div>
+                    <div class="step-text">
+                        نزيدُ <span class="add">ألِفًا وتاءً طويلةً (ات)</span> بدلاً منها.
+                    </div>
+                </div>
+            </div>
+
+            <p style="color:var(--text-muted);margin-bottom:.5rem;font-weight:600;margin-top:1.5rem">أمثلة تطبيقيّة:</p>
+            <div class="transform-grid">
+                <div class="transform-card">
+                    <div class="from">عَمَّةٌ</div>
+                    <div class="arrow"><i class="fas fa-arrow-down"></i></div>
+                    <div class="to">عَمَّ<span class="ats">اتٌ</span></div>
+                </div>
+                <div class="transform-card">
+                    <div class="from">سَيَّارَةٌ</div>
+                    <div class="arrow"><i class="fas fa-arrow-down"></i></div>
+                    <div class="to">سَيَّارَ<span class="ats">اتٌ</span></div>
+                </div>
+                <div class="transform-card">
+                    <div class="from">شَجَرَةٌ</div>
+                    <div class="arrow"><i class="fas fa-arrow-down"></i></div>
+                    <div class="to">شَجَرَ<span class="ats">اتٌ</span></div>
+                </div>
+                <div class="transform-card">
+                    <div class="from">فَراشَةٌ</div>
+                    <div class="arrow"><i class="fas fa-arrow-down"></i></div>
+                    <div class="to">فَراشَ<span class="ats">اتٌ</span></div>
+                </div>
+                <div class="transform-card">
+                    <div class="from">سَاعَةٌ</div>
+                    <div class="arrow"><i class="fas fa-arrow-down"></i></div>
+                    <div class="to">سَاعَ<span class="ats">اتٌ</span></div>
+                </div>
+                <div class="transform-card">
+                    <div class="from">طَبيبَةٌ</div>
+                    <div class="arrow"><i class="fas fa-arrow-down"></i></div>
+                    <div class="to">طَبيبَ<span class="ats">اتٌ</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Adjective Rule -->
+        <div class="section-card aos" id="adjSection">
+            <div class="section-title">
+                <div class="icon-circle"><i class="fas fa-pen-fancy"></i></div>
+                صفة الجمع لغير العاقل
+            </div>
+            <p style="font-size:1.05rem;line-height:2;margin-bottom:.5rem">
+                مع الجمع <strong>(لغير العاقل)</strong> نستعملُ <span style="color:var(--secondary);font-weight:700">الصِّفةَ المفردةَ المؤنّثةَ</span>، لا الصِّفةَ الجمع.
+            </p>
+            <div class="adj-examples">
+                <div class="adj-ex">
+                    <span>هذهِ</span>
+                    <span class="w-pl">حَيواناتٌ</span>
+                    <span class="w-adj">جَميلةٌ</span>
+                </div>
+                <div class="adj-ex">
+                    <span>هذهِ</span>
+                    <span class="w-pl">زُهورٌ</span>
+                    <span class="w-adj">كَثيرةٌ</span>
+                </div>
+            </div>
+            <div class="adj-note">
+                <i class="fas fa-lightbulb"></i>
+                <span>لا نقول «حيواناتٌ جميلةٌ» بصيغة الجمع في الصفة، بل نستخدم الصفة المفردة المؤنّثة: «جميلةٌ» لأنّ الحيوانات والزهور من غير العاقل.</span>
+            </div>
+        </div>
+
+        <!-- GAMES SECTION -->
+        <section class="games-section aos" id="gamesSection">
+            <div class="games-header">
+                <h2><i class="fas fa-gamepad" style="margin-left:.5rem"></i>جرّب معلوماتك!</h2>
+                <p>ثلاث ألعاب تفاعليّة لتثبيت ما تعلّمته</p>
+            </div>
+
+            <!-- Tabs -->
+            <div class="game-tabs">
+                <button class="game-tab active" data-tab="quiz">
+                    <i class="fas fa-question-circle"></i> اختبار سريع
+                </button>
+                <button class="game-tab" data-tab="convert">
+                    <i class="fas fa-sync-alt"></i> حوّل إلى جمع
+                </button>
+                <button class="game-tab" data-tab="memory">
+                    <i class="fas fa-brain"></i> لعبة الذاكرة
+                </button>
+            </div>
+
+            <!-- ===== QUIZ PANEL ===== -->
+            <div class="game-panel active" id="panel-quiz">
+                <div class="game-intro" id="quizIntro">
+                    <i class="fas fa-question-circle"></i>
+                    <h3>اختبار سريع</h3>
+                    <p>أجب عن 8 أسئلة تغطّي كلّ ما تعلّمته عن المفرد والجمع</p>
+                    <button class="start-btn" onclick="startQuiz()">ابدأ الاختبار</button>
+                </div>
+                <div class="quiz-box" id="quizBox" style="display:none">
+                    <div class="quiz-progress"><div class="quiz-progress-bar" id="quizBar" style="width:0%"></div></div>
+                    <div class="quiz-body" id="quizBody"></div>
+                    <div class="quiz-result" id="quizResult"></div>
+                </div>
+            </div>
+
+            <!-- ===== CONVERSION PANEL ===== -->
+            <div class="game-panel" id="panel-convert">
+                <div class="game-intro" id="convIntro">
+                    <i class="fas fa-sync-alt"></i>
+                    <h3>حوّل إلى جمع</h3>
+                    <p>اختر الجمع الصحيح لكلّ كلمة مفردة من بين أربعة خيارات</p>
+                    <button class="start-btn" onclick="startConversion()">ابدأ اللعبة</button>
+                </div>
+                <div class="conv-box" id="convBox" style="display:none"></div>
+            </div>
+
+            <!-- ===== MEMORY PANEL ===== -->
+            <div class="game-panel" id="panel-memory">
+                <div class="game-intro" id="memIntro">
+                    <i class="fas fa-brain"></i>
+                    <h3>لعبة الذاكرة</h3>
+                    <p>اقلب البطاقات واطابق بين الكلمة المفردة وجمعها</p>
+                    <button class="start-btn" onclick="startMemory()">ابدأ اللعبة</button>
+                </div>
+                <div class="mem-box" id="memBox" style="display:none"></div>
+            </div>
+        </section>
+
+    </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <p><span class="fb">قسم اللغة العربية</span> — المفرد والجمع — المستوى 2-3</p>
+</footer>
+
+<script>
+// =============================================
+//  بيانات الألعاب
+// =============================================
+
+// أزواج المفرد والجمع
+const wordPairs = [
+    { s: 'عَمَّةٌ', p: 'عَمَّاتٌ' },
+    { s: 'سَيَّارَةٌ', p: 'سَيَّارَاتٌ' },
+    { s: 'شَجَرَةٌ', p: 'شَجَرَاتٌ' },
+    { s: 'فَراشَةٌ', p: 'فَراشَاتٌ' },
+    { s: 'سَاعَةٌ', p: 'سَاعَاتٌ' },
+    { s: 'طَبيبَةٌ', p: 'طَبيبَاتٌ' },
+    { s: 'مُعَلِّمَةٌ', p: 'مُعَلِّمَاتٌ' },
+    { s: 'زَهرَةٌ', p: 'زَهرَاتٌ' },
+    { s: 'لَوحَةٌ', p: 'لَوحَاتٌ' },
+    { s: 'غُرفَةٌ', p: 'غُرفَاتٌ' }
+];
+
+// كلمات خاطئة للخيارات
+const wrongPlurals = [
+    'عَمُّونَ', 'سَيَّارِينَ', 'شَجَرَتانِ', 'فَراشَينَ',
+    'سَاعَوانِ', 'طَبيبُونَ', 'مُعَلِّمُونَ', 'زَهرَتانِ',
+    'لَوحَتانِ', 'غُرفَتانِ', 'كِتابٌ', 'قَلَمٌ'
+];
+
+// =============================================
+//  Toast إشعارات
+// =============================================
+function showToast(msg, type = 'info') {
+    const wrap = document.getElementById('toastWrap');
+    const t = document.createElement('div');
+    t.className = 'toast ' + type;
+    const icons = { success: 'fa-check-circle', error: 'fa-times-circle', info: 'fa-info-circle' };
+    t.innerHTML = '<i class="fas ' + (icons[type] || icons.info) + '"></i> ' + msg;
+    wrap.appendChild(t);
+    setTimeout(() => t.remove(), 3000);
+}
+
+// =============================================
+//  Confetti تأثير الاحتفال
+// =============================================
+function fireConfetti() {
+    const colors = ['#0C7B5F', '#E8912D', '#16A34A', '#DC2626', '#F59E0B', '#8B5CF6', '#EC4899'];
+    for (let i = 0; i < 50; i++) {
+        const c = document.createElement('div');
+        c.className = 'confetti';
+        c.style.left = Math.random() * 100 + 'vw';
+        c.style.top = '-10px';
+        c.style.background = colors[Math.floor(Math.random() * colors.length)];
+        c.style.animationDelay = Math.random() * 0.8 + 's';
+        c.style.width = (Math.random() * 8 + 6) + 'px';
+        c.style.height = (Math.random() * 8 + 6) + 'px';
+        document.body.appendChild(c);
+        setTimeout(() => c.remove(), 4000);
+    }
+}
+
+// =============================================
+//  تبديل التبويبات
+// =============================================
+document.querySelectorAll('.game-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+        document.querySelectorAll('.game-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.game-panel').forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
+    });
+});
+
+// =============================================
+//  Scroll Animation
+// =============================================
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+}, { threshold: 0.15 });
+document.querySelectorAll('.aos').forEach(el => observer.observe(el));
+
+// =============================================
+//  لعبة 1: الاختبار السريع
+// =============================================
+const quizQuestions = [
+    {
+        q: 'ما هو الجمع في اللغة العربية؟',
+        opts: [
+            'اسمٌ يدلُّ على أكثر من اثنين',
+            'اسمٌ يدلُّ على اثنين فقط',
+            'اسمٌ يدلُّ على واحدٍ فقط',
+            'اسمٌ يدلُّ على لا شيء'
+        ],
+        correct: 0,
+        explain: 'الجمع اسمٌ يدلُّ على أكثر من اثنين من الأشياء أو الحيوانات أو الناس.'
+    },
+    {
+        q: 'أيٌّ من التالي ليس جمعًا؟',
+        opts: ['كُتُبٌ', 'قَلَمٌ', 'أَقلامٌ', 'سَاعاتٌ'],
+        correct: 1,
+        explain: '"قَلَمٌ" مفرد، أمّا البقيّة فجموع.'
+    },
+    {
+        q: 'كيف نحوّل المفرد المؤنّث المنتَهي بـ (ة) إلى جمع مؤنّث سالم؟',
+        opts: [
+            'بزيادة واوٍ ونونٍ فقط',
+            'بحذف التاء المربوطة وإضافة ألفٍ وتاءٍ طويلة (ات)',
+            'بزيادة ياءٍ ونونٍ',
+            'لا يتغيّر شيئٌ'
+        ],
+        correct: 1,
+        explain: 'نحذف التاء المربوطة (ة) ونضيف ألفًا وتاءً طويلة (ات).'
+    },
+    {
+        q: 'ما هو جمع كلمة "سَيَّارَةٌ"؟',
+        opts: ['سَيَّارُونَ', 'سَيَّارَاتٌ', 'سَيَّارَتَانِ', 'سَيَّارَةٌ'],
+        correct: 1,
+        explain: 'نحذف (ة) ونضيف (ات): سَيَّارَاتٌ.'
+    },
+    {
+        q: 'ما هو جمع كلمة "عَمَّةٌ"؟',
+        opts: ['عَمُّونَ', 'عَمَّاتٌ', 'عَمَّتَانِ', 'عَمَّةٌ'],
+        correct: 1,
+        explain: 'نحذف (ة) ونضيف (ات): عَمَّاتٌ.'
+    },
+    {
+        q: 'مع الجمع لغير العاقل نستعمل صِفة:',
+        opts: [
+            'الجمع المذكّر',
+            'المثنّى',
+            'المفردة المؤنّثة',
+            'لا نستعمل صِفةً أصلًا'
+        ],
+        correct: 2,
+        explain: 'مع الجمع لغير العاقل نستعمل الصفة المفردة المؤنثة مثل: حيواناتٌ جميلةٌ.'
+    },
+    {
+        q: 'أكمل الفراغ: هذه زُهورٌ _______',
+        opts: ['كَثيرٌ', 'كَثيرةٌ', 'كَثيرونَ', 'كَثيرَتانِ'],
+        correct: 1,
+        explain: 'الزهور من غير العاقل، فنستخدم الصفة المفردة المؤنثة: كثيرةٌ.'
+    },
+    {
+        q: 'ما هو جمع كلمة "شَجَرَةٌ"؟',
+        opts: ['شَجَرُونَ', 'شَجَرَاتٌ', 'شَجَرَتَانِ', 'شَجَرَتَينِ'],
+        correct: 1,
+        explain: 'نحذف (ة) ونضيف (ات): شَجَرَاتٌ.'
+    }
+];
+
+let quizIndex = 0, quizScore = 0, quizAnswered = false;
+
+function startQuiz() {
+    document.getElementById('quizIntro').style.display = 'none';
+    document.getElementById('quizBox').style.display = 'block';
+    quizIndex = 0; quizScore = 0;
+    document.getElementById('quizResult').classList.remove('show');
+    renderQuizQuestion();
+}
+
+function renderQuizQuestion() {
+    quizAnswered = false;
+    const q = quizQuestions[quizIndex];
+    const bar = document.getElementById('quizBar');
+    bar.style.width = ((quizIndex) / quizQuestions.length * 100) + '%';
+
+    let html = '<div class="quiz-qnum">السؤال ' + (quizIndex + 1) + ' من ' + quizQuestions.length + '</div>';
+    html += '<div class="quiz-q">' + q.q + '</div>';
+    html += '<div class="quiz-opts">';
+    q.opts.forEach((opt, i) => {
+        html += '<button class="quiz-opt" data-idx="' + i + '" onclick="answerQuiz(' + i + ')">' + opt + '</button>';
+    });
+    html += '</div>';
+    html += '<div class="quiz-fb" id="quizFb"></div>';
+    html += '<button class="quiz-next" id="quizNext" onclick="nextQuiz()"><span>التالي</span> <i class="fas fa-arrow-left"></i></button>';
+
+    document.getElementById('quizBody').innerHTML = html;
+}
+
+function answerQuiz(idx) {
+    if (quizAnswered) return;
+    quizAnswered = true;
+    const q = quizQuestions[quizIndex];
+    const opts = document.querySelectorAll('.quiz-opt');
+    const fb = document.getElementById('quizFb');
+    const next = document.getElementById('quizNext');
+
+    opts.forEach((o, i) => {
+        o.classList.add('disabled');
+        if (i === q.correct) o.classList.add('correct');
+        if (i === idx && idx !== q.correct) o.classList.add('wrong');
+    });
+
+    if (idx === q.correct) {
+        quizScore++;
+        fb.className = 'quiz-fb show correct';
+        fb.innerHTML = '<i class="fas fa-check-circle"></i> أحسنت! ' + q.explain;
+        showToast('إجابة صحيحة!', 'success');
+    } else {
+        fb.className = 'quiz-fb show wrong';
+        fb.innerHTML = '<i class="fas fa-times-circle"></i> إجابة خاطئة. ' + q.explain;
+        showToast('حاول مرة أخرى في السؤال القادم', 'error');
+    }
+    next.classList.add('show');
+}
+
+function nextQuiz() {
+    quizIndex++;
+    if (quizIndex >= quizQuestions.length) {
+        showQuizResult();
+    } else {
+        renderQuizQuestion();
+    }
+}
+
+function showQuizResult() {
+    document.getElementById('quizBody').innerHTML = '';
+    document.getElementById('quizBar').style.width = '100%';
+    const res = document.getElementById('quizResult');
+    const pct = Math.round(quizScore / quizQuestions.length * 100);
+    let icon, text;
+    if (pct >= 80) { icon = '🌟'; text = 'ممتاز! أنت متميّز'; fireConfetti(); }
+    else if (pct >= 50) { icon = '👍'; text = 'جيّد! واصل التعلّم'; }
+    else { icon = '💪'; text = 'لا بأس! راجع الدرس وحاول مجدّدًا'; }
+
+    res.innerHTML = '<div class="result-icon">' + icon + '</div>' +
+        '<div class="result-score">' + quizScore + ' / ' + quizQuestions.length + '</div>' +
+        '<div class="result-text">' + text + '</div>' +
+        '<button class="retry-btn" onclick="startQuiz()"><i class="fas fa-redo" style="margin-left:.5rem"></i>حاول مجدّدًا</button>';
+    res.classList.add('show');
+}
+
+// =============================================
+//  لعبة 2: حوّل إلى جمع
+// =============================================
+let convIndex = 0, convScore = 0, convAnswered = false, convOrder = [];
+
+function startConversion() {
+    document.getElementById('convIntro').style.display = 'none';
+    document.getElementById('convBox').style.display = 'block';
+    convIndex = 0; convScore = 0;
+    // نختار 8 كلمات عشوائيّة
+    convOrder = [...wordPairs].sort(() => Math.random() - 0.5).slice(0, 8);
+    renderConvQuestion();
+}
+
+function renderConvQuestion() {
+    convAnswered = false;
+    const pair = convOrder[convIndex];
+    const box = document.getElementById('convBox');
+
+    // نولّد 3 خيارات خاطئة
+    let wrongs = wrongPlurals.sort(() => Math.random() - 0.5).slice(0, 3);
+    // نتأكّد أنّها ليست الإجابة الصحيحة
+    wrongs = wrongs.filter(w => w !== pair.p);
+    while (wrongs.length < 3) {
+        const extra = wordPairs.find(wp => wp.p !== pair.p && !wrongs.includes(wp.p));
+        if (extra) wrongs.push(extra.p); else break;
+    }
+    wrongs = wrongs.slice(0, 3);
+
+    // نخلط الخيارات
+    let options = [pair.p, ...wrongs].sort(() => Math.random() - 0.5);
+
+    let html = '<div class="conv-score">' +
+        '<div class="sc-item"><i class="fas fa-star"></i> النتيجة: <span id="convSc">' + convScore + '</span> / ' + convOrder.length + '</div>' +
+        '<div class="sc-item"><i class="fas fa-list-ol"></i> ' + (convIndex + 1) + ' من ' + convOrder.length + '</div>' +
+        '</div>';
+
+    html += '<div class="conv-word">' +
+        '<div class="conv-label">حوّل إلى جمع:</div>' +
+        '<div class="conv-singular">' + pair.s + '</div>' +
+        '<div class="conv-arrow"><i class="fas fa-arrow-down"></i></div>' +
+        '</div>';
+
+    html += '<div class="conv-opts">';
+    options.forEach((opt, i) => {
+        html += '<button class="conv-opt" data-val="' + opt + '" onclick="answerConv(this,\'' + opt + '\',\'' + pair.p + '\')">' + opt + '</button>';
+    });
+    html += '</div>';
+
+    html += '<div class="conv-result" id="convResult"></div>';
+
+    box.innerHTML = html;
+}
+
+function answerConv(btn, chosen, correct) {
+    if (convAnswered) return;
+    convAnswered = true;
+    const opts = document.querySelectorAll('.conv-opt');
+    opts.forEach(o => {
+        o.classList.add('disabled');
+        if (o.dataset.val === correct) o.classList.add('correct');
+        if (o === btn && chosen !== correct) o.classList.add('wrong');
+    });
+
+    if (chosen === correct) {
+        convScore++;
+        document.getElementById('convSc').textContent = convScore;
+        showToast('صحيح!', 'success');
+    } else {
+        showToast('خطأ! الجمع الصحيح: ' + correct, 'error');
+    }
+
+    // ننتظر ثم ننتقل
+    setTimeout(() => {
+        convIndex++;
+        if (convIndex >= convOrder.length) {
+            showConvResult();
+        } else {
+            renderConvQuestion();
+        }
+    }, 1200);
+}
+
+function showConvResult() {
+    const box = document.getElementById('convBox');
+    const pct = Math.round(convScore / convOrder.length * 100);
+    let icon, text;
+    if (pct >= 80) { icon = '🌟'; text = 'رائع! أنت متمكّن من قاعدة التحويل'; fireConfetti(); }
+    else if (pct >= 50) { icon = '👍'; text = 'جيّد! راجع القاعدة وحاول مرّة أخرى'; }
+    else { icon = '💪'; text = 'لا بأس! عد إلى الدرس وتدرّب أكثر'; }
+
+    box.innerHTML = '<div class="conv-result show">' +
+        '<div class="result-icon">' + icon + '</div>' +
+        '<div class="result-score">' + convScore + ' / ' + convOrder.length + '</div>' +
+        '<div class="result-text">' + text + '</div>' +
+        '<button class="retry-btn" onclick="startConversion()"><i class="fas fa-redo" style="margin-left:.5rem"></i>حاول مجدّدًا</button>' +
+        '</div>';
+}
+
+// =============================================
+//  لعبة 3: لعبة الذاكرة
+// =============================================
+let memCards = [], memFlipped = [], memMatched = 0, memMoves = 0, memLocked = false;
+
+function startMemory() {
+    document.getElementById('memIntro').style.display = 'none';
+    document.getElementById('memBox').style.display = 'block';
+    memMatched = 0; memMoves = 0; memLocked = false; memFlipped = [];
+
+    // نختار 6 أزواج
+    const pairs = [...wordPairs].sort(() => Math.random() - 0.5).slice(0, 6);
+    // ننشئ البطاقات: كلّ زوج له بطاقتان
+    memCards = [];
+    pairs.forEach((p, i) => {
+        memCards.push({ id: i, text: p.s, type: 's' });
+        memCards.push({ id: i, text: p.p, type: 'p' });
+    });
+    // نخلط
+    memCards.sort(() => Math.random() - 0.5);
+
+    renderMemory();
+}
+
+function renderMemory() {
+    const box = document.getElementById('memBox');
+    let html = '<div class="mem-stats">' +
+        '<div class="mem-stat"><i class="fas fa-mouse-pointer"></i> المحاولات: <span class="sv" id="memMoves">0</span></div>' +
+        '<div class="mem-stat"><i class="fas fa-check-double"></i> المطابقات: <span class="sv" id="memMatched">0</span> / 6</div>' +
+        '</div>';
+
+    html += '<div class="mem-grid">';
+    memCards.forEach((card, i) => {
+        html += '<div class="mem-card" data-idx="' + i + '" onclick="flipCard(this,' + i + ')">' +
+            '<div class="mem-card-inner">' +
+            '<div class="mem-card-front"><i class="fas fa-question"></i></div>' +
+            '<div class="mem-card-back">' + card.text + '</div>' +
+            '</div></div>';
+    });
+    html += '</div>';
+
+    html += '<div class="mem-result" id="memResult"></div>';
+
+    box.innerHTML = html;
+}
+
+function flipCard(el, idx) {
+    if (memLocked) return;
+    if (el.classList.contains('flipped') || el.classList.contains('matched')) return;
+    if (memFlipped.length >= 2) return;
+
+    el.classList.add('flipped');
+    memFlipped.push({ el, idx, card: memCards[idx] });
+
+    if (memFlipped.length === 2) {
+        memMoves++;
+        document.getElementById('memMoves').textContent = memMoves;
+        memLocked = true;
+
+        const [a, b] = memFlipped;
+        // نتحقّق: نفس المعرّف (id) ونوع مختلف (s و p)
+        if (a.card.id === b.card.id && a.card.type !== b.card.type) {
+            // مطابقة!
+            setTimeout(() => {
+                a.el.classList.add('matched');
+                b.el.classList.add('matched');
+                memMatched++;
+                document.getElementById('memMatched').textContent = memMatched;
+                memFlipped = [];
+                memLocked = false;
+
+                if (memMatched === 6) {
+                    setTimeout(showMemResult, 500);
+                }
+            }, 500);
+        } else {
+            // لا مطابقة
+            setTimeout(() => {
+                a.el.classList.remove('flipped');
+                b.el.classList.remove('flipped');
+                memFlipped = [];
+                memLocked = false;
+            }, 900);
+        }
+    }
+}
+
+function showMemResult() {
+    fireConfetti();
+    const res = document.getElementById('memResult');
+    let msg = memMoves <= 8 ? 'ذاكرة خارقة!' : memMoves <= 14 ? 'أداء رائع!' : 'جيّد! حاول تقليل المحاولات';
+    res.innerHTML = '<div class="result-icon">🎉</div>' +
+        '<div class="result-score">' + memMoves + ' محاولة</div>' +
+        '<div class="result-text">' + msg + '</div>' +
+        '<button class="mem-reset" onclick="startMemory()"><i class="fas fa-redo" style="margin-left:.5rem"></i>العب مرّة أخرى</button>';
+    res.classList.add('show');
+}
+</script>
+
+</body>
+</html>

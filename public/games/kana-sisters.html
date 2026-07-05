@@ -1,0 +1,394 @@
+<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>كان وأخواتها - الصف السابع</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;700;800&family=Lalezar&family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{--one:#0e7c86;--two:#d45a1f;--accent:#2ba89e;--bg:#f9f4ec;--card:#fff;--text:#2b2440;--muted:#7a7490;--border:#e8dfd0;--ok:#27ae60;--no:#c0392b;--gold:#f0a830}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Baloo Bhaijaan 2',Tajawal,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;font-size:18px}
+body::before,body::after{content:'';position:fixed;border-radius:50%;pointer-events:none;z-index:0}
+body::before{top:-120px;right:-120px;width:400px;height:400px;background:radial-gradient(circle,rgba(14,124,134,.08),transparent 70%)}
+body::after{bottom:-100px;left:-100px;width:350px;height:350px;background:radial-gradient(circle,rgba(212,90,31,.06),transparent 70%)}
+.wrap{max-width:880px;margin:auto;padding:20px 16px 50px;position:relative;z-index:1}
+.screen{display:none;animation:fadeUp .45s ease both}.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pop{0%{transform:scale(.85);opacity:0}60%{transform:scale(1.04)}100%{transform:scale(1);opacity:1}}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes confetti{0%{transform:translateY(0) rotate(0);opacity:1}100%{transform:translateY(-80px) rotate(400deg);opacity:0}}
+@keyframes slideR{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}}
+.hero,.box{background:var(--card);border-radius:24px;padding:28px;box-shadow:0 6px 24px rgba(0,0,0,.06);margin:14px 0;border:1px solid var(--border);transition:box-shadow .3s}
+.hero:hover,.box:hover{box-shadow:0 10px 32px rgba(0,0,0,.09)}
+.hero{text-align:center;padding:40px 28px 34px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:-2px;border-radius:26px;background:linear-gradient(135deg,var(--one),var(--two),var(--accent));z-index:-1;opacity:.15}
+.hero h1{font-family:Lalezar;font-size:60px;background:linear-gradient(135deg,var(--one),var(--two));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.3}
+.hero p{font-size:24px;color:var(--muted);margin-top:8px}
+.hero-icon{font-size:46px;animation:float 3s ease-in-out infinite;display:inline-block;margin-bottom:10px;color:var(--two)}
+.menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:10px}
+.btn{border:none;background:linear-gradient(145deg,var(--one),#0a5f66);color:#fff;padding:20px 18px;border-radius:20px;font-size:21px;cursor:pointer;font-family:inherit;font-weight:700;transition:all .25s;position:relative;overflow:hidden;display:flex;align-items:center;gap:10px;justify-content:center}
+.btn::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.12),transparent);pointer-events:none}
+.btn:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(14,124,134,.25)}
+.btn:active{transform:translateY(0) scale(.97)}
+.btn2{background:linear-gradient(145deg,var(--two),#b84a15)}.btn2:hover{box-shadow:0 8px 22px rgba(212,90,31,.25)}
+.btn i{font-size:22px}
+.home{position:fixed;left:12px;top:12px;z-index:100;width:48px;height:48px;border-radius:50%;padding:0;display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.q{font-size:28px;text-align:center;line-height:1.9;margin:10px 0;min-height:40px}
+.sub-q{font-size:18px;color:var(--muted);margin-bottom:10px;font-weight:700;text-align:center}
+.choices button{width:100%;margin:10px 0;padding:16px 20px;border:2px solid var(--border);border-radius:16px;background:#fff;color:var(--text);font-size:22px;font-family:inherit;font-weight:700;cursor:pointer;transition:all .25s;text-align:right;position:relative;overflow:hidden;line-height:1.8}
+.choices button:hover{border-color:var(--one);background:rgba(14,124,134,.04);transform:translateX(-4px)}
+.choices button.correct{border-color:var(--ok);background:rgba(39,174,96,.08);color:var(--ok);animation:pop .4s ease}
+.choices button.wrong{border-color:var(--no);background:rgba(192,57,43,.06);color:var(--no);animation:shake .4s ease}
+.choices button:disabled{cursor:default;opacity:.7}.choices button:disabled:hover{transform:none}
+.choices button.sm-txt{font-size:18px}
+.score-bar{display:flex;justify-content:space-between;align-items:center;padding:10px 4px;margin-bottom:6px}
+.score{font-size:26px;color:var(--one);font-weight:800;display:flex;align-items:center;gap:6px}.score i{color:var(--gold)}
+.progress{font-size:18px;color:var(--muted);font-weight:700}
+.progress-bar{width:100%;height:7px;background:var(--border);border-radius:10px;overflow:hidden;margin-bottom:14px}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--one),var(--accent));border-radius:10px;transition:width .5s ease}
+.orig{background:linear-gradient(135deg,rgba(14,124,134,.05),rgba(212,90,31,.03));border:2px dashed var(--border);border-radius:16px;padding:16px 22px;text-align:center;font-size:28px;font-weight:700;margin:6px 0 12px}
+.orig .lbl{display:block;font-size:15px;color:var(--muted);font-weight:700;margin-bottom:6px}
+.result-screen{text-align:center;padding:40px 20px}
+.result-screen .big-icon{font-size:80px;animation:float 2s ease-in-out infinite;display:inline-block;margin-bottom:16px}
+.result-screen h2{font-family:Lalezar;font-size:46px;margin-bottom:8px}
+.result-screen .final-score{font-size:68px;font-weight:800;color:var(--one);margin:12px 0}
+.result-screen .final-score span{font-size:28px;color:var(--muted)}
+.result-screen .msg{font-size:24px;color:var(--muted);margin-bottom:24px}
+.result-screen .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.confetti-piece{position:fixed;border-radius:50%;pointer-events:none;z-index:999;animation:confetti .9s ease-out forwards}
+.nav-row{display:flex;gap:10px;justify-content:center;margin-top:18px;flex-wrap:wrap}.nav-row .btn{padding:14px 28px;font-size:18px}
+.feedback{min-height:36px;font-size:20px;font-weight:700;text-align:center;margin:6px 0;transition:all .3s;line-height:1.6}
+.feedback.ok{color:var(--ok)}.feedback.no{color:var(--no)}
+.rule-cards{display:flex;flex-direction:column;gap:16px}
+.rule-card{display:flex;gap:16px;align-items:flex-start;background:linear-gradient(135deg,rgba(14,124,134,.03),rgba(212,90,31,.02));border:1px solid var(--border);border-radius:16px;padding:20px;transition:transform .2s}
+.rule-card:hover{transform:translateY(-2px)}
+.rule-icon{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,var(--one),var(--accent));color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.rule-body{flex:1}.rule-body h3{font-family:Lalezar;font-size:26px;color:var(--one);margin-bottom:8px}.rule-body p{line-height:2;font-size:20px}
+.sisters-grid{display:flex;flex-wrap:wrap;gap:10px}
+.sisters-grid span{background:var(--card);border:1px solid var(--border);padding:8px 16px;border-radius:10px;font-weight:700;font-size:18px;transition:all .2s}
+.sisters-grid span:hover{border-color:var(--one);color:var(--one)}
+.compare{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:8px 0}
+.compare-before,.compare-after{background:var(--card);border-radius:12px;padding:14px 18px;flex:1;min-width:130px;text-align:center;border:1px solid var(--border)}
+.compare-before span:not(.cl):not(.cn),.compare-after span:not(.cl):not(.cn){display:block;font-size:22px;font-weight:700}
+.cl{font-size:14px!important;color:var(--muted);font-weight:700!important;margin-bottom:6px;display:block}
+.cn{font-size:13px!important;color:var(--muted);font-weight:400!important;margin-top:8px;display:block}
+.compare-arrow{color:var(--two);font-size:24px;flex-shrink:0}
+.compare-after mark{background:rgba(39,174,96,.15);color:var(--ok);padding:0 4px;border-radius:4px}
+.examples-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:10px}
+.examples-grid div{background:var(--card);border-radius:10px;padding:12px 16px;font-size:19px;border:1px solid var(--border)}
+.examples-grid s{color:var(--no);text-decoration-color:var(--no)}
+.examples-grid strong{color:var(--ok)}
+.examples-grid small{color:var(--muted);font-size:14px;display:block;margin-top:2px}
+.types-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-top:12px}
+.type-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;text-align:center;transition:all .25s}
+.type-card:hover{border-color:var(--one);transform:translateY(-2px)}
+.type-card h4{font-family:Lalezar;font-size:22px;color:var(--two);margin-bottom:8px}
+.type-card .eg{font-size:18px;line-height:1.8;color:var(--text)}
+.type-card .eg em{color:var(--ok);font-style:normal;font-weight:700}
+.section-title{font-family:Lalezar;font-size:32px;color:var(--one);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.note-box{background:rgba(240,168,48,.08);border:1px solid rgba(240,168,48,.3);border-radius:14px;padding:16px 20px;margin-top:14px;font-size:19px;line-height:2}
+.note-box strong{color:var(--two)}
+.irab-box{background:linear-gradient(135deg,#f7fbfb,#fef9f2);border:1px solid var(--border);border-radius:16px;padding:20px 22px;margin:8px 0;font-size:28px;text-align:center;line-height:2.4;direction:rtl}
+.irab-box u{text-decoration-color:var(--one);text-underline-offset:5px;font-weight:700}
+@media(max-width:600px){
+.hero h1{font-size:44px}.menu{grid-template-columns:1fr}.q{font-size:24px}.orig{font-size:24px;padding:14px 16px}
+.choices button{font-size:20px;padding:14px 16px}.choices button.sm-txt{font-size:16px}
+.compare{flex-direction:column}.compare-arrow{transform:rotate(90deg)}
+.result-screen .final-score{font-size:52px}.examples-grid,.types-grid{grid-template-columns:1fr}.irab-box{font-size:24px}
+.rule-body p{font-size:18px}.rule-body h3{font-size:22px}
+}
+</style>
+</head>
+<body>
+<button class="btn home" onclick="goHome()" title="الرئيسية"><i class="fas fa-home"></i></button>
+<div class="wrap">
+
+<section id="home" class="screen active">
+<div class="hero">
+<div class="hero-icon"><i class="fas fa-pen-fancy"></i></div>
+<h1>كان وأخواتها</h1>
+</div>
+<div class="menu">
+<button class="btn" onclick="showLearn()"><i class="fas fa-lightbulb"></i> أتعلم القاعدة</button>
+<button class="btn btn2" onclick="startTransform()"><i class="fas fa-exchange-alt"></i> أدخل وأغيّر</button>
+<button class="btn" onclick="startIsmType()"><i class="fas fa-cube"></i> نوع اسم كان</button>
+<button class="btn btn2" onclick="startKhabarType()"><i class="fas fa-link"></i> نوع خبر كان</button>
+<button class="btn" onclick="startIrab()"><i class="fas fa-pen-nib"></i> أعرب</button>
+</div>
+</section>
+
+<section id="learn" class="screen">
+<div class="box">
+<div class="section-title"><i class="fas fa-lightbulb"></i> الأفعال الناقصة</div>
+<div class="rule-cards">
+<div class="rule-card">
+<div class="rule-icon"><i class="fas fa-exchange-alt"></i></div>
+<div class="rule-body">
+<h3>ما هي الأفعال الناقصة؟</h3>
+<p>أفعال تدخل على الجملة الاسمية فترفع الأوّل <strong>اسمًا لها</strong> (المبتدأ) وتنصب الثاني <strong>خبرًا لها</strong> (الخبر).</p>
+<div class="compare">
+<div class="compare-before"><span class="cl">قبل الإدخال</span><span>الفتاةُ مُجتهدةٌ</span><span class="cn">مبتدأ مرفوع + خبر مرفوع</span></div>
+<i class="fas fa-arrow-left compare-arrow"></i>
+<div class="compare-after"><span class="cl">بعد الإدخال</span><span>كانتِ الفتاةُ <mark>مُجتهدةً</mark></span><span class="cn">اسم كان مرفوع + خبر كان منصوب</span></div>
+</div>
+</div></div>
+<div class="rule-card">
+<div class="rule-icon"><i class="fas fa-list"></i></div>
+<div class="rule-body">
+<h3>أخوات كان</h3>
+<div class="sisters-grid">
+<span>كان</span><span>أصبح</span><span>أضحى</span><span>أمسى</span><span>ظلّ</span><span>بات</span><span>صار</span><span>ليس</span><span>ما زال</span><span>ما فتئ</span><span>ما انفكّ</span><span>ما برح</span><span>ما دام</span>
+</div>
+</div></div>
+<div class="rule-card">
+<div class="rule-icon"><i class="fas fa-pencil-alt"></i></div>
+<div class="rule-body">
+<h3>التغيير اللازم: الخبر يصبح منصوبًا</h3>
+<div class="examples-grid">
+<div><s>محترمٌ</s> ← <strong>محترمًا</strong><small>مفرد</small></div>
+<div><s>واقفتان</s> ← <strong>واقفتين</strong><small>مثنى</small></div>
+<div><s>نشيطون</s> ← <strong>نشيطين</strong><small>جمع مذكّر</small></div>
+<div><s>حاضراتٌ</s> ← <strong>حاضراتٍ</strong><small>جمع مؤنث</small></div>
+</div>
+</div></div>
+<div class="rule-card">
+<div class="rule-icon"><i class="fas fa-th-large"></i></div>
+<div class="rule-body">
+<h3>أنواع خبر الأفعال الناقصة</h3>
+<div class="types-grid">
+<div class="type-card"><h4>كلمة مفردة</h4><div class="eg">كانتِ الحكايةُ <em>طويلةً</em><br>ظلَّ ربيعُ بلادي <em>رائعًا</em></div></div>
+<div class="type-card"><h4>جملة فعلية</h4><div class="eg">ما زال الطقسُ <em>يُمطرُ</em><br>أصبح والدي <em>يعلمُ بالأمرِ</em></div></div>
+<div class="type-card"><h4>جملة اسمية</h4><div class="eg">ظلَّتِ السماءُ <em>غيومُها مُلبّدةٌ</em><br>صارتِ الورقةُ <em>لونُها أبيضُ</em></div></div>
+<div class="type-card"><h4>شبه جملة</h4><div class="eg">باتَ الطيرُ <em>فوق الغصنِ</em><br>ليسَ الكتابُ <em>في الحقيبةِ</em></div></div>
+</div>
+</div></div>
+<div class="rule-card">
+<div class="rule-icon"><i class="fas fa-info-circle"></i></div>
+<div class="rule-body">
+<h3>ملاحظة</h3>
+<div class="note-box">تتّصل ضمائر الرّفع بالأفعال الناقّصة (كانَ، كانَتْ، كانا، كانوا...) ويكون <strong>محلّها من الإعراب رفع اسمًا لهذه الأفعال</strong>.</div>
+</div></div>
+</div>
+<div class="nav-row">
+<button class="btn" onclick="goHome()"><i class="fas fa-arrow-right"></i> رجوع</button>
+<button class="btn btn2" onclick="startTransform()"><i class="fas fa-play"></i> ابدأ التمارين</button>
+</div>
+</div>
+</section>
+
+<section id="game" class="screen">
+<div class="box">
+<div class="score-bar">
+<div class="score"><i class="fas fa-star"></i> <span id="scoreVal">0</span></div>
+<div class="progress" id="progressVal">1/9</div>
+</div>
+<div class="progress-bar"><div class="progress-fill" id="progressBar" style="width:11%"></div></div>
+<div id="origBox"></div>
+<div class="q" id="q"></div>
+<div id="answers" class="choices"></div>
+<div class="feedback" id="feedback"></div>
+</div>
+</section>
+
+<section id="result" class="screen">
+<div class="box result-screen">
+<div class="big-icon" id="resultIcon"></div>
+<h2 id="resultTitle"></h2>
+<div class="final-score"><span id="resultScore">0</span> <span>/ <span id="resultTotal">0</span></span></div>
+<div class="msg" id="resultMsg"></div>
+<div class="btns">
+<button class="btn" onclick="goHome()"><i class="fas fa-home"></i> الرئيسية</button>
+<button class="btn btn2" id="retryBtn"><i class="fas fa-redo"></i> أعد المحاولة</button>
+</div>
+</div>
+</section>
+
+</div>
+
+<script>
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active')}
+function goHome(){show('home')}
+function showLearn(){show('learn')}
+
+let score=0,data=[],idx=0,totalQ=0,mode='',done=false;
+
+function updUI(){
+    document.getElementById('scoreVal').textContent=score;
+    document.getElementById('progressVal').textContent=(idx+1)+' / '+totalQ;
+    document.getElementById('progressBar').style.width=((idx+1)/totalQ*100)+'%';
+    document.getElementById('feedback').textContent='';
+    document.getElementById('feedback').className='feedback';
+    document.getElementById('origBox').innerHTML='';
+    done=false;
+}
+
+function setFB(t,ok){
+    const f=document.getElementById('feedback');
+    f.textContent=t;f.className='feedback '+(ok?'ok':'no');
+    f.style.animation='none';f.offsetHeight;f.style.animation='pop .35s ease';
+}
+
+function confetti(){
+    const c=['#f0a830','#0e7c86','#d45a1f','#27ae60','#e74c3c','#9b59b6'];
+    for(let i=0;i<30;i++){const e=document.createElement('div');e.className='confetti-piece';
+    e.style.left=Math.random()*100+'vw';e.style.top=(50+Math.random()*40)+'vh';
+    e.style.background=c[Math.floor(Math.random()*c.length)];
+    e.style.animationDelay=Math.random()*.5+'s';e.style.animationDuration=(.6+Math.random()*.6)+'s';
+    const s=6+Math.random()*6;e.style.width=s+'px';e.style.height=s+'px';
+    document.body.appendChild(e);setTimeout(()=>e.remove(),1500)}
+}
+
+function showResult(){
+    show('result');
+    const mx=totalQ*10,pct=Math.round(score/mx*100);
+    const ic=document.getElementById('resultIcon'),ti=document.getElementById('resultTitle'),ms=document.getElementById('resultMsg');
+    document.getElementById('resultScore').textContent=score;
+    document.getElementById('resultTotal').textContent=mx;
+    if(pct>=90){ic.innerHTML='<i class="fas fa-trophy" style="color:var(--gold)"></i>';ti.textContent='ممتاز!';ms.textContent='أداء رائع، أنت متميز!';confetti()}
+    else if(pct>=70){ic.innerHTML='<i class="fas fa-medal" style="color:var(--one)"></i>';ti.textContent='جيد جدًا';ms.textContent='أحسنت! استمر في التقدم.'}
+    else if(pct>=50){ic.innerHTML='<i class="fas fa-thumbs-up" style="color:var(--two)"></i>';ti.textContent='جيد';ms.textContent='حاول مرة أخرى لتحصل على نتيجة أفضل.'}
+    else{ic.innerHTML='<i class="fas fa-book-reader" style="color:var(--muted)"></i>';ti.textContent='تحتاج مراجعة';ms.textContent='عد إلى القاعدة وحاول مرة أخرى.'}
+    document.getElementById('retryBtn').onclick=function(){
+        if(mode==='transform')startTransform();else if(mode==='ism')startIsmType();
+        else if(mode==='khabar')startKhabarType();else if(mode==='irab')startIrab();
+    };
+}
+
+function nextQ(){idx++;if(idx>=totalQ){showResult();return}
+    if(mode==='transform')renderTransform();else if(mode==='ism')renderIsm();
+    else if(mode==='khabar')renderKhabar();else if(mode==='irab')renderIrab();
+}
+
+/* === 1) أدخل وأغيّر === */
+const transformData=[
+    {orig:'الرجلُ محترمٌ',q:'أدخل "كان" وأجرِ التغيير اللازم:',a:['كانَ الرجلُ محترمٌ','كانَ الرجلُ محترمًا','كانَ الرجلُ محترمٍ'],c:'كانَ الرجلُ محترمًا'},
+    {orig:'الطقسُ حارٌ',q:'أدخل "أصبحَ" وأجرِ التغيير اللازم:',a:['أصبحَ الطقسُ حارٌ','أصبحَ الطقسُ حارًا','أصبحَ الطقسُ حارٍ'],c:'أصبحَ الطقسُ حارًا'},
+    {orig:'المعلّمتان واقفتان في الصّفّ',q:'أدخل "ظلَّتْ" وأجرِ التغيير اللازم:',a:['ظلَّتِ المعلّمتان واقفتان في الصّفّ','ظلَّتِ المعلّمتان واقفتينِ في الصّفّ','ظلَّتِ المعلّمتان واقفتًا في الصّفّ'],c:'ظلَّتِ المعلّمتان واقفتينِ في الصّفّ'},
+    {orig:'جبالُ لبنانَ مُكلّلةٌ بالثّلوج',q:'أدخل "أصبحتْ" وأجرِ التغيير اللازم:',a:['أصبحتْ جبالُ لبنانَ مُكلّلةٌ بالثّلوج','أصبحتْ جبالُ لبنانَ مُكلّلةً بالثّلوج','أصبحتْ جبالُ لبنانَ مُكلّلةٍ بالثّلوج'],c:'أصبحتْ جبالُ لبنانَ مُكلّلةً بالثّلوج'},
+    {orig:'هذه المعلّمةُ الجديدةُ لطيفةٌ',q:'أدخل "كانتْ" وأجرِ التغيير اللازم:',a:['كانتْ هذه المعلّمةُ الجديدةُ لطيفةٌ','كانتْ هذه المعلّمةُ الجديدةُ لطيفةً','كانتْ هذه المعلّمةُ الجديدةُ لطيفةٍ'],c:'كانتْ هذه المعلّمةُ الجديدةُ لطيفةً'},
+    {orig:'المُزارعون نشيطون في العمل',q:'أدخل "ظلَّ" وأجرِ التغيير اللازم:',a:['ظلَّ المُزارعون نشيطون في العمل','ظلَّ المُزارعون نشيطينَ في العمل','ظلَّ المُزارعون نشيطًا في العمل'],c:'ظلَّ المُزارعون نشيطينَ في العمل'},
+    {orig:'المعلّماتُ حاضراتٌ في الصّفوف',q:'أدخل "أصبحتْ" وأجرِ التغيير اللازم:',a:['أصبحتِ المعلّماتُ حاضراتٌ في الصّفوف','أصبحتِ المعلّماتُ حاضراتٍ في الصّفوف','أصبحتِ المعلّماتُ حاضراتينَ في الصّفوف'],c:'أصبحتِ المعلّماتُ حاضراتٍ في الصّفوف'},
+    {orig:'المُتنزِّهون عائدون إلى بيوتِهم',q:'أدخل "كانَ" وأجرِ التغيير اللازم:',a:['كانَ المُتنزِّهون عائدون إلى بيوتِهم','كانَ المُتنزِّهون عائدينَ إلى بيوتِهم','كانَ المُتنزِّهون عائدًا إلى بيوتِهم'],c:'كانَ المُتنزِّهون عائدينَ إلى بيوتِهم'},
+    {orig:'العاملان موجودان في الشّركة',q:'أدخل "كانَ" وأجرِ التغيير اللازم:',a:['كانَ العاملان موجودان في الشّركة','كانَ العاملان موجودينِ في الشّركة','كانَ العاملان موجودًا في الشّركة'],c:'كانَ العاملان موجودينِ في الشّركة'},
+    {orig:'التلميذُ مجتهدٌ',q:'أدخل "صارَ" وأجرِ التغيير اللازم:',a:['صارَ التلميذُ مجتهدٌ','صارَ التلميذُ مجتهدًا','صارَ التلميذُ مجتهدٍ'],c:'صارَ التلميذُ مجتهدًا'},
+    {orig:'شفتاها مُطبقتانِ',q:'أدخل "أصبحتْ" وأجرِ التغيير اللازم:',a:['أصبحتْ شفتاها مُطبقتانِ','أصبحتْ شفتاها مُطبقتينِ','أصبحتْ شفتاها مُطبقةً'],c:'أصبحتْ شفتاها مُطبقتينِ'},
+    {orig:'الموظّفون واثقونَ من عملهم',q:'أدخل "ظلَّ" وأجرِ التغيير اللازم:',a:['ظلَّ الموظّفون واثقونَ من عملهم','ظلَّ الموظّفون واثقينَ من عملهم','ظلَّ الموظّفون واثقًا من عملهم'],c:'ظلَّ الموظّفون واثقينَ من عملهم'},
+    {orig:'المعلّماتُ نشيطاتٌ',q:'أدخل "كانتْ" وأجرِ التغيير اللازم:',a:['كانتِ المعلّماتُ نشيطاتٌ','كانتِ المعلّماتُ نشيطاتٍ','كانتِ المعلّماتُ نشيطاتينَ'],c:'كانتِ المعلّماتُ نشيطاتٍ'},
+    {orig:'طبيبا المستشفى ماهرانِ',q:'أدخل "أصبحَ" وأجرِ التغيير اللازم:',a:['أصبحَ طبيبا المستشفى ماهرانِ','أصبحَ طبيبا المستشفى ماهرَيْنِ','أصبحَ طبيبا المستشفى ماهرًا'],c:'أصبحَ طبيبا المستشفى ماهرَيْنِ'},
+    {orig:'أخوكَ بارعٌ في الرّياضة',q:'أدخل "كانَ" وأجرِ التغيير اللازم:',a:['كانَ أخوكَ بارعٌ في الرّياضة','كانَ أخوكَ بارعًا في الرّياضة','كانَ أخوكَ بارعٍ في الرّياضة'],c:'كانَ أخوكَ بارعًا في الرّياضة'},
+    {orig:'الممرّضاتُ مُخلِصاتٌ في عملهنّ',q:'أدخل "ظلَّت" وأجرِ التغيير اللازم:',a:['ظلَّت الممرّضاتُ مُخلِصاتٌ في عملهنّ','ظلَّت الممرّضاتُ مُخلِصاتٍ في عملهنّ','ظلَّت الممرّضاتُ مُخلِصاتينَ في عملهنّ'],c:'ظلَّت الممرّضاتُ مُخلِصاتٍ في عملهنّ'}
+];
+
+function startTransform(){mode='transform';score=0;idx=0;data=[...transformData].sort(()=>Math.random()-.5).slice(0,10);totalQ=data.length;show('game');renderTransform()}
+
+function renderTransform(){
+    updUI();const x=data[idx];
+    document.getElementById('origBox').innerHTML='<div class="orig"><span class="lbl">الجملة الأصلية</span>'+x.orig+'</div>';
+    document.getElementById('q').textContent=x.q;
+    const a=document.getElementById('answers');a.innerHTML='';
+    [...x.a].sort(()=>Math.random()-.5).forEach(v=>{const b=document.createElement('button');b.textContent=v;
+        b.onclick=function(){if(done)return;done=true;
+            if(v===x.c){score+=10;b.classList.add('correct');setFB('أحسنت! الخبر أصبح منصوبًا',true)}
+            else{b.classList.add('wrong');setFB('تذكّر: خبر كان وأخواتها يكون منصوبًا',false);a.querySelectorAll('button').forEach(bt=>{if(bt.textContent===x.c)bt.classList.add('correct')})}
+            a.querySelectorAll('button').forEach(bt=>bt.disabled=true);document.getElementById('scoreVal').textContent=score;setTimeout(nextQ,1600)};a.appendChild(b)})
+}
+
+/* === 2) نوع اسم كان === */
+const ismData=[
+    {q:'ما نوع اسم كان في هذه الجملة؟\nكان الطفلُ مريضًا.',a:['مفرد','مثنى','جمع مذكّر','جمع مؤنث'],c:'مفرد'},
+    {q:'ما نوع اسم كان في هذه الجملة؟\nكان هذا الكتابُ موجوداً في الملعبِ.',a:['مفرد','اسم إشارة','جمع مذكّر','جمع مؤنث'],c:'اسم إشارة'},
+    {q:'ما نوع اسم كان في هذه الجملة؟\nكان الولدان نائمينِ في سريرهما.',a:['مفرد','مثنى','جمع مذكّر','جمع مؤنث'],c:'مثنى'},
+    {q:'ما نوع اسم كان في هذه الجملة؟\nكان الموظّفون حاضرينَ في مكاتبِهم.',a:['مفرد','مثنى','جمع مذكّر','اسم إشارة'],c:'جمع مذكّر'},
+    {q:'ما نوع اسم كان في هذه الجملة؟\nكانتِ المعلّماتُ نشيطاتٍ.',a:['مفرد','مثنى','جمع مذكّر','جمع مؤنث'],c:'جمع مؤنث'},
+    {q:'ما نوع اسم كان في هذه الجملة؟\nكانتِ الفتاةُ مجتهدةً.',a:['مفرد','مثنى','جمع مذكّر','جمع مؤنث'],c:'مفرد'},
+    {q:'ما نوع اسم كان في هذه الجملة؟\nأصبحَ طبيبا المستشفى ماهرَيْنِ.',a:['مفرد','مثنى','جمع مذكّر','اسم إشارة'],c:'مثنى'},
+    {q:'ما نوع اسم كان في هذه الجملة؟\nظلَّ المُزارعون نشيطينَ في العمل.',a:['مفرد','اسم إشارة','جمع مذكّر','جمع مؤنث'],c:'جمع مذكّر'}
+];
+
+function startIsmType(){mode='ism';score=0;idx=0;data=[...ismData];totalQ=data.length;show('game');renderIsm()}
+
+function renderIsm(){
+    updUI();const x=data[idx];
+    document.getElementById('q').innerHTML=x.q.replace(/\n/g,'<br>');
+    const a=document.getElementById('answers');a.innerHTML='';
+    [...x.a].sort(()=>Math.random()-.5).forEach(v=>{const b=document.createElement('button');b.textContent=v;
+        b.onclick=function(){if(done)return;done=true;
+            if(v===x.c){score+=10;b.classList.add('correct');setFB('أحسنت! إجابة صحيحة',true)}
+            else{b.classList.add('wrong');setFB('حاول مرة أخرى في المرة القادمة',false);a.querySelectorAll('button').forEach(bt=>{if(bt.textContent===x.c)bt.classList.add('correct')})}
+            a.querySelectorAll('button').forEach(bt=>bt.disabled=true);document.getElementById('scoreVal').textContent=score;setTimeout(nextQ,1600)};a.appendChild(b)})
+}
+
+/* === 3) نوع خبر كان === */
+const khabarData=[
+    {q:'ما نوع خبر كان في هذه الجملة؟\nأصبحَ الطقسُ بارداً.',a:['كلمة مفردة','جملة فعلية','جملة اسمية','شبه جملة'],c:'كلمة مفردة'},
+    {q:'ما نوع خبر كان في هذه الجملة؟\nكانتِ الفتاةُ ترقصُ في الحفلةِ.',a:['كلمة مفردة','جملة فعلية','جملة اسمية','شبه جملة'],c:'جملة فعلية'},
+    {q:'ما نوع خبر كان في هذه الجملة؟\nكانتِ الحكايةُ طويلةً.',a:['كلمة مفردة','جملة فعلية','جملة اسمية','شبه جملة'],c:'كلمة مفردة'},
+    {q:'ما نوع خبر كان في هذه الجملة؟\nظلَّ ربيعُ بلادي رائعًا.',a:['كلمة مفردة','جملة فعلية','جملة اسمية','شبه جملة'],c:'كلمة مفردة'},
+    {q:'ما نوع خبر كان في هذه الجملة؟\nما زالَ الطقسُ يُمطرُ.',a:['كلمة مفردة','جملة فعلية','جملة اسمية','شبه جملة'],c:'جملة فعلية'},
+    {q:'ما نوع خبر كان في هذه الجملة؟\nأصبحَ والدي يعلمُ بالأمرِ.',a:['كلمة مفردة','جملة فعلية','جملة اسمية','شبه جملة'],c:'جملة فعلية'},
+    {q:'ما نوع خبر كان في هذه الجملة؟\nظلَّتِ السماءُ غيومُها مُلبّدةٌ.',a:['كلمة مفردة','جملة فعلية','جملة اسمية','شبه جملة'],c:'جملة اسمية'},
+    {q:'ما نوع خبر كان في هذه الجملة؟\nصارتِ الورقةُ لونُها أبيضُ.',a:['كلمة مفردة','جملة فعلية','جملة اسمية','شبه جملة'],c:'جملة اسمية'},
+    {q:'ما نوع خبر كان في هذه الجملة؟\nما برحَ الثلجُ ساطعٌ بريقهُ.',a:['كلمة مفردة','جملة فعلية','جملة اسمية','شبه جملة'],c:'جملة اسمية'},
+    {q:'ما نوع خبر كان في هذه الجملة؟\nباتَ الطيرُ فوق الغصنِ.',a:['كلمة مفردة','جملة فعلية','جملة اسمية','شبه جملة'],c:'شبه جملة'},
+    {q:'ما نوع خبر كان في هذه الجملة؟\nليسَ الكتابُ في الحقيبةِ.',a:['كلمة مفردة','جملة فعلية','جملة اسمية','شبه جملة'],c:'شبه جملة'}
+];
+
+function startKhabarType(){mode='khabar';score=0;idx=0;data=[...khabarData];totalQ=data.length;show('game');renderKhabar()}
+
+function renderKhabar(){
+    updUI();const x=data[idx];
+    document.getElementById('q').innerHTML=x.q.replace(/\n/g,'<br>');
+    const a=document.getElementById('answers');a.innerHTML='';
+    [...x.a].sort(()=>Math.random()-.5).forEach(v=>{const b=document.createElement('button');b.textContent=v;
+        b.onclick=function(){if(done)return;done=true;
+            if(v===x.c){score+=10;b.classList.add('correct');setFB('أحسنت! إجابة صحيحة',true)}
+            else{b.classList.add('wrong');setFB('حاول مرة أخرى في المرة القادمة',false);a.querySelectorAll('button').forEach(bt=>{if(bt.textContent===x.c)bt.classList.add('correct')})}
+            a.querySelectorAll('button').forEach(bt=>bt.disabled=true);document.getElementById('scoreVal').textContent=score;setTimeout(nextQ,1600)};a.appendChild(b)})
+}
+
+/* === 4) الإعراب === */
+const irabData=[
+    {q:'أعرب ما تحته خط:',sentence:'<u>أصبحَ</u> الطقسُ صافياً.',
+     word:'أصبحَ',
+     a:['فعل ماض ناقص مبني على الفتحة، يدخل على المبتدأ والخبر فيرفع الأول اسمًا له وينصب الثاني خبرًا له.','فعل ماض تام مبني على الفتحة.','فعل مضارع مرفوع وعلامة رفعه الضمة الظاهرة.'],
+     c:'فعل ماض ناقص مبني على الفتحة، يدخل على المبتدأ والخبر فيرفع الأول اسمًا له وينصب الثاني خبرًا له.'},
+    {q:'أعرب ما تحته خط:',sentence:'أصبحَ <u>الطقسُ</u> صافياً.',
+     word:'الطقسُ',
+     a:['اسم "أصبح" مرفوع وعلامة رفعه الضمة الظاهرة على آخره.','خبر "أصبح" منصوب وعلامة نصبه الفتحة الظاهرة على آخره.','مبتدأ مرفوع وعلامة رفعه الضمة الظاهرة على آخره.'],
+     c:'اسم "أصبح" مرفوع وعلامة رفعه الضمة الظاهرة على آخره.'},
+    {q:'أعرب ما تحته خط:',sentence:'أصبحَ الطقسُ <u>صافياً</u>.',
+     word:'صافياً',
+     a:['اسم "أصبح" مرفوع وعلامة رفعه الضمة الظاهرة على آخره.','خبر "أصبح" منصوب وعلامة نصبه الفتحة الظاهرة على آخره.','مبتدأ منصوب وعلامة نصبه الفتحة الظاهرة على آخره.'],
+     c:'خبر "أصبح" منصوب وعلامة نصبه الفتحة الظاهرة على آخره.'},
+    {q:'ما إعراب الكلمة التي تحتها خط؟',sentence:'كانتِ <u>الفتاةُ</u> مُجتهدةً.',
+     word:'الفتاةُ',
+     a:['خبر "كانت" منصوب وعلامة نصبه الفتحة الظاهرة.','اسم "كانت" مرفوع وعلامة رفعه الضمة الظاهرة على آخره.','فاعل مرفوع وعلامة رفعه الضمة.'],
+     c:'اسم "كانت" مرفوع وعلامة رفعه الضمة الظاهرة على آخره.'},
+    {q:'ما إعراب الكلمة التي تحتها خط؟',sentence:'كانتِ الفتاةُ <u>مُجتهدةً</u>.',
+     word:'مُجتهدةً',
+     a:['اسم "كانت" مرفوع وعلامة رفعه الضمة.','خبر "كانت" منصوب وعلامة نصبه الفتحة الظاهرة على آخره.','حال منصوب وعلامة نصبه الفتحة.'],
+     c:'خبر "كانت" منصوب وعلامة نصبه الفتحة الظاهرة على آخره.'},
+    {q:'ما إعراب الكلمة التي تحتها خط؟',sentence:'ظلَّ <u>المُزارعون</u> نشيطينَ في العمل.',
+     word:'المُزارعون',
+     a:['خبر "ظلّ" منصوب وعلامة نصبه الياء لأنه جمع مذكّر سالم.','اسم "ظلّ" مرفوع وعلامة رفعه الواو لأنه جمع مذكّر سالم.','فاعل مرفوع وعلامة رفعه الواو.'],
+     c:'اسم "ظلّ" مرفوع وعلامة رفعه الواو لأنه جمع مذكّر سالم.'},
+    {q:'ما إعراب الكلمة التي تحتها خط؟',sentence:'أصبحتِ <u>المعلّمتان</u> واقفتينِ في الصّفّ.',
+     word:'المعلّمتان',
+     a:['خبر "أصبحت" منصوب وعلامة نصبه الياء.','اسم "أصبحت" مرفوع وعلامة رفعه الألف لأنه مثنى.','مبتدأ مرفوع وعلامة رفعه الألف.'],
+     c:'اسم "أصبحت" مرفوع وعلامة رفعه الألف لأنه مثنى.'}
+];
+
+function startIrab(){mode='irab';score=0;idx=0;data=[...irabData];totalQ=data.length;show('game');renderIrab()}
+
+function renderIrab(){
+    updUI();const x=data[idx];
+    document.getElementById('origBox').innerHTML='<div class="irab-box">'+x.sentence+'</div>';
+    document.getElementById('q').textContent='ما إعراب "'+x.word+'"?';
+    const a=document.getElementById('answers');a.innerHTML='';
+    [...x.a].sort(()=>Math.random()-.5).forEach(v=>{const b=document.createElement('button');b.textContent=v;b.classList.add('sm-txt');
+        b.onclick=function(){if(done)return;done=true;
+            if(v===x.c){score+=10;b.classList.add('correct');setFB('أحسنت! إعراب صحيح',true)}
+            else{b.classList.add('wrong');setFB('الإجابة الصحيحة مُظهرة باللون الأخضر',false);a.querySelectorAll('button').forEach(bt=>{if(bt.textContent===x.c)bt.classList.add('correct')})}
+            a.querySelectorAll('button').forEach(bt=>bt.disabled=true);document.getElementById('scoreVal').textContent=score;setTimeout(nextQ,2200)};a.appendChild(b)})
+}
+</script>
+</body>
+</html>

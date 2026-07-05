@@ -29,10 +29,10 @@ with a glowing gold "أنت هنا (You are here)" marker. Marked in the code wi
 - Core logic in **ES6 classes**: `PlacementTest`, `LessonCatalog`, `ApiClient`,
   `AudioPlayer`, `Speaker`, `FormValidator`, plus `ScrollReveal`
 - **Prisma + Neon (PostgreSQL)** for placement results and bookings
-- **APIs used:** two [API Ninjas](https://api-ninjas.com) endpoints, both called
-  **server-side** so the key never reaches the browser — **Facts** (the "هل تعلم؟"
-  card + the `/facts` explorer) and **Dictionary** (the English-word lookup on
-  `/facts`); the daily Arabic quote is a curated local list
+- **API used:** [API Ninjas](https://api-ninjas.com) **Facts** endpoint, called
+  **server-side** so the key never reaches the browser — powering the home
+  "هل تعلم؟" card and the `/facts` explorer; the daily Arabic quote is a curated
+  local list
 
 ## Pages
 | Route | What it does |
@@ -41,12 +41,12 @@ with a glowing gold "أنت هنا (You are here)" marker. Marked in the code wi
 | `/test` | 16-question placement test in 4 sections (reading, writing, **dictation with audio**, grammar) → overall + per-skill levels (A/B/C/D) highlighted on the timeline |
 | `/lessons` | 34 lessons (incl. full 28-letter alphabet chart), live search + level filter, 25 practice games, browser-saved progress |
 | `/skills` | Skills Lab: 4 real story suites (listening/dictation, reading, writing) |
-| `/facts` | **API showcase (Bootstrap 5):** API Ninjas facts with **search + filter + pagination**, plus an English **dictionary** lookup (2nd API) — all with loading/error/empty states |
+| `/facts` | **API showcase (Bootstrap 5):** API Ninjas facts with **search + filter + pagination** — all with loading/error/empty states |
 | `/book` | Booking form with real-time validation (incl. country) + WhatsApp/email handoff |
 | `/teacher` | Passcode-protected dashboard: level distribution, bookings, results |
 
-Rubric features: **two external key-based APIs** (API Ninjas Facts + Dictionary)
-with **client-side search, filtering AND pagination over the fetched data** and
+Rubric features: **external key-based API** (API Ninjas Facts) with **client-side
+search, filtering AND pagination over the fetched data** and
 **loading/error/empty states** (the `/facts` page; the home "هل تعلم؟" card also
 pages through fetched facts) · **Bootstrap 5** on `/facts` · additional
 **search + level filter** over the 34 lessons · **15+ real items** (34 lessons) ·

@@ -12,6 +12,7 @@ const LINKS = [
   { href: "/test", ar: "اختبار المستوى", en: "Placement Test" },
   { href: "/lessons", ar: "الدروس", en: "Lessons" },
   { href: "/skills", ar: "المهارات", en: "Skills Lab" },
+  { href: "/facts", ar: "معلومات", en: "Facts" },
   { href: "/book", ar: "احجز حصّة", en: "Book a Session" },
 ];
 
